@@ -28,7 +28,9 @@ trabot_a3/
 demo.py               编排演示：4 个回合 → mp4 + CSV + trace.json
 build_library.py      评测 → 选基底 → 风格化生成 → 规格核对 → 报告 / 追溯树 / 评审数据包
 apply_reviews.py      评审 JSON → 裁剪、改标、重新校验 → out/catalog_v2（含规格校准统计）
+viz_library.py        官方 A3 模型渲染全部录制与片段，汇总数据来源、数量、仿真计算量、关节覆盖、姿态分布
 review_page/
+  A3_library_atlas.html   单文件动作库全景（真实 A3 渲染，双击打开）
   A3_motion_review.html   单文件评审台（数据已内嵌，双击打开）
   index.html              页面源码；build_standalone.py 把它和数据打成单文件
 out/                       本次运行的结果（目录、评测报告、追溯树、视频、CSV）
@@ -53,6 +55,7 @@ cd ..
 python demo.py --rebuild --no-video     # 建库 + 编排演示（约 5 s）；去掉 --no-video 另出 mp4
 python build_library.py                 # 评测 + 风格化生成 + 规格核对（约 2 min）
 python review_page/build_standalone.py  # 生成单文件评审台
+python viz_library.py && python review_page/build_atlas.py   # 渲染 1,216 帧 A3 并生成动作库全景（约 2 min）
 python apply_reviews.py reviews.json    # 评审页导出的 JSON → out/catalog_v2
 ```
 
@@ -79,6 +82,13 @@ python apply_reviews.py reviews.json    # 评审页导出的 JSON → out/catalo
 - **人工评审与裁剪**：按自动分从低到高排队；拖动旋转视角；生成变体可叠加原始 atom（灰）对照；用入点 / 出点裁剪；打 4 项分、修正标签、判断规格是否判对、给出结论。
 
 本地打开时评审保存在当前浏览器里，多人评审请各自导出 JSON 后合并给 `apply_reviews.py`（同一片段多人的评分取均值、结论取多数、裁剪点取中位数）。
+
+## 数据来源说明
+
+智元公开的 A3 动作数据只有 `sonic_for_a3/a3_data/agibot_a3` 下的 20 条 CSV（8.1 分钟，58,372 帧 @120 Hz）；
+官方说明它们不属于 035 的训练集。035 训练语料未公开，`remote_motions` 的 4 条行走动作为 Git LFS（本环境无法获取），
+SONIC 权重托管在 Hugging Face（本环境不可达）。本仓库用到的智元资源是这 20 条 CSV、官方 A3 MJCF 与网格、
+SONIC sim2sim 的伺服增益和电机惯量。换成内部动作库时，只需把 `A3_DATA` 指向新的 CSV 目录重跑。
 
 ## 已知边界
 

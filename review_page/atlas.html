@@ -1,0 +1,341 @@
+<title>A3 动作库全景</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an inventory sheet read top to bottom — provenance first (what data exists and what was used),
+   then volume and funnel, then the recordings and every clip as real A3 renders, then pose coverage. */
+:root{
+  --bg:#EEF0EE; --panel:#FFFFFF; --panel-2:#F5F6F4; --ink:#171B19; --ink-2:#4A524E; --ink-3:#6B746F;
+  --line:#D5DAD6; --line-2:#E4E8E5; --s1:#2a78d6; --s2:#eb6834; --seq:#86b6ef; --seq-2:#2a78d6; --figbg:#E4E8E4;
+  --gA:#2E8B57; --gB:#7A9F2E; --gC:#C98A12; --gD:#C2412F; --ok-bg:#E2F1E8; --warn-bg:#FBF1DC; --bad-bg:#F8E1DD; --mute-bg:#ECEEEC;
+  --font-ui:"Barlow","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-display:"Barlow Semi Condensed","PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace; --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131614; --panel:#1B1F1D; --panel-2:#222724; --ink:#E7EBE8; --ink-2:#B4BCB7; --ink-3:#8E9792;
+  --line:#343B37; --line-2:#2A302D; --s1:#3987e5; --s2:#d95926; --seq:#184f95; --seq-2:#3987e5; --figbg:#262B28;
+  --gA:#5CC48A; --gB:#A9C95A; --gC:#E8B44A; --gD:#EE7564; --ok-bg:#1C3226; --warn-bg:#3A2F17; --bad-bg:#3D211D; --mute-bg:#262B28; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131614; --panel:#1B1F1D; --panel-2:#222724; --ink:#E7EBE8; --ink-2:#B4BCB7; --ink-3:#8E9792;
+  --line:#343B37; --line-2:#2A302D; --s1:#3987e5; --s2:#d95926; --seq:#184f95; --seq-2:#3987e5; --figbg:#262B28;
+  --gA:#5CC48A; --gB:#A9C95A; --gC:#E8B44A; --gD:#EE7564; --ok-bg:#1C3226; --warn-bg:#3A2F17; --bad-bg:#3D211D; --mute-bg:#262B28; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:14px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 48px;display:flex;flex-direction:column;gap:16px}
+h1{font:700 28px var(--font-display);margin:0;text-wrap:balance}
+h2{font:600 17px var(--font-display);margin:0 0 4px;letter-spacing:.2px}
+.lede{color:var(--ink-2);max-width:90ch;margin:4px 0 0}
+.sub{color:var(--ink-3);font-size:12.5px}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.panel>.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:10px}
+.panel>.head p{margin:0;color:var(--ink-3);font-size:12.5px;max-width:90ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;display:flex;flex-direction:column;gap:1px}
+.kpi .k{font-size:12px;color:var(--ink-3)} .kpi .v{font:600 24px var(--font-display);font-variant-numeric:tabular-nums} .kpi .d{font-size:12px;color:var(--ink-2)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{font:600 12px var(--font-ui);color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--panel-2);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:1px 8px;border-radius:10px;white-space:nowrap;border:1px solid transparent}
+.st-used{background:var(--ok-bg);color:var(--gA)} .st-blocked{background:var(--warn-bg);color:var(--gC)} .st-missing{background:var(--bad-bg);color:var(--gD)} .st-not_used{background:var(--mute-bg);color:var(--ink-2)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px}
+/* bars */
+.bars{display:flex;flex-direction:column;gap:6px}
+.br{display:grid;grid-template-columns:minmax(96px,170px) 1fr 76px;gap:10px;align-items:center;font-size:13px}
+.br .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.br .track{height:14px;display:flex;gap:2px}
+.br .track span{display:block;height:100%;border-radius:0 4px 4px 0;min-width:0}
+.br .track span+span{border-radius:0 4px 4px 0}
+.br .track span.a{border-radius:0}
+.br .val{text-align:right}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+/* funnel */
+.funnel{display:flex;flex-direction:column;gap:6px}
+.fr{display:grid;grid-template-columns:minmax(150px,260px) 1fr;gap:12px;align-items:center}
+.fr .bar{height:26px;border-radius:0 4px 4px 0;background:var(--seq);display:flex;align-items:center;padding-left:8px;font:600 13px var(--font-mono);color:var(--ink);min-width:44px}
+.fr .t{font-size:13px} .fr .t small{display:block;color:var(--ink-3);font-size:12px}
+/* recordings */
+.rec{display:grid;grid-template-columns:minmax(180px,240px) minmax(0,1fr);gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line-2)}
+.rec:last-child{border-bottom:0}
+.rec .strip{overflow-x:auto;border-radius:4px;background:var(--figbg)}
+.rec .strip img{display:block;height:150px;width:auto;max-width:none}
+.rec .ticks{display:flex;font:11px var(--font-mono);color:var(--ink-3);min-width:600px}
+.rec .ticks span{width:75px;text-align:center}
+.rec .nm{font-weight:600;word-break:break-all}
+.rec .meta{font-size:12px;color:var(--ink-2);display:flex;flex-direction:column;gap:2px;margin-top:4px}
+@media (max-width:640px){.rec{grid-template-columns:1fr}}
+/* clip atlas */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 8px;min-height:34px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);overflow:hidden;display:flex;flex-direction:column;scroll-margin-top:16px}
+.card.hl{outline:2px solid var(--s1);outline-offset:1px}
+.card .fig{background:var(--figbg);aspect-ratio:450/200;display:block;width:100%}
+.card .fig img{width:100%;height:100%;display:block;object-fit:contain}
+.card .cap{display:flex;justify-content:space-between;font:11px var(--font-mono);color:var(--ink-3);padding:2px 8px 0}
+.card .body{padding:6px 10px 10px;display:flex;flex-direction:column;gap:4px;font-size:12.5px}
+.card .t1{display:flex;gap:6px;align-items:center;font-weight:600;min-width:0}
+.card .t1 span.n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .tags{display:flex;flex-wrap:wrap;gap:4px}
+.grade{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:4px;font:700 12px var(--font-display);color:#fff;flex:none}
+.gA{background:var(--gA)}.gB{background:var(--gB)}.gC{background:var(--gC)}.gD{background:var(--gD)}
+.tag{font-size:11px;padding:0 6px;border-radius:9px;background:var(--panel-2);color:var(--ink-2);border:1px solid var(--line-2)}
+.tag.ok{background:var(--ok-bg);color:var(--gA);border-color:transparent}
+.tag.bad{background:var(--bad-bg);color:var(--gD);border-color:transparent}
+.btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:600 13px var(--font-ui);padding:6px 14px;border-radius:5px;cursor:pointer;min-height:34px}
+.btn:hover{border-color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+/* joint coverage */
+.jc{display:grid;grid-template-columns:minmax(120px,190px) 1fr 54px 54px;gap:10px;align-items:center;font-size:12.5px;padding:3px 0}
+.jc .rng{position:relative;height:18px;background:var(--panel-2);border-radius:3px}
+.jc .rng .r{position:absolute;top:3px;bottom:3px;background:var(--seq);border-radius:2px}
+.jc .rng .a{position:absolute;top:6px;bottom:6px;background:var(--s1);border-radius:2px}
+.jc .rng .v{position:absolute;top:0;bottom:0;width:2px;background:var(--s2)}
+.jc .rng .z{position:absolute;top:-2px;bottom:-2px;width:1px;background:var(--ink-3)}
+.jc.hd{color:var(--ink-3);font-size:12px}
+/* scatter */
+.scatter{position:relative}
+.scatter svg{width:100%;height:auto;display:block}
+.tip{position:fixed;pointer-events:none;z-index:20;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:12px;box-shadow:0 4px 16px rgba(0,0,0,.18);max-width:300px}
+.tip img{display:block;width:270px;height:auto;background:var(--figbg);border-radius:4px;margin-bottom:4px}
+.note{font-size:12.5px;color:var(--ink-2);max-width:90ch}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>A3 动作库全景</h1>
+    <p class="lede" id="lede">正在加载…</p>
+  </header>
+
+  <section class="panel">
+    <div class="head"><h2>数据来源清单</h2><p>哪些是智元的数据与模型、这次用了哪些、哪些拿不到。动作数据只有公开的 20 条，这是动作库规模偏小的根本原因。</p></div>
+    <div class="tbl"><table><thead><tr><th>资源</th><th>提供方</th><th>类型</th><th>规模</th><th>状态</th><th>说明</th></tr></thead><tbody id="inv"></tbody></table></div>
+  </section>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid2">
+    <section class="panel"><div class="head"><h2>从原始帧到可用片段</h2><p>每一级的数量；条宽按数量缩放（录制与片段用同一尺度不合适，故第一级单独标注）。</p></div><div class="funnel" id="funnel"></div></section>
+    <section class="panel"><div class="head"><h2>仿真计算量</h2><p>评测本动作库在 MuJoCo 里实际跑过的计算。</p></div><div class="tbl"><table><tbody id="volume"></tbody></table></div></section>
+  </div>
+
+  <div class="grid2">
+    <section class="panel"><div class="head"><h2>每个语义的片段数</h2><p>17 个语义函数；原始 atom 与仿真变体分开计数。</p></div><div class="bars" id="by-label"></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>原始 atom</span><span><i style="background:var(--s2)"></i>仿真变体</span></div></section>
+    <section class="panel"><div class="head"><h2>每条录制产出的片段</h2><p>按录制统计切出的 atom 与由它生成的变体。</p></div><div class="bars" id="by-rec"></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>原始 atom</span><span><i style="background:var(--s2)"></i>仿真变体</span></div></section>
+    <section class="panel"><div class="head"><h2>按风格与等级</h2><p>每种风格的片段数，按 A / B / C / D 分段。</p></div><div class="bars" id="by-style"></div>
+      <div class="legend"><span><i class="gA"></i>A ≥85</span><span><i class="gB"></i>B 70–85</span><span><i class="gC"></i>C 55–70</span><span><i class="gD"></i>D &lt;55</span></div></section>
+    <section class="panel"><div class="head"><h2>片段时长分布</h2><p>原始 atom 与仿真变体，单位秒。</p></div><div class="bars" id="by-dur"></div>
+      <div class="legend"><span><i style="background:var(--s1)"></i>原始 atom</span><span><i style="background:var(--s2)"></i>仿真变体</span></div></section>
+  </div>
+
+  <section class="panel">
+    <div class="head"><h2>关节姿态覆盖</h2><p>手势层控制的 17 个关节（腰 3 + 双臂 14）。灰轨是关节限位，浅蓝是 20 条原始录制用到的范围，深蓝是动作库片段（含变体）用到的范围，橙线是中立姿态。右侧是片段范围占限位的比例。</p></div>
+    <div id="joints"></div>
+  </section>
+
+  <section class="panel">
+    <div class="head"><h2>动作姿态分布</h2><p id="pca-note"></p></div>
+    <div class="filters"><label class="sub">着色 <select id="pc-color"><option value="kind">来源</option><option value="grade">等级</option><option value="spec">语义规格</option></select></label><span class="sub">悬停看 A3 姿态，点击跳到下方片段卡片</span></div>
+    <div class="scatter" id="scatter"></div>
+    <div class="legend" id="pc-legend"></div>
+  </section>
+
+  <section class="panel">
+    <div class="head"><h2>20 条原始录制</h2><p>官方 A3 MJCF 渲染，含录制里的根节点运动与腿部动作；每条均匀取 8 帧，下方是对应时间。</p></div>
+    <div id="recs"></div>
+  </section>
+
+  <section class="panel" id="atlas">
+    <div class="head"><h2>全部片段</h2><p>每张卡片是按执行方式渲染的 A3：腰和双臂来自片段，腿保持中立站姿。三帧依次为起点、动作峰值、终点。</p></div>
+    <div class="filters">
+      <select id="f-kind" aria-label="来源"><option value="">全部来源</option><option value="atom">原始 atom</option><option value="variant">仿真变体</option></select>
+      <select id="f-label" aria-label="语义"><option value="">全部语义</option></select>
+      <select id="f-style" aria-label="风格"><option value="">全部风格</option></select>
+      <select id="f-grade" aria-label="等级"><option value="">全部等级</option><option>A</option><option>B</option><option>C</option><option>D</option></select>
+      <select id="f-spec" aria-label="语义规格"><option value="">语义规格：全部</option><option value="pass">通过自身标签规格</option><option value="fail">未通过</option></select>
+      <select id="f-rec" aria-label="录制"><option value="">全部录制</option></select>
+      <input type="search" id="f-q" placeholder="搜索 id" aria-label="搜索片段 id">
+      <span class="sub" id="f-count"></span>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div style="display:flex;justify-content:center;margin-top:12px"><button class="btn" id="more">显示更多</button></div>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(() => {
+"use strict";
+const FN_ZH = {emphasize:"强调",enumerate:"列举",contrast_compare:"对比",refer_self:"指自己",refer_other:"指对方",refer_external:"指外部",
+  depict_size_shape:"描绘大小形状",depict_direction_motion:"描绘方向运动",turn_open:"开启话轮",turn_yield:"让出话轮",
+  greet_farewell:"问候告别",thank:"感谢",affirm:"肯定",deny:"否定",certainty:"确定",uncertainty:"不确定",enthusiasm:"热情"};
+const J_ZH = {waist_yaw_joint:"腰 偏航",waist_roll_joint:"腰 侧倾",waist_pitch_joint:"腰 俯仰",
+  left_shoulder_pitch_joint:"左肩 俯仰",left_shoulder_roll_joint:"左肩 外展",left_shoulder_yaw_joint:"左肩 旋转",left_elbow_joint:"左肘",
+  left_wrist_roll_joint:"左腕 翻转",left_wrist_pitch_joint:"左腕 俯仰",left_wrist_yaw_joint:"左腕 偏航",
+  right_shoulder_pitch_joint:"右肩 俯仰",right_shoulder_roll_joint:"右肩 外展",right_shoulder_yaw_joint:"右肩 旋转",right_elbow_joint:"右肘",
+  right_wrist_roll_joint:"右腕 翻转",right_wrist_pitch_joint:"右腕 俯仰",right_wrist_yaw_joint:"右腕 偏航"};
+const ST = {used:"已使用",blocked:"无法获取",missing:"未公开",not_used:"未使用"};
+const NEUTRAL_DEG = {waist_yaw_joint:0,waist_roll_joint:0.01,waist_pitch_joint:0.78,left_shoulder_pitch_joint:16.92,left_shoulder_roll_joint:6.42,left_shoulder_yaw_joint:-0.16,left_elbow_joint:46.25,left_wrist_roll_joint:0.01,left_wrist_pitch_joint:0.45,left_wrist_yaw_joint:-0.04,right_shoulder_pitch_joint:16.92,right_shoulder_roll_joint:-6.42,right_shoulder_yaw_joint:0.16,right_elbow_joint:46.26,right_wrist_roll_joint:-0.01,right_wrist_pitch_joint:0.46,right_wrist_yaw_joint:0.05};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = n => Number(n).toLocaleString("zh-CN");
+const D = JSON.parse(document.getElementById("atlas-data").textContent);
+const C = D.clips, atoms = C.filter(c => c.kind === "atom"), vars = C.filter(c => c.kind === "variant");
+const BYID = Object.fromEntries(C.map(c => [c.id, c]));
+const tip = $("#tip");
+function showTip(e, html){ tip.innerHTML = html; tip.hidden = false; moveTip(e); }
+function moveTip(e){ const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14; if (y + h > innerHeight - 8) y = e.clientY - h - 14; tip.style.left = Math.max(8,x)+"px"; tip.style.top = Math.max(8,y)+"px"; }
+function hideTip(){ tip.hidden = true; }
+function hoverable(el, html){ el.addEventListener("pointerenter", e => showTip(e, html())); el.addEventListener("pointermove", moveTip); el.addEventListener("pointerleave", hideTip); }
+
+// ---------- header, inventory, KPIs
+const V = D.volume;
+$("#lede").textContent = `${D.recordings.length} 条智元公开 A3 录制（${(V.recording_seconds/60).toFixed(1)} 分钟）切出 ${atoms.length} 个 Motion Atom，在 MuJoCo 中生成 ${vars.length} 个风格变体；所有图像由官方 A3 模型渲染。生成于 ${D.generated_at}。`;
+$("#inv").innerHTML = D.inventory.map(r => `<tr><td><b>${esc(r.name)}</b></td><td>${esc(r.owner)}</td><td>${esc(r.kind)}</td><td class="mono">${esc(r.count)}</td><td><span class="chip st-${r.status}">${ST[r.status]}</span></td><td class="sub" style="max-width:46ch">${esc(r.note)}</td></tr>`).join("");
+const kp = [
+  ["原始录制", `${D.recordings.length} 条`, `${(V.recording_seconds/60).toFixed(1)} 分钟 · ${num(V.raw_frames_120hz)} 帧 @120 Hz`],
+  ["Motion Atom", atoms.length, `${atoms.reduce((a,c)=>a+c.duration,0).toFixed(0)} s 动作`],
+  ["仿真风格变体", vars.length, `${vars.reduce((a,c)=>a+c.duration,0).toFixed(0)} s 动作`],
+  ["片段总时长", `${(V.clip_seconds/60).toFixed(1)} 分钟`, `${num(V.clip_frames_30hz)} 帧 @30 Hz`],
+  ["1 kHz 物理仿真步", num(V.pd_sim_steps_1khz), "力矩受限 PD 跟踪"],
+  ["A3 渲染帧", num(V.mujoco_renders_this_page), "本页所有图像"],
+];
+$("#kpis").innerHTML = kp.map(([k,v,d]) => `<div class="kpi"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span><span class="d">${esc(d)}</span></div>`).join("");
+
+// ---------- funnel (first stage is recordings: shown, not scaled with clip counts)
+const F = D.funnel, fmax = Math.max(...F.slice(1).map(f => f.n));
+$("#funnel").innerHTML = F.map((f,i) => `<div class="fr"><div class="t">${esc(f.stage)}<small>${esc(f.detail)}</small></div>
+  <div><div class="bar" style="width:${i===0 ? 12 : Math.max(6, f.n/fmax*100)}%;${i===0?"background:var(--panel-2);border:1px dashed var(--line)":""}">${num(f.n)}</div></div></div>`).join("");
+
+// ---------- volume
+const VR = [["原始录制帧（120 Hz）", V.raw_frames_120hz], ["片段帧（30 Hz，原始 + 变体）", V.clip_frames_30hz],
+  ["逆动力学求解（每帧一次，固定根）", V.inverse_dynamics_evals], ["力矩受限 PD 跟踪仿真步（1 kHz）", V.pd_sim_steps_1khz],
+  ["自碰撞检测（隔帧）", V.self_collision_checks], ["语义规格检查（片段 × 17）", V.spec_checks], ["MuJoCo 渲染帧（本页）", V.mujoco_renders_this_page]];
+$("#volume").innerHTML = VR.map(([k,v]) => `<tr><td>${esc(k)}</td><td class="mono" style="text-align:right">${num(v)}</td></tr>`).join("");
+
+// ---------- bar helpers
+function twoBars(el, rows){ // rows: [label, a, v, tipHtml]
+  const mx = Math.max(...rows.map(r => r[1]+r[2]), 1);
+  el.innerHTML = rows.map((r,i) => `<div class="br" data-i="${i}"><span class="lab">${r[0]}</span><div class="track">${r[1]?`<span class="${r[2]?"a":""}" style="width:${r[1]/mx*100}%;background:var(--s1)"></span>`:""}${r[2]?`<span style="width:${r[2]/mx*100}%;background:var(--s2)"></span>`:""}${!r[1]&&!r[2]?`<span class="tag bad" style="height:auto;border-radius:9px">无</span>`:""}</div><span class="val mono">${r[1]} / ${r[2]}</span></div>`).join("");
+  el.querySelectorAll(".br").forEach(b => hoverable(b, () => rows[+b.dataset.i][3]));
+}
+twoBars($("#by-label"), D.semantic_functions.map(f => { const a = atoms.filter(c => c.label===f).length, v = vars.filter(c => c.label===f).length;
+  const sc = D.semantic_check[f] || {};
+  return [`${esc(FN_ZH[f])}`, a, v, `<b>${esc(FN_ZH[f])}</b> <span class="mono">${f}</span><br>原始 ${a} · 变体 ${v}<br>通过自身规格的原始片段 ${sc.labelled_pass ?? 0}/${sc.labelled ?? 0}<br>已验证参考 ${sc.verified_refs ?? 0}`]; }));
+const recNames = D.recordings.map(r => r.name);
+twoBars($("#by-rec"), recNames.map(n => { const a = atoms.filter(c => c.source===n).length, v = vars.filter(c => c.source===n).length;
+  return [esc(n.replace(/^\d+_/,"")), a, v, `<b>${esc(n)}</b><br>atom ${a} · 变体 ${v}`]; }));
+{ // style × grade
+  const styles = [...new Set(C.map(c => c.style_zh))]; const mx = Math.max(...styles.map(s => C.filter(c => c.style_zh===s).length));
+  $("#by-style").innerHTML = styles.map((s,i) => { const cs = C.filter(c => c.style_zh===s); const g = k => cs.filter(c => c.grade===k).length;
+    return `<div class="br" data-i="${i}"><span class="lab">${esc(s)}</span><div class="track" style="width:${cs.length/mx*100}%">${"ABCD".split("").map(k => g(k) ? `<span class="g${k} a" style="width:${g(k)/cs.length*100}%"></span>` : "").join("")}</div><span class="val mono">${cs.length}</span></div>`; }).join("");
+  $("#by-style").querySelectorAll(".br").forEach(b => hoverable(b, () => { const s = styles[+b.dataset.i], cs = C.filter(c => c.style_zh===s);
+    return `<b>${esc(s)}</b> · ${cs.length} 个<br>${"ABCD".split("").map(k => `${k} ${cs.filter(c => c.grade===k).length}`).join(" · ")}<br>通过自身语义规格 ${cs.filter(c => c.own_spec).length}`; }));
+}
+{ // durations
+  const bins = [[0,1],[1,2],[2,3],[3,4],[4,6],[6,99]], lab = ["< 1 s","1–2 s","2–3 s","3–4 s","4–6 s","> 6 s"];
+  twoBars($("#by-dur"), bins.map(([a,b],i) => { const x = atoms.filter(c => c.duration>=a && c.duration<b).length, y = vars.filter(c => c.duration>=a && c.duration<b).length;
+    return [lab[i], x, y, `${lab[i]}<br>原始 ${x} · 变体 ${y}`]; }));
+}
+
+// ---------- joint coverage (degrees)
+{
+  const deg = r => r*180/Math.PI;
+  const ctrl = D.ctrl_joints, cov = D.coverage, recCov = Object.fromEntries(cov.recordings.map(x => [x.joint, x]));
+  let h = `<div class="jc hd"><span>关节</span><span>范围（度）</span><span style="text-align:right">片段</span><span style="text-align:right">录制</span></div>`;
+  cov.all.forEach((j, i) => {
+    const lo = deg(j.lo), hi = deg(j.hi), W = hi - lo, P = x => `${(deg(x) - lo)/W*100}%`;
+    const r = recCov[j.joint], a = cov.all[i], n = NEUTRAL_DEG[j.joint];
+    const recShare = (Math.min(r.max, j.hi) - Math.max(r.min, j.lo))/(j.hi - j.lo);
+    h += `<div class="jc" data-j="${i}"><span>${esc(J_ZH[j.joint]||j.joint)}</span><div class="rng">
+      <span class="r" style="left:${P(Math.max(r.min,j.lo))};width:calc(${P(Math.min(r.max,j.hi))} - ${P(Math.max(r.min,j.lo))})"></span>
+      <span class="a" style="left:${P(Math.max(a.min,j.lo))};width:calc(${P(Math.min(a.max,j.hi))} - ${P(Math.max(a.min,j.lo))})"></span>
+      ${lo < 0 && hi > 0 ? `<span class="z" style="left:${(-lo)/W*100}%"></span>` : ""}
+      <span class="v" style="left:${(n - lo)/W*100}%"></span></div>
+      <span class="mono" style="text-align:right">${Math.round(a.share*100)}%</span><span class="mono sub" style="text-align:right">${Math.round(recShare*100)}%</span></div>`;
+  });
+  $("#joints").innerHTML = h + `<div class="legend"><span><i style="background:var(--panel-2);border:1px solid var(--line)"></i>关节限位</span><span><i style="background:var(--seq)"></i>原始录制用到的范围</span><span><i style="background:var(--s1)"></i>片段用到的范围</span><span><i style="background:var(--s2)"></i>中立姿态</span><span><i style="background:var(--ink-3)"></i>0°</span></div>`;
+  $("#joints").querySelectorAll(".jc[data-j]").forEach(el => hoverable(el, () => { const j = cov.all[+el.dataset.j], at = cov.atoms[+el.dataset.j], r = recCov[j.joint];
+    return `<b>${esc(J_ZH[j.joint])}</b> <span class="mono">${j.joint}</span><br>限位 ${deg(j.lo).toFixed(0)}° ~ ${deg(j.hi).toFixed(0)}°<br>原始录制 ${deg(r.min).toFixed(0)}° ~ ${deg(r.max).toFixed(0)}°<br>原始 atom ${deg(at.min).toFixed(0)}° ~ ${deg(at.max).toFixed(0)}°<br>含变体 ${deg(j.min).toFixed(0)}° ~ ${deg(j.max).toFixed(0)}°`; }));
+}
+
+// ---------- pose map
+const pv = D.volume.pca_var;
+$("#pca-note").textContent = `每个点是一个片段：把双手相对肩部的轨迹按时间归一化后做主成分分析，取前两维（解释 ${Math.round(pv[0]*100)}% 与 ${Math.round(pv[1]*100)}% 的差异）。点越聚集，动作越相似；空白区域是库里没有的动作形态。`;
+function drawScatter(){
+  const mode = $("#pc-color").value, W = 900, H = 440, pad = 34;
+  const xs = C.map(c => c.pc[0]), ys = C.map(c => c.pc[1]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const X = x => pad + (x - x0)/(x1 - x0)*(W - 2*pad), Y = y => H - pad - (y - y0)/(y1 - y0)*(H - 2*pad);
+  const col = c => mode === "kind" ? (c.kind === "atom" ? "var(--s1)" : "var(--s2)") : mode === "grade" ? `var(--g${c.grade})` : (c.own_spec ? "var(--gA)" : "var(--ink-3)");
+  const order = [...C].sort((a,b) => (a.kind === "atom") - (b.kind === "atom"));
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="片段姿态分布散点图"><rect x="0" y="0" width="${W}" height="${H}" fill="var(--panel)"/>`;
+  for (let i = 0; i <= 4; i++){ const gx = pad + i*(W-2*pad)/4, gy = pad + i*(H-2*pad)/4;
+    s += `<line x1="${gx}" y1="${pad}" x2="${gx}" y2="${H-pad}" stroke="var(--line-2)" stroke-width="1"/><line x1="${pad}" y1="${gy}" x2="${W-pad}" y2="${gy}" stroke="var(--line-2)" stroke-width="1"/>`; }
+  s += `<text x="${W/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="var(--ink-3)">主成分 1</text><text x="12" y="${H/2}" font-size="12" fill="var(--ink-3)" transform="rotate(-90 12 ${H/2})" text-anchor="middle">主成分 2</text>`;
+  s += order.map(c => c.kind === "atom"
+    ? `<circle data-id="${esc(c.id)}" cx="${X(c.pc[0]).toFixed(1)}" cy="${Y(c.pc[1]).toFixed(1)}" r="5" fill="${col(c)}" stroke="var(--panel)" stroke-width="2" style="cursor:pointer"/>`
+    : `<rect data-id="${esc(c.id)}" x="${(X(c.pc[0])-4).toFixed(1)}" y="${(Y(c.pc[1])-4).toFixed(1)}" width="8" height="8" rx="1.5" fill="${col(c)}" fill-opacity=".85" stroke="var(--panel)" stroke-width="1.5" style="cursor:pointer"/>`).join("");
+  s += `</svg>`;
+  $("#scatter").innerHTML = s;
+  $("#pc-legend").innerHTML = (mode === "kind" ? `<span><i style="background:var(--s1);border-radius:50%"></i>原始 atom（圆）</span><span><i style="background:var(--s2)"></i>仿真变体（方）</span>`
+    : mode === "grade" ? "ABCD".split("").map(k => `<span><i class="g${k}"></i>${k}</span>`).join("") + `<span class="sub">圆 = 原始，方 = 变体</span>`
+    : `<span><i style="background:var(--gA)"></i>通过自身语义规格</span><span><i style="background:var(--ink-3)"></i>未通过</span><span class="sub">圆 = 原始，方 = 变体</span>`);
+  $("#scatter").querySelectorAll("[data-id]").forEach(el => {
+    hoverable(el, () => { const c = BYID[el.dataset.id]; return `<img src="${c.img}" alt=""><b>${esc(c.id)}</b><br>${c.kind==="atom"?"原始 atom":"仿真变体 · "+esc(c.style_zh)} · ${esc(FN_ZH[c.label]||c.label)} · ${c.grade} ${c.score}`; });
+    el.addEventListener("click", () => jump(el.dataset.id));
+  });
+}
+$("#pc-color").addEventListener("change", drawScatter);
+drawScatter();
+
+// ---------- recordings
+$("#recs").innerHTML = D.recordings.map(r => `<div class="rec"><div><div class="nm">${esc(r.name)}</div><div class="meta">
+  <span class="mono">${r.duration_s} s · ${num(r.frames_120hz)} 帧 · 根节点移动 ${r.root_travel_m} m</span>
+  <span>切出 ${r.atoms} 个 atom${r.rejected?`，丢弃 ${r.rejected} 段`:""} · 变体 ${vars.filter(c => c.source===r.name).length}</span>
+  <a href="#atlas" data-rec="${esc(r.name)}">查看这条录制的片段</a></div></div>
+  <div class="strip"><img src="${r.img}" alt="${esc(r.name)} 的 8 个关键帧"><div class="ticks">${r.frame_t.map(t => `<span>${t}s</span>`).join("")}</div></div></div>`).join("");
+$("#recs").addEventListener("click", e => { const a = e.target.closest("[data-rec]"); if (!a) return; e.preventDefault(); resetFilters(); $("#f-rec").value = a.dataset.rec; renderCards(); $("#atlas").scrollIntoView({behavior:"smooth"}); });
+
+// ---------- clip atlas
+$("#f-label").insertAdjacentHTML("beforeend", [...new Set(C.map(c => c.label))].map(l => `<option value="${l}">${esc(FN_ZH[l]||l)}</option>`).join(""));
+$("#f-style").insertAdjacentHTML("beforeend", [...new Set(C.map(c => c.style_zh))].map(s => `<option>${esc(s)}</option>`).join(""));
+$("#f-rec").insertAdjacentHTML("beforeend", recNames.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join(""));
+let shown = 48, highlight = null;
+function filtered(){
+  const k = $("#f-kind").value, l = $("#f-label").value, s = $("#f-style").value, g = $("#f-grade").value, sp = $("#f-spec").value, r = $("#f-rec").value, q = $("#f-q").value.trim().toLowerCase();
+  return C.filter(c => (!k || c.kind===k) && (!l || c.label===l) && (!s || c.style_zh===s) && (!g || c.grade===g)
+    && (!sp || (sp==="pass") === c.own_spec) && (!r || c.source===r) && (!q || c.id.toLowerCase().includes(q)));
+}
+function card(c){
+  const span = c.kind === "atom" ? c.id.split("__").pop() : (c.parent||"").split("__").pop();
+  return `<article class="card${c.id===highlight?" hl":""}" id="c-${CSS.escape(c.id)}"><div class="fig"><img src="${c.img}" alt="${esc(c.id)}：起点、峰值、终点"></div>
+    <div class="cap"><span>起点</span><span>峰值 ${c.apex_t}s</span><span>终点 ${c.duration.toFixed(2)}s</span></div>
+    <div class="body"><div class="t1"><span class="grade g${c.grade}">${c.grade}</span><span class="n" title="${esc(c.id)}">${esc(c.source.replace(/^\d+_/,""))} · ${esc(span)}s</span><span class="mono sub" style="margin-left:auto">${c.score}</span></div>
+    <div class="tags"><span class="tag">${c.kind==="atom"?"原始":"变体 · "+esc(c.style_zh)}</span><span class="tag">${esc(FN_ZH[c.label]||c.label)}</span>${c.own_spec?`<span class="tag ok">规格通过</span>`:`<span class="tag bad">名对动作不对</span>`}</div>
+    ${c.flags.filter(f => f!=="semantic_mismatch").length ? `<div class="sub">${esc(c.flags.filter(f => f!=="semantic_mismatch").slice(0,2).map(f => D.flag_text[f]).join("；"))}</div>` : ""}</div></article>`;
+}
+function renderCards(){
+  const L = filtered();
+  $("#f-count").textContent = `${L.length} 个片段`;
+  $("#cards").innerHTML = L.slice(0, shown).map(card).join("") || `<p class="sub">没有符合条件的片段</p>`;
+  $("#more").hidden = L.length <= shown;
+}
+function resetFilters(){ ["#f-kind","#f-label","#f-style","#f-grade","#f-spec","#f-rec"].forEach(s => $(s).value = ""); $("#f-q").value = ""; shown = 48; }
+function jump(id){
+  resetFilters(); const L = filtered(); const i = L.findIndex(c => c.id === id); shown = Math.max(48, i + 1); highlight = id; renderCards();
+  const el = document.getElementById("c-" + CSS.escape(id)); if (el) el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+}
+["#f-kind","#f-label","#f-style","#f-grade","#f-spec","#f-rec","#f-q"].forEach(s => $(s).addEventListener("input", () => { shown = 48; renderCards(); }));
+$("#more").addEventListener("click", () => { shown += 48; renderCards(); });
+renderCards();
+})();
+</script>

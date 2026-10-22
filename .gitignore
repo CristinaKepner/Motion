@@ -6,5 +6,4 @@ out/catalog_v2/
 out/demo_run.log
 _a3_fixed_base.xml
 .DS_Store
-node_modules/
-package*.json
+out/viz/
