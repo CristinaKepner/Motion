@@ -216,7 +216,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--panel-2);paddi
   <section class="panel" id="exportbox">
     <h2>导出与回写 <small>评审结果实时共享给所有打开此页的同事</small></h2>
     <div class="ctl"><button class="btn" id="btn-export">导出评审 JSON</button><span class="status" id="export-status"></span></div>
-    <p class="note">导出后运行 <code>python apply_reviews.py reviews.json</code>：按评审结果裁剪片段、修正语义标签、重新做运动学校验与质量评分，生成带完整来源记录的新版目录 <code>out/catalog_v2</code>。被丢弃的片段连同评审意见一起记录，用来指导下一轮生成。</p>
+    <p class="note">导出后运行 <code>python scripts/apply_reviews.py reviews.json</code>：按评审结果裁剪片段、修正语义标签、重新做运动学校验与质量评分，生成带完整来源记录的新版目录 <code>results/catalog_v2</code>。被丢弃的片段连同评审意见一起记录，用来指导下一轮生成。</p>
   </section>
 </div>
 

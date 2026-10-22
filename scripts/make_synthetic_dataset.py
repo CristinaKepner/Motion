@@ -2,7 +2,7 @@
 is reachable: Mixamo/BEAT-style skeleton, smooth random arm/spine motion whose strokes are
 placed on a click track, so rhythm metrics have ground truth (BC / BAS should beat chance).
 
-usage: python benchmark/make_synthetic.py [out_dir] [n_files] [seconds]
+usage: python scripts/make_synthetic_dataset.py [out_dir] [n_files] [seconds]
 """
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from benchmark.tests_roundtrip import synthetic_bvh  # noqa: E402
+from tests.test_adapters import synthetic_bvh  # noqa: E402
 from trabot_a3.paths import OUT  # noqa: E402
 
 

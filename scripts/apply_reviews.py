@@ -7,11 +7,11 @@ Input: a reviews JSON exported from the page (or read from its shared store), a 
 
 Per clip, reviews are aggregated (mean ratings, majority decision, median trim). Accepted /
 trimmed clips are cut ("clip 出来"), re-validated with the same Eq.10 checks and re-scored,
-and written to out/catalog_v2 with full provenance (source clip, reviewers, ratings, trim,
+and written to results/catalog_v2 with full provenance (source clip, reviewers, ratings, trim,
 label correction). Rejected clips are listed with the reviewers' notes, so the next
 generation round can be steered away from them.
 
-usage: python apply_reviews.py reviews.json
+usage: python scripts/apply_reviews.py reviews.json
 """
 from __future__ import annotations
 
@@ -20,13 +20,13 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-import numpy as np
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
 
-from trabot_a3.atoms import load_catalog, kinematic_report, CatalogParams, SEMANTIC_FUNCTIONS
-from trabot_a3.quality import PhysicsProbe, evaluate_clip
+import numpy as np  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent
-from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT
+from trabot_a3.atoms import load_catalog, kinematic_report, CatalogParams, SEMANTIC_FUNCTIONS  # noqa: E402
+from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT  # noqa: E402
+from trabot_a3.quality import PhysicsProbe, evaluate_clip  # noqa: E402
 
 
 def load_q(clip_id: str, cat) -> tuple[np.ndarray, float]:

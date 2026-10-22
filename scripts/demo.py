@@ -1,17 +1,20 @@
 """End-to-end demo: A3 CSV → Motion Atom catalog → budgeted semantic planning →
 state-aware execution in MuJoCo (joint-angle playback) → mp4 + CSV + trace.
 
-usage: python demo.py [--no-video]
+usage: python scripts/demo.py [--no-video] [--rebuild]
 """
 from __future__ import annotations
 
 import argparse
 import glob
+import sys
 import json
 import time
 from pathlib import Path
 
-import numpy as np
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
+
+import numpy as np  # noqa: E402
 
 from trabot_a3.atoms import build_catalog, load_catalog
 from trabot_a3.data import A3Motion, NEUTRAL_ROOT, write_a3_csv
@@ -19,9 +22,8 @@ from trabot_a3.executor import StateAwareExecutor
 from trabot_a3.planner import Planner, PlannerParams
 from trabot_a3.sim import MujocoKinematicBackend
 
-ROOT = Path(__file__).resolve().parent
-from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT
-OUT = OUT_ROOT
+from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT  # noqa: E402
+OUT = OUT_ROOT / "demo"
 
 
 def overlay(frames: list[np.ndarray], records, events: list[dict], fps: float) -> list[np.ndarray]:
@@ -62,10 +64,10 @@ def main():
     ap.add_argument("--rebuild", action="store_true")
     ap.add_argument("--tau", type=float, default=0.12, help="first-order tracking lag (s) emulating the controller")
     args = ap.parse_args()
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
 
     # ---------------- offline: catalog
-    cat_dir = OUT / "catalog"
+    cat_dir = OUT_ROOT / "catalog"
     if args.rebuild or not (cat_dir / "catalog.json").exists():
         t0 = time.time()
         cat = build_catalog(sorted(glob.glob(str(DATA / "*.csv"))), verbose=False)

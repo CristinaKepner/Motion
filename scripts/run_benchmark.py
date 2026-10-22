@@ -1,8 +1,8 @@
 """Run the gesture benchmark.
 
-  python run_benchmark.py library                      # A3 library: atoms vs stylised variants (+ metric self-checks)
-  python run_benchmark.py bvh <dir> --profile beat     # a public dataset folder (BVH + optional WAV/TSV) → A3 → metrics
-  python run_benchmark.py compare <dirA> <dirB> --profile beat  # e.g. generator output vs held-out data (FKD etc.)
+  python scripts/run_benchmark.py library                      # A3 library: atoms vs stylised variants (+ metric self-checks)
+  python scripts/run_benchmark.py bvh <dir> --profile beat     # a public dataset folder (BVH + optional WAV/TSV) → A3 → metrics
+  python scripts/run_benchmark.py compare <dirA> <dirB> --profile beat  # e.g. generator output vs held-out data (FKD etc.)
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
 from trabot_a3.paths import MJCF, OUT  # noqa: E402
 from trabot_a3.quality import PhysicsProbe  # noqa: E402
 from benchmark import runner as RN, metrics as M  # noqa: E402

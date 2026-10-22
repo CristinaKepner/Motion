@@ -1,9 +1,16 @@
 __pycache__/
 *.pyc
-external/
-review_page/review_bundle.json
-out/catalog_v2/
-out/demo_run.log
-_a3_fixed_base.xml
 .DS_Store
-out/viz/
+
+# external assets (clone per docs/HANDOVER.md)
+external/*
+!external/README.md
+
+# regenerated / large intermediates
+results/viz/
+results/synthetic_dataset/
+results/catalog_v2/
+results/demo/demo_run.log
+_a3_fixed_base.xml
+node_modules/
+package*.json

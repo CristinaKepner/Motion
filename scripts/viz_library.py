@@ -10,7 +10,7 @@ and gathers the numbers a reader needs to judge the library: data provenance and
 style / grade / recording, joint-range coverage per joint, a pose-space map (PCA of hand
 trajectories), and the simulation volume behind the evaluation.
 
-usage: python viz_library.py   → out/viz/viz_data.json, review_page/A3_library_atlas.html
+usage: python scripts/viz_library.py   → results/viz/viz_data.json (then review_page/build_atlas.py)
 """
 from __future__ import annotations
 
@@ -18,8 +18,11 @@ import base64
 import io
 import json
 import os
+import sys
 import time
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
 
 os.environ.setdefault("MUJOCO_GL", "osmesa")
 import mujoco  # noqa: E402

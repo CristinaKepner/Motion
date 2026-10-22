@@ -8,25 +8,27 @@
     → library richness report (atoms only vs. atoms + variants)
     → sourcing tree + review payload (stick-figure keypoints @ 15 fps)
 
-usage: python build_library.py [--max-bases 36]
+usage: python scripts/build_library.py [--max-bases 36]
 """
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 import time
 from pathlib import Path
 
-import numpy as np
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
 
-from trabot_a3.atoms import load_catalog, SEMANTIC_FUNCTIONS
-from trabot_a3.quality import PhysicsProbe, evaluate_clip, library_report, embed, FLAG_TEXT, style_descriptor
-from trabot_a3.sourcing import build_tree
-from trabot_a3.stylize import PRESETS, MIRROR, generate_variant, style_from_reference
-from trabot_a3.semantics import check_all, SPEC_TEXT, FN_ZH
+import numpy as np  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent
-from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT
+from trabot_a3.atoms import load_catalog, SEMANTIC_FUNCTIONS  # noqa: E402
+from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT  # noqa: E402
+from trabot_a3.quality import PhysicsProbe, evaluate_clip, library_report, embed, FLAG_TEXT, style_descriptor  # noqa: E402
+from trabot_a3.sourcing import build_tree  # noqa: E402
+from trabot_a3.stylize import PRESETS, MIRROR, generate_variant, style_from_reference  # noqa: E402
+from trabot_a3.semantics import check_all, SPEC_TEXT, FN_ZH  # noqa: E402
+
 OUT = OUT_ROOT / "library"
 KEEP_METRICS = ["duration", "sparc", "hf_rms", "hf_ratio", "jerk_ratio", "step_max", "v_entry", "v_exit",
                 "bridge_in_s", "bridge_out_s", "limit_margin", "collision_excess_mm", "torque_ratio",
