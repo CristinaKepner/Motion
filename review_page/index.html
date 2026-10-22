@@ -1,0 +1,757 @@
+<title>A3 动作库评审台</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: instrument-panel workbench — header strip, tab row, then either overview panels,
+   a provenance tree table, or a two-pane review station (queue | player + scoring). */
+:root{
+  --bg:#EEF0EE; --panel:#FFFFFF; --panel-2:#F6F7F5; --ink:#171B19; --ink-2:#4A524E; --ink-3:#6B746F;
+  --line:#D5DAD6; --line-2:#E4E8E5; --accent:#1F5FBF; --accent-ink:#FFFFFF; --accent-soft:#E3ECF9;
+  --left:#2F6FDB; --right:#D9731A; --spine:#2B312E; --ghost:#B9C0BC; --trail-l:rgba(47,111,219,.35); --trail-r:rgba(217,115,26,.35);
+  --gA:#2E8B57; --gB:#7A9F2E; --gC:#C98A12; --gD:#C2412F; --warn-bg:#FBF1DC; --bad-bg:#F8E1DD; --ok-bg:#E2F1E8;
+  --font-ui:"Barlow","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-display:"Barlow Semi Condensed","PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#131614; --panel:#1B1F1D; --panel-2:#212623; --ink:#E7EBE8; --ink-2:#B4BCB7; --ink-3:#8E9792;
+  --line:#343B37; --line-2:#2A302D; --accent:#6EA2F0; --accent-ink:#0E1A2C; --accent-soft:#1E2B3F;
+  --left:#6EA2F0; --right:#F0A25C; --spine:#D9DFDB; --ghost:#4C5550; --trail-l:rgba(110,162,240,.4); --trail-r:rgba(240,162,92,.4);
+  --gA:#5CC48A; --gB:#A9C95A; --gC:#E8B44A; --gD:#EE7564; --warn-bg:#3A2F17; --bad-bg:#3D211D; --ok-bg:#1C3226;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#131614; --panel:#1B1F1D; --panel-2:#212623; --ink:#E7EBE8; --ink-2:#B4BCB7; --ink-3:#8E9792;
+  --line:#343B37; --line-2:#2A302D; --accent:#6EA2F0; --accent-ink:#0E1A2C; --accent-soft:#1E2B3F;
+  --left:#6EA2F0; --right:#F0A25C; --spine:#D9DFDB; --ghost:#4C5550; --trail-l:rgba(110,162,240,.4); --trail-r:rgba(240,162,92,.4);
+  --gA:#5CC48A; --gB:#A9C95A; --gC:#E8B44A; --gD:#EE7564; --warn-bg:#3A2F17; --bad-bg:#3D211D; --ok-bg:#1C3226;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:14px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 40px;display:flex;flex-direction:column;gap:14px}
+header.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+h1{font-family:var(--font-display);font-weight:700;font-size:26px;letter-spacing:.2px;margin:0;text-wrap:balance}
+.sub{color:var(--ink-3);font-size:13px}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{appearance:none;border:0;background:none;color:var(--ink-2);font:600 15px var(--font-display);padding:9px 14px;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.panel h2{font:600 15px var(--font-display);margin:0 0 10px;letter-spacing:.2px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.panel h2 small{font:400 12px var(--font-ui);color:var(--ink-3)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;display:flex;flex-direction:column;gap:2px}
+.kpi .k{font-size:12px;color:var(--ink-3);letter-spacing:.3px}
+.kpi .v{font:600 24px var(--font-display);font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;color:var(--ink-2)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:14px}
+.rows{display:flex;flex-direction:column;gap:5px}
+.brow{display:grid;grid-template-columns:minmax(92px,150px) 1fr 64px;align-items:center;gap:10px;font-size:13px}
+.brow .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:12px;background:var(--panel-2);border-radius:3px;display:flex;overflow:hidden}
+.bar span{display:block;height:100%}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:1px 7px;border-radius:10px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;background:var(--panel)}
+.chip.miss{background:var(--bad-bg);border-color:transparent;color:var(--gD)}
+.chip.warn{background:var(--warn-bg);border-color:transparent;color:var(--gC)}
+.chip.ok{background:var(--ok-bg);border-color:transparent;color:var(--gA)}
+.grade{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:4px;font:700 13px var(--font-display);color:#fff;flex:none}
+.gA{background:var(--gA)}.gB{background:var(--gB)}.gC{background:var(--gC)}.gD{background:var(--gD)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--ink-3);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.findings{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;max-width:80ch}
+.heat{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:3px;font-size:12px;align-items:stretch}
+.heat .h{color:var(--ink-3);text-align:center;padding:2px}
+.heat .c{border-radius:3px;padding:6px 4px;text-align:center;font-variant-numeric:tabular-nums;min-height:44px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line-2)}
+/* tree */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.toolbar label{font-size:13px;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px}
+select,input[type=text],input[type=search],textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:5px 8px;min-height:34px}
+textarea{min-height:64px;width:100%;resize:vertical}
+.treebox{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+table.tree{border-collapse:collapse;width:100%;min-width:880px;font-size:13px}
+table.tree th{font:600 12px var(--font-ui);color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--panel-2);position:sticky;top:0}
+table.tree td{padding:5px 10px;border-bottom:1px solid var(--line-2);vertical-align:middle}
+table.tree tr.clickable{cursor:pointer}
+table.tree tr.clickable:hover td{background:var(--panel-2)}
+.tg{appearance:none;border:0;background:none;color:var(--ink-2);width:22px;height:22px;cursor:pointer;font-size:12px;border-radius:4px}
+.tg:hover{background:var(--panel-2)}
+.kind{font-size:11px;color:var(--ink-3);letter-spacing:.4px;text-transform:uppercase}
+.nm{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.scorebar{display:flex;align-items:center;gap:6px}
+.scorebar .t{width:70px;height:6px;background:var(--panel-2);border-radius:3px;overflow:hidden}
+.scorebar .t span{display:block;height:100%}
+.mix{display:flex;width:90px;height:8px;border-radius:2px;overflow:hidden;background:var(--panel-2)}
+/* review */
+.station{display:grid;grid-template-columns:minmax(260px,330px) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:900px){.station{grid-template-columns:1fr}}
+.queue{display:flex;flex-direction:column;gap:8px;min-width:0}
+.qlist{border:1px solid var(--line);border-radius:var(--r);background:var(--panel);max-height:72vh;overflow-y:auto}
+.qi{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line-2);cursor:pointer;width:100%;text-align:left;background:none;border-left:3px solid transparent;font:inherit;color:inherit}
+.qi:hover{background:var(--panel-2)}
+.qi[aria-current="true"]{background:var(--accent-soft);border-left-color:var(--accent)}
+.qi .t1{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi .t2{font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qi .rv{font-size:11px;color:var(--gA)}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.filters select,.filters input{width:100%;min-width:0}
+.main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.playerwrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px}
+@media (max-width:1100px){.playerwrap{grid-template-columns:1fr}}
+.stage{position:relative;background:var(--panel-2);border:1px solid var(--line);border-radius:var(--r);aspect-ratio:4/3;max-width:100%;touch-action:none;cursor:grab}
+.stage canvas{width:100%;height:100%;display:block}
+.stage .hint{position:absolute;right:8px;bottom:6px;font-size:11px;color:var(--ink-3)}
+.stage .tl{position:absolute;left:10px;top:8px;font:500 12px var(--font-mono);color:var(--ink-2)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:600 13px var(--font-ui);padding:6px 12px;border-radius:5px;cursor:pointer;min-height:34px}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.timeline{display:flex;flex-direction:column;gap:4px}
+.track{position:relative;height:26px;background:var(--panel-2);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.track .keep{position:absolute;top:0;bottom:0;background:var(--accent-soft);border-left:2px solid var(--accent);border-right:2px solid var(--accent)}
+.track .head{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
+.track canvas{position:absolute;inset:0;width:100%;height:100%}
+.trimrow{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;font-size:12px;color:var(--ink-2)}
+.trimrow input[type=range]{width:100%}
+.flags{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.flags li{font-size:13px;padding:5px 9px;border-radius:4px;background:var(--warn-bg)}
+.flags li.s3{background:var(--bad-bg)}
+.flags li.none{background:var(--ok-bg)}
+.subs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px}
+.subs .s{display:grid;grid-template-columns:1fr 38px;gap:2px 8px;font-size:12.5px;align-items:center}
+.subs .s .bar{grid-column:1/3;height:6px}
+dl.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px 14px;margin:0;font-size:12px}
+dl.metrics div{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted var(--line-2);padding:2px 0}
+dl.metrics dt{color:var(--ink-3)}
+dl.metrics dd{margin:0;font-family:var(--font-mono)}
+.crumbs{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;font-size:12.5px}
+.crumbs .sep{color:var(--ink-3)}
+.ops{font:12px var(--font-mono);color:var(--ink-2)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px}
+.field{display:flex;flex-direction:column;gap:4px}
+.field>span{font-size:12.5px;color:var(--ink-2)}
+.seg{display:flex;gap:4px}
+.seg button{appearance:none;flex:1;min-height:34px;border:1px solid var(--line);background:var(--panel);border-radius:4px;font:600 13px var(--font-mono);color:var(--ink-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.seg button:disabled{opacity:.45;cursor:not-allowed}
+.decision{display:flex;gap:4px;flex-wrap:wrap}
+.decision button{appearance:none;flex:1;min-height:36px;border:1px solid var(--line);background:var(--panel);border-radius:4px;font:600 13px var(--font-ui);color:var(--ink-2);cursor:pointer;padding:0 10px}
+.decision button[aria-pressed="true"][data-v="accept"]{background:var(--gA);border-color:var(--gA);color:#fff}
+.decision button[aria-pressed="true"][data-v="trim"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.decision button[aria-pressed="true"][data-v="reject"]{background:var(--gD);border-color:var(--gD);color:#fff}
+.status{font-size:12.5px;color:var(--ink-3);min-height:1.5em}
+.others{display:flex;flex-direction:column;gap:6px;font-size:12.5px}
+.others .o{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:start;padding:6px 0;border-top:1px solid var(--line-2)}
+.others img{width:22px;height:22px;border-radius:50%}
+.empty{padding:24px;text-align:center;color:var(--ink-3)}
+.note{font-size:12.5px;color:var(--ink-2);max-width:80ch}
+code{font-family:var(--font-mono);font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>A3 动作库评审台</h1>
+    <span class="sub" id="subline">正在加载动作库…</span>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-overview" aria-selected="true" data-view="overview">质量与丰富度</button>
+    <button class="tab" role="tab" id="tab-tree" aria-selected="false" data-view="tree">来源追溯树</button>
+    <button class="tab" role="tab" id="tab-review" aria-selected="false" data-view="review">人工评审与裁剪</button>
+  </nav>
+
+  <section id="view-overview" role="tabpanel" aria-labelledby="tab-overview">
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2" style="margin-top:14px">
+      <div class="panel" style="grid-column:1/-1"><h2>结论 <small>由当前评测数据自动生成</small></h2><ul class="findings" id="findings"></ul></div>
+      <div class="panel" style="grid-column:1/-1"><h2>名实核对 <small>每个语义拆成可检查的姿态、接触与先后顺序；“贴了这个标签的片段”有多少真的做到了，库里又有多少片段可作为已验证参考</small></h2>
+        <div class="treebox"><table class="tree" style="min-width:760px"><thead><tr><th>语义</th><th>动作规格（自动检查项）</th><th>贴此标签</th><th>通过规格</th><th>已验证参考（A/B）</th></tr></thead><tbody id="semtable"></tbody></table></div>
+        <p class="note" style="margin-top:8px">“已验证参考”指无论原标签是什么、动作本身通过该规格的片段，可直接作为生成模型的参考片段。规格阈值是第一版，评审时请在“规格判定是否准确”一栏给出意见，用来校准。</p></div>
+      <div class="panel"><h2>17 个语义函数覆盖 <small>原始 atom / 生成变体（A/B）</small></h2><div class="rows" id="coverage"></div>
+        <div class="legend"><span><i style="background:var(--spine)"></i>原始 atom</span><span><i style="background:var(--accent)"></i>生成变体</span><span><span class="chip miss">缺失</span> 库里没有</span></div></div>
+      <div class="panel"><h2>按风格看质量 <small>每种风格生成的片段等级分布</small></h2><div class="rows" id="bystyle"></div>
+        <div class="legend"><span><i class="gA"></i>A ≥85</span><span><i class="gB"></i>B 70–85</span><span><i class="gC"></i>C 55–70</span><span><i class="gD"></i>D &lt;55</span></div></div>
+      <div class="panel"><h2>问题类型 <small>每类问题命中的片段数</small></h2><div class="rows" id="flagbars"></div>
+        <div class="legend"><span><i style="background:var(--spine)"></i>原始 atom</span><span><i style="background:var(--accent)"></i>生成变体</span></div></div>
+      <div class="panel"><h2>风格空间覆盖 <small>能量（手部活动范围）× 节奏（相对速度），格内为 原始 / 变体 片段数</small></h2><div class="heat" id="heat"></div></div>
+      <div class="panel"><h2>类内多样性与衔接 <small>同语义片段之间的平均手部轨迹差异（cm）</small></h2><div class="rows" id="diversity"></div><p class="note" id="connect"></p></div>
+    </div>
+  </section>
+
+  <section id="view-tree" role="tabpanel" aria-labelledby="tab-tree" hidden>
+    <div class="panel" style="display:flex;flex-direction:column;gap:10px">
+      <div class="toolbar">
+        <label><input type="checkbox" id="tree-problems"> 只看问题节点（C/D 占比 ≥ 30% 或本身是 C/D）</label>
+        <label>展开到 <select id="tree-depth"><option value="2">录制</option><option value="3" selected>atom</option><option value="4">变体</option></select></label>
+        <span class="sub" id="tree-count"></span>
+      </div>
+      <p class="note" style="margin:0">每一行汇总它下面所有片段：数据集 → 录制文件 → 切出的 atom → 仿真生成的风格变体。被离线流程丢弃的片段也挂在原录制下，写明原因。点 atom 或变体行可以直接打开评审。</p>
+      <div class="treebox"><table class="tree"><thead><tr><th>节点</th><th>类型</th><th>片段</th><th>平均分</th><th>等级分布</th><th>C/D 占比</th><th>主要问题</th></tr></thead><tbody id="treebody"></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="view-review" role="tabpanel" aria-labelledby="tab-review" hidden>
+    <div class="station">
+      <aside class="queue">
+        <div class="filters">
+          <select id="f-kind" aria-label="来源"><option value="">全部来源</option><option value="atom">原始 atom</option><option value="variant">仿真生成</option></select>
+          <select id="f-style" aria-label="风格"><option value="">全部风格</option></select>
+          <select id="f-label" aria-label="语义"><option value="">全部语义</option></select>
+          <select id="f-grade" aria-label="等级"><option value="">全部等级</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="CD">C + D</option></select>
+          <select id="f-flag" aria-label="问题"><option value="">全部问题</option></select>
+          <select id="f-status" aria-label="状态"><option value="">全部状态</option><option value="todo">我未评审</option><option value="mine">我已评审</option><option value="any">任何人已评</option></select>
+          <select id="f-sort" aria-label="排序" style="grid-column:1/3"><option value="score-asc">自动分 低 → 高（先看问题）</option><option value="score-desc">自动分 高 → 低</option><option value="dur-desc">时长 长 → 短</option><option value="id">按来源</option></select>
+          <input type="search" id="f-q" placeholder="搜索片段 id" aria-label="搜索片段" style="grid-column:1/3">
+        </div>
+        <span class="sub" id="q-count"></span>
+        <div class="qlist" id="qlist" role="list"></div>
+      </aside>
+      <div class="main" id="detail"><div class="panel empty">从左侧选一个片段开始评审</div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="exportbox">
+    <h2>导出与回写 <small>评审结果实时共享给所有打开此页的同事</small></h2>
+    <div class="ctl"><button class="btn" id="btn-export">导出评审 JSON</button><span class="status" id="export-status"></span></div>
+    <p class="note">导出后运行 <code>python apply_reviews.py reviews.json</code>：按评审结果裁剪片段、修正语义标签、重新做运动学校验与质量评分，生成带完整来源记录的新版目录 <code>out/catalog_v2</code>。被丢弃的片段连同评审意见一起记录，用来指导下一轮生成。</p>
+  </section>
+</div>
+
+<script>
+(() => {
+"use strict";
+const FN_ZH = {emphasize:"强调",enumerate:"列举",contrast_compare:"对比",refer_self:"指自己",refer_other:"指对方",refer_external:"指外部",
+  depict_size_shape:"描绘大小形状",depict_direction_motion:"描绘方向运动",turn_open:"开启话轮",turn_yield:"让出话轮",
+  greet_farewell:"问候告别",thank:"感谢",affirm:"肯定",deny:"否定",certainty:"确定",uncertainty:"不确定",enthusiasm:"热情"};
+const SUB_ZH = {naturalness:"自然度",coherence:"连贯性",executability:"可执行",expressiveness:"表现力"};
+const METRIC_ZH = {duration:["时长","s"],sparc:["SPARC 平滑度",""],hf_rms:["高频速度 RMS","rad/s"],jerk_ratio:["jerk/限值",""],
+  step_max:["最大单帧跳变","rad"],v_entry:["起始速度","rad/s"],v_exit:["结束速度","rad/s"],bridge_in_s:["从中立接入","s"],
+  bridge_out_s:["归位","s"],limit_margin:["最小限位裕量","rad"],collision_excess_mm:["自碰撞超出","mm"],torque_ratio:["力矩/限值",""],
+  torque_joint:["力矩瓶颈关节",""],track_rmse:["PD 跟踪 RMSE","rad"],extent:["手部活动范围","m"],peak_hand_speed:["手部峰值速度","m/s"],periodicity:["周期性",""]};
+const SEV = {semantic_mismatch:2,spike:3,torque:3,self_collision:3,limit_margin:2,jitter:2,entry_vel:2,exit_vel:2,tracking:2,static:2};
+const BONES = [[0,1,"c"],[1,2,"c"],[1,3,"c"],[1,6,"c"],[3,4,"l"],[4,5,"l"],[6,7,"r"],[7,8,"r"],[0,9,"c"],[0,12,"c"],[9,10,"l"],[10,11,"l"],[12,13,"r"],[13,14,"r"]];
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const gradeColor = g => `var(--g${g})`;
+const fmt = (v, d=2) => v == null ? "—" : (typeof v === "number" ? (Number.isInteger(v) ? String(v) : v.toFixed(d)) : esc(v));
+
+let B = null, CLIPS = [], BYID = {}, TREE = null, FLAG = {};
+let db = null, users = null, me = null, downloads = null, localMode = false;
+const LS_KEY = "a3rev.reviews.v1";
+function loadLocal(){ try { const a = JSON.parse(localStorage.getItem(LS_KEY) || "[]"); REVIEWS = new Map(a.map(r => [docId(r.clip_id, r.reviewer), r])); } catch(e) { REVIEWS = new Map(); } }
+function saveLocal(){ try { localStorage.setItem(LS_KEY, JSON.stringify([...REVIEWS.values()])); return true; } catch(e) { return false; } }
+function refreshReviewCount(){ const n = new Set([...REVIEWS.values()].map(r => r.clip_id)).size; const k = $("#kpi-rev"); if (k) k.textContent = String(n); }
+let REVIEWS = new Map();   // docId -> data
+let current = null;        // clip id
+let expanded = new Set();
+
+// ---------------------------------------------------------------- tabs
+const VIEWS = ["overview","tree","review"];
+function show(view){
+  if (!VIEWS.includes(view)) view = "overview";
+  for (const v of VIEWS){
+    $("#view-"+v).hidden = v !== view;
+    $("#tab-"+v).setAttribute("aria-selected", String(v === view));
+  }
+  try { localStorage.setItem("a3rev.view", view); } catch(e) {}
+  if (view === "review" && current) requestAnimationFrame(() => player.resize());
+}
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => show(b.dataset.view)));
+
+// ---------------------------------------------------------------- data load
+async function load(){
+  const inline = document.getElementById("bundle-data");
+  B = inline ? JSON.parse(inline.textContent) : await (await fetch("review_bundle.json")).json();
+  CLIPS = B.clips; FLAG = B.flag_text; TREE = B.tree;
+  for (const c of CLIPS){ c.kpa = Int16Array.from(c.kp); c.nf = c.kpa.length / 45; delete c.kp; BYID[c.id] = c; }
+  const n = TREE.nodes;
+  expanded = new Set(Object.values(n).filter(x => x.kind === "library" || x.kind === "dataset").map(x => x.id));
+  renderOverview(); initFilters(); renderTree(); renderQueue();
+  let start = "overview";
+  const h = (location.hash || "").slice(1);
+  if (VIEWS.includes(h)) start = h; else { try { start = localStorage.getItem("a3rev.view") || start; } catch(e) {} }
+  show(start);
+  const sorted = filtered();
+  if (sorted.length) select(sorted[0].id, false);
+}
+
+// ---------------------------------------------------------------- overview
+function renderOverview(){
+  const R = B.report, A = R.atoms_only, AV = R.atoms_plus_AB_variants, C = R.counts;
+  const atoms = CLIPS.filter(c => c.kind === "atom"), vars = CLIPS.filter(c => c.kind === "variant");
+  const lowA = atoms.filter(c => "CD".includes(c.grade)).length;
+  const goodV = vars.filter(c => "AB".includes(c.grade)).length;
+  $("#subline").textContent = `${C.recordings} 条 A3 录制 → ${C.atoms} 个原始 atom → ${C.variants} 个仿真风格变体 · 生成于 ${B.generated_at}`;
+  const kp = [
+    ["原始 atom", C.atoms, `来自 ${C.recordings} 条录制，丢弃 ${C.segments_rejected} 段`],
+    ["原始中低质（C/D）", pct(lowA/atoms.length), `${lowA} 个，主要是几乎不动和抖动`],
+    ["仿真生成 可用（A/B）", `${goodV}/${vars.length}`, `基于 ${C.bases} 个干净 atom 生成`],
+    ["语义覆盖", `${A.labels_covered}/17`, "风格化不会产生新语义"],
+    ["风格空间覆盖", `${A.style_cells_covered} → ${AV.style_cells_covered}/${AV.style_cells_total}`, "能量 × 节奏 格子"],
+    ["评审进度", `<span id="kpi-rev">0</span>/${CLIPS.length}`, "至少一人评过的片段"],
+  ];
+  $("#kpis").innerHTML = kp.map(([k,v,d]) => `<div class="kpi"><span class="k">${esc(k)}</span><span class="v">${v}</span><span class="d">${esc(d)}</span></div>`).join("");
+
+  // findings
+  const sv = TREE.by_style;
+  const eroded = ["热情","活泼"].map(k => sv[k]).filter(Boolean);
+  const er = eroded.reduce((a,s)=>a+(s.flags.style_eroded||0),0), en = eroded.reduce((a,s)=>a+s.clips,0);
+  const missing = R.semantic_functions.filter(f => !A.label_coverage[f]).map(f => FN_ZH[f]);
+  const worstRec = Object.values(TREE.nodes).filter(x => x.kind === "recording" && x.rollup.clips)
+    .sort((a,b) => (b.rollup.low_share - a.rollup.low_share) || (a.rollup.mean_score - b.rollup.mean_score)).slice(0,4);
+  const coll = vars.filter(c => c.flags.includes("self_collision")).length;
+  const own = atoms.filter(c => c.spec && c.spec.passed).length, ownV = vars.filter(c => c.spec && c.spec.passed).length;
+  let broke = 0, fixed = 0;
+  vars.forEach(c => { const p = BYID[c.parent]; if (!p || !p.spec) return; if (p.spec.passed && !c.spec.passed) broke++; if (!p.spec.passed && c.spec.passed) fixed++; });
+  const noRef = R.semantic_functions.filter(f => !(R.semantic_check?.[f]?.verified_refs)).map(f => FN_ZH[f]);
+  const F = [
+    `名对、动作不对：原始 atom 只有 ${own}/${atoms.length} 个通过自己标签的动作规格。标签来自文件名规则（如“行走 → 开启话轮”），动作本身并不是那个意思。生成变体通过 ${ownV}/${vars.length}；风格化让 ${fixed} 个原本不达标的片段达标，也把 ${broke} 个原本达标的片段改坏了。`,
+    `按规格反查，库里没有任何已验证参考的语义：${noRef.join("、") || "无"}。这些语义不能靠风格化补，需要新的源动作，并且新动作也要先过规格。`,
+    `原始 atom 有 ${pct(lowA/atoms.length)} 是 C/D 级。最大的来源问题是“几乎不动”（${A.flags.static||0} 个）：这批录制是行走、下蹲等体能动作，手臂只是跟着摆，不是对话手势。`,
+    `最差的几条录制：${worstRec.map(r => `${r.name}（C/D ${pct(r.rollup.low_share)}）`).join("、")}。追溯树里可以从这些节点一路点到具体片段。`,
+    `语义只覆盖 ${A.labels_covered}/17 类，缺 ${missing.join("、")}。风格化只改变“怎么做”，不改变“表达什么”，缺的语义需要新的源数据（BEAT2 重定向或文本条件生成）。`,
+    `力矩反馈在起作用：热情 / 活泼两种风格 ${en} 个变体里有 ${er} 个因 A3 电机力矩超限被自动放慢（标记为“风格被安全修复削弱”）。A3 能表现的“热情”有物理上限。`,
+    `生成变体 ${goodV}/${vars.length} 达到 A/B；风格空间从 ${A.style_cells_covered} 格扩到 ${AV.style_cells_covered} 格，左右手单侧片段从 ${A.hand.L + A.hand.R} 个增到 ${AV.hand.L + AV.hand.R} 个（镜像）。${coll ? `仍有 ${coll} 个变体自碰撞，需人工确认后丢弃。` : ""}`,
+    `衔接：中位接入时间 ${A.median_bridge_in_s}s，只有 ${pct(A.reachable_from_neutral_0p6s)} 的片段能在 0.6 s 内从中立姿态接入。录制里手臂多为伸直下垂，而中立姿态肘部弯曲约 46°，两者不匹配，会吃掉规划预算。`,
+  ];
+  $("#findings").innerHTML = F.map(f => `<li>${esc(f)}</li>`).join("");
+
+  // semantic check table
+  const SC = R.semantic_check || {};
+  $("#semtable").innerHTML = R.semantic_functions.map(f => { const s = SC[f] || {};
+    const lp = s.labelled ? `<span class="mono" style="color:${s.labelled_pass/s.labelled < .5 ? "var(--gD)" : "inherit"}">${s.labelled_pass}/${s.labelled}</span>` : `<span class="sub">—</span>`;
+    const refs = s.verified_refs ? `<span class="mono">${s.verified_refs}</span> <span class="sub">（原始 ${s.verified_refs_atoms}）</span>` : `<span class="chip miss">无</span>`;
+    return `<tr><td><b>${esc(FN_ZH[f])}</b> <span class="sub mono">${f}</span></td><td>${esc(s.spec || "")}</td><td class="mono">${s.labelled || 0}</td><td>${lp}</td><td>${refs}</td></tr>`; }).join("");
+
+  // coverage
+  const vCov = {}; vars.filter(c => "AB".includes(c.grade)).forEach(c => vCov[c.label] = (vCov[c.label]||0)+1);
+  const maxC = Math.max(...R.semantic_functions.map(f => (A.label_coverage[f]||0) + (vCov[f]||0)), 1);
+  $("#coverage").innerHTML = R.semantic_functions.map(f => {
+    const a = A.label_coverage[f]||0, v = vCov[f]||0;
+    const bar = a+v ? `<div class="bar"><span style="width:${a/maxC*100}%;background:var(--spine)"></span><span style="width:${v/maxC*100}%;background:var(--accent)"></span></div>` : `<div><span class="chip miss">缺失</span></div>`;
+    return `<div class="brow"><span class="lab">${esc(FN_ZH[f])} <span class="sub mono">${f}</span></span>${bar}<span class="mono">${a}${v?` + ${v}`:""}</span></div>`;
+  }).join("");
+
+  // by style
+  const order = ["原始（未风格化）","热情","活泼","沉稳","正式","内敛","参考风格迁移","左右镜像"];
+  $("#bystyle").innerHTML = order.filter(k => sv[k]).map(k => {
+    const s = sv[k], g = s.grades, n = s.clips || 1;
+    const top = Object.entries(s.flags).slice(0,2).map(([f,c]) => `${FLAG_SHORT(f)} ${c}`).join(" · ");
+    return `<div class="brow" title="${esc(top)}"><span class="lab">${esc(k)}</span><div class="bar">${"ABCD".split("").map(x => `<span class="g${x}" style="width:${g[x]/n*100}%"></span>`).join("")}</div><span class="mono">${s.mean_score ?? "—"}</span></div>`;
+  }).join("");
+
+  // flags
+  const fa = {}, fv = {};
+  atoms.forEach(c => c.flags.forEach(f => fa[f]=(fa[f]||0)+1)); vars.forEach(c => c.flags.forEach(f => fv[f]=(fv[f]||0)+1));
+  const keys = Object.keys(FLAG).filter(f => fa[f]||fv[f]).sort((x,y) => ((fa[y]||0)+(fv[y]||0)) - ((fa[x]||0)+(fv[x]||0)));
+  const mf = Math.max(...keys.map(f => (fa[f]||0)+(fv[f]||0)), 1);
+  $("#flagbars").innerHTML = keys.map(f => `<div class="brow"><span class="lab" title="${esc(FLAG[f])}">${esc(FLAG_SHORT(f))}</span><div class="bar"><span style="width:${(fa[f]||0)/mf*100}%;background:var(--spine)"></span><span style="width:${(fv[f]||0)/mf*100}%;background:var(--accent)"></span></div><span class="mono">${fa[f]||0} / ${fv[f]||0}</span></div>`).join("");
+
+  // heat
+  const ga = AV.style_grid_by_kind.atom, gv = AV.style_grid_by_kind.variant, EB = AV.energy_bins, TB = AV.tempo_bins;
+  const eL = ["< 12 cm","12–25 cm","25–40 cm","> 40 cm"], tL = ["慢 <1","1–2","2–3.5","快 >3.5"];
+  const mx = Math.max(...ga.flat().map((x,i) => x + gv.flat()[i]), 1);
+  let h = `<div class="h"></div>` + tL.map(t => `<div class="h">${t}</div>`).join("");
+  for (let i = ga.length-1; i >= 0; i--){
+    h += `<div class="h" style="text-align:right;align-self:center">${eL[i]}</div>`;
+    for (let j = 0; j < ga[i].length; j++){
+      const a = ga[i][j], v = gv[i][j], t = (a+v)/mx;
+      const empty = a+v === 0;
+      h += `<div class="c" style="background:${empty ? "var(--bad-bg)" : `color-mix(in srgb, var(--accent) ${Math.round(8+t*55)}%, var(--panel))`}"><span class="mono">${a} / ${v}</span>${empty?'<span style="font-size:11px;color:var(--gD)">空</span>':""}</div>`;
+    }
+  }
+  $("#heat").innerHTML = h + `<div></div><div class="h" style="grid-column:2/6">节奏 = 手部平均速度 ÷ 活动范围（1/s）　·　行 = 能量</div>`;
+
+  // diversity
+  const div = A.intra_label_diversity;
+  const dk = R.semantic_functions.filter(f => div[f] != null);
+  const md = Math.max(...dk.map(f => div[f]), 0.01);
+  $("#diversity").innerHTML = dk.map(f => `<div class="brow"><span class="lab">${esc(FN_ZH[f])}</span><div class="bar"><span style="width:${div[f]/md*100}%;background:${div[f] < 0.03 ? "var(--gD)" : "var(--spine)"}"></span></div><span class="mono">${(div[f]*100).toFixed(1)}</span></div>`).join("") +
+    `<div class="note" style="margin-top:6px">低于 3 cm 标红：这一类里的片段几乎是同一个动作。近重复 atom 对：${A.near_duplicate_count}。</div>`;
+  $("#connect").textContent = "";
+}
+function pct(x){ return `${Math.round(x*100)}%`; }
+function FLAG_SHORT(f){ return ({semantic_mismatch:"名对动作不对",jitter:"高频抖动",unsmooth:"不平滑",jerk:"jerk 偏高",spike:"单帧跳变",entry_vel:"起始顿挫",exit_vel:"结束顿挫",far_entry:"入口姿态远",limit_margin:"贴近限位",self_collision:"自碰撞",torque:"力矩超限",torque_near:"力矩接近上限",tracking:"跟踪误差大",static:"几乎不动",periodic:"节律摆臂",too_short:"过短",style_eroded:"风格被修复削弱"})[f] || f; }
+
+// ---------------------------------------------------------------- tree
+function renderTree(){
+  const N = TREE.nodes, onlyBad = $("#tree-problems").checked;
+  const rows = [];
+  const isBad = nd => {
+    if (nd.kind === "atom" || nd.kind === "variant") return "CD".includes(nd.meta.grade) || nd.meta.accepted === false;
+    if (nd.kind === "rejected") return true;
+    return (nd.rollup.low_share ?? 0) >= 0.3;
+  };
+  const hasBad = id => { const nd = N[id]; return isBad(nd) || nd.children.some(hasBad); };
+  const walk = (id, depth) => {
+    const nd = N[id];
+    if (onlyBad && depth > 0 && !hasBad(id)) return;
+    rows.push([nd, depth]);
+    if (expanded.has(id)) nd.children.forEach(c => walk(c, depth+1));
+  };
+  walk(TREE.root, 0);
+  const KZ = {library:"动作库",dataset:"数据集",recording:"录制",atom:"atom",variant:"生成变体",rejected:"已丢弃"};
+  $("#treebody").innerHTML = rows.map(([nd, d]) => {
+    const r = nd.rollup, leaf = nd.kind === "atom" || nd.kind === "variant";
+    const kids = nd.children.length;
+    const tg = kids ? `<button class="tg" data-tg="${esc(nd.id)}" aria-label="${expanded.has(nd.id)?"收起":"展开"} ${esc(nd.name)}" aria-expanded="${expanded.has(nd.id)}">${expanded.has(nd.id)?"▾":"▸"}</button>` : `<span style="display:inline-block;width:22px"></span>`;
+    let name = esc(nd.name);
+    if (nd.kind === "atom") name = `${name} <span class="sub">${esc(FN_ZH[nd.meta.label]||nd.meta.label)} · ${nd.meta.hand}</span>`;
+    if (nd.kind === "recording" && nd.meta.b != null) name += ` <span class="sub mono" title="式(5)-(8) 检测统计">b ${nd.meta.b} Δ ${nd.meta.delta} σ ${nd.meta.sigma}</span>`;
+    if (nd.kind === "rejected") name += ` <span class="chip miss">${esc(nd.meta.reason)}</span>`;
+    if (nd.kind === "variant" && nd.meta.accepted === false) name += ` <span class="chip miss">${esc((nd.meta.repairs||[])[0]||"未通过校验")}</span>`;
+    const ms = leaf ? nd.meta.score : r.mean_score;
+    const sb = ms == null ? "—" : `<div class="scorebar"><div class="t"><span style="width:${ms}%;background:${ms>=85?"var(--gA)":ms>=70?"var(--gB)":ms>=55?"var(--gC)":"var(--gD)"}"></span></div><span class="mono">${ms}</span></div>`;
+    const g = leaf ? null : r.grades, n = r.clips || 1;
+    const mix = leaf ? `<span class="grade g${nd.meta.grade}">${nd.meta.grade}</span>` : (r.clips ? `<div class="mix">${"ABCD".split("").map(x => `<span class="g${x}" style="width:${g[x]/n*100}%"></span>`).join("")}</div>` : "—");
+    const low = leaf ? "" : (r.low_share == null ? "—" : `<span class="mono" style="color:${r.low_share>=0.3?"var(--gD)":"inherit"}">${pct(r.low_share)}</span>`);
+    const fl = leaf ? nd.meta.flags : Object.keys(r.flags);
+    const flags = fl.slice(0,3).map(f => `<span class="chip ${SEV[f]>=3?"miss":SEV[f]>=2?"warn":""}">${esc(FLAG_SHORT(f))}${leaf?"":" "+r.flags[f]}</span>`).join(" ");
+    const cnt = leaf ? "" : `<span class="mono">${r.atoms}${r.variants?` + ${r.variants}`:""}${r.rejected?` <span class="sub">丢 ${r.rejected}</span>`:""}</span>`;
+    return `<tr class="${leaf && BYID[nd.id] ? "clickable" : ""}" data-open="${leaf && BYID[nd.id] ? esc(nd.id) : ""}"><td><span class="nm" style="padding-left:${d*18}px">${tg}${name}</span></td><td class="kind">${KZ[nd.kind]}</td><td>${cnt}</td><td>${sb}</td><td>${mix}</td><td>${low}</td><td>${flags}</td></tr>`;
+  }).join("");
+  $("#tree-count").textContent = `显示 ${rows.length} 行`;
+}
+$("#treebody").addEventListener("click", e => {
+  const t = e.target.closest("[data-tg]");
+  if (t){ const id = t.dataset.tg; expanded.has(id) ? expanded.delete(id) : expanded.add(id); renderTree(); return; }
+  const tr = e.target.closest("tr[data-open]");
+  if (tr && tr.dataset.open){ select(tr.dataset.open, true); show("review"); }
+});
+$("#tree-problems").addEventListener("change", renderTree);
+$("#tree-depth").addEventListener("change", e => {
+  const d = +e.target.value, N = TREE.nodes; expanded = new Set();
+  const walk = (id, depth) => { if (depth < d) { expanded.add(id); N[id].children.forEach(c => walk(c, depth+1)); } };
+  walk(TREE.root, 0); renderTree();
+});
+
+// ---------------------------------------------------------------- queue
+function initFilters(){
+  const styles = [...new Set(CLIPS.map(c => c.style_zh))];
+  $("#f-style").insertAdjacentHTML("beforeend", styles.map(s => `<option>${esc(s)}</option>`).join(""));
+  const labels = [...new Set(CLIPS.map(c => c.label))];
+  $("#f-label").insertAdjacentHTML("beforeend", labels.map(l => `<option value="${esc(l)}">${esc(FN_ZH[l]||l)}</option>`).join(""));
+  const fl = Object.keys(FLAG).filter(f => CLIPS.some(c => c.flags.includes(f)));
+  $("#f-flag").insertAdjacentHTML("beforeend", fl.map(f => `<option value="${f}">${esc(FLAG_SHORT(f))}</option>`).join(""));
+  try { const s = JSON.parse(localStorage.getItem("a3rev.filters") || "{}"); for (const [k,v] of Object.entries(s)) { const el = $("#"+k); if (el) el.value = v; } } catch(e) {}
+  ["f-kind","f-style","f-label","f-grade","f-flag","f-status","f-sort","f-q"].forEach(id => $("#"+id).addEventListener("input", () => {
+    try { const s = {}; ["f-kind","f-style","f-label","f-grade","f-flag","f-status","f-sort"].forEach(k => s[k] = $("#"+k).value); localStorage.setItem("a3rev.filters", JSON.stringify(s)); } catch(e) {}
+    renderQueue();
+  }));
+}
+function reviewsFor(id){ return [...REVIEWS.values()].filter(r => r.clip_id === id); }
+function filtered(){
+  const k = $("#f-kind").value, st = $("#f-style").value, lb = $("#f-label").value, gr = $("#f-grade").value,
+        fl = $("#f-flag").value, ss = $("#f-status").value, q = $("#f-q").value.trim().toLowerCase(), so = $("#f-sort").value;
+  let L = CLIPS.filter(c => (!k || c.kind === k) && (!st || c.style_zh === st) && (!lb || c.label === lb)
+    && (!gr || (gr === "CD" ? "CD".includes(c.grade) : c.grade === gr)) && (!fl || c.flags.includes(fl))
+    && (!q || c.id.toLowerCase().includes(q)));
+  if (ss){
+    L = L.filter(c => { const rs = reviewsFor(c.id), mine = me && rs.some(r => r.reviewer === me);
+      return ss === "todo" ? !mine : ss === "mine" ? mine : rs.length > 0; });
+  }
+  const by = {"score-asc":(a,b)=>a.score-b.score,"score-desc":(a,b)=>b.score-a.score,"dur-desc":(a,b)=>b.duration-a.duration,"id":(a,b)=>a.id.localeCompare(b.id)}[so];
+  return L.sort(by);
+}
+function renderQueue(){
+  const L = filtered();
+  $("#q-count").textContent = `${L.length} 个片段`;
+  $("#qlist").innerHTML = L.length ? L.map(c => {
+    const rs = reviewsFor(c.id), mine = me && rs.some(r => r.reviewer === me);
+    const span = c.kind === "atom" ? c.id.split("__").pop() + " s" : (c.parent||"").split("__").pop() + " s";
+    return `<button class="qi" role="listitem" data-id="${esc(c.id)}" aria-current="${c.id===current}"><span class="grade g${c.grade}">${c.grade}</span>
+      <span style="min-width:0"><div class="t1">${esc(c.source.replace(/^\d+_/,""))} · ${esc(span)}</div><div class="t2">${esc(c.style_zh)} · ${esc(FN_ZH[c.label]||c.label)} · ${c.flags.length ? esc(c.flags.slice(0,2).map(FLAG_SHORT).join("、")) : "无问题"}</div></span>
+      <span style="text-align:right"><div class="mono">${c.score}</div>${rs.length ? `<div class="rv">${mine?"✓ 我":""}${rs.length>(mine?1:0)?` ${rs.length-(mine?1:0)} 人`:""}</div>`:""}</span></button>`;
+  }).join("") : `<div class="empty">没有符合条件的片段</div>`;
+  const el = $(`.qi[aria-current="true"]`); if (el) el.scrollIntoView({block:"nearest"});
+}
+$("#qlist").addEventListener("click", e => { const b = e.target.closest(".qi"); if (b) select(b.dataset.id, false); });
+
+// ---------------------------------------------------------------- player
+const player = (() => {
+  let canvas, ctx, tlc, clip = null, ghost = null, t = 0, playing = true, speed = 1, yaw = -0.55, last = 0, raf = 0;
+  let trimIn = 0, trimOut = 0, loopTrim = true, showGhost = true, drag = null;
+  function attach(cv, tl){ canvas = cv; ctx = cv.getContext("2d"); tlc = tl; resize();
+    cv.addEventListener("pointerdown", e => { drag = {x:e.clientX, yaw}; cv.setPointerCapture(e.pointerId); cv.parentElement.style.cursor = "grabbing"; });
+    cv.addEventListener("pointermove", e => { if (drag){ yaw = drag.yaw + (e.clientX - drag.x) * 0.01; if (!playing) draw(); } });
+    const up = () => { drag = null; cv.parentElement.style.cursor = ""; };
+    cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+  }
+  function resize(){ if (!canvas) return; const r = canvas.getBoundingClientRect(), d = devicePixelRatio || 1;
+    canvas.width = Math.max(1, Math.round(r.width*d)); canvas.height = Math.max(1, Math.round(r.height*d));
+    if (tlc){ const q = tlc.getBoundingClientRect(); tlc.width = Math.round(q.width*d); tlc.height = Math.round(q.height*d); drawTimeline(); }
+    draw(); }
+  function load(c, g){ clip = c; ghost = g; t = 0; trimIn = 0; trimOut = (c.nf-1)/c.fps; playing = !matchMedia("(prefers-reduced-motion: reduce)").matches; drawTimeline(); draw(); loop(); }
+  function frameAt(c, k){ const o = k*45; return c.kpa.subarray(o, o+45); }
+  function proj(x, y, z, W, H){
+    const c = Math.cos(yaw), s = Math.sin(yaw);
+    const X = x*c - y*s, Y = x*s + y*c;           // rotate about z
+    const el = 0.18, sc = H / 2150;
+    return [W/2 + Y*sc, H*0.95 - (z*Math.cos(el) + X*Math.sin(el)*0.6)*sc, X];
+  }
+  function drawFigure(F, W, H, mode){
+    const P = []; for (let i = 0; i < 15; i++) P.push(proj(F[i*3], F[i*3+1], F[i*3+2], W, H));
+    const d = devicePixelRatio || 1;
+    const col = {c: css("--spine"), l: css("--left"), r: css("--right")}, gh = css("--ghost");
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    for (const [a,b,k] of BONES){ ctx.strokeStyle = mode === "ghost" ? gh : col[k]; ctx.lineWidth = (mode === "ghost" ? 3 : (k==="c"?5:4.5))*d;
+      ctx.globalAlpha = mode === "ghost" ? .7 : 1; ctx.beginPath(); ctx.moveTo(P[a][0],P[a][1]); ctx.lineTo(P[b][0],P[b][1]); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+    if (mode !== "ghost"){
+      for (const i of [0,1,3,4,6,7,9,10,12,13]){ ctx.fillStyle = css("--panel"); ctx.strokeStyle = col[[3,4,9,10].includes(i)?"l":[6,7,12,13].includes(i)?"r":"c"]; ctx.lineWidth = 2*d; ctx.beginPath(); ctx.arc(P[i][0],P[i][1],3.2*d,0,7); ctx.fill(); ctx.stroke(); }
+      for (const [i,k] of [[5,"l"],[8,"r"]]){ ctx.fillStyle = col[k]; ctx.beginPath(); ctx.arc(P[i][0],P[i][1],6*d,0,7); ctx.fill(); }
+      const hp = P[2]; ctx.fillStyle = col.c; ctx.beginPath(); ctx.arc(hp[0], hp[1]-6*d, 13*d, 0, 7); ctx.fill();
+    }
+  }
+  function draw(){
+    if (!ctx) return; const W = canvas.width, H = canvas.height, d = devicePixelRatio || 1;
+    ctx.clearRect(0,0,W,H);
+    // floor
+    ctx.strokeStyle = css("--line"); ctx.lineWidth = 1*d;
+    for (let gx = -600; gx <= 600; gx += 200){ const a = proj(gx,-600,0,W,H), b = proj(gx,600,0,W,H); ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke(); }
+    for (let gy = -600; gy <= 600; gy += 200){ const a = proj(-600,gy,0,W,H), b = proj(600,gy,0,W,H); ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke(); }
+    // forward arrow
+    { const a = proj(0,0,0,W,H), b = proj(450,0,0,W,H); ctx.strokeStyle = css("--ink-3"); ctx.lineWidth = 1.5*d; ctx.setLineDash([4*d,4*d]); ctx.beginPath(); ctx.moveTo(a[0],a[1]); ctx.lineTo(b[0],b[1]); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = css("--ink-3"); ctx.font = `${11*d}px ${css("--font-ui")}`; ctx.fillText("前", b[0]+4*d, b[1]); }
+    if (!clip) return;
+    const k = Math.min(clip.nf-1, Math.round(t*clip.fps));
+    if (ghost && showGhost){ const kg = Math.min(ghost.nf-1, Math.round(k/(clip.nf-1||1)*(ghost.nf-1))); drawFigure(frameAt(ghost,kg), W, H, "ghost"); }
+    // hand trails over the trimmed window
+    const a0 = Math.round(trimIn*clip.fps), a1 = Math.min(k, Math.round(trimOut*clip.fps));
+    for (const [hi, tk] of [[5,"--trail-l"],[8,"--trail-r"]]){
+      ctx.strokeStyle = css(tk); ctx.lineWidth = 2.5*d; ctx.beginPath();
+      for (let f = a0; f <= a1; f++){ const F = frameAt(clip,f), p = proj(F[hi*3],F[hi*3+1],F[hi*3+2],W,H); f===a0 ? ctx.moveTo(p[0],p[1]) : ctx.lineTo(p[0],p[1]); }
+      ctx.stroke();
+    }
+    drawFigure(frameAt(clip,k), W, H, "main");
+    const lab = $("#tlabel"); if (lab) lab.textContent = `${(k/clip.fps).toFixed(2)} / ${((clip.nf-1)/clip.fps).toFixed(2)} s`;
+    const hd = $("#thead"); if (hd) hd.style.left = `${(k/(clip.nf-1||1))*100}%`;
+    const sc = $("#scrub"); if (sc && document.activeElement !== sc) sc.value = String(k/(clip.nf-1||1)*1000);
+  }
+  function drawTimeline(){
+    if (!tlc || !clip) return; const c = tlc.getContext("2d"), W = tlc.width, H = tlc.height, d = devicePixelRatio || 1;
+    c.clearRect(0,0,W,H);
+    // hand speed profile (both hands) → shows strokes, pauses, spikes
+    const sp = [];
+    for (let f = 1; f < clip.nf; f++){ const A = frameAt(clip,f-1), Bq = frameAt(clip,f); let m = 0;
+      for (const h of [5,8]){ const dx = Bq[h*3]-A[h*3], dy = Bq[h*3+1]-A[h*3+1], dz = Bq[h*3+2]-A[h*3+2]; m = Math.max(m, Math.hypot(dx,dy,dz)*clip.fps/1000); }
+      sp.push(m); }
+    const mx = Math.max(...sp, 0.3);
+    c.strokeStyle = css("--ink-2"); c.lineWidth = 1.5*d; c.beginPath();
+    sp.forEach((v,i) => { const x = (i+0.5)/(sp.length)*W, y = H - 2*d - v/mx*(H-6*d); i ? c.lineTo(x,y) : c.moveTo(x,y); }); c.stroke();
+    const keep = $("#tkeep"); const T = (clip.nf-1)/clip.fps || 1;
+    if (keep){ keep.style.left = `${trimIn/T*100}%`; keep.style.width = `${(trimOut-trimIn)/T*100}%`; }
+  }
+  function loop(){ cancelAnimationFrame(raf); last = performance.now();
+    const step = now => { const dt = (now - last)/1000; last = now;
+      if (clip && playing){ t += dt*speed; const T = (clip.nf-1)/clip.fps; const lo = loopTrim ? trimIn : 0, hi = loopTrim ? trimOut : T;
+        if (t < lo || t > hi) t = lo; draw(); }
+      raf = requestAnimationFrame(step); };
+    raf = requestAnimationFrame(step); }
+  return {
+    attach, load, resize, draw, drawTimeline,
+    toggle(){ playing = !playing; return playing; }, playing: () => playing,
+    setSpeed(s){ speed = s; }, seek(frac){ if (!clip) return; t = frac*(clip.nf-1)/clip.fps; draw(); },
+    setTrim(a, b){ trimIn = a; trimOut = b; drawTimeline(); draw(); }, trim: () => [trimIn, trimOut],
+    setLoopTrim(v){ loopTrim = v; }, setGhost(v){ showGhost = v; draw(); }, view(y){ yaw = y; draw(); },
+  };
+})();
+addEventListener("resize", () => player.resize());
+
+// ---------------------------------------------------------------- detail + scoring
+function select(id, scroll){
+  current = id; const c = BYID[id]; if (!c) return;
+  document.querySelectorAll(".qi").forEach(el => el.setAttribute("aria-current", String(el.dataset.id === id)));
+  if (scroll){ const el = $(`.qi[data-id="${CSS.escape(id)}"]`); el ? el.scrollIntoView({block:"nearest"}) : null; }
+  const parent = c.parent ? BYID[c.parent] : null;
+  const T = (c.nf-1)/c.fps;
+  const mine = me ? REVIEWS.get(docId(id, me)) : null;
+  const flagItems = c.flags.length ? c.flags.map(f => `<li class="s${SEV[f]||1}">${esc(FLAG[f])}</li>`).join("") : `<li class="none">自动评测未发现问题，仍需人工看语义和观感</li>`;
+  const subs = Object.entries(c.sub).map(([k,v]) => `<div class="s"><span>${SUB_ZH[k]}</span><span class="mono" style="text-align:right">${v}</span><div class="bar"><span style="width:${v}%;background:${v>=85?"var(--gA)":v>=70?"var(--gB)":v>=55?"var(--gC)":"var(--gD)"}"></span></div></div>`).join("");
+  const mets = Object.entries(METRIC_ZH).map(([k,[n,u]]) => c.metrics[k] == null ? "" : `<div><dt>${n}</dt><dd>${fmt(c.metrics[k], k.includes("ratio")||k==="sparc"?2:3)}${u?` <span class="sub">${u}</span>`:""}</dd></div>`).join("");
+  const rec = TREE.nodes["rec:"+c.source];
+  const crumbs = [`<span class="chip">${esc(c.source)}</span>`, rec && rec.meta.b != null ? `<span class="sub mono">θon ${rec.meta.theta_on} θoff ${rec.meta.theta_off}</span>` : ""];
+  if (c.kind === "atom"){ crumbs.push(`<span class="sep">→</span><span class="chip">atom ${esc(id.split("__").pop())} s</span>`); }
+  else { crumbs.push(`<span class="sep">→</span><button class="chip" style="cursor:pointer" data-goto="${esc(c.parent)}">atom ${esc((c.parent||"").split("__").pop())} s · ${parent?parent.grade:"?"}</button><span class="sep">→</span><span class="chip ok">${esc(c.style_zh)}</span>`); }
+  const ops = Object.keys(c.ops||{}).length ? `<div class="ops">风格参数 ${esc(Object.entries(c.ops).map(([k,v]) => `${k}=${v}`).join("  "))}</div>` : "";
+  const repairs = (c.repairs||[]).length ? `<div class="ops">修复 ${esc(c.repairs.join("；"))}</div>` : "";
+  const isVar = c.kind === "variant";
+  const sp = c.spec || {checks:[]};
+  const specHtml = `<div class="panel"><h2>语义规格核对 <small>${esc(FN_ZH[c.label]||c.label)}：${esc(B.spec_text?.[c.label]||"")}</small></h2>
+    <ul class="flags">${sp.checks.map(k => `<li class="${k.passed?"none":"s3"}"><b>${k.passed?"✓":"✗"}</b> ${esc(k.name)} <span class="mono" style="float:right">${esc(k.value)}${k.t?` · ${k.t[0]}–${k.t[1]} s`:""}</span></li>`).join("")}</ul>
+    <div class="crumbs" style="margin-top:8px"><span class="sub">动作实际满足：</span>${(c.spec_pass||[]).length ? c.spec_pass.map(f => `<button class="chip ok" data-setlabel="${f}" style="cursor:pointer" title="${esc(B.spec_text?.[f]||"")}">${esc(FN_ZH[f])}</button>`).join("") : `<span class="chip">无</span>`}
+    ${(c.spec_near||[]).length ? `<span class="sub" style="margin-left:6px">接近：</span>${c.spec_near.map(([f,s]) => `<button class="chip" data-setlabel="${f}" style="cursor:pointer">${esc(FN_ZH[f])} ${Math.round(s*100)}%</button>`).join("")}` : ""}</div></div>`;
+  const lbl =Object.keys(FN_ZH).map(f => `<option value="${f}" ${f===(mine?.label||c.label)?"selected":""}>${FN_ZH[f]} · ${f}</option>`).join("");
+  $("#detail").innerHTML = `
+  <div class="panel">
+    <h2><span class="grade g${c.grade}">${c.grade}</span> <span class="mono">${esc(id)}</span> <small>自动分 ${c.score} · ${esc(FN_ZH[c.label]||c.label)}（规则提议，待确认）· ${c.hand === "B" ? "双手" : c.hand === "L" ? "左手" : "右手"} · ${c.duration.toFixed(2)} s</small></h2>
+    <div class="crumbs">${crumbs.join("")}</div>${ops}${repairs}
+  </div>
+  <div class="playerwrap">
+    <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+      <div class="stage"><canvas id="cv" aria-label="A3 关键点回放，蓝色为左侧肢体，橙色为右侧，可左右拖动旋转视角" role="img"></canvas><span class="tl" id="tlabel"></span><span class="hint">拖动旋转视角</span></div>
+      <div class="ctl">
+        <button class="btn" id="b-play">暂停</button>
+        <label class="sub">速度 <select id="b-speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label>
+        <button class="btn" data-yaw="-0.55">斜前</button><button class="btn" data-yaw="0">正面</button><button class="btn" data-yaw="-1.5708">侧面</button>
+        ${isVar ? `<label class="sub"><input type="checkbox" id="b-ghost" checked> 叠加原始 atom（灰）</label>` : ""}
+      </div>
+      <div class="timeline">
+        <div class="track" id="track"><div class="keep" id="tkeep"></div><canvas id="tlc" aria-hidden="true"></canvas><div class="head" id="thead"></div></div>
+        <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="播放位置">
+        <div class="trimrow"><span>入点</span><input type="range" id="tin" min="0" max="1000" value="${mine?.trim_in!=null?Math.round(mine.trim_in/T*1000):0}" aria-label="裁剪入点"><span class="mono" id="tin-v"></span></div>
+        <div class="trimrow"><span>出点</span><input type="range" id="tout" min="0" max="1000" value="${mine?.trim_out!=null?Math.round(mine.trim_out/T*1000):1000}" aria-label="裁剪出点"><span class="mono" id="tout-v"></span></div>
+        <label class="sub"><input type="checkbox" id="b-looptrim" checked> 只循环播放裁剪段</label>
+        <span class="sub">曲线是双手中较快一只的速度（m/s）：尖刺 = 跳变，平段 = 停顿，适合找裁剪点。</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      ${specHtml}
+      <div class="panel"><h2>自动评测发现</h2><ul class="flags">${flagItems}</ul></div>
+      <div class="panel"><h2>分项得分</h2><div class="subs">${subs}</div></div>
+      <div class="panel"><h2>指标 <small>固定根 MuJoCo，A3 官方力矩上限与 SONIC 伺服增益</small></h2><dl class="metrics">${mets}</dl></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>人工评审 <small>1 = 很差，5 = 很好；评审结果共享给所有打开此页的人</small></h2>
+    <div class="form">
+      ${["naturalness:自然度（像不像人做的）","coherence:连贯性（有无顿挫、断裂）","semantic:语义匹配（和标签一致吗）","style_fit:风格符合度"].map(s => { const [k,n] = s.split(":"); const dis = k==="style_fit" && !isVar;
+        return `<div class="field"><span>${n}${dis?"（原始片段不适用）":""}</span><div class="seg" data-k="${k}">${[1,2,3,4,5].map(v => `<button type="button" data-v="${v}" aria-pressed="${mine?.[k]===v}" ${dis?"disabled":""}>${v}</button>`).join("")}</div></div>`; }).join("")}
+      <div class="field"><span>语义标签（可修正；点上方“动作实际满足”可直接填入）</span><select id="r-label">${lbl}</select></div>
+      <div class="field"><span>规格判定是否准确（用于校准阈值）</span><div class="decision" id="r-agree">${[["agree","判得对"],["false_pass","误判通过"],["false_fail","误判不通过"]].map(([v,n]) => `<button type="button" data-a="${v}" aria-pressed="${mine?.spec_agree===v}">${n}</button>`).join("")}</div></div>
+      <div class="field"><span>结论</span><div class="decision">${[["accept","入库"],["trim","裁剪后入库"],["reject","丢弃"]].map(([v,n]) => `<button type="button" data-v="${v}" aria-pressed="${mine?.decision===v}">${n}</button>`).join("")}</div></div>
+      <div class="field" style="grid-column:1/-1"><span>备注（哪里不自然、为什么丢）</span><textarea id="r-note" placeholder="例如：0.8 s 处右手突然下坠；风格偏“紧张”而不是“热情”">${esc(mine?.note||"")}</textarea></div>
+    </div>
+    <div class="ctl" style="margin-top:10px"><button class="btn primary" id="r-save">保存评审</button><button class="btn" id="r-next">保存并看下一个</button><span class="status" id="r-status"></span></div>
+    <div class="others" id="others"></div>
+  </div>`;
+
+  player.attach($("#cv"), $("#tlc"));
+  player.load(c, isVar ? parent : null);
+  const setTrimFromInputs = () => {
+    let a = +$("#tin").value/1000*T, b = +$("#tout").value/1000*T;
+    if (b - a < 0.2){ if (document.activeElement === $("#tin")) a = Math.max(0, b-0.2); else b = Math.min(T, a+0.2); $("#tin").value = String(a/T*1000); $("#tout").value = String(b/T*1000); }
+    $("#tin-v").textContent = a.toFixed(2)+" s"; $("#tout-v").textContent = b.toFixed(2)+" s";
+    player.setTrim(a, b);
+    return [a,b];
+  };
+  setTrimFromInputs();
+  $("#tin").addEventListener("input", () => { const [a,b] = setTrimFromInputs(); if (a > 0.01 || b < T-0.01) pressDecision("trim"); });
+  $("#tout").addEventListener("input", () => { const [a,b] = setTrimFromInputs(); if (a > 0.01 || b < T-0.01) pressDecision("trim"); });
+  $("#scrub").addEventListener("input", e => player.seek(+e.target.value/1000));
+  $("#b-play").addEventListener("click", e => { e.target.textContent = player.toggle() ? "暂停" : "播放"; });
+  if (!player.playing()) $("#b-play").textContent = "播放";
+  $("#b-speed").addEventListener("change", e => player.setSpeed(+e.target.value));
+  document.querySelectorAll("[data-yaw]").forEach(b => b.addEventListener("click", () => player.view(+b.dataset.yaw)));
+  $("#b-looptrim").addEventListener("change", e => player.setLoopTrim(e.target.checked));
+  if (isVar) $("#b-ghost").addEventListener("change", e => player.setGhost(e.target.checked));
+  document.querySelectorAll("[data-goto]").forEach(b => b.addEventListener("click", () => select(b.dataset.goto, true)));
+  document.querySelectorAll(".seg").forEach(seg => seg.addEventListener("click", e => { const b = e.target.closest("button"); if (!b || b.disabled) return;
+    seg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); }));
+  document.querySelectorAll(".decision button[data-v]").forEach(b => b.addEventListener("click", () => pressDecision(b.dataset.v)));
+  document.querySelectorAll("#r-agree button").forEach(b => b.addEventListener("click", () => document.querySelectorAll("#r-agree button").forEach(x => x.setAttribute("aria-pressed", String(x === b)))));
+  document.querySelectorAll("[data-setlabel]").forEach(b => b.addEventListener("click", () => { $("#r-label").value = b.dataset.setlabel; $("#r-label").focus(); }));
+  $("#r-save").addEventListener("click", () => save(false));
+  $("#r-next").addEventListener("click", () => save(true));
+  updateSaveState(); renderOthers();
+}
+function pressDecision(v){ document.querySelectorAll(".decision button[data-v]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.v === v))); }
+function docId(clip, uid){ return `${clip}+${uid}`; }
+function updateSaveState(){
+  const ok = localMode || !!(db && me);
+  ["#r-save","#r-next"].forEach(s => { const b = $(s); if (b) b.disabled = !ok; });
+  const st = $("#r-status");
+  if (st && !ok) st.textContent = db ? "需要登录本组织账号才能保存评审" : "共享存储暂不可用，评审无法保存";
+  else if (st && localMode && !st.textContent) st.textContent = "本地模式：评审只保存在这台电脑的浏览器里，记得导出";
+}
+async function save(next){
+  const c = BYID[current]; if (!c || !(localMode || (db && me))) return;
+  const T = (c.nf-1)/c.fps, [a,b] = player.trim();
+  const val = k => { const p = document.querySelector(`.seg[data-k="${k}"] button[aria-pressed="true"]`); return p ? +p.dataset.v : null; };
+  const dec = document.querySelector(".decision button[data-v][aria-pressed='true']")?.dataset.v || null;
+  const agree = document.querySelector("#r-agree button[aria-pressed='true']")?.dataset.a || null;
+  const st = $("#r-status");
+  if (!dec){ st.textContent = "请先选择结论：入库、裁剪后入库或丢弃"; return; }
+  const body = { clip_id: c.id, reviewer: me, kind: c.kind, style: c.style, auto_score: c.score, auto_grade: c.grade,
+    naturalness: val("naturalness"), coherence: val("coherence"), semantic: val("semantic"), style_fit: val("style_fit"),
+    decision: dec, label: $("#r-label").value, label_original: c.label,
+    spec_passed: !!(c.spec && c.spec.passed), spec_agree: agree,
+    trim_in: dec === "trim" ? +a.toFixed(3) : null, trim_out: dec === "trim" ? +b.toFixed(3) : null,
+    note: $("#r-note").value.trim().slice(0, 2000), updated_at: new Date().toISOString() };
+  st.textContent = "保存中…";
+  try {
+    if (localMode){
+      REVIEWS.set(docId(c.id, me), body);
+      if (!saveLocal()) throw {code: "local_storage_blocked"};
+      refreshReviewCount(); renderQueue();
+    } else {
+      await db.collection("reviews").doc(docId(c.id, me)).set(body);
+    }
+    st.textContent = localMode ? "已保存到本机浏览器" : "已保存";
+    if (next){ const L = filtered(); const i = L.findIndex(x => x.id === c.id); const nx = L[i+1] || L.find(x => !reviewsFor(x.id).some(r => r.reviewer === me)); if (nx) select(nx.id, true); }
+  } catch(e){
+    st.textContent = e?.code === "quota_exceeded" ? "共享存储已满，请先导出并清理旧评审"
+      : e?.code === "local_storage_blocked" ? "浏览器禁止本地存储，请先导出 JSON 再关闭页面"
+      : `保存失败（${e?.code || "unknown"}），稍后再试`;
+  }
+}
+async function renderOthers(){
+  const box = $("#others"); if (!box || !current) return;
+  const rs = reviewsFor(current).filter(r => r.reviewer !== me);
+  if (!rs.length){ box.innerHTML = ""; return; }
+  const ps = users ? await users.profiles(rs.map(r => r.reviewer)) : {};
+  box.innerHTML = `<div class="sub" style="margin-top:8px">其他人的评审</div>` + rs.map(r => {
+    const p = ps[r.reviewer] || {};
+    const dz = {accept:"入库",trim:"裁剪后入库",reject:"丢弃"}[r.decision] || "—";
+    return `<div class="o"><img alt="" src="${esc(p.avatarUrl||"")}"><div><b class="nm-${esc(r.reviewer)}"></b> · ${dz}${r.trim_in!=null?` <span class="mono">${r.trim_in}–${r.trim_out}s</span>`:""} · 自然 ${r.naturalness??"—"} 连贯 ${r.coherence??"—"} 语义 ${r.semantic??"—"} 风格 ${r.style_fit??"—"}${r.label && r.label!==r.label_original?` · 标签改为 ${esc(FN_ZH[r.label]||r.label)}`:""}<div class="note"></div></div></div>`;
+  }).join("");
+  rs.forEach((r,i) => { const o = box.querySelectorAll(".o")[i]; o.querySelector("b").textContent = (ps[r.reviewer]?.name) || "同事"; o.querySelector(".note").textContent = r.note || ""; });
+}
+
+// ---------------------------------------------------------------- export
+$("#btn-export").addEventListener("click", async () => {
+  const st = $("#export-status");
+  const rows = [...REVIEWS.values()];
+  if (!rows.length){ st.textContent = "还没有任何评审"; return; }
+  if (localMode || !downloads){
+    // plain browser (opened from disk): an ordinary file download
+    const url = URL.createObjectURL(new Blob([JSON.stringify(rows, null, 1)], {type: "application/json"}));
+    const a = document.createElement("a"); a.href = url; a.download = "reviews.json"; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    st.textContent = `已导出 ${rows.length} 条评审`; return;
+  }
+  try { await downloads.save({ filename: "reviews.json", data: JSON.stringify(rows, null, 1) }); st.textContent = `已导出 ${rows.length} 条评审`; }
+  catch(e){ st.textContent = e?.code === "declined" ? "已取消导出" : `导出失败（${e?.code || "unknown"}）`; }
+});
+
+// ---------------------------------------------------------------- capabilities
+async function initCaps(){
+  const cl = window.claude;
+  if (!cl || !cl.use){
+    // opened as a plain file: keep reviews in this browser, identify the reviewer by a local name
+    localMode = true;
+    try { me = localStorage.getItem("a3rev.reviewer"); if (!me){ me = "local-" + Math.random().toString(36).slice(2, 8); localStorage.setItem("a3rev.reviewer", me); } } catch(e) { me = "local"; }
+    loadLocal(); refreshReviewCount(); updateSaveState(); if (B){ renderQueue(); renderOthers(); }
+    $("#exportbox h2 small").textContent = "本地模式：评审保存在这台电脑的浏览器里，用导出把结果交给回写脚本";
+    return;
+  }
+  [db, users, downloads] = await Promise.all([cl.use("db"), cl.use("user"), cl.use("downloads")]);
+  if (users) me = await users.id();
+  if (!downloads) $("#btn-export").hidden = true;
+  updateSaveState();
+  if (db){
+    db.collection("reviews").onSnapshot(snap => {
+      REVIEWS = new Map(snap.docs.filter(d => d.exists).map(d => [d.id, d.data()]));
+      const n = new Set([...REVIEWS.values()].map(r => r.clip_id)).size;
+      const k = $("#kpi-rev"); if (k) k.textContent = String(n);
+      if (B){ renderQueue(); renderOthers(); }
+    }, err => { const st = $("#r-status"); if (st) st.textContent = "共享存储连接中断，刷新页面后重试"; });
+  }
+}
+load().catch(e => { $("#subline").textContent = "动作库数据加载失败，请刷新重试"; console.error(e); });
+initCaps();
+})();
+</script>

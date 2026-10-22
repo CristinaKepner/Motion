@@ -1,0 +1,809 @@
+{
+ "atoms_only": {
+  "label_coverage": {
+   "emphasize": 7,
+   "enumerate": 35,
+   "contrast_compare": 0,
+   "refer_self": 0,
+   "refer_other": 0,
+   "refer_external": 18,
+   "depict_size_shape": 3,
+   "depict_direction_motion": 13,
+   "turn_open": 32,
+   "turn_yield": 0,
+   "greet_farewell": 0,
+   "thank": 0,
+   "affirm": 0,
+   "deny": 0,
+   "certainty": 4,
+   "uncertainty": 21,
+   "enthusiasm": 0
+  },
+  "labels_covered": 8,
+  "label_balance": 0.646,
+  "hand": {
+   "L": 1,
+   "R": 1,
+   "B": 131
+  },
+  "grades": {
+   "A": 61,
+   "B": 4,
+   "C": 61,
+   "D": 7
+  },
+  "flags": {
+   "semantic_mismatch": 116,
+   "static": 61,
+   "jitter": 45,
+   "torque_near": 25,
+   "self_collision": 13,
+   "entry_vel": 7,
+   "exit_vel": 6,
+   "far_entry": 5,
+   "torque": 4,
+   "too_short": 2,
+   "jerk": 2,
+   "spike": 1
+  },
+  "duration_hist": [
+   8,
+   15,
+   70,
+   34,
+   6,
+   0
+  ],
+  "intra_label_diversity": {
+   "emphasize": 0.299,
+   "enumerate": 0.1,
+   "contrast_compare": null,
+   "refer_self": null,
+   "refer_other": null,
+   "refer_external": 0.015,
+   "depict_size_shape": 0.318,
+   "depict_direction_motion": 0.065,
+   "turn_open": 0.04,
+   "turn_yield": null,
+   "greet_farewell": null,
+   "thank": null,
+   "affirm": null,
+   "deny": null,
+   "certainty": 0.149,
+   "uncertainty": 0.063,
+   "enthusiasm": null
+  },
+  "near_duplicates": [
+   [
+    "004_walk_frontleft_slow__05.20-06.16",
+    "004_walk_frontleft_slow__08.12-10.12",
+    0.023
+   ],
+   [
+    "004_walk_frontleft_slow__14.16-16.88",
+    "004_walk_frontleft_slow__22.56-24.08",
+    0.025
+   ],
+   [
+    "004_walk_frontleft_slow__22.56-24.08",
+    "056_lunge_side_alternating__18.20-19.76",
+    0.023
+   ],
+   [
+    "009_walk_left_fast__01.76-04.04",
+    "009_walk_left_fast__11.16-14.00",
+    0.025
+   ],
+   [
+    "009_walk_left_fast__04.04-06.08",
+    "009_walk_left_fast__14.00-15.44",
+    0.023
+   ],
+   [
+    "009_walk_left_fast__14.00-15.44",
+    "009_walk_left_fast__15.44-17.44",
+    0.024
+   ],
+   [
+    "043_squat_deep_repeated__00.56-03.56",
+    "043_squat_deep_repeated__03.56-06.48",
+    0.022
+   ],
+   [
+    "062_bend_side_alternating__00.68-03.96",
+    "062_bend_side_alternating__04.60-07.44",
+    0.015
+   ],
+   [
+    "062_bend_side_alternating__04.60-07.44",
+    "062_bend_side_alternating__08.80-11.20",
+    0.02
+   ],
+   [
+    "062_bend_side_alternating__08.80-11.20",
+    "089_shift_leftright_weight__06.92-08.64",
+    0.021
+   ],
+   [
+    "062_bend_side_alternating__08.80-11.20",
+    "089_shift_leftright_weight__20.88-23.28",
+    0.02
+   ],
+   [
+    "062_bend_side_alternating__11.88-13.80",
+    "062_bend_side_alternating__15.00-17.12",
+    0.009
+   ],
+   [
+    "062_bend_side_alternating__15.00-17.12",
+    "062_bend_side_alternating__18.04-20.84",
+    0.02
+   ],
+   [
+    "063_twist_torso_alternating__14.36-17.08",
+    "063_twist_torso_alternating__17.84-20.64",
+    0.008
+   ],
+   [
+    "063_twist_torso_alternating__21.56-23.00",
+    "063_twist_torso_alternating__24.88-26.48",
+    0.013
+   ],
+   [
+    "063_twist_torso_alternating__23.00-24.88",
+    "063_twist_torso_alternating__26.48-28.28",
+    0.019
+   ],
+   [
+    "089_shift_leftright_weight__06.92-08.64",
+    "089_shift_leftright_weight__20.88-23.28",
+    0.023
+   ],
+   [
+    "089_shift_leftright_weight__13.48-15.60",
+    "089_shift_leftright_weight__28.60-31.16",
+    0.01
+   ]
+  ],
+  "near_duplicate_count": 18,
+  "style_grid": [
+   [
+    12,
+    58,
+    15,
+    1
+   ],
+   [
+    4,
+    15,
+    0,
+    0
+   ],
+   [
+    11,
+    4,
+    0,
+    0
+   ],
+   [
+    5,
+    7,
+    1,
+    0
+   ]
+  ],
+  "style_grid_by_kind": {
+   "atom": [
+    [
+     12,
+     58,
+     15,
+     1
+    ],
+    [
+     4,
+     15,
+     0,
+     0
+    ],
+    [
+     11,
+     4,
+     0,
+     0
+    ],
+    [
+     5,
+     7,
+     1,
+     0
+    ]
+   ],
+   "variant": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "style_cells_covered": 11,
+  "style_cells_total": 16,
+  "energy_bins": [
+   0.0,
+   0.12,
+   0.25,
+   0.4,
+   10
+  ],
+  "tempo_bins": [
+   0.0,
+   1.0,
+   2.0,
+   3.5,
+   100
+  ],
+  "reachable_from_neutral_0p6s": 0.008,
+  "median_bridge_in_s": 1.221
+ },
+ "atoms_plus_AB_variants": {
+  "label_coverage": {
+   "emphasize": 32,
+   "enumerate": 88,
+   "contrast_compare": 0,
+   "refer_self": 0,
+   "refer_other": 0,
+   "refer_external": 18,
+   "depict_size_shape": 15,
+   "depict_direction_motion": 46,
+   "turn_open": 54,
+   "turn_yield": 0,
+   "greet_farewell": 0,
+   "thank": 0,
+   "affirm": 0,
+   "deny": 0,
+   "certainty": 28,
+   "uncertainty": 30,
+   "enthusiasm": 0
+  },
+  "labels_covered": 8,
+  "label_balance": 0.682,
+  "hand": {
+   "L": 8,
+   "R": 8,
+   "B": 295
+  },
+  "grades": {
+   "A": 238,
+   "B": 5,
+   "C": 61,
+   "D": 7
+  },
+  "flags": {
+   "semantic_mismatch": 247,
+   "jitter": 78,
+   "torque_near": 68,
+   "static": 61,
+   "style_eroded": 60,
+   "far_entry": 36,
+   "entry_vel": 19,
+   "self_collision": 14,
+   "exit_vel": 14,
+   "torque": 9,
+   "periodic": 6,
+   "jerk": 4,
+   "too_short": 2,
+   "spike": 1
+  },
+  "duration_hist": [
+   8,
+   29,
+   155,
+   91,
+   26,
+   2
+  ],
+  "intra_label_diversity": {
+   "emphasize": 0.249,
+   "enumerate": 0.106,
+   "contrast_compare": null,
+   "refer_self": null,
+   "refer_other": null,
+   "refer_external": 0.015,
+   "depict_size_shape": 0.256,
+   "depict_direction_motion": 0.074,
+   "turn_open": 0.059,
+   "turn_yield": null,
+   "greet_farewell": null,
+   "thank": null,
+   "affirm": null,
+   "deny": null,
+   "certainty": 0.146,
+   "uncertainty": 0.065,
+   "enthusiasm": null
+  },
+  "near_duplicates": [
+   [
+    "004_walk_frontleft_slow__05.20-06.16",
+    "004_walk_frontleft_slow__08.12-10.12",
+    0.023
+   ],
+   [
+    "004_walk_frontleft_slow__14.16-16.88",
+    "004_walk_frontleft_slow__22.56-24.08",
+    0.025
+   ],
+   [
+    "004_walk_frontleft_slow__22.56-24.08",
+    "056_lunge_side_alternating__18.20-19.76",
+    0.023
+   ],
+   [
+    "009_walk_left_fast__01.76-04.04",
+    "009_walk_left_fast__11.16-14.00",
+    0.025
+   ],
+   [
+    "009_walk_left_fast__04.04-06.08",
+    "009_walk_left_fast__14.00-15.44",
+    0.023
+   ],
+   [
+    "009_walk_left_fast__14.00-15.44",
+    "009_walk_left_fast__15.44-17.44",
+    0.024
+   ],
+   [
+    "043_squat_deep_repeated__00.56-03.56",
+    "043_squat_deep_repeated__03.56-06.48",
+    0.022
+   ],
+   [
+    "062_bend_side_alternating__00.68-03.96",
+    "062_bend_side_alternating__04.60-07.44",
+    0.015
+   ],
+   [
+    "062_bend_side_alternating__04.60-07.44",
+    "062_bend_side_alternating__08.80-11.20",
+    0.02
+   ],
+   [
+    "062_bend_side_alternating__08.80-11.20",
+    "089_shift_leftright_weight__06.92-08.64",
+    0.021
+   ],
+   [
+    "062_bend_side_alternating__08.80-11.20",
+    "089_shift_leftright_weight__20.88-23.28",
+    0.02
+   ],
+   [
+    "062_bend_side_alternating__11.88-13.80",
+    "062_bend_side_alternating__15.00-17.12",
+    0.009
+   ],
+   [
+    "062_bend_side_alternating__15.00-17.12",
+    "062_bend_side_alternating__18.04-20.84",
+    0.02
+   ],
+   [
+    "063_twist_torso_alternating__14.36-17.08",
+    "063_twist_torso_alternating__17.84-20.64",
+    0.008
+   ],
+   [
+    "063_twist_torso_alternating__21.56-23.00",
+    "063_twist_torso_alternating__24.88-26.48",
+    0.013
+   ],
+   [
+    "063_twist_torso_alternating__23.00-24.88",
+    "063_twist_torso_alternating__26.48-28.28",
+    0.019
+   ],
+   [
+    "089_shift_leftright_weight__06.92-08.64",
+    "089_shift_leftright_weight__20.88-23.28",
+    0.023
+   ],
+   [
+    "089_shift_leftright_weight__13.48-15.60",
+    "089_shift_leftright_weight__28.60-31.16",
+    0.01
+   ]
+  ],
+  "near_duplicate_count": 18,
+  "style_grid": [
+   [
+    16,
+    83,
+    16,
+    1
+   ],
+   [
+    33,
+    40,
+    4,
+    0
+   ],
+   [
+    33,
+    16,
+    0,
+    0
+   ],
+   [
+    37,
+    28,
+    4,
+    0
+   ]
+  ],
+  "style_grid_by_kind": {
+   "atom": [
+    [
+     12,
+     58,
+     15,
+     1
+    ],
+    [
+     4,
+     15,
+     0,
+     0
+    ],
+    [
+     11,
+     4,
+     0,
+     0
+    ],
+    [
+     5,
+     7,
+     1,
+     0
+    ]
+   ],
+   "variant": [
+    [
+     4,
+     25,
+     1,
+     0
+    ],
+    [
+     29,
+     25,
+     4,
+     0
+    ],
+    [
+     22,
+     12,
+     0,
+     0
+    ],
+    [
+     32,
+     21,
+     3,
+     0
+    ]
+   ]
+  },
+  "style_cells_covered": 12,
+  "style_cells_total": 16,
+  "energy_bins": [
+   0.0,
+   0.12,
+   0.25,
+   0.4,
+   10
+  ],
+  "tempo_bins": [
+   0.0,
+   1.0,
+   2.0,
+   3.5,
+   100
+  ],
+  "reachable_from_neutral_0p6s": 0.051,
+  "median_bridge_in_s": 1.179
+ },
+ "counts": {
+  "atoms": 133,
+  "variants": 219,
+  "variants_AB": 178,
+  "variants_rejected": 0,
+  "bases": 36,
+  "recordings": 20,
+  "segments_rejected": 2
+ },
+ "semantic_functions": [
+  "emphasize",
+  "enumerate",
+  "contrast_compare",
+  "refer_self",
+  "refer_other",
+  "refer_external",
+  "depict_size_shape",
+  "depict_direction_motion",
+  "turn_open",
+  "turn_yield",
+  "greet_farewell",
+  "thank",
+  "affirm",
+  "deny",
+  "certainty",
+  "uncertainty",
+  "enthusiasm"
+ ],
+ "semantic_check": {
+  "emphasize": {
+   "zh": "强调",
+   "spec": "主导手在胸口高度快速击打（≥0.6 m/s），随后 0.25 s 内急停",
+   "labelled": 7,
+   "labelled_pass": 3,
+   "verified_refs": 16,
+   "verified_refs_atoms": 4,
+   "best_refs": [
+    "058_punch_front_alternating__03.28-06.12~calm",
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "058_punch_front_alternating__03.28-06.12~reserved",
+    "058_punch_front_alternating__07.68-09.60~formal",
+    "058_punch_front_alternating__07.68-09.60~reserved"
+   ]
+  },
+  "enumerate": {
+   "zh": "列举",
+   "spec": "主导手在身前做 ≥2 个节奏均匀的节拍",
+   "labelled": 35,
+   "labelled_pass": 6,
+   "verified_refs": 43,
+   "verified_refs_atoms": 7,
+   "best_refs": [
+    "058_punch_front_alternating__03.28-06.12~calm",
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "058_punch_front_alternating__03.28-06.12~reserved",
+    "058_punch_front_alternating__06.12-07.68~reserved",
+    "058_punch_front_alternating__06.12-07.68~ref:twist_torso_alternating"
+   ]
+  },
+  "contrast_compare": {
+   "zh": "对比",
+   "spec": "先一侧手主导、再另一侧手主导，两手各在同侧展开",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 27,
+   "verified_refs_atoms": 6,
+   "best_refs": [
+    "058_punch_front_alternating__03.28-06.12~calm",
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "058_punch_front_alternating__03.28-06.12~reserved",
+    "091_step_threshold_forward__01.28-03.16~ref:twist_torso_alternating",
+    "091_step_threshold_forward__01.28-03.16~calm"
+   ]
+  },
+  "refer_self": {
+   "zh": "指自己",
+   "spec": "手移向并停在自己胸口（<0.18 m）",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 0,
+   "verified_refs_atoms": 0,
+   "best_refs": []
+  },
+  "refer_other": {
+   "zh": "指对方",
+   "spec": "手臂伸直向正前方伸出 ≥0.30 m 并短暂停住",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 29,
+   "verified_refs_atoms": 4,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "077_reach_overhead_both__01.40-03.88~reserved",
+    "077_reach_overhead_both__01.40-03.88~ref:punch_front_alternating"
+   ]
+  },
+  "refer_external": {
+   "zh": "指外部",
+   "spec": "手臂伸直伸向外侧或前方 ≥0.25 m 并短暂停住",
+   "labelled": 18,
+   "labelled_pass": 0,
+   "verified_refs": 88,
+   "verified_refs_atoms": 16,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "077_reach_overhead_both__01.40-03.88~reserved",
+    "077_reach_overhead_both__01.40-03.88~ref:punch_front_alternating"
+   ]
+  },
+  "depict_size_shape": {
+   "zh": "描绘大小形状",
+   "spec": "双手镜像对称运动，双手间距变化 ≥0.15 m",
+   "labelled": 3,
+   "labelled_pass": 2,
+   "verified_refs": 58,
+   "verified_refs_atoms": 10,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "080_reach_front_both__00.76-04.64~formal",
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "077_reach_overhead_both__01.40-03.88~reserved"
+   ]
+  },
+  "depict_direction_motion": {
+   "zh": "描绘方向运动",
+   "spec": "主导手在 0.8 s 内沿较直路径单向扫过 ≥0.25 m",
+   "labelled": 13,
+   "labelled_pass": 1,
+   "verified_refs": 83,
+   "verified_refs_atoms": 17,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "080_reach_front_both__00.76-04.64~formal",
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "077_reach_overhead_both__01.40-03.88~reserved"
+   ]
+  },
+  "turn_open": {
+   "zh": "开启话轮",
+   "spec": "双手由内向外打开（间距 +0.15 m），停在身前",
+   "labelled": 32,
+   "labelled_pass": 0,
+   "verified_refs": 33,
+   "verified_refs_atoms": 7,
+   "best_refs": [
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "077_reach_overhead_both__01.40-03.88~reserved",
+    "077_reach_overhead_both__01.40-03.88~ref:punch_front_alternating"
+   ]
+  },
+  "turn_yield": {
+   "zh": "让出话轮",
+   "spec": "单手向前递出 ≥0.25 m，然后收回",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 45,
+   "verified_refs_atoms": 9,
+   "best_refs": [
+    "058_punch_front_alternating__03.28-06.12~calm",
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "058_punch_front_alternating__03.28-06.12~reserved",
+    "058_punch_front_alternating__06.12-07.68~reserved",
+    "058_punch_front_alternating__06.12-07.68~ref:twist_torso_alternating"
+   ]
+  },
+  "greet_farewell": {
+   "zh": "问候告别",
+   "spec": "手举过肩并左右摆动 ≥2 次",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 21,
+   "verified_refs_atoms": 5,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "058_punch_front_alternating__07.68-09.60~calm",
+    "058_punch_front_alternating__07.68-09.60~formal",
+    "047_balance_left_singleleg__00.80-02.96~ref:reach_overhead_both",
+    "058_punch_front_alternating__07.68-09.60~enthusiastic"
+   ]
+  },
+  "thank": {
+   "zh": "感谢",
+   "spec": "双手同时到胸前，身体前倾 ≥8°",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 0,
+   "verified_refs_atoms": 0,
+   "best_refs": []
+  },
+  "affirm": {
+   "zh": "肯定",
+   "spec": "1–3 个向下小节拍，活动范围 <0.25 m",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 25,
+   "verified_refs_atoms": 8,
+   "best_refs": [
+    "056_lunge_side_alternating__10.24-12.04~ref:reach_overhead_both",
+    "056_lunge_side_alternating__06.88-08.28~ref:punch_front_alternating",
+    "055_lunge_front_alternating__13.48-15.44",
+    "056_lunge_side_alternating__04.48-06.28",
+    "055_lunge_front_alternating__21.72-23.56"
+   ]
+  },
+  "deny": {
+   "zh": "否定",
+   "spec": "手在身前左右摆动 ≥2 次",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 56,
+   "verified_refs_atoms": 12,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "058_punch_front_alternating__03.28-06.12~calm",
+    "058_punch_front_alternating__03.28-06.12~formal",
+    "058_punch_front_alternating__03.28-06.12~reserved",
+    "077_reach_overhead_both__01.40-03.88~ref:punch_front_alternating"
+   ]
+  },
+  "certainty": {
+   "zh": "确定",
+   "spec": "有力向下切（≥0.5 m/s）后定住 ≥0.2 s",
+   "labelled": 4,
+   "labelled_pass": 0,
+   "verified_refs": 23,
+   "verified_refs_atoms": 4,
+   "best_refs": [
+    "058_punch_front_alternating__06.12-07.68~ref:twist_torso_alternating",
+    "058_punch_front_alternating__07.68-09.60~calm",
+    "058_punch_front_alternating__07.68-09.60~formal",
+    "058_punch_front_alternating__07.68-09.60~reserved",
+    "058_punch_front_alternating__07.68-09.60~ref:twist_torso_alternating"
+   ]
+  },
+  "uncertainty": {
+   "zh": "不确定",
+   "spec": "双手在身前摊开，动作缓慢",
+   "labelled": 21,
+   "labelled_pass": 5,
+   "verified_refs": 77,
+   "verified_refs_atoms": 15,
+   "best_refs": [
+    "080_reach_front_both__00.76-04.64",
+    "080_reach_front_both__00.76-04.64~formal",
+    "043_squat_deep_repeated__00.56-03.56~reserved",
+    "063_twist_torso_alternating__24.88-26.48~ref:punch_front_alternating",
+    "080_reach_front_both__00.76-04.64~ref:punch_front_alternating"
+   ]
+  },
+  "enthusiasm": {
+   "zh": "热情",
+   "spec": "手举过肩，幅度大（≥0.35 m）且速度快",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 21,
+   "verified_refs_atoms": 4,
+   "best_refs": [
+    "077_reach_overhead_both__01.40-03.88~calm",
+    "077_reach_overhead_both__01.40-03.88~formal",
+    "058_punch_front_alternating__07.68-09.60~calm",
+    "058_punch_front_alternating__06.12-07.68~formal",
+    "058_punch_front_alternating__06.12-07.68~calm"
+   ]
+  }
+ }
+}
