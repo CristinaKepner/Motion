@@ -28,6 +28,12 @@ trabot_a3/
 demo.py               编排演示：4 个回合 → mp4 + CSV + trace.json
 build_library.py      评测 → 选基底 → 风格化生成 → 规格核对 → 报告 / 追溯树 / 评审数据包
 apply_reviews.py      评审 JSON → 裁剪、改标、重新校验 → out/catalog_v2（含规格校准统计）
+benchmark/
+  bvh.py / skeleton.py / retarget.py   BVH 解析、各数据集关节名 profile、方向匹配重定向到 A3 17 关节
+  metrics.py / runner.py               FKD、L1Div、BC、BAS、语义规格、可执行性、覆盖；数据集/库/对比三种运行方式
+  datasets.json / PROTOCOL.md          13 个开源演讲/对话手势数据集目录；评测协议
+  tests_roundtrip.py / make_synthetic.py  适配器自检；带音频的合成数据
+run_benchmark.py      python run_benchmark.py library | bvh <dir> --profile beat | compare <A> <B>
 viz_library.py        官方 A3 模型渲染全部录制与片段，汇总数据来源、数量、仿真计算量、关节覆盖、姿态分布
 review_page/
   A3_library_atlas.html   单文件动作库全景（真实 A3 渲染，双击打开）
@@ -82,6 +88,23 @@ python apply_reviews.py reviews.json    # 评审页导出的 JSON → out/catalo
 - **人工评审与裁剪**：按自动分从低到高排队；拖动旋转视角；生成变体可叠加原始 atom（灰）对照；用入点 / 出点裁剪；打 4 项分、修正标签、判断规格是否判对、给出结论。
 
 本地打开时评审保存在当前浏览器里，多人评审请各自导出 JSON 后合并给 `apply_reviews.py`（同一片段多人的评分取均值、结论取多数、裁剪点取中位数）。
+
+## 演讲 / 对话手势数据集与评测
+
+`benchmark/datasets.json` 列出 13 个候选（BEAT / BEAT2、Talking With Hands、GENEA 2023、ZEGGS、Trinity、TED 系列、PATS、SHOW、
+Seamless Interaction、HiPHI、Bandai Namco、HumanML3D），含规模、格式、标注、许可、下载位置和对 A3 的适配性。
+评测把任何来源先转换到 A3 的 17 个手势关节（30 Hz）再打分，协议见 `benchmark/PROTOCOL.md`，结果页 `review_page/A3_gesture_benchmark.html`。
+
+```bash
+python run_benchmark.py library                       # A3 现有动作库 + 指标自检
+python benchmark/tests_roundtrip.py                   # 适配器自检（合成 BVH、A3 往返）
+python run_benchmark.py bvh <folder> --profile beat   # 一个数据集目录：*.bvh（+ 同名 .wav / .tsv，可选 labels.json）
+python run_benchmark.py compare <gen_dir> <ref_dir> --profile twh   # 生成结果 vs 真数据（FKD 等）
+python benchmark/build_report.py                      # 汇总成单文件报告页
+```
+
+profile 可选 `beat` `zeggs` `trinity` `twh`（GENEA 2023）`hiphi` `bandai`；未知骨架按关节名自动匹配。
+SMPL-X（BEAT2 / SHOW）和 2D 关键点（TED / PATS）数据还需要各自的适配器。
 
 ## 数据来源说明
 

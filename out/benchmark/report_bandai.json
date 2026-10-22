@@ -1,0 +1,120 @@
+{
+ "name": "bandai:/home/claude/datasets/bandai_sel",
+ "clips": 97,
+ "seconds_of_motion": 462.5,
+ "executability": {
+  "grades": {
+   "A": 13,
+   "B": 17,
+   "C": 10,
+   "D": 57
+  },
+  "torque_over_limit_share": 0.268,
+  "self_collision_share": 0.351,
+  "static_share": 0.031,
+  "jitter_share": 0.155,
+  "mean_score": 60.1
+ },
+ "diversity_l1": 0.1567,
+ "semantics": {
+  "clips": 97,
+  "verified_refs_per_function": {
+   "emphasize": 52,
+   "enumerate": 68,
+   "contrast_compare": 7,
+   "refer_self": 7,
+   "refer_other": 13,
+   "refer_external": 18,
+   "depict_size_shape": 32,
+   "depict_direction_motion": 46,
+   "turn_open": 40,
+   "turn_yield": 49,
+   "greet_farewell": 52,
+   "thank": 7,
+   "affirm": 4,
+   "deny": 74,
+   "certainty": 12,
+   "uncertainty": 6,
+   "enthusiasm": 45
+  },
+  "functions_with_refs": 17,
+  "any_function_rate": 0.979,
+  "own_label_pass": [
+   57,
+   97
+  ]
+ },
+ "joint_coverage": {
+  "mean_share": 0.712,
+  "min_share": 0.004,
+  "per_joint": [
+   0.134,
+   0.943,
+   0.867,
+   0.993,
+   0.983,
+   0.994,
+   0.983,
+   0.004,
+   0.567,
+   0.675,
+   0.993,
+   0.983,
+   0.994,
+   0.983,
+   0.006,
+   0.49,
+   0.519
+  ]
+ },
+ "style": {
+  "cells_covered": 14,
+  "cells_total": 16,
+  "grid": [
+   [
+    1,
+    1,
+    2,
+    0
+   ],
+   [
+    2,
+    3,
+    1,
+    0
+   ],
+   [
+    7,
+    7,
+    2,
+    1
+   ],
+   [
+    28,
+    34,
+    4,
+    4
+   ]
+  ]
+ },
+ "rhythm": {
+  "clips_with_audio": 0,
+  "BC": null,
+  "BAS_binary": null,
+  "BAS_gaussian": null,
+  "BC_chance": null,
+  "BAS_binary_chance": null
+ },
+ "eval_seconds": 76.0,
+ "adaptation": {
+  "files": 97,
+  "retarget_fidelity": {
+   "mean_deg": 0.45,
+   "p95_deg": 2.53,
+   "upper_arm_deg": 1.01,
+   "forearm_deg": 0.34,
+   "hand_deg": 0.0
+  },
+  "seconds": 849.5
+ }
+}

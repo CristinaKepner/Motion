@@ -1,0 +1,228 @@
+{
+ "sources": [
+  {
+   "name": "A3 原始 atom（20 条智元录制）",
+   "clips": 133,
+   "seconds_of_motion": 284.0,
+   "executability": {
+    "grades": {
+     "A": 66,
+     "B": 4,
+     "C": 60,
+     "D": 3
+    },
+    "torque_over_limit_share": 0.03,
+    "self_collision_share": 0.023,
+    "static_share": 0.459,
+    "jitter_share": 0.338,
+    "mean_score": 79.5
+   },
+   "diversity_l1": 0.0521,
+   "semantics": {
+    "clips": 133,
+    "verified_refs_per_function": {
+     "emphasize": 6,
+     "enumerate": 10,
+     "contrast_compare": 7,
+     "refer_self": 0,
+     "refer_other": 5,
+     "refer_external": 18,
+     "depict_size_shape": 11,
+     "depict_direction_motion": 20,
+     "turn_open": 7,
+     "turn_yield": 11,
+     "greet_farewell": 5,
+     "thank": 0,
+     "affirm": 10,
+     "deny": 16,
+     "certainty": 5,
+     "uncertainty": 23,
+     "enthusiasm": 5
+    },
+    "functions_with_refs": 15,
+    "any_function_rate": 0.436,
+    "own_label_pass": [
+     17,
+     133
+    ]
+   },
+   "joint_coverage": {
+    "mean_share": 0.436,
+    "min_share": 0.094,
+    "per_joint": [
+     0.167,
+     0.849,
+     0.794,
+     0.538,
+     0.478,
+     0.341,
+     0.858,
+     0.358,
+     0.102,
+     0.153,
+     0.551,
+     0.494,
+     0.338,
+     0.796,
+     0.292,
+     0.094,
+     0.199
+    ]
+   },
+   "style": {
+    "cells_covered": 11,
+    "cells_total": 16,
+    "grid": [
+     [
+      12,
+      58,
+      15,
+      1
+     ],
+     [
+      4,
+      15,
+      0,
+      0
+     ],
+     [
+      11,
+      4,
+      0,
+      0
+     ],
+     [
+      5,
+      7,
+      1,
+      0
+     ]
+    ]
+   },
+   "rhythm": {
+    "clips_with_audio": 0,
+    "BC": null,
+    "BAS_binary": null,
+    "BAS_gaussian": null
+   },
+   "eval_seconds": 48.2
+  },
+  {
+   "name": "A3 仿真风格变体",
+   "clips": 219,
+   "seconds_of_motion": 542.8,
+   "executability": {
+    "grades": {
+     "A": 177,
+     "B": 1,
+     "C": 41,
+     "D": 0
+    },
+    "torque_over_limit_share": 0.023,
+    "self_collision_share": 0.005,
+    "static_share": 0.187,
+    "jitter_share": 0.151,
+    "mean_score": 89.7
+   },
+   "diversity_l1": 0.0798,
+   "semantics": {
+    "clips": 219,
+    "verified_refs_per_function": {
+     "emphasize": 12,
+     "enumerate": 36,
+     "contrast_compare": 21,
+     "refer_self": 0,
+     "refer_other": 25,
+     "refer_external": 72,
+     "depict_size_shape": 48,
+     "depict_direction_motion": 66,
+     "turn_open": 26,
+     "turn_yield": 36,
+     "greet_farewell": 16,
+     "thank": 0,
+     "affirm": 17,
+     "deny": 44,
+     "certainty": 19,
+     "uncertainty": 63,
+     "enthusiasm": 17
+    },
+    "functions_with_refs": 15,
+    "any_function_rate": 0.653,
+    "own_label_pass": [
+     47,
+     219
+    ]
+   },
+   "joint_coverage": {
+    "mean_share": 0.441,
+    "min_share": 0.111,
+    "per_joint": [
+     0.252,
+     0.853,
+     0.573,
+     0.534,
+     0.69,
+     0.385,
+     0.657,
+     0.364,
+     0.112,
+     0.213,
+     0.574,
+     0.607,
+     0.383,
+     0.619,
+     0.35,
+     0.111,
+     0.226
+    ]
+   },
+   "style": {
+    "cells_covered": 11,
+    "cells_total": 16,
+    "grid": [
+     [
+      12,
+      57,
+      2,
+      0
+     ],
+     [
+      29,
+      25,
+      4,
+      0
+     ],
+     [
+      22,
+      12,
+      0,
+      0
+     ],
+     [
+      32,
+      21,
+      3,
+      0
+     ]
+    ]
+   },
+   "rhythm": {
+    "clips_with_audio": 0,
+    "BC": null,
+    "BAS_binary": null,
+    "BAS_gaussian": null
+   },
+   "eval_seconds": 87.5
+  }
+ ],
+ "compare": {
+  "FKD(variants → atoms)": 0.47
+ },
+ "self_checks": {
+  "BC_beats_on_motion": 1.0,
+  "BC_random_beats": 0.934,
+  "BAS_binary_on_apex": 1.0,
+  "BAS_binary_random": 0.53,
+  "FKD_same_distribution_halves": 1.184
+ }
+}

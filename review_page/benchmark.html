@@ -1,0 +1,118 @@
+<title>A3 手势数据集与评测</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dossier — dataset inventory table, then the benchmark protocol, then results laid side by side per source. */
+:root{--bg:#EEF0EE;--panel:#FFFFFF;--panel-2:#F5F6F4;--ink:#171B19;--ink-2:#4A524E;--ink-3:#6B746F;--line:#D5DAD6;--line-2:#E4E8E5;
+ --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--gA:#2E8B57;--gB:#7A9F2E;--gC:#C98A12;--gD:#C2412F;--ok-bg:#E2F1E8;--warn-bg:#FBF1DC;--bad-bg:#F8E1DD;--mute-bg:#ECEEEC;
+ --font-ui:"Barlow","PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;--font-display:"Barlow Semi Condensed","PingFang SC","Noto Sans SC",system-ui,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--r:6px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131614;--panel:#1B1F1D;--panel-2:#222724;--ink:#E7EBE8;--ink-2:#B4BCB7;--ink-3:#8E9792;--line:#343B37;--line-2:#2A302D;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--gA:#5CC48A;--gB:#A9C95A;--gC:#E8B44A;--gD:#EE7564;--ok-bg:#1C3226;--warn-bg:#3A2F17;--bad-bg:#3D211D;--mute-bg:#262B28;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131614;--panel:#1B1F1D;--panel-2:#222724;--ink:#E7EBE8;--ink-2:#B4BCB7;--ink-3:#8E9792;--line:#343B37;--line-2:#2A302D;--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--gA:#5CC48A;--gB:#A9C95A;--gC:#E8B44A;--gD:#EE7564;--ok-bg:#1C3226;--warn-bg:#3A2F17;--bad-bg:#3D211D;--mute-bg:#262B28;color-scheme:dark}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:14px;line-height:1.5}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 48px;display:flex;flex-direction:column;gap:16px}
+h1{font:700 28px var(--font-display);margin:0;text-wrap:balance}h2{font:600 17px var(--font-display);margin:0 0 4px}h3{font:600 14px var(--font-ui);margin:12px 0 6px}
+.lede{color:var(--ink-2);max-width:90ch;margin:4px 0 0}.sub{color:var(--ink-3);font-size:12.5px}.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.panel>.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:10px}.panel>.head p{margin:0;color:var(--ink-3);font-size:12.5px;max-width:90ch}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}table{border-collapse:collapse;width:100%;font-size:13px}
+th{font:600 12px var(--font-ui);color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--panel-2);white-space:nowrap;position:sticky;top:0}
+td{padding:7px 10px;border-bottom:1px solid var(--line-2);vertical-align:top}tr:last-child td{border-bottom:0}
+.chip{display:inline-flex;align-items:center;font-size:11.5px;padding:1px 8px;border-radius:10px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--gA)}.blocked{background:var(--warn-bg);color:var(--gC)}.bad{background:var(--bad-bg);color:var(--gD)}.mute{background:var(--mute-bg);color:var(--ink-2)}
+.dots{display:inline-flex;gap:2px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line);display:inline-block}.dots i.on{background:var(--s1)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px}.kpi .k{font-size:12px;color:var(--ink-3)}.kpi .v{font:600 22px var(--font-display)}.kpi .d{font-size:12px;color:var(--ink-2)}
+.mix{display:flex;width:120px;height:10px;border-radius:2px;overflow:hidden;background:var(--panel-2)}.gA{background:var(--gA)}.gB{background:var(--gB)}.gC{background:var(--gC)}.gD{background:var(--gD)}
+.bars{display:flex;flex-direction:column;gap:5px}.br{display:grid;grid-template-columns:minmax(120px,200px) 1fr 60px;gap:10px;align-items:center;font-size:13px}.br .t{height:12px;background:var(--panel-2);border-radius:3px;overflow:hidden}.br .t span{display:block;height:100%;border-radius:0 3px 3px 0}
+.md{max-width:92ch}.md table{width:auto;min-width:0}.md code{font-family:var(--font-mono);font-size:12px;background:var(--panel-2);padding:1px 5px;border-radius:3px}.md h2{font-size:16px;margin-top:14px}.md h1{font-size:20px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-2);margin-top:8px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.note{font-size:12.5px;color:var(--ink-2);max-width:92ch}
+details summary{cursor:pointer;font-weight:600}
+</style>
+<div class="wrap">
+  <header><h1>A3 手势数据集与评测</h1><p class="lede" id="lede"></p></header>
+
+  <section class="panel">
+    <div class="head"><h2>开源演讲 / 对话手势数据集</h2><p>按“适合做 A3 对话手势库”排序。五个圆点依次表示：语音同步、语义标注、手指、3D 质量、规模。“可达”指本环境能否直接下载；其余需在有外网的机器上下载后用对应的 profile 运行。</p></div>
+    <div class="tbl"><table><thead><tr><th>数据集</th><th>类型</th><th>规模</th><th>格式</th><th>标注</th><th>许可</th><th>可达</th><th>适配</th><th>为什么要 / 不要</th></tr></thead><tbody id="ds"></tbody></table></div>
+    <p class="note" id="dsnote"></p>
+  </section>
+
+  <section class="panel"><div class="head"><h2>评测结果</h2><p>所有来源都先转换到 A3 的 17 个手势关节（30 Hz），再用同一套指标。Bandai 子集是本环境唯一能拿到的真实动捕，用它检验“真人动作 → A3”的整条链路；合成数据只用于验证带音频的节奏指标能跑通。</p></div>
+    <div class="tbl"><table><thead><tr><th>指标</th><th id="rh"></th></tr></thead><tbody id="res"></tbody></table></div>
+    <div class="grid" style="margin-top:14px">
+      <div><h3>各来源：语义“已验证参考”数（通过该语义规格的片段）</h3><div class="bars" id="sem"></div><div class="legend" id="semlegend"></div></div>
+      <div><h3>指标自检</h3><div class="tbl"><table><tbody id="checks"></tbody></table></div><p class="note" id="checknote"></p>
+        <h3>适配器自检</h3><div class="tbl"><table><tbody id="adapter"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section class="panel"><div class="head"><h2>评测协议</h2></div><div class="md" id="proto"></div></section>
+</div>
+<script>
+(() => {
+const D = JSON.parse(document.getElementById("bench-data").textContent);
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const FN = {emphasize:"强调",enumerate:"列举",contrast_compare:"对比",refer_self:"指自己",refer_other:"指对方",refer_external:"指外部",depict_size_shape:"描绘大小形状",depict_direction_motion:"描绘方向运动",turn_open:"开启话轮",turn_yield:"让出话轮",greet_farewell:"问候告别",thank:"感谢",affirm:"肯定",deny:"否定",certainty:"确定",uncertainty:"不确定",enthusiasm:"热情"};
+const ds = D.datasets.datasets.slice().sort((a,b) => Object.values(b.fit).reduce((x,y)=>x+y) - Object.values(a.fit).reduce((x,y)=>x+y));
+const R = {ok:["ok","可下载"], blocked:["blocked","需外网"], "blocked（站点预览可读）":["blocked","需外网"]};
+$("#lede").textContent = `${ds.length} 个候选数据集，${D.results.length} 个来源在同一套指标下评测；${D.datasets.note}`;
+$("#ds").innerHTML = ds.map(d => { const r = R[d.reach] || ["mute", d.reach]; const dots = k => `<span class="dots" title="${k}">${[1,2,3].map(i => `<i class="${i<=d.fit[k]?"on":""}"></i>`).join("")}</span>`;
+  return `<tr><td><b><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.name)}</a></b><div class="sub">${esc(d.venue)}</div></td><td>${esc(d.kind)}</td><td class="mono" style="font-size:12px">${esc(d.hours)}<div class="sub">${esc(d.speakers)}</div></td><td style="font-size:12px">${esc(d.format)}</td><td style="font-size:12px">${esc(d.annotations)}</td><td style="font-size:12px">${esc(d.license)}</td><td><span class="chip ${r[0]}">${r[1]}</span></td>
+   <td style="font-size:11px;white-space:nowrap">语音 ${dots("speech")}<br>语义 ${dots("semantic")}<br>手指 ${dots("fingers")}<br>质量 ${dots("quality")}<br>规模 ${dots("scale")}<div class="sub mono">profile: ${esc(d.profile)}</div></td><td style="font-size:12px;min-width:22ch">${esc(d.why)}</td></tr>`; }).join("");
+$("#dsnote").textContent = "推荐顺序：BEAT / BEAT2（语义 + 情绪标注、TRABot 同源）→ GENEA 2023（BVH + 音频 + 词级转写，节奏指标直接可算）→ ZEGGS（风格参考）→ TED 系列（讲者最多，但是视频估计姿态，先过质量门）。HiPHI 与 Bandai 没有语音，但能补真人参考姿态。";
+
+// results table
+const res = D.results; $("#rh").outerHTML = res.map(r => `<th>${esc(r.name)}</th>`).join("");
+const g = r => { const G = r.executability.grades, n = Math.max(1, r.clips); return `<div class="mix">${"ABCD".split("").map(k => `<span class="g${k}" style="width:${G[k]/n*100}%"></span>`).join("")}</div><span class="sub mono">A ${G.A} B ${G.B} C ${G.C} D ${G.D}</span>`; };
+const pct = x => x == null ? "—" : Math.round(x*100) + "%";
+const rows = [
+  ["片段数 / 动作时长", r => `${r.clips} / ${r.seconds_of_motion} s`],
+  ["重定向保真（方向角误差）", r => r.adaptation?.retarget_fidelity ? `均值 ${r.adaptation.retarget_fidelity.mean_deg}° · P95 ${r.adaptation.retarget_fidelity.p95_deg}°` : `<span class="sub">已在 A3 关节空间</span>`],
+  ["可执行性等级", g],
+  ["平均自动分", r => r.executability.mean_score],
+  ["力矩超限 / 自碰撞", r => `${pct(r.executability.torque_over_limit_share)} / ${pct(r.executability.self_collision_share)}`],
+  ["静止 / 抖动占比", r => `${pct(r.executability.static_share)} / ${pct(r.executability.jitter_share)}`],
+  ["L1 多样性（m）", r => r.diversity_l1],
+  ["语义：有参考的函数数", r => `${r.semantics.functions_with_refs} / 17`],
+  ["语义：自身标签通过", r => r.semantics.own_label_pass[1] ? `${r.semantics.own_label_pass[0]} / ${r.semantics.own_label_pass[1]}` : `<span class="sub">无标签</span>`],
+  ["语义：至少满足一个规格", r => pct(r.semantics.any_function_rate)],
+  ["关节覆盖（均值 / 最小）", r => `${pct(r.joint_coverage.mean_share)} / ${pct(r.joint_coverage.min_share)}`],
+  ["风格空间格", r => `${r.style.cells_covered} / ${r.style.cells_total}`],
+  ["BC（随机基线）", r => r.rhythm.BC == null ? `<span class="sub">无音频</span>` : `${r.rhythm.BC}（${r.rhythm.BC_chance}）`],
+  ["BAS 二值 / 高斯（随机基线）", r => r.rhythm.BAS_binary == null ? `<span class="sub">无音频</span>` : `${r.rhythm.BAS_binary} / ${r.rhythm.BAS_gaussian}（${r.rhythm.BAS_binary_chance}）`],
+];
+$("#res").innerHTML = rows.map(([k,f]) => `<tr><td><b>${k}</b></td>${res.map(r => `<td class="mono">${f(r)}</td>`).join("")}</tr>`).join("") +
+  (Object.keys(D.compare).length ? `<tr><td><b>FKD</b></td><td colspan="${res.length}" class="mono">${Object.entries(D.compare).map(([k,v]) => `${k} = ${v}`).join("；")}（同分布两半基线 ${D.self_checks.FKD_same_distribution_halves}）</td></tr>` : "");
+
+// semantic bars
+const cols = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)"];
+const fns = Object.keys(FN); const mx = Math.max(...res.flatMap(r => Object.values(r.semantics.verified_refs_per_function)), 1);
+$("#sem").innerHTML = fns.map(f => `<div class="br"><span>${FN[f]}</span><div style="display:flex;flex-direction:column;gap:1px">${res.map((r,i) => { const v = r.semantics.verified_refs_per_function[f]||0; return `<div class="t" style="height:5px"><span style="width:${v/mx*100}%;background:${cols[i]}"></span></div>`; }).join("")}</div><span class="mono sub">${res.map(r => r.semantics.verified_refs_per_function[f]||0).join(" / ")}</span></div>`).join("");
+$("#semlegend").innerHTML = res.map((r,i) => `<span><i style="background:${cols[i]}"></i>${esc(r.name)}</span>`).join("");
+
+// checks
+const C = D.self_checks || {};
+const ck = [["BC：节拍放在动作节拍上 / 随机", `${C.BC_beats_on_motion} / ${C.BC_random_beats}`], ["BAS 二值：重音放在 apex 上 / 随机", `${C.BAS_binary_on_apex} / ${C.BAS_binary_random}`], ["FKD：同分布两半", C.FKD_same_distribution_halves]];
+$("#checks").innerHTML = ck.map(([k,v]) => `<tr><td>${k}</td><td class="mono">${v}</td></tr>`).join("");
+$("#checknote").textContent = "BC 的随机基线很高：A3 录制里关节速度极小点很密，任何时刻附近都有一个“动作节拍”。所以看 BC 要看与随机基线的差距，或改用 BAS（只认手部速度峰）。";
+const A = D.adapter || {}; const bp = A.bvh_parser || {}, rt = A.a3_roundtrip || {};
+const ad = [["合成 BVH：左臂侧举 90° → A3 左肩外展", (bp["left_shoulder_roll_deg_rest/raised"]||[])[1] + "°"], ["合成 BVH：前臂前屈 90° → A3 肘", (bp["left_elbow_deg_rest/raised/bent"]||[])[2] + "°"],
+  ["A3 → 关键点 → 重定向 → A3：方向误差", rt.atoms ? `均值 ${(rt.atoms.reduce((a,x)=>a+x.mean_deg,0)/rt.atoms.length).toFixed(2)}°` : "—"], ["同上：关节角误差（不含腕翻转）", rt.atoms ? `均值 ${(rt.atoms.reduce((a,x)=>a+x.joint_err_mean_deg,0)/rt.atoms.length).toFixed(1)}° · P95 ${Math.max(...rt.atoms.map(x=>x.joint_err_p95_deg))}°` : "—"]];
+$("#adapter").innerHTML = ad.map(([k,v]) => `<tr><td>${k}</td><td class="mono">${v}</td></tr>`).join("");
+
+// protocol markdown (tiny renderer: headings, tables, lists, paragraphs, code)
+function md(src){ const L = src.split("\n"); let out = [], i = 0;
+  const inline = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+  while (i < L.length){ const l = L[i];
+    if (/^#{1,3} /.test(l)){ const n = l.match(/^#+/)[0].length; out.push(`<h${n}>${inline(l.slice(n+1))}</h${n}>`); i++; continue; }
+    if (/^\|/.test(l)){ const rows = []; while (i < L.length && /^\|/.test(L[i])){ rows.push(L[i]); i++; } const cells = r => r.split("|").slice(1,-1).map(c => c.trim());
+      const [h, , ...b] = rows; out.push(`<div class="tbl"><table><thead><tr>${cells(h).map(c=>`<th>${inline(c)}</th>`).join("")}</tr></thead><tbody>${b.map(r=>`<tr>${cells(r).map(c=>`<td>${inline(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`); continue; }
+    if (/^- /.test(l)){ const items = []; while (i < L.length && /^- /.test(L[i])){ items.push(L[i].slice(2)); i++; } out.push(`<ul>${items.map(x=>`<li>${inline(x)}</li>`).join("")}</ul>`); continue; }
+    if (l.trim() === ""){ i++; continue; }
+    const p = []; while (i < L.length && L[i].trim() !== "" && !/^(#|\||- )/.test(L[i])){ p.push(L[i]); i++; } out.push(`<p>${inline(p.join(" "))}</p>`); }
+  return out.join(""); }
+$("#proto").innerHTML = md(D.protocol);
+})();
+</script>

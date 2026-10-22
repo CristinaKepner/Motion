@@ -1,0 +1,120 @@
+{
+ "name": "beat:out/synthetic_dataset",
+ "clips": 6,
+ "seconds_of_motion": 48.0,
+ "executability": {
+  "grades": {
+   "A": 0,
+   "B": 6,
+   "C": 0,
+   "D": 0
+  },
+  "torque_over_limit_share": 0.0,
+  "self_collision_share": 0.0,
+  "static_share": 0.0,
+  "jitter_share": 0.0,
+  "mean_score": 78.0
+ },
+ "diversity_l1": 0.0562,
+ "semantics": {
+  "clips": 6,
+  "verified_refs_per_function": {
+   "emphasize": 6,
+   "enumerate": 6,
+   "contrast_compare": 5,
+   "refer_self": 0,
+   "refer_other": 0,
+   "refer_external": 0,
+   "depict_size_shape": 0,
+   "depict_direction_motion": 1,
+   "turn_open": 6,
+   "turn_yield": 3,
+   "greet_farewell": 0,
+   "thank": 0,
+   "affirm": 0,
+   "deny": 6,
+   "certainty": 0,
+   "uncertainty": 0,
+   "enthusiasm": 0
+  },
+  "functions_with_refs": 7,
+  "any_function_rate": 1.0,
+  "own_label_pass": [
+   0,
+   0
+  ]
+ },
+ "joint_coverage": {
+  "mean_share": 0.222,
+  "min_share": 0.0,
+  "per_joint": [
+   0.053,
+   0.012,
+   0.142,
+   0.254,
+   0.503,
+   0.243,
+   0.535,
+   0.0,
+   0.153,
+   0.087,
+   0.25,
+   0.455,
+   0.255,
+   0.599,
+   0.0,
+   0.159,
+   0.07
+  ]
+ },
+ "style": {
+  "cells_covered": 2,
+  "cells_total": 16,
+  "grid": [
+   [
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    2,
+    0
+   ],
+   [
+    0,
+    0,
+    4,
+    0
+   ]
+  ]
+ },
+ "rhythm": {
+  "clips_with_audio": 6,
+  "BC": 0.975,
+  "BAS_binary": 1.0,
+  "BAS_gaussian": 0.958,
+  "BC_chance": 0.94,
+  "BAS_binary_chance": 0.861
+ },
+ "eval_seconds": 7.8,
+ "adaptation": {
+  "files": 3,
+  "retarget_fidelity": {
+   "mean_deg": 0.01,
+   "p95_deg": 0.01,
+   "upper_arm_deg": 0.03,
+   "forearm_deg": 0.01,
+   "hand_deg": 0.0
+  },
+  "seconds": 190.6
+ }
+}

@@ -1,0 +1,487 @@
+{
+ "dataset-1_bye_feminine_001.bvh": {
+  "content": "bye",
+  "style": "feminine",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bye_active_001.bvh": {
+  "content": "bye",
+  "style": "active",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-left-hand_elderly_040.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "elderly",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_active_014.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_youthful_046.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "youthful",
+  "label": "enthusiasm"
+ },
+ "dataset-2_wave-right-hand_feminine_002.bvh": {
+  "content": "wave-right-hand",
+  "style": "feminine",
+  "label": "greet_farewell"
+ },
+ "dataset-2_wave-left-hand_masculine_016.bvh": {
+  "content": "wave-left-hand",
+  "style": "masculine",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bye_sad_001.bvh": {
+  "content": "bye",
+  "style": "sad",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-left-hand_feminine_001.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "feminine",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_active_097.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-2_wave-left-hand_exhausted_019.bvh": {
+  "content": "wave-left-hand",
+  "style": "exhausted",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bye_chimpira_001.bvh": {
+  "content": "bye",
+  "style": "chimpira",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-left-hand_masculine_048.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "masculine",
+  "label": "enthusiasm"
+ },
+ "dataset-1_guide_childish_001.bvh": {
+  "content": "guide",
+  "style": "childish",
+  "label": "refer_external"
+ },
+ "dataset-1_bow_angry_001.bvh": {
+  "content": "bow",
+  "style": "angry",
+  "label": "thank"
+ },
+ "dataset-1_bye_angry_001.bvh": {
+  "content": "bye",
+  "style": "angry",
+  "label": "greet_farewell"
+ },
+ "dataset-1_call_normal_001.bvh": {
+  "content": "call",
+  "style": "normal",
+  "label": "refer_other"
+ },
+ "dataset-1_bye_old_001.bvh": {
+  "content": "bye",
+  "style": "old",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bow_happy_001.bvh": {
+  "content": "bow",
+  "style": "happy",
+  "label": "thank"
+ },
+ "dataset-1_byebye_normal_001.bvh": {
+  "content": "byebye",
+  "style": "normal",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bow_masculinity_001.bvh": {
+  "content": "bow",
+  "style": "masculinity",
+  "label": "thank"
+ },
+ "dataset-1_bye_proud_001.bvh": {
+  "content": "bye",
+  "style": "proud",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_proud_001.bvh": {
+  "content": "guide",
+  "style": "proud",
+  "label": "refer_external"
+ },
+ "dataset-2_raise-up-right-hand_active_012.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-2_wave-right-hand_elderly_007.bvh": {
+  "content": "wave-right-hand",
+  "style": "elderly",
+  "label": "greet_farewell"
+ },
+ "dataset-2_wave-left-hand_youthful_027.bvh": {
+  "content": "wave-left-hand",
+  "style": "youthful",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_childish_001.bvh": {
+  "content": "byebye",
+  "style": "childish",
+  "label": "greet_farewell"
+ },
+ "dataset-1_respond_normal_001.bvh": {
+  "content": "respond",
+  "style": "normal",
+  "label": "affirm"
+ },
+ "dataset-2_raise-up-right-hand_exhausted_028.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "exhausted",
+  "label": "enthusiasm"
+ },
+ "dataset-1_byebye_old_001.bvh": {
+  "content": "byebye",
+  "style": "old",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_angry_001.bvh": {
+  "content": "guide",
+  "style": "angry",
+  "label": "refer_external"
+ },
+ "dataset-1_bye_normal_001.bvh": {
+  "content": "bye",
+  "style": "normal",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_active_001.bvh": {
+  "content": "guide",
+  "style": "active",
+  "label": "refer_external"
+ },
+ "dataset-1_call_normal_002.bvh": {
+  "content": "call",
+  "style": "normal",
+  "label": "refer_other"
+ },
+ "dataset-2_wave-right-hand_exhausted_030.bvh": {
+  "content": "wave-right-hand",
+  "style": "exhausted",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bow_proud_001.bvh": {
+  "content": "bow",
+  "style": "proud",
+  "label": "thank"
+ },
+ "dataset-1_bow_active_001.bvh": {
+  "content": "bow",
+  "style": "active",
+  "label": "thank"
+ },
+ "dataset-1_guide_giant_001.bvh": {
+  "content": "guide",
+  "style": "giant",
+  "label": "refer_external"
+ },
+ "dataset-1_bye_giant_001.bvh": {
+  "content": "bye",
+  "style": "giant",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_masculinity_001.bvh": {
+  "content": "byebye",
+  "style": "masculinity",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_tired_001.bvh": {
+  "content": "byebye",
+  "style": "tired",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_chimpira_001.bvh": {
+  "content": "guide",
+  "style": "chimpira",
+  "label": "refer_external"
+ },
+ "dataset-1_guide_tired_001.bvh": {
+  "content": "guide",
+  "style": "tired",
+  "label": "refer_external"
+ },
+ "dataset-2_raise-up-left-hand_youthful_014.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "youthful",
+  "label": "enthusiasm"
+ },
+ "dataset-1_bow_chimpira_001.bvh": {
+  "content": "bow",
+  "style": "chimpira",
+  "label": "thank"
+ },
+ "dataset-2_raise-up-both-hands_masculine_045.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "masculine",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-right-hand_active_099.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-1_bye_tired_001.bvh": {
+  "content": "bye",
+  "style": "tired",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_not-confident_001.bvh": {
+  "content": "guide",
+  "style": "not-confident",
+  "label": "refer_external"
+ },
+ "dataset-1_bow_musical_001.bvh": {
+  "content": "bow",
+  "style": "musical",
+  "label": "thank"
+ },
+ "dataset-1_bow_tired_001.bvh": {
+  "content": "bow",
+  "style": "tired",
+  "label": "thank"
+ },
+ "dataset-1_byebye_sad_001.bvh": {
+  "content": "byebye",
+  "style": "sad",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_angry_001.bvh": {
+  "content": "byebye",
+  "style": "angry",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_proud_001.bvh": {
+  "content": "byebye",
+  "style": "proud",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-right-hand_normal_076.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "normal",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-right-hand_youthful_012.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "youthful",
+  "label": "enthusiasm"
+ },
+ "dataset-1_bow_childish_001.bvh": {
+  "content": "bow",
+  "style": "childish",
+  "label": "thank"
+ },
+ "dataset-1_guide_musical_001.bvh": {
+  "content": "guide",
+  "style": "musical",
+  "label": "refer_external"
+ },
+ "dataset-1_bye_musical_001.bvh": {
+  "content": "bye",
+  "style": "musical",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-both-hands_masculine_046.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "masculine",
+  "label": "enthusiasm"
+ },
+ "dataset-2_wave-left-hand_active_030.bvh": {
+  "content": "wave-left-hand",
+  "style": "active",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_sad_001.bvh": {
+  "content": "guide",
+  "style": "sad",
+  "label": "refer_external"
+ },
+ "dataset-1_byebye_happy_001.bvh": {
+  "content": "byebye",
+  "style": "happy",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-both-hands_feminine_022.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "feminine",
+  "label": "enthusiasm"
+ },
+ "dataset-1_guide_old_001.bvh": {
+  "content": "guide",
+  "style": "old",
+  "label": "refer_external"
+ },
+ "dataset-1_byebye_feminine_001.bvh": {
+  "content": "byebye",
+  "style": "feminine",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-both-hands_feminine_026.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "feminine",
+  "label": "enthusiasm"
+ },
+ "dataset-1_byebye_giant_001.bvh": {
+  "content": "byebye",
+  "style": "giant",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_active_001.bvh": {
+  "content": "byebye",
+  "style": "active",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_masculinity_001.bvh": {
+  "content": "guide",
+  "style": "masculinity",
+  "label": "refer_external"
+ },
+ "dataset-1_guide_normal_001.bvh": {
+  "content": "guide",
+  "style": "normal",
+  "label": "refer_external"
+ },
+ "dataset-1_bow_old_001.bvh": {
+  "content": "bow",
+  "style": "old",
+  "label": "thank"
+ },
+ "dataset-1_bye_masculinity_001.bvh": {
+  "content": "bye",
+  "style": "masculinity",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_happy_001.bvh": {
+  "content": "guide",
+  "style": "happy",
+  "label": "refer_external"
+ },
+ "dataset-1_bow_giant_001.bvh": {
+  "content": "bow",
+  "style": "giant",
+  "label": "thank"
+ },
+ "dataset-1_bow_normal_001.bvh": {
+  "content": "bow",
+  "style": "normal",
+  "label": "thank"
+ },
+ "dataset-1_bow_sad_001.bvh": {
+  "content": "bow",
+  "style": "sad",
+  "label": "thank"
+ },
+ "dataset-1_bye_childish_001.bvh": {
+  "content": "bye",
+  "style": "childish",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bye_happy_001.bvh": {
+  "content": "bye",
+  "style": "happy",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-right-hand_elderly_018.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "elderly",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-right-hand_masculine_022.bvh": {
+  "content": "raise-up-right-hand",
+  "style": "masculine",
+  "label": "enthusiasm"
+ },
+ "dataset-1_byebye_musical_001.bvh": {
+  "content": "byebye",
+  "style": "musical",
+  "label": "greet_farewell"
+ },
+ "dataset-1_byebye_not-confident_001.bvh": {
+  "content": "byebye",
+  "style": "not-confident",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bow_not-confident_001.bvh": {
+  "content": "bow",
+  "style": "not-confident",
+  "label": "thank"
+ },
+ "dataset-2_raise-up-both-hands_exhausted_011.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "exhausted",
+  "label": "enthusiasm"
+ },
+ "dataset-2_wave-both-hands_masculine_008.bvh": {
+  "content": "wave-both-hands",
+  "style": "masculine",
+  "label": "greet_farewell"
+ },
+ "dataset-2_wave-right-hand_masculine_011.bvh": {
+  "content": "wave-right-hand",
+  "style": "masculine",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bye_not-confident_001.bvh": {
+  "content": "bye",
+  "style": "not-confident",
+  "label": "greet_farewell"
+ },
+ "dataset-2_raise-up-both-hands_feminine_014.bvh": {
+  "content": "raise-up-both-hands",
+  "style": "feminine",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_feminine_056.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "feminine",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_active_080.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-1_byebye_chimpira_001.bvh": {
+  "content": "byebye",
+  "style": "chimpira",
+  "label": "greet_farewell"
+ },
+ "dataset-1_guide_feminine_001.bvh": {
+  "content": "guide",
+  "style": "feminine",
+  "label": "refer_external"
+ },
+ "dataset-2_wave-left-hand_feminine_021.bvh": {
+  "content": "wave-left-hand",
+  "style": "feminine",
+  "label": "greet_farewell"
+ },
+ "dataset-1_bow_feminine_001.bvh": {
+  "content": "bow",
+  "style": "feminine",
+  "label": "thank"
+ },
+ "dataset-2_raise-up-left-hand_active_100.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "active",
+  "label": "enthusiasm"
+ },
+ "dataset-2_raise-up-left-hand_feminine_015.bvh": {
+  "content": "raise-up-left-hand",
+  "style": "feminine",
+  "label": "enthusiasm"
+ }
+}

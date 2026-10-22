@@ -1,0 +1,125 @@
+{
+ "bvh_parser": {
+  "frames": 5,
+  "fps": 30.000300003000028,
+  "joints": 28,
+  "landmarks": {
+   "hips": "Hips",
+   "chest": "Spine3",
+   "neck": "Neck",
+   "l_shoulder": "LeftArm",
+   "l_elbow": "LeftForeArm",
+   "l_wrist": "LeftHand",
+   "l_hand_end": "LeftHandMiddle1",
+   "r_shoulder": "RightArm",
+   "r_elbow": "RightForeArm",
+   "r_wrist": "RightHand",
+   "r_hand_end": "RightHandMiddle1"
+  },
+  "rest_upper_arm_dir": [
+   0.0,
+   -28.0,
+   0.0
+  ],
+  "raised_upper_arm_dir": [
+   28.0,
+   0.0,
+   0.0
+  ],
+  "fidelity": {
+   "mean_deg": 2.17,
+   "p95_deg": 8.41,
+   "upper_arm_deg": 6.12,
+   "forearm_deg": 0.39,
+   "hand_deg": 0.01
+  },
+  "left_shoulder_roll_deg_rest/raised": [
+   -3.9,
+   88.6
+  ],
+  "left_elbow_deg_rest/raised/bent": [
+   90.6,
+   88.3,
+   -1.9
+  ],
+  "right_shoulder_roll_deg_rest/raised": [
+   3.9,
+   -88.6
+  ],
+  "waist_pitch_deg_rest/lean": [
+   -0.0,
+   -12.3
+  ]
+ },
+ "a3_roundtrip": {
+  "atoms": [
+   {
+    "atom": "058_punch_front_alternating__00.76-03.28",
+    "frames": 37,
+    "joint_err_mean_deg": 1.88,
+    "joint_err_p95_deg": 8.49,
+    "mean_deg": 0.05,
+    "p95_deg": 0.21,
+    "upper_arm_deg": 0.09,
+    "forearm_deg": 0.04,
+    "hand_deg": 0.03
+   },
+   {
+    "atom": "058_punch_front_alternating__03.28-06.12",
+    "frames": 31,
+    "joint_err_mean_deg": 2.23,
+    "joint_err_p95_deg": 9.73,
+    "mean_deg": 0.03,
+    "p95_deg": 0.09,
+    "upper_arm_deg": 0.04,
+    "forearm_deg": 0.03,
+    "hand_deg": 0.02
+   },
+   {
+    "atom": "058_punch_front_alternating__06.12-07.68",
+    "frames": 23,
+    "joint_err_mean_deg": 3.82,
+    "joint_err_p95_deg": 13.03,
+    "mean_deg": 0.03,
+    "p95_deg": 0.1,
+    "upper_arm_deg": 0.04,
+    "forearm_deg": 0.03,
+    "hand_deg": 0.02
+   },
+   {
+    "atom": "058_punch_front_alternating__07.68-09.60",
+    "frames": 24,
+    "joint_err_mean_deg": 2.04,
+    "joint_err_p95_deg": 10.13,
+    "mean_deg": 0.02,
+    "p95_deg": 0.09,
+    "upper_arm_deg": 0.03,
+    "forearm_deg": 0.02,
+    "hand_deg": 0.02
+   },
+   {
+    "atom": "063_twist_torso_alternating__11.04-13.60",
+    "frames": 26,
+    "joint_err_mean_deg": 1.14,
+    "joint_err_p95_deg": 5.27,
+    "mean_deg": 0.02,
+    "p95_deg": 0.03,
+    "upper_arm_deg": 0.03,
+    "forearm_deg": 0.02,
+    "hand_deg": 0.01
+   },
+   {
+    "atom": "063_twist_torso_alternating__14.36-17.08",
+    "frames": 27,
+    "joint_err_mean_deg": 1.16,
+    "joint_err_p95_deg": 5.56,
+    "mean_deg": 0.02,
+    "p95_deg": 0.04,
+    "upper_arm_deg": 0.03,
+    "forearm_deg": 0.02,
+    "hand_deg": 0.01
+   }
+  ],
+  "seconds": 14.9
+ }
+}
