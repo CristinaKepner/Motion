@@ -1,0 +1,124 @@
+<style>
+:root{--bg:#0f1115;--card:#171a21;--line:#262b35;--fg:#e8eaf0;--mute:#9aa3b2;--acc:#6aa7ff;--ok:#49c98a;--bad:#ff6b6b;--warn:#ffb347;font-family:-apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif}
+body{background:var(--bg);color:var(--fg);margin:0;padding:18px 20px 60px;font-size:14px;line-height:1.5}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:17px;margin:28px 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.sub{color:var(--mute);margin-bottom:14px}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.stat b{display:block;font-size:22px;font-weight:600}.stat span{color:var(--mute);font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}th{color:var(--mute);font-weight:500;position:sticky;top:0;background:var(--bg)}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+img{max-width:100%;border-radius:8px;border:1px solid var(--line)}
+.row{display:flex;gap:16px;flex-wrap:wrap}.row>*{flex:1 1 420px}
+.lane{position:relative;height:44px;background:var(--card);border:1px solid var(--line);border-radius:6px;margin:6px 0}
+.lane .lbl{position:absolute;left:6px;top:2px;font-size:11px;color:var(--mute)}
+.ev{position:absolute;top:16px;height:22px;border-radius:4px;background:#2b4c7e;border:1px solid var(--acc);font-size:11px;padding:2px 4px;white-space:nowrap;overflow:hidden;cursor:pointer}
+.ev.late{border-color:var(--warn);background:#5a3c12}.ev.stroke{background:var(--acc);width:2px;padding:0;border:0;top:12px;height:30px}
+.cursor{position:absolute;top:0;bottom:0;width:2px;background:var(--bad);pointer-events:none}
+.bars{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;height:110px;align-items:end}
+.bar{background:var(--acc);border-radius:3px 3px 0 0;position:relative}.bar i{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;color:var(--mute);font-style:normal}
+.bar b{position:absolute;top:-16px;left:0;right:0;text-align:center;font-size:10px;font-weight:500}
+input[type=range]{width:100%}button{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}button:hover{border-color:var(--acc)}
+.chips span{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1px 9px;margin:2px;font-size:12px}
+details{margin:6px 0}summary{cursor:pointer;color:var(--mute)}
+.small{font-size:12px;color:var(--mute)}
+</style>
+<h1>A3 灵巧手动作库 · 流式融合 agent</h1>
+<div class="sub" id="sub"></div>
+<div class="stats" id="stats"></div>
+
+<h2>1. 回放与寻址（agent.at(t)）</h2>
+<div class="row">
+  <div>
+    <div id="lanes"></div>
+    <div style="display:flex;gap:10px;align-items:center;margin:8px 0">
+      <input type="range" id="t" min="0" max="15" step="0.0333" value="5">
+      <span class="mono" id="tv" style="min-width:70px"></span>
+      <button id="play">▶ 播放</button>
+      <button id="seek5">回放第五秒</button>
+    </div>
+    <div class="row">
+      <div><div class="small">左手 O10（0–4096）</div><div class="bars" id="barsL"></div></div>
+      <div><div class="small">右手 O10（0–4096）</div><div class="bars" id="barsR"></div></div>
+    </div>
+    <div id="active" class="small" style="margin-top:26px"></div>
+  </div>
+  <div>
+    <img id="seekimg" alt="seek 5 s">
+    <div class="small" id="seekcap"></div>
+  </div>
+</div>
+
+<h2>2. 事件响应时间</h2>
+<div style="overflow:auto;max-height:420px"><table id="evtab"></table></div>
+
+<h2>3. 关键帧（demo.mp4 的 12 个时刻）</h2>
+<img id="sheet" alt="contact sheet">
+
+<h2>4. 姿态库（21 姿态 × 2 侧 × 7 风格 = 294 atom）</h2>
+<img id="poses" alt="poses">
+<div style="overflow:auto;max-height:520px;margin-top:10px"><table id="posetab"></table></div>
+
+<h2>5. 风格属性（每个属性独立可调）</h2>
+<div class="row"><div><table id="styletab"></table></div><div><img id="curves" alt="style curves"></div></div>
+<div id="fails" style="margin-top:10px"></div>
+
+<h2>6. 硬件与映射</h2>
+<div id="hw" class="small"></div>
+
+<script>
+const D = JSON.parse(document.getElementById('hand-data').textContent);
+const CH = D.lib.o10_channels, SHORT = CH.map(c=>c.split('_')[0].slice(0,3)+(c.includes('bent')?'B':c.includes('wig')?'W':'R'));
+const tl = D.timeline, log = D.stream; // stream: {t:[], L:[[10]], R:[[10]], act:[[L,R]]}
+document.getElementById('sub').textContent = `A3 官方模型 + 智元 OmniHand（O10 10 通道/手）· ${tl.events.length} 个事件 · ${log.t.length} 个 30 Hz tick · 生成于 ${D.generated}`;
+const st = [['atom', D.lib.n_atoms,'动作库 atom'],['姿态', Object.keys(D.lib.poses).length,'均通过名实核对'],['风格化后不符', D.lib.n_spec_fail_styled,'需复核'],['平均响应', tl.response_ms.mean+' ms','到达→落拍'],['最大迟到', tl.response_ms.max_late_ms+' ms','提速仍不够'],['规划耗时', tl.response_ms.plan_latency_ms_mean+' ms','每事件'],['寻址 at(5 s)', D.seek.seek_ms+' ms','不走顺序回放']];
+document.getElementById('stats').innerHTML = st.map(s=>`<div class="stat"><span>${s[0]}</span><b>${s[1]}</b><span>${s[2]}</span></div>`).join('');
+for (const [id,k] of [['seekimg','seek'],['sheet','sheet'],['poses','poses'],['curves','curves']]) document.getElementById(id).src = D.img[k];
+document.getElementById('seekcap').textContent = `t = 5.00 s：${D.seek.active.L?'左手 '+D.seek.active.L:''} ${D.seek.active.R?'右手 '+D.seek.active.R:''}（${D.seek.seek_ms} ms 求值）`;
+
+// lanes
+const T = tl.t_end; const lanes = document.getElementById('lanes');
+for (const side of ['L','R']) {
+  const lane = document.createElement('div'); lane.className='lane'; lane.innerHTML=`<span class="lbl">${side==='L'?'左手':'右手'}</span>`;
+  for (const p of tl[side]) {
+    const e = document.createElement('div'); e.className='ev'+(p.late_ms>0?' late':'');
+    e.style.left=(p.t_start/T*100)+'%'; e.style.width=((p.t_end-p.t_start)/T*100)+'%';
+    e.textContent = `${p.text} ${p.atom.style}`; e.title=`${p.event_id} ${p.t_start.toFixed(2)}–${p.t_end.toFixed(2)} s  resp ${p.late_ms>0?'late '+p.late_ms+' ms':'on time'}`;
+    e.onclick=()=>setT(p.t_start); lane.appendChild(e);
+    if (p.t_target!=null){const s=document.createElement('div');s.className='ev stroke';s.style.left=(p.t_target/T*100)+'%';lane.appendChild(s);}
+  }
+  const c=document.createElement('div'); c.className='cursor'; c.id='cur'+side; lane.appendChild(c); lanes.appendChild(c.parentNode);
+}
+const rng=document.getElementById('t'); rng.max=T;
+function bars(id, v){document.getElementById(id).innerHTML = v.map((x,i)=>`<div class="bar" style="height:${x/4096*100}%"><b>${x}</b><i>${SHORT[i]}</i></div>`).join('');}
+function setT(t){rng.value=t; draw();}
+function draw(){
+  const t=+rng.value; document.getElementById('tv').textContent=t.toFixed(2)+' s';
+  let i = Math.min(log.t.length-1, Math.round(t*30));
+  bars('barsL', log.L[i]); bars('barsR', log.R[i]);
+  for (const s of ['L','R']) document.getElementById('cur'+s).style.left=(t/T*100)+'%';
+  const a=log.act[i]; document.getElementById('active').textContent = `活动事件  左: ${a[0]||'—'}   右: ${a[1]||'—'}`;
+}
+rng.oninput=draw; document.getElementById('seek5').onclick=()=>setT(5.0);
+let timer=null; document.getElementById('play').onclick=function(){ if(timer){clearInterval(timer);timer=null;this.textContent='▶ 播放';return;} this.textContent='⏸ 暂停'; timer=setInterval(()=>{let t=+rng.value+1/30; if(t>T)t=0; setT(t);},1000/30); };
+draw();
+
+// event table
+const et=document.getElementById('evtab');
+et.innerHTML='<tr><th>事件</th><th>手</th><th>文本</th><th>姿态/风格</th><th>到达 s</th><th>目标 s</th><th>开始 s</th><th>落拍 s</th><th>响应 ms</th><th>迟到 ms</th><th>提速</th><th>规划 ms</th></tr>'+
+ tl.events.map(e=>`<tr><td class="mono">${e.event.event_id}</td><td>${e.event.side}</td><td>${e.event.text}</td><td>${e.event.hand_label} / ${e.event.style}</td><td>${e.event.t_arrive.toFixed(2)}</td><td>${e.event.t_target==null?'—':e.event.t_target.toFixed(2)}</td><td>${e.t_start.toFixed(3)}</td><td>${e.stroke_lands.toFixed(3)}</td><td>${e.response_ms}</td><td class="${e.late_ms>0?'warn':'ok'}">${e.late_ms}</td><td>×${e.tempo_boost}</td><td>${e.latency_ms}</td></tr>`).join('');
+
+// pose table
+const pt=document.getElementById('posetab');
+pt.innerHTML='<tr><th>label</th><th>中文</th><th>规格</th><th class="mono">O10（'+CH.join(' ')+'）</th><th>风格化后通过</th></tr>'+
+ Object.entries(D.lib.poses).map(([k,p])=>{const at=D.lib.atoms.filter(a=>a.label===k);const pass=at.filter(a=>a.annotation.spec_pass_styled).length;
+  return `<tr><td class="mono">${k}</td><td>${p.zh}</td><td class="small">${Object.entries(p.spec).map(([s,f])=>s+':'+f.join(',')).join('  ')}</td><td class="mono">${p.o10.join(' ')}</td><td class="${pass===at.length?'ok':'warn'}">${pass}/${at.length}</td></tr>`}).join('');
+
+// styles
+const stt=document.getElementById('styletab'); const keys=['tension','spread','tempo','snap','hold','anticipation','ripple_ms','thumb_lead_ms','settle'];
+stt.innerHTML='<tr><th>风格</th>'+keys.map(k=>`<th>${k}</th>`).join('')+'</tr>'+Object.entries(D.lib.styles).map(([k,s])=>`<tr><td>${k} ${s.zh}</td>${keys.map(q=>`<td class="mono">${s[q]==null?'·':s[q]}</td>`).join('')}</tr>`).join('');
+const fails=D.lib.atoms.filter(a=>!a.annotation.spec_pass_styled);
+document.getElementById('fails').innerHTML = `<details><summary>风格化后名实不符的 ${fails.length} 个 atom（规格核对抓出）</summary><div class="chips">`+fails.map(a=>`<span>${a.atom_id}: ${Object.entries(a.annotation.spec_checks).filter(([k,v])=>!v[0]).map(([k,v])=>k+'='+v[1]).join(', ')}</span>`).join('')+'</div></details>';
+document.getElementById('hw').innerHTML = `<p>真机：AgiBot O10 手（<code>agi_o10_hand.proto</code>），每侧 10 通道 0–4096。仿真：X2-Ultra OmniHand URDF（16 关节/手）嫁接到 A3 <code>wrist_yaw_Link</code>，bent 通道联动 pip→dip（1.833/1.571），拇指 bent 联动 mcp→pip→dip。</p><p>校准说明：${D.lib.calibration_note}</p>`;
+</script>

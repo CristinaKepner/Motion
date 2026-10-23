@@ -1,0 +1,3394 @@
+{
+ "L": [
+  {
+   "event_id": "e1",
+   "side": "L",
+   "t_start": 1.9302,
+   "t_end": 2.9738,
+   "latency_ms": 0.1538,
+   "late_ms": 0.0,
+   "tempo_boost": 1.0376,
+   "t_target": 2.2,
+   "text": "一",
+   "atom": {
+    "atom_id": "one_L_neutral",
+    "label": "one",
+    "side": "L",
+    "duration": 1.044,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2048,
+       0,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 0.72,
+      "phase": "hold",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2048,
+       0,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.044,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.0376281622717487
+    },
+    "annotation": {
+     "label": "one",
+     "label_zh": "一",
+     "side": "L",
+     "spec": {
+      "ext": [
+       "index"
+      ],
+      "curl": [
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.27
+      },
+      {
+       "name": "hold",
+       "t": 0.72
+      },
+      {
+       "name": "release",
+       "t": 1.044
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.0376281622717487
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e1",
+     "text": "一",
+     "t_arrive": 1.85,
+     "t_target": 2.2
+    }
+   }
+  },
+  {
+   "event_id": "e3",
+   "side": "L",
+   "t_start": 3.7301,
+   "t_end": 4.6239,
+   "latency_ms": 0.0672,
+   "late_ms": 0.0,
+   "tempo_boost": 1.0373,
+   "t_target": 4.0,
+   "text": "等于",
+   "atom": {
+    "atom_id": "flat_L_neutral",
+    "label": "flat",
+    "side": "L",
+    "duration": 0.894,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       2458,
+       410,
+       2048,
+       0,
+       0,
+       2048,
+       0,
+       2048,
+       0
+      ]
+     },
+     {
+      "t": 0.57,
+      "phase": "hold",
+      "o10": [
+       2867,
+       2458,
+       410,
+       2048,
+       0,
+       0,
+       2048,
+       0,
+       2048,
+       0
+      ]
+     },
+     {
+      "t": 0.894,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.037295043048434
+    },
+    "annotation": {
+     "label": "flat",
+     "label_zh": "平掌",
+     "side": "L",
+     "spec": {
+      "ext": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.27
+      },
+      {
+       "name": "hold",
+       "t": 0.57
+      },
+      {
+       "name": "release",
+       "t": 0.894
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.037295043048434
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e3",
+     "text": "等于",
+     "t_arrive": 3.65,
+     "t_target": 4.0
+    }
+   }
+  },
+  {
+   "event_id": "e4",
+   "side": "L",
+   "t_start": 4.6304,
+   "t_end": 6.1236,
+   "latency_ms": 0.3636,
+   "late_ms": 0.0,
+   "tempo_boost": 1.0384,
+   "t_target": 4.9,
+   "text": "二",
+   "atom": {
+    "atom_id": "two_L_neutral",
+    "label": "two",
+    "side": "L",
+    "duration": 1.493,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2867,
+       0,
+       0,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.17,
+      "phase": "hold",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2867,
+       0,
+       0,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.493,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.0384355597426158
+    },
+    "annotation": {
+     "label": "two",
+     "label_zh": "二",
+     "side": "L",
+     "spec": {
+      "ext": [
+       "index",
+       "middle"
+      ],
+      "curl": [
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.27
+      },
+      {
+       "name": "hold",
+       "t": 1.17
+      },
+      {
+       "name": "release",
+       "t": 1.493
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.0384355597426158
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e4",
+     "text": "二",
+     "t_arrive": 4.550000000000001,
+     "t_target": 4.9
+    }
+   }
+  },
+  {
+   "event_id": "rps0",
+   "side": "L",
+   "t_start": 6.3801,
+   "t_end": 6.9804,
+   "latency_ms": 0.0777,
+   "late_ms": 0.0,
+   "tempo_boost": 1.6976,
+   "t_target": 6.6,
+   "text": "石头",
+   "atom": {
+    "atom_id": "rock_L_calm",
+    "label": "rock",
+    "side": "L",
+    "duration": 0.884,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       2703,
+       3031,
+       4096,
+       2048,
+       4096,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       2695,
+       3019,
+       4059,
+       2048,
+       4059,
+       4059,
+       2048,
+       4059,
+       2048,
+       4059
+      ]
+     },
+     {
+      "t": 0.884,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "calm",
+    "style_ops": {
+     "tension": 0.05,
+     "spread": -0.2,
+     "tempo": 1.2731769298819293,
+     "hold": 0.35,
+     "ripple_ms": 40,
+     "settle": 0.2
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "L",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.884
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "calm",
+     "style_ops": {
+      "tension": 0.05,
+      "spread": -0.2,
+      "tempo": 1.2731769298819293,
+      "hold": 0.35,
+      "ripple_ms": 40,
+      "settle": 0.2
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps0",
+     "text": "石头",
+     "t_arrive": 6.3,
+     "t_target": 6.6
+    }
+   }
+  },
+  {
+   "event_id": "rps1",
+   "side": "L",
+   "t_start": 6.9804,
+   "t_end": 7.5804,
+   "latency_ms": 0.3971,
+   "late_ms": 0.0,
+   "tempo_boost": 1.7,
+   "t_target": 7.2,
+   "text": "剪刀",
+   "atom": {
+    "atom_id": "rock_L_calm",
+    "label": "rock",
+    "side": "L",
+    "duration": 0.883,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2696,
+       3019,
+       4059,
+       2048,
+       4059,
+       4060,
+       2048,
+       4063,
+       2048,
+       4068
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       2703,
+       3031,
+       4096,
+       2048,
+       4096,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       2695,
+       3019,
+       4059,
+       2048,
+       4059,
+       4059,
+       2048,
+       4059,
+       2048,
+       4059
+      ]
+     },
+     {
+      "t": 0.883,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "calm",
+    "style_ops": {
+     "tension": 0.05,
+     "spread": -0.2,
+     "tempo": 1.2750289085479893,
+     "hold": 0.35,
+     "ripple_ms": 40,
+     "settle": 0.2
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "L",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.883
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "calm",
+     "style_ops": {
+      "tension": 0.05,
+      "spread": -0.2,
+      "tempo": 1.2750289085479893,
+      "hold": 0.35,
+      "ripple_ms": 40,
+      "settle": 0.2
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps1",
+     "text": "剪刀",
+     "t_arrive": 6.8999999999999995,
+     "t_target": 7.199999999999999
+    }
+   }
+  },
+  {
+   "event_id": "rps2",
+   "side": "L",
+   "t_start": 7.5804,
+   "t_end": 8.1803,
+   "latency_ms": 0.3912,
+   "late_ms": 0.0,
+   "tempo_boost": 1.7,
+   "t_target": 7.8,
+   "text": "布",
+   "atom": {
+    "atom_id": "rock_L_calm",
+    "label": "rock",
+    "side": "L",
+    "duration": 0.883,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2696,
+       3019,
+       4059,
+       2048,
+       4059,
+       4060,
+       2048,
+       4063,
+       2048,
+       4068
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       2703,
+       3031,
+       4096,
+       2048,
+       4096,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       2695,
+       3019,
+       4059,
+       2048,
+       4059,
+       4059,
+       2048,
+       4059,
+       2048,
+       4059
+      ]
+     },
+     {
+      "t": 0.883,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "calm",
+    "style_ops": {
+     "tension": 0.05,
+     "spread": -0.2,
+     "tempo": 1.2749946072275793,
+     "hold": 0.35,
+     "ripple_ms": 40,
+     "settle": 0.2
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "L",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.883
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "calm",
+     "style_ops": {
+      "tension": 0.05,
+      "spread": -0.2,
+      "tempo": 1.2749946072275793,
+      "hold": 0.35,
+      "ripple_ms": 40,
+      "settle": 0.2
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps2",
+     "text": "布",
+     "t_arrive": 7.5,
+     "t_target": 7.8
+    }
+   }
+  },
+  {
+   "event_id": "rps_reveal",
+   "side": "L",
+   "t_start": 8.1803,
+   "t_end": 10.2136,
+   "latency_ms": 0.3213,
+   "late_ms": 0.0,
+   "tempo_boost": 1.6995,
+   "t_target": 8.4,
+   "text": "出布",
+   "atom": {
+    "atom_id": "paper_L_calm",
+    "label": "paper",
+    "side": "L",
+    "duration": 2.033,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2696,
+       3019,
+       4059,
+       2048,
+       4059,
+       4060,
+       2048,
+       4063,
+       2048,
+       4068
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       2540,
+       1720,
+       205,
+       2867,
+       205,
+       205,
+       1229,
+       205,
+       901,
+       205
+      ]
+     },
+     {
+      "t": 1.77,
+      "phase": "hold",
+      "o10": [
+       2534,
+       1724,
+       215,
+       2857,
+       215,
+       215,
+       1239,
+       215,
+       915,
+       215
+      ]
+     },
+     {
+      "t": 2.033,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "calm",
+    "style_ops": {
+     "tension": 0.05,
+     "spread": -0.2,
+     "tempo": 1.2745889083197883,
+     "hold": 0.35,
+     "ripple_ms": 40,
+     "settle": 0.2
+    },
+    "annotation": {
+     "label": "paper",
+     "label_zh": "布",
+     "side": "L",
+     "spec": {
+      "ext": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 1.77
+      },
+      {
+       "name": "release",
+       "t": 2.033
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "calm",
+     "style_ops": {
+      "tension": 0.05,
+      "spread": -0.2,
+      "tempo": 1.2745889083197883,
+      "hold": 0.35,
+      "ripple_ms": 40,
+      "settle": 0.2
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps_reveal",
+     "text": "出布",
+     "t_arrive": 8.099999999999998,
+     "t_target": 8.399999999999999
+    }
+   }
+  },
+  {
+   "event_id": "late_ok",
+   "side": "L",
+   "t_start": 14.2801,
+   "t_end": 15.6403,
+   "latency_ms": 0.073,
+   "late_ms": 183.8157,
+   "tempo_boost": 1.8,
+   "t_target": 14.26,
+   "text": "OK（迟到事件）",
+   "atom": {
+    "atom_id": "ok_L_formal",
+    "label": "ok",
+    "side": "L",
+    "duration": 1.36,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.164,
+      "phase": "stroke",
+      "o10": [
+       2294,
+       819,
+       2458,
+       2048,
+       2458,
+       0,
+       1925,
+       0,
+       1802,
+       0
+      ]
+     },
+     {
+      "t": 1.164,
+      "phase": "hold",
+      "o10": [
+       2294,
+       819,
+       2458,
+       2048,
+       2458,
+       0,
+       1925,
+       0,
+       1802,
+       0
+      ]
+     },
+     {
+      "t": 1.36,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "formal",
+    "style_ops": {
+     "spread": -0.4,
+     "tempo": 1.71,
+     "snap": 0.2,
+     "hold": 0.2
+    },
+    "annotation": {
+     "label": "ok",
+     "label_zh": "OK",
+     "side": "L",
+     "spec": {
+      "pinch": [
+       "thumb",
+       "index"
+      ],
+      "ext": [
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.164
+      },
+      {
+       "name": "hold",
+       "t": 1.164
+      },
+      {
+       "name": "release",
+       "t": 1.36
+      }
+     ],
+     "contacts": [
+      "thumb-index"
+     ],
+     "style": "formal",
+     "style_ops": {
+      "spread": -0.4,
+      "tempo": 1.71,
+      "snap": 0.2,
+      "hold": 0.2
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "late_ok",
+     "text": "OK（迟到事件）",
+     "t_arrive": 14.2,
+     "t_target": 14.26
+    }
+   }
+  }
+ ],
+ "R": [
+  {
+   "event_id": "e2",
+   "side": "R",
+   "t_start": 2.8301,
+   "t_end": 3.7305,
+   "latency_ms": 0.0653,
+   "late_ms": 0.0,
+   "tempo_boost": 1.0373,
+   "t_target": 3.1,
+   "text": "加一",
+   "atom": {
+    "atom_id": "one_R_neutral",
+    "label": "one",
+    "side": "R",
+    "duration": 1.044,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2048,
+       0,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 0.72,
+      "phase": "hold",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2048,
+       0,
+       4096,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.044,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.0372879531513302
+    },
+    "annotation": {
+     "label": "one",
+     "label_zh": "一",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index"
+      ],
+      "curl": [
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.27
+      },
+      {
+       "name": "hold",
+       "t": 0.72
+      },
+      {
+       "name": "release",
+       "t": 1.044
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.0372879531513302
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e2",
+     "text": "加一",
+     "t_arrive": 2.75,
+     "t_target": 3.1
+    }
+   }
+  },
+  {
+   "event_id": "e3",
+   "side": "R",
+   "t_start": 3.7305,
+   "t_end": 4.6234,
+   "latency_ms": 0.5142,
+   "late_ms": 0.0,
+   "tempo_boost": 1.039,
+   "t_target": 4.0,
+   "text": "等于",
+   "atom": {
+    "atom_id": "flat_R_neutral",
+    "label": "flat",
+    "side": "R",
+    "duration": 0.893,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2370,
+       2532,
+       2233,
+       2048,
+       621,
+       2233,
+       2048,
+       2233,
+       2048,
+       2233
+      ]
+     },
+     {
+      "t": 0.269,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       2458,
+       410,
+       2048,
+       0,
+       0,
+       2048,
+       0,
+       2048,
+       0
+      ]
+     },
+     {
+      "t": 0.569,
+      "phase": "hold",
+      "o10": [
+       2867,
+       2458,
+       410,
+       2048,
+       0,
+       0,
+       2048,
+       0,
+       2048,
+       0
+      ]
+     },
+     {
+      "t": 0.893,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.0390155998092205
+    },
+    "annotation": {
+     "label": "flat",
+     "label_zh": "平掌",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.269
+      },
+      {
+       "name": "hold",
+       "t": 0.569
+      },
+      {
+       "name": "release",
+       "t": 0.893
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.0390155998092205
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e3",
+     "text": "等于",
+     "t_arrive": 3.65,
+     "t_target": 4.0
+    }
+   }
+  },
+  {
+   "event_id": "e4",
+   "side": "R",
+   "t_start": 4.6308,
+   "t_end": 6.1231,
+   "latency_ms": 0.7671,
+   "late_ms": 0.0,
+   "tempo_boost": 1.04,
+   "t_target": 4.9,
+   "text": "二",
+   "atom": {
+    "atom_id": "two_R_neutral",
+    "label": "two",
+    "side": "R",
+    "duration": 1.492,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.269,
+      "phase": "stroke",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2867,
+       0,
+       0,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.169,
+      "phase": "hold",
+      "o10": [
+       2867,
+       3277,
+       4096,
+       2867,
+       0,
+       0,
+       2048,
+       4096,
+       2048,
+       4096
+      ]
+     },
+     {
+      "t": 1.492,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "neutral",
+    "style_ops": {
+     "tempo": 1.0399917730710466
+    },
+    "annotation": {
+     "label": "two",
+     "label_zh": "二",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index",
+       "middle"
+      ],
+      "curl": [
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "stroke",
+       "t": 0.269
+      },
+      {
+       "name": "hold",
+       "t": 1.169
+      },
+      {
+       "name": "release",
+       "t": 1.492
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "neutral",
+     "style_ops": {
+      "tempo": 1.0399917730710466
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "e4",
+     "text": "二",
+     "t_arrive": 4.550000000000001,
+     "t_target": 4.9
+    }
+   }
+  },
+  {
+   "event_id": "rps0",
+   "side": "R",
+   "t_start": 6.3801,
+   "t_end": 6.8455,
+   "latency_ms": 0.0813,
+   "late_ms": 0.0,
+   "tempo_boost": 1.1854,
+   "t_target": 6.6,
+   "text": "石头",
+   "atom": {
+    "atom_id": "rock_R_lively",
+    "label": "rock",
+    "side": "R",
+    "duration": 0.465,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       1769,
+       1638,
+       492,
+       2048,
+       492,
+       492,
+       2048,
+       492,
+       2048,
+       492
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "hold",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.465,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "lively",
+    "style_ops": {
+     "tension": -0.1,
+     "spread": 0.7,
+     "tempo": 1.7188167490891748,
+     "snap": 0.9,
+     "anticipation": 0.2,
+     "ripple_ms": -25,
+     "thumb_lead_ms": -40
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "R",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.27
+      },
+      {
+       "name": "release",
+       "t": 0.465
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "lively",
+     "style_ops": {
+      "tension": -0.1,
+      "spread": 0.7,
+      "tempo": 1.7188167490891748,
+      "snap": 0.9,
+      "anticipation": 0.2,
+      "ripple_ms": -25,
+      "thumb_lead_ms": -40
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps0",
+     "text": "石头",
+     "t_arrive": 6.3,
+     "t_target": 6.6
+    }
+   }
+  },
+  {
+   "event_id": "rps1",
+   "side": "R",
+   "t_start": 6.9801,
+   "t_end": 7.4455,
+   "latency_ms": 0.076,
+   "late_ms": 0.0,
+   "tempo_boost": 1.1854,
+   "t_target": 7.2,
+   "text": "剪刀",
+   "atom": {
+    "atom_id": "rock_R_lively",
+    "label": "rock",
+    "side": "R",
+    "duration": 0.465,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       1769,
+       1638,
+       492,
+       2048,
+       492,
+       492,
+       2048,
+       492,
+       2048,
+       492
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "hold",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.465,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "lively",
+    "style_ops": {
+     "tension": -0.1,
+     "spread": 0.7,
+     "tempo": 1.7187753425590464,
+     "snap": 0.9,
+     "anticipation": 0.2,
+     "ripple_ms": -25,
+     "thumb_lead_ms": -40
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "R",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.27
+      },
+      {
+       "name": "release",
+       "t": 0.465
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "lively",
+     "style_ops": {
+      "tension": -0.1,
+      "spread": 0.7,
+      "tempo": 1.7187753425590464,
+      "snap": 0.9,
+      "anticipation": 0.2,
+      "ripple_ms": -25,
+      "thumb_lead_ms": -40
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps1",
+     "text": "剪刀",
+     "t_arrive": 6.8999999999999995,
+     "t_target": 7.199999999999999
+    }
+   }
+  },
+  {
+   "event_id": "rps2",
+   "side": "R",
+   "t_start": 7.5801,
+   "t_end": 8.0455,
+   "latency_ms": 0.0723,
+   "late_ms": 0.0,
+   "tempo_boost": 1.1853,
+   "t_target": 7.8,
+   "text": "布",
+   "atom": {
+    "atom_id": "rock_R_lively",
+    "label": "rock",
+    "side": "R",
+    "duration": 0.465,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       1769,
+       1638,
+       492,
+       2048,
+       492,
+       492,
+       2048,
+       492,
+       2048,
+       492
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.27,
+      "phase": "hold",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       2048,
+       3686,
+       3686,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 0.465,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "lively",
+    "style_ops": {
+     "tension": -0.1,
+     "spread": 0.7,
+     "tempo": 1.7187467155396836,
+     "snap": 0.9,
+     "anticipation": 0.2,
+     "ripple_ms": -25,
+     "thumb_lead_ms": -40
+    },
+    "annotation": {
+     "label": "rock",
+     "label_zh": "石头",
+     "side": "R",
+     "spec": {
+      "curl": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.27
+      },
+      {
+       "name": "release",
+       "t": 0.465
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "lively",
+     "style_ops": {
+      "tension": -0.1,
+      "spread": 0.7,
+      "tempo": 1.7187467155396836,
+      "snap": 0.9,
+      "anticipation": 0.2,
+      "ripple_ms": -25,
+      "thumb_lead_ms": -40
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps2",
+     "text": "布",
+     "t_arrive": 7.5,
+     "t_target": 7.8
+    }
+   }
+  },
+  {
+   "event_id": "rps_reveal",
+   "side": "R",
+   "t_start": 8.1801,
+   "t_end": 9.7955,
+   "latency_ms": 0.0737,
+   "late_ms": 0.0,
+   "tempo_boost": 1.1853,
+   "t_target": 8.4,
+   "text": "出剪刀",
+   "atom": {
+    "atom_id": "scissors_R_lively",
+    "label": "scissors",
+    "side": "R",
+    "duration": 1.615,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       1769,
+       1638,
+       492,
+       1638,
+       1229,
+       1229,
+       2048,
+       492,
+       2048,
+       492
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       4096,
+       0,
+       0,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 1.42,
+      "phase": "hold",
+      "o10": [
+       3441,
+       4096,
+       3686,
+       4096,
+       0,
+       0,
+       2048,
+       3686,
+       2048,
+       3686
+      ]
+     },
+     {
+      "t": 1.615,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "lively",
+    "style_ops": {
+     "tension": -0.1,
+     "spread": 0.7,
+     "tempo": 1.7187574769358225,
+     "snap": 0.9,
+     "anticipation": 0.2,
+     "ripple_ms": -25,
+     "thumb_lead_ms": -40
+    },
+    "annotation": {
+     "label": "scissors",
+     "label_zh": "剪刀",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index",
+       "middle"
+      ],
+      "curl": [
+       "ring",
+       "pinky"
+      ],
+      "spread": [
+       "index",
+       "middle"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 1.42
+      },
+      {
+       "name": "release",
+       "t": 1.615
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "lively",
+     "style_ops": {
+      "tension": -0.1,
+      "spread": 0.7,
+      "tempo": 1.7187574769358225,
+      "snap": 0.9,
+      "anticipation": 0.2,
+      "ripple_ms": -25,
+      "thumb_lead_ms": -40
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "rps_reveal",
+     "text": "出剪刀",
+     "t_arrive": 8.099999999999998,
+     "t_target": 8.399999999999999
+    }
+   }
+  },
+  {
+   "event_id": "c1",
+   "side": "R",
+   "t_start": 10.3801,
+   "t_end": 11.0803,
+   "latency_ms": 0.0899,
+   "late_ms": 0.0,
+   "tempo_boost": 1.3222,
+   "t_target": 10.6,
+   "text": "1",
+   "atom": {
+    "atom_id": "one_R_enthusiastic",
+    "label": "one",
+    "side": "R",
+    "duration": 0.815,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       1864,
+       1772,
+       594,
+       2048,
+       1178,
+       594,
+       2048,
+       594,
+       2048,
+       594
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       2048,
+       0,
+       3891,
+       2048,
+       3891,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       2048,
+       0,
+       3891,
+       2048,
+       3891,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.815,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "enthusiastic",
+    "style_ops": {
+     "tension": -0.05,
+     "spread": 0.5,
+     "tempo": 1.7188839353895702,
+     "snap": 0.7,
+     "hold": 0.1,
+     "anticipation": 0.15
+    },
+    "annotation": {
+     "label": "one",
+     "label_zh": "一",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index"
+      ],
+      "curl": [
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.815
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "enthusiastic",
+     "style_ops": {
+      "tension": -0.05,
+      "spread": 0.5,
+      "tempo": 1.7188839353895702,
+      "snap": 0.7,
+      "hold": 0.1,
+      "anticipation": 0.15
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "c1",
+     "text": "1",
+     "t_arrive": 10.299999999999999,
+     "t_target": 10.6
+    }
+   }
+  },
+  {
+   "event_id": "c2",
+   "side": "R",
+   "t_start": 11.0803,
+   "t_end": 11.7806,
+   "latency_ms": 0.3371,
+   "late_ms": 0.0,
+   "tempo_boost": 1.3237,
+   "t_target": 11.3,
+   "text": "2",
+   "atom": {
+    "atom_id": "two_R_enthusiastic",
+    "label": "two",
+    "side": "R",
+    "duration": 0.815,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2863,
+       3271,
+       2926,
+       2048,
+       345,
+       2926,
+       2048,
+       2926,
+       2048,
+       2926
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       2801,
+       3178,
+       2781,
+       1864,
+       396,
+       3365,
+       2048,
+       2781,
+       2048,
+       2781
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       3277,
+       0,
+       0,
+       2048,
+       3891,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       3277,
+       0,
+       0,
+       2048,
+       3891,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.815,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "enthusiastic",
+    "style_ops": {
+     "tension": -0.05,
+     "spread": 0.5,
+     "tempo": 1.7208184327187022,
+     "snap": 0.7,
+     "hold": 0.1,
+     "anticipation": 0.15
+    },
+    "annotation": {
+     "label": "two",
+     "label_zh": "二",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index",
+       "middle"
+      ],
+      "curl": [
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.815
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "enthusiastic",
+     "style_ops": {
+      "tension": -0.05,
+      "spread": 0.5,
+      "tempo": 1.7208184327187022,
+      "snap": 0.7,
+      "hold": 0.1,
+      "anticipation": 0.15
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "c2",
+     "text": "2",
+     "t_arrive": 10.999999999999998,
+     "t_target": 11.299999999999999
+    }
+   }
+  },
+  {
+   "event_id": "c3",
+   "side": "R",
+   "t_start": 11.7806,
+   "t_end": 12.4804,
+   "latency_ms": 0.6357,
+   "late_ms": 0.0,
+   "tempo_boost": 1.3255,
+   "t_target": 12.0,
+   "text": "3",
+   "atom": {
+    "atom_id": "three_R_enthusiastic",
+    "label": "three",
+    "side": "R",
+    "duration": 0.814,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2859,
+       3264,
+       2916,
+       2859,
+       348,
+       348,
+       2048,
+       2916,
+       2048,
+       2916
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       2796,
+       3170,
+       2770,
+       2842,
+       400,
+       400,
+       2140,
+       3353,
+       2048,
+       2770
+      ]
+     },
+     {
+      "t": 0.219,
+      "phase": "stroke",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       2970,
+       0,
+       0,
+       1434,
+       0,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.619,
+      "phase": "hold",
+      "o10": [
+       3277,
+       3891,
+       3891,
+       2970,
+       0,
+       0,
+       1434,
+       0,
+       2048,
+       3891
+      ]
+     },
+     {
+      "t": 0.814,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "enthusiastic",
+    "style_ops": {
+     "tension": -0.05,
+     "spread": 0.5,
+     "tempo": 1.7231609701303097,
+     "snap": 0.7,
+     "hold": 0.1,
+     "anticipation": 0.15
+    },
+    "annotation": {
+     "label": "three",
+     "label_zh": "三",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index",
+       "middle",
+       "ring"
+      ],
+      "curl": [
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.219
+      },
+      {
+       "name": "hold",
+       "t": 0.619
+      },
+      {
+       "name": "release",
+       "t": 0.814
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "enthusiastic",
+     "style_ops": {
+      "tension": -0.05,
+      "spread": 0.5,
+      "tempo": 1.7231609701303097,
+      "snap": 0.7,
+      "hold": 0.1,
+      "anticipation": 0.15
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "c3",
+     "text": "3",
+     "t_arrive": 11.7,
+     "t_target": 12.0
+    }
+   }
+  },
+  {
+   "event_id": "c4",
+   "side": "R",
+   "t_start": 12.4804,
+   "t_end": 13.1804,
+   "latency_ms": 0.3731,
+   "late_ms": 0.0,
+   "tempo_boost": 1.3239,
+   "t_target": 12.7,
+   "text": "4",
+   "atom": {
+    "atom_id": "four_R_enthusiastic",
+    "label": "four",
+    "side": "R",
+    "duration": 0.815,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       2861,
+       3267,
+       2920,
+       2657,
+       347,
+       347,
+       1642,
+       347,
+       2048,
+       2920
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       2706,
+       3143,
+       2774,
+       2657,
+       399,
+       399,
+       1673,
+       399,
+       2186,
+       3358
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       3891,
+       4096,
+       3891,
+       2662,
+       0,
+       0,
+       1434,
+       0,
+       1126,
+       0
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       3891,
+       4096,
+       3891,
+       2662,
+       0,
+       0,
+       1434,
+       0,
+       1126,
+       0
+      ]
+     },
+     {
+      "t": 0.815,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "enthusiastic",
+    "style_ops": {
+     "tension": -0.05,
+     "spread": 0.5,
+     "tempo": 1.721100311448966,
+     "snap": 0.7,
+     "hold": 0.1,
+     "anticipation": 0.15
+    },
+    "annotation": {
+     "label": "four",
+     "label_zh": "四",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ],
+      "curl": [
+       "thumb"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.815
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "enthusiastic",
+     "style_ops": {
+      "tension": -0.05,
+      "spread": 0.5,
+      "tempo": 1.721100311448966,
+      "snap": 0.7,
+      "hold": 0.1,
+      "anticipation": 0.15
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "c4",
+     "text": "4",
+     "t_arrive": 12.399999999999999,
+     "t_target": 12.7
+    }
+   }
+  },
+  {
+   "event_id": "c5",
+   "side": "R",
+   "t_start": 13.1804,
+   "t_end": 13.9952,
+   "latency_ms": 0.3749,
+   "late_ms": 0.0,
+   "tempo_boost": 1.3239,
+   "t_target": 13.4,
+   "text": "5",
+   "atom": {
+    "atom_id": "five_R_enthusiastic",
+    "label": "five",
+    "side": "R",
+    "duration": 0.815,
+    "keys": [
+     {
+      "t": 0.0,
+      "phase": "prepare",
+      "o10": [
+       3268,
+       3404,
+       2922,
+       2455,
+       346,
+       346,
+       1641,
+       346,
+       1438,
+       346
+      ]
+     },
+     {
+      "t": 0.057,
+      "phase": "prepare",
+      "o10": [
+       3313,
+       3700,
+       3361,
+       2332,
+       398,
+       398,
+       1764,
+       398,
+       1623,
+       398
+      ]
+     },
+     {
+      "t": 0.22,
+      "phase": "stroke",
+      "o10": [
+       2970,
+       1434,
+       0,
+       3277,
+       0,
+       0,
+       819,
+       0,
+       205,
+       0
+      ]
+     },
+     {
+      "t": 0.62,
+      "phase": "hold",
+      "o10": [
+       2970,
+       1434,
+       0,
+       3277,
+       0,
+       0,
+       819,
+       0,
+       205,
+       0
+      ]
+     },
+     {
+      "t": 0.815,
+      "phase": "release",
+      "o10": [
+       2048,
+       2048,
+       1024,
+       2048,
+       1024,
+       1024,
+       2048,
+       1024,
+       2048,
+       1024
+      ]
+     }
+    ],
+    "style": "enthusiastic",
+    "style_ops": {
+     "tension": -0.05,
+     "spread": 0.5,
+     "tempo": 1.721114519088764,
+     "snap": 0.7,
+     "hold": 0.1,
+     "anticipation": 0.15
+    },
+    "annotation": {
+     "label": "five",
+     "label_zh": "五",
+     "side": "R",
+     "spec": {
+      "ext": [
+       "thumb",
+       "index",
+       "middle",
+       "ring",
+       "pinky"
+      ]
+     },
+     "phases": [
+      {
+       "name": "prepare",
+       "t": 0.0
+      },
+      {
+       "name": "prepare",
+       "t": 0.057
+      },
+      {
+       "name": "stroke",
+       "t": 0.22
+      },
+      {
+       "name": "hold",
+       "t": 0.62
+      },
+      {
+       "name": "release",
+       "t": 0.815
+      }
+     ],
+     "contacts": [
+      "none"
+     ],
+     "style": "enthusiastic",
+     "style_ops": {
+      "tension": -0.05,
+      "spread": 0.5,
+      "tempo": 1.721114519088764,
+      "snap": 0.7,
+      "hold": 0.1,
+      "anticipation": 0.15
+     },
+     "source": "procedural",
+     "reviewed": false,
+     "event_id": "c5",
+     "text": "5",
+     "t_arrive": 13.099999999999998,
+     "t_target": 13.399999999999999
+    }
+   }
+  }
+ ],
+ "events": [
+  {
+   "event": {
+    "t_arrive": 1.85,
+    "kind": "hand",
+    "hand_label": "one",
+    "side": "L",
+    "t_target": 2.2,
+    "style": "neutral",
+    "hold_s": 0.45,
+    "body_label": null,
+    "text": "一",
+    "event_id": "e1"
+   },
+   "t_start": 1.9302,
+   "stroke_lands": 2.2,
+   "latency_ms": 0.154,
+   "late_ms": 0.0,
+   "tempo_boost": 1.038,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 2.75,
+    "kind": "hand",
+    "hand_label": "one",
+    "side": "R",
+    "t_target": 3.1,
+    "style": "neutral",
+    "hold_s": 0.45,
+    "body_label": null,
+    "text": "加一",
+    "event_id": "e2"
+   },
+   "t_start": 2.8301,
+   "stroke_lands": 3.1,
+   "latency_ms": 0.065,
+   "late_ms": 0.0,
+   "tempo_boost": 1.037,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 3.65,
+    "kind": "hand",
+    "hand_label": "flat",
+    "side": "L",
+    "t_target": 4.0,
+    "style": "neutral",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "等于",
+    "event_id": "e3"
+   },
+   "t_start": 3.7301,
+   "stroke_lands": 4.0,
+   "latency_ms": 0.067,
+   "late_ms": 0.0,
+   "tempo_boost": 1.037,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 3.65,
+    "kind": "hand",
+    "hand_label": "flat",
+    "side": "R",
+    "t_target": 4.0,
+    "style": "neutral",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "等于",
+    "event_id": "e3"
+   },
+   "t_start": 3.7305,
+   "stroke_lands": 4.0,
+   "latency_ms": 0.514,
+   "late_ms": 0.0,
+   "tempo_boost": 1.039,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 4.550000000000001,
+    "kind": "hand",
+    "hand_label": "two",
+    "side": "L",
+    "t_target": 4.9,
+    "style": "neutral",
+    "hold_s": 0.9,
+    "body_label": null,
+    "text": "二",
+    "event_id": "e4"
+   },
+   "t_start": 4.6304,
+   "stroke_lands": 4.9,
+   "latency_ms": 0.364,
+   "late_ms": 0.0,
+   "tempo_boost": 1.038,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 4.550000000000001,
+    "kind": "hand",
+    "hand_label": "two",
+    "side": "R",
+    "t_target": 4.9,
+    "style": "neutral",
+    "hold_s": 0.9,
+    "body_label": null,
+    "text": "二",
+    "event_id": "e4"
+   },
+   "t_start": 4.6308,
+   "stroke_lands": 4.9,
+   "latency_ms": 0.767,
+   "late_ms": 0.0,
+   "tempo_boost": 1.04,
+   "response_ms": 350.0
+  },
+  {
+   "event": {
+    "t_arrive": 6.3,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "R",
+    "t_target": 6.6,
+    "style": "lively",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "石头",
+    "event_id": "rps0"
+   },
+   "t_start": 6.3801,
+   "stroke_lands": 6.6,
+   "latency_ms": 0.081,
+   "late_ms": 0.0,
+   "tempo_boost": 1.185,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 6.8999999999999995,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "R",
+    "t_target": 7.199999999999999,
+    "style": "lively",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "剪刀",
+    "event_id": "rps1"
+   },
+   "t_start": 6.9801,
+   "stroke_lands": 7.2,
+   "latency_ms": 0.076,
+   "late_ms": 0.0,
+   "tempo_boost": 1.185,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 7.5,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "R",
+    "t_target": 7.8,
+    "style": "lively",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "布",
+    "event_id": "rps2"
+   },
+   "t_start": 7.5801,
+   "stroke_lands": 7.8,
+   "latency_ms": 0.072,
+   "late_ms": 0.0,
+   "tempo_boost": 1.185,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 8.099999999999998,
+    "kind": "hand",
+    "hand_label": "scissors",
+    "side": "R",
+    "t_target": 8.399999999999999,
+    "style": "lively",
+    "hold_s": 1.2,
+    "body_label": null,
+    "text": "出剪刀",
+    "event_id": "rps_reveal"
+   },
+   "t_start": 8.1801,
+   "stroke_lands": 8.4,
+   "latency_ms": 0.074,
+   "late_ms": 0.0,
+   "tempo_boost": 1.185,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 6.3,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "L",
+    "t_target": 6.6,
+    "style": "calm",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "石头",
+    "event_id": "rps0"
+   },
+   "t_start": 6.3801,
+   "stroke_lands": 6.6,
+   "latency_ms": 0.078,
+   "late_ms": 0.0,
+   "tempo_boost": 1.698,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 6.8999999999999995,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "L",
+    "t_target": 7.199999999999999,
+    "style": "calm",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "剪刀",
+    "event_id": "rps1"
+   },
+   "t_start": 6.9804,
+   "stroke_lands": 7.2,
+   "latency_ms": 0.397,
+   "late_ms": 0.0,
+   "tempo_boost": 1.7,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 7.5,
+    "kind": "hand",
+    "hand_label": "rock",
+    "side": "L",
+    "t_target": 7.8,
+    "style": "calm",
+    "hold_s": 0.05,
+    "body_label": null,
+    "text": "布",
+    "event_id": "rps2"
+   },
+   "t_start": 7.5804,
+   "stroke_lands": 7.8,
+   "latency_ms": 0.391,
+   "late_ms": 0.0,
+   "tempo_boost": 1.7,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 8.099999999999998,
+    "kind": "hand",
+    "hand_label": "paper",
+    "side": "L",
+    "t_target": 8.399999999999999,
+    "style": "calm",
+    "hold_s": 1.2,
+    "body_label": null,
+    "text": "出布",
+    "event_id": "rps_reveal"
+   },
+   "t_start": 8.1803,
+   "stroke_lands": 8.4,
+   "latency_ms": 0.321,
+   "late_ms": 0.0,
+   "tempo_boost": 1.699,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 10.299999999999999,
+    "kind": "hand",
+    "hand_label": "one",
+    "side": "R",
+    "t_target": 10.6,
+    "style": "enthusiastic",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "1",
+    "event_id": "c1"
+   },
+   "t_start": 10.3801,
+   "stroke_lands": 10.6,
+   "latency_ms": 0.09,
+   "late_ms": 0.0,
+   "tempo_boost": 1.322,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 10.999999999999998,
+    "kind": "hand",
+    "hand_label": "two",
+    "side": "R",
+    "t_target": 11.299999999999999,
+    "style": "enthusiastic",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "2",
+    "event_id": "c2"
+   },
+   "t_start": 11.0803,
+   "stroke_lands": 11.3,
+   "latency_ms": 0.337,
+   "late_ms": 0.0,
+   "tempo_boost": 1.324,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 11.7,
+    "kind": "hand",
+    "hand_label": "three",
+    "side": "R",
+    "t_target": 12.0,
+    "style": "enthusiastic",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "3",
+    "event_id": "c3"
+   },
+   "t_start": 11.7806,
+   "stroke_lands": 12.0,
+   "latency_ms": 0.636,
+   "late_ms": 0.0,
+   "tempo_boost": 1.326,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 12.399999999999999,
+    "kind": "hand",
+    "hand_label": "four",
+    "side": "R",
+    "t_target": 12.7,
+    "style": "enthusiastic",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "4",
+    "event_id": "c4"
+   },
+   "t_start": 12.4804,
+   "stroke_lands": 12.7,
+   "latency_ms": 0.373,
+   "late_ms": 0.0,
+   "tempo_boost": 1.324,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 13.099999999999998,
+    "kind": "hand",
+    "hand_label": "five",
+    "side": "R",
+    "t_target": 13.399999999999999,
+    "style": "enthusiastic",
+    "hold_s": 0.3,
+    "body_label": null,
+    "text": "5",
+    "event_id": "c5"
+   },
+   "t_start": 13.1804,
+   "stroke_lands": 13.4,
+   "latency_ms": 0.375,
+   "late_ms": 0.0,
+   "tempo_boost": 1.324,
+   "response_ms": 300.0
+  },
+  {
+   "event": {
+    "t_arrive": 14.2,
+    "kind": "hand",
+    "hand_label": "ok",
+    "side": "L",
+    "t_target": 14.26,
+    "style": "formal",
+    "hold_s": 0.8,
+    "body_label": null,
+    "text": "OK（迟到事件）",
+    "event_id": "late_ok"
+   },
+   "t_start": 14.2801,
+   "stroke_lands": 14.4438,
+   "latency_ms": 0.073,
+   "late_ms": 183.8,
+   "tempo_boost": 1.8,
+   "response_ms": 243.8
+  }
+ ],
+ "t_end": 15.94,
+ "response_ms": {
+  "mean": 312.2,
+  "max_late_ms": 183.8,
+  "plan_latency_ms_mean": 0.265
+ }
+}

@@ -39,3 +39,20 @@
 | Bandai Namco Research Motiondataset 1 / 2 | 0 | 2 | 0 | 3 | 1 | 6 |
 
 推荐顺序：BEAT / BEAT2 → GENEA 2023 → ZEGGS → TED 系列；HiPHI、Bandai 无语音，可补真人参考姿态。
+
+## 手部（灵巧手）数据集与本环境可达性（2026-10-23 探测）
+
+网络探测：只有 GitHub（`git clone` / `raw.githubusercontent.com`）与 PyPI 可达；Hugging Face、Zenodo、Google Drive、Dropbox、MPI（mpg.de）、S3、GCS、figshare、Mendeley 全部不通，GitHub 的 Git LFS 对象也拿不到。
+
+| 数据集 | 内容 | 格式 | 托管 | 本环境 | 对灵巧手库的用处 |
+|---|---|---|---|---|---|
+| InterHand2.6M (ECCV 2020) | 2.6M 帧双手交互，3D 关节 | 2D/3D 关键点、MANO | 项目页 / Google Drive | blocked | 手势姿态真值、双手配合（1+1=2 类） |
+| FreiHAND / HanCo (ICCV 2019 / 2021) | 单手 RGB + 3D 关节 + MANO | 关键点、MANO | 弗莱堡大学站点 | blocked | 单手姿态分布 |
+| GRAB (ECCV 2020) | 全身 + 手 抓取动捕 | SMPL-X / MANO | MPI | blocked | 手指接触与过渡风格 |
+| ARCTIC (CVPR 2023) | 双手操作物体动捕 | SMPL-X / MANO | MPI | blocked | 双手协同 |
+| DexYCB (CVPR 2021) | 抓取 RGB-D + 手姿态 | 关键点、MANO | Dropbox | blocked | 抓取类手型 |
+| BEAT / BEAT2 | 对话动捕（含手指） | BVH / SMPL-X | HF / Drive | blocked | 说话时的手指形态分布 |
+| ZEGGS | 风格化独白（含手指） | BVH | GitHub LFS | blocked | 风格对手指的影响 |
+| MediaPipe 手部关键点示例仓库 | 少量 21 点 2D/3D 关键点 | CSV / JSON | GitHub（直接存文件） | ok（零散） | 只能做适配器自检 |
+
+结论：灵巧手库现阶段只能靠**程序化姿态 + 仿真 FK 名实核对**（本仓库已做），真实手部数据需在外网机器下载后用 `benchmark/` 的适配器接入。

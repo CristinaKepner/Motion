@@ -12,13 +12,14 @@
 | 人工评审与裁剪 | `review_page/dist/A3_motion_review.html` | 单文件评审台；`scripts/apply_reviews.py` 回写新版目录 |
 | 动作库全景 | `review_page/dist/A3_library_atlas.html` | 官方 A3 模型渲染全部片段、数量、覆盖、姿态分布 |
 | 数据集与评测 | `benchmark/`, `scripts/run_benchmark.py` | 13 个开源手势数据集目录；统一到 A3 关节空间的评测套件 |
+| 灵巧手 | `trabot_a3/hand.py`, `hand_agent.py`, `scripts/hand_demo.py` | O10 命令空间 + OmniHand 仿真；21 姿态 × 7 风格手部库（打时间戳标注、FK 名实核对）；流式融合 agent（响应时间、抢占、`at(t)` 寻址）；「1+1=2 / 石头剪刀布 / 回放第五秒」视频 |
 
 ## 快速开始
 
 ```bash
 pip install -r requirements.txt
 # 外部资源（官方 A3 模型 + 20 条 A3 动作 CSV），见 external/README.md
-cd external && git clone https://github.com/AgibotTech/A3-A3U-robot-model && GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/AgibotTech/sonic_for_a3 && cd ..
+cd external && git clone https://github.com/AgibotTech/A3-A3U-robot-model && GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/AgibotTech/sonic_for_a3 && git clone https://github.com/AgibotTech/agibot_x2_urdf && cd ..
 # Linux 离屏渲染：apt-get install libosmesa6（默认 MUJOCO_GL=osmesa；有 GPU 用 egl）
 
 python scripts/demo.py --rebuild --no-video        # 建库 + 编排演示（约 5 s）
@@ -27,18 +28,19 @@ python review_page/build_review.py                 # 评审台 → review_page/d
 python scripts/viz_library.py && python review_page/build_atlas.py   # 动作库全景（渲染 1,216 帧，约 2 min）
 python scripts/run_benchmark.py library && python review_page/build_benchmark.py   # 评测报告
 python tests/test_adapters.py                      # 适配器自检
+python scripts/hand_demo.py && python review_page/build_hand.py   # 灵巧手库 + 场景视频 + 页面（需 external/agibot_x2_urdf）
 ```
 
 ## 目录
 
 ```
-trabot_a3/      核心库：数据约定、建库、桥接、规划、执行、仿真、质量、语义规格、风格化、追溯、路径
+trabot_a3/      核心库：数据约定、建库、桥接、规划、执行、仿真、质量、语义规格、风格化、追溯、路径；hand*.py 灵巧手
 benchmark/      数据集 → A3 评测：BVH 解析、关节 profile、重定向、指标、运行器、数据集目录
 scripts/        命令行入口（demo / build_library / apply_reviews / viz_library / run_benchmark / make_synthetic_dataset）
-review_page/    页面源码 src/、构建脚本、成品 dist/（三个单文件 HTML，数据内嵌，双击打开）
-results/        本次运行的结果：catalog/（133 atom）、library/（219 变体 + 评测包）、benchmark/、demo/
+review_page/    页面源码 src/、构建脚本、成品 dist/（四个单文件 HTML，数据内嵌，双击打开）
+results/        本次运行的结果：catalog/（133 atom）、library/（219 变体 + 评测包）、benchmark/、demo/、hand_library/（294 手部 atom）、hand_demo/、models/
 tests/          适配器自检（合成 BVH、A3 往返）
-docs/           HANDOVER.md（交接）、PROTOCOL.md（评测协议）、FORMULA_MAP.md（公式→代码）、DATASETS.md（数据集目录）
+docs/           HANDOVER.md（交接）、PROTOCOL.md（评测协议）、FORMULA_MAP.md（公式→代码）、DATASETS.md（数据集目录）、HAND.md（灵巧手）
 external/       外部资源（gitignore，README 说明获取方式）
 ```
 

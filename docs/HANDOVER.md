@@ -1,6 +1,6 @@
 # 交接文档
 
-更新：2026-10-23。对应 Notion「多模态交互 / A3 语音驱动手势 Demo 与仿真动作库闭环 — 技术方案」第 1–10 节。
+更新：2026-10-23。对应 Notion「多模态交互 / A3 语音驱动手势 Demo 与仿真动作库闭环 — 技术方案」第 1–11 节。
 
 ## 1. 这个仓库解决什么问题
 
@@ -18,6 +18,7 @@ A3 真机动作库的卡点：数据量不够、训不好、质量差、没法�
 | 6 | 人工评审台（3D 回放、裁剪、改标、规格判定）+ 回写脚本 | 完成；本地模式可用，多人共享模式需发布为内部页面 | `review_page/src/review.html`, `scripts/apply_reviews.py` | `review_page/dist/A3_motion_review.html` |
 | 7 | 动作库全景（真实 A3 渲染、数量、覆盖、姿态分布） | 完成 | `scripts/viz_library.py`, `review_page/src/atlas.html` | `review_page/dist/A3_library_atlas.html` |
 | 8 | 数据集调研（13 个）+ 统一评测套件（适配器、指标、协议、运行器） | 完成；SMPL-X / 2D 关键点适配器未写 | `benchmark/`, `scripts/run_benchmark.py` | `results/benchmark/`, `review_page/dist/A3_gesture_benchmark.html`, `docs/DATASETS.md` |
+| 9 | 灵巧手：O10 命令空间 ↔ OmniHand 仿真模型、21 姿态 × 7 风格的手部动作库 + 打时间戳标注 + FK 名实核对、每属性风格化、流式融合 agent（响应时间、抢占、寻址）、三个场景视频 | 完成；O10 极性未上真机校准 | `trabot_a3/hand.py hand_render.py hand_agent.py`, `scripts/hand_demo.py` | `results/hand_library/`, `results/hand_demo/`（demo.mp4）, `review_page/dist/A3_hand_library.html`, `docs/HAND.md` |
 
 ## 3. 运行顺序
 
@@ -30,9 +31,11 @@ scripts/run_benchmark.py library   → results/benchmark/library_report.json
 scripts/run_benchmark.py bvh <dir> --profile <name>  → results/benchmark/report_<name>.json
 review_page/build_benchmark.py     → review_page/dist/A3_gesture_benchmark.html
 scripts/apply_reviews.py reviews.json → results/catalog_v2/
+scripts/hand_demo.py                → results/models/a3_t2d5_omnihand.xml, results/hand_library/, results/hand_demo/（渲染约 8 min；--no-video 约 1 min）
+review_page/build_hand.py          → review_page/dist/A3_hand_library.html
 ```
 
-环境：Python 3.11+，`requirements.txt`；离屏渲染需 OSMesa 或 EGL。外部资源见 `external/README.md`；路径由 `trabot_a3/paths.py` 统一管理（`A3_MJCF` / `A3_DATA` / `A3_OUT`）。
+环境：Python 3.11+，`requirements.txt`；离屏渲染需 OSMesa 或 EGL。外部资源见 `external/README.md`（灵巧手还需 `AgibotTech/agibot_x2_urdf`）；路径由 `trabot_a3/paths.py` 统一管理（`A3_MJCF` / `A3_DATA` / `A3_OUT`）。
 
 ## 4. 关键数据与约定
 
@@ -56,7 +59,8 @@ scripts/apply_reviews.py reviews.json → results/catalog_v2/
 - 语义标签为规则提议，未经两轮人工审核；规格阈值需校准（例：Bandai 的挥手 74/97 通过了「否定」规格）。
 - 重定向约 40 ms/帧（每帧一个小二乘），小时级数据需先向量化或改解析解。
 - 评审台在本地打开时评审只存在当前浏览器；多人共享需发布为组织内页面（带共享存储）。
-- 自碰撞检查用官方 MJCF 的碰撞几何，手部为近似；灵巧手未挂到 atom 时间轴。
+- 自碰撞检查用官方 MJCF 的碰撞几何，手部为近似。
+- 灵巧手：真机 O10 通道极性与 0/4096 对应角是假设，未校准；OmniHand 拇指只能朝掌心法向伸出，点赞需手腕配合；手部库是程序化姿态，无真人手部数据（见 `docs/DATASETS.md` 手部小节）。
 - `review_page/dist/*.html` 由脚本生成，不要手改；改 `src/` 后重新构建。
 
 ## 7. 下一步（按优先级）
@@ -66,7 +70,7 @@ scripts/apply_reviews.py reviews.json → results/catalog_v2/
 3. 本地下载 SONIC 权重，用 sim2sim 替换 PD 代理作为可执行性终检。
 4. 写 SMPL-X（BEAT2 / SHOW）与关键点（TED）适配器。
 5. 文本 + 风格条件的动作生成模型：用本仓库的评测、规格核对、评审结果作过滤器与奖励。
-6. 灵巧手挂到 atom 时间轴。
+6. 灵巧手：真机校准 O10 → 打开 `hand_bridge_enabled` 用 `FusionAgent.ticks()` 喂 `o10_hand_bridge` → 把 294 个手部 atom 接进评审台（详见 `docs/HAND.md`）。
 
 ## 8. 相关链接
 

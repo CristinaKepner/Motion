@@ -14,3 +14,4 @@ results/demo/demo_run.log
 _a3_fixed_base.xml
 node_modules/
 package*.json
+results/models/
