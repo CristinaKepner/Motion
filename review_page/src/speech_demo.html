@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GENEA 语音与手势演示</title><style>
+*{box-sizing:border-box}body{margin:0;background:#edf1ef;color:#152d26;font:16px/1.6 system-ui,sans-serif}main{max-width:1280px;margin:auto;padding:24px}nav{display:flex;gap:18px;flex-wrap:wrap}a{color:#17644c}h1{font-size:28px}video{width:100%;background:#18212b;border-radius:12px}section{background:white;border:1px solid #d8e2dc;border-radius:12px;padding:18px;margin:18px 0}.events{display:flex;gap:12px;flex-wrap:wrap}button{font:inherit;text-align:left;border:1px solid #bdcfc5;background:#f5f8f6;border-radius:8px;padding:14px;flex:1;min-width:240px;cursor:pointer}button.active{outline:3px solid #358360}small{display:block;color:#4c665a}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.5 monospace}.meta{display:flex;gap:16px;flex-wrap:wrap}#status{font-weight:600}summary{cursor:pointer}@media(max-width:600px){main{padding:12px}h1{font-size:23px}}
+</style></head><body><main>
+<nav><a href="A3_genea_review.html">GENEA 评审</a><a href="A3_genea_atlas.html">动作全景</a><a href="A3_gesture_benchmark.html">评测与 SONIC 终检</a><a href="A3_motion_review.html">旧库</a></nav>
+<h1>语音驱动的身体与手部演示</h1><p>中文词级时间戳 → GENEA 身体动作与 O10 比数 → SONIC 035 自由站立仿真。</p>
+<video id="video" controls playsinline preload="metadata" src="demo/demo.mp4"></video>
+<section><div class="meta" id="status"></div><p id="text"></p><p>身体语义来自运动学规则反查，尚未经过人工语义评审；本视频为仿真结果。</p><nav><a href="demo/demo.mp4" download>下载视频</a><a href="demo/trace.json" download>下载事件 trace</a><a href="demo/report.json" download>下载运控报告</a></nav></section>
+<section><h2>逐词核对动作</h2><p>点击事件跳到动作准备阶段。误差以实际腕部速度峰减去关键词时间计算。</p><div class="events" id="events"></div></section>
+<details><summary>完整 trace</summary><pre id="trace"></pre></details>
+<script id="demo-data" type="application/json">__DATA__</script><script>
+const d=JSON.parse(document.querySelector('#demo-data').textContent),v=document.querySelector('#video');
+const names={turn_open:'开启讨论',enumerate:'列举',emphasize:'强调',depict_direction_motion:'描绘方向',turn_yield:'让出话轮',refer_self:'指自己',refer_other:'指对方'};
+document.querySelector('#text').textContent=d.text;document.querySelector('#trace').textContent=JSON.stringify(d,null,2);
+document.querySelector('#status').textContent=`${d.duration.toFixed(2)} 秒 · ${d.acceptance.distinct_body_semantics} 种身体语义 · SONIC ${d.acceptance.sonic_stable?'稳定通过':'稳定门槛未通过'} · 手部 ${d.acceptance.hand_targets_pass?'到位':'需检查'}`;
+d.body_events.forEach(e=>{const b=document.createElement('button');b.dataset.time=e.event_arrival_s;b.textContent=`「${e.keyword}」 · ${names[e.function]||e.function}`;const detail=document.createElement('small');detail.textContent=`词 ${e.word_target_s.toFixed(2)}s / 实际峰 ${e.actual_speed_peak_s.toFixed(2)}s / 误差 ${e.peak_timing_error_s.toFixed(2)}s${e.late?'（迟到）':''}`;b.append(detail);b.onclick=()=>{v.currentTime=Math.max(0,e.event_arrival_s-.2);v.play()};document.querySelector('#events').append(b)});
+v.ontimeupdate=()=>{document.querySelectorAll('#events button').forEach((b,i)=>b.classList.toggle('active',v.currentTime>=d.body_events[i].event_arrival_s && v.currentTime<d.body_events[i].atom_end_s))};
+</script></main></body></html>

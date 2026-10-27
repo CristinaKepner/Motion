@@ -1,0 +1,1139 @@
+{
+ "atoms_only": {
+  "label_coverage": {
+   "emphasize": 23,
+   "enumerate": 24,
+   "contrast_compare": 11,
+   "refer_self": 5,
+   "refer_other": 1,
+   "refer_external": 3,
+   "depict_size_shape": 21,
+   "depict_direction_motion": 24,
+   "turn_open": 19,
+   "turn_yield": 15,
+   "greet_farewell": 0,
+   "thank": 1,
+   "affirm": 25,
+   "deny": 2,
+   "certainty": 10,
+   "uncertainty": 19,
+   "enthusiasm": 2
+  },
+  "labels_covered": 16,
+  "label_balance": 0.871,
+  "hand": {
+   "L": 47,
+   "R": 67,
+   "B": 211
+  },
+  "grades": {
+   "A": 215,
+   "B": 18,
+   "C": 10,
+   "D": 82
+  },
+  "flags": {
+   "far_entry": 149,
+   "exit_vel": 130,
+   "semantic_mismatch": 120,
+   "self_collision": 98,
+   "jitter": 96,
+   "entry_vel": 86,
+   "torque_near": 28,
+   "spike": 13,
+   "jerk": 13,
+   "tracking": 10,
+   "periodic": 4,
+   "unsmooth": 3,
+   "too_short": 1
+  },
+  "duration_hist": [
+   3,
+   34,
+   145,
+   105,
+   35,
+   3
+  ],
+  "intra_label_diversity": {
+   "emphasize": 0.14,
+   "enumerate": 0.118,
+   "contrast_compare": 0.136,
+   "refer_self": 0.117,
+   "refer_other": null,
+   "refer_external": 0.217,
+   "depict_size_shape": 0.123,
+   "depict_direction_motion": 0.13,
+   "turn_open": 0.116,
+   "turn_yield": 0.167,
+   "greet_farewell": null,
+   "thank": null,
+   "affirm": 0.108,
+   "deny": 0.084,
+   "certainty": 0.143,
+   "uncertainty": 0.11,
+   "enthusiasm": 0.278
+  },
+  "near_duplicates": [
+   [
+    "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+    "trn_2023_v0_032_main-agent__t005040__00.08-02.00",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.022
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.025
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    0.018
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.016
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_048_main-agent__t005040__06.44-08.32",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__06.04-08.80",
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000480__05.84-08.00",
+    "trn_2023_v0_161_main-agent__t003600__06.64-08.64",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000480__05.84-08.00",
+    "trn_2023_v0_226_main-agent__t000480__00.00-02.44",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.018
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_161_main-agent__t003600__06.64-08.64",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_226_main-agent__t000480__00.00-02.44",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__03.16-04.96",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t006480__00.08-03.92",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.02
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_242_main-agent__t000240__01.80-03.84",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t006960__03.28-06.36",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.019
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.022
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    "trn_2023_v0_242_main-agent__t001440__07.28-09.32",
+    0.025
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    "trn_2023_v0_177_main-agent__t002640__01.64-04.76",
+    0.02
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.021
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t004320__01.96-04.80",
+    "trn_2023_v0_097_main-agent__t000960__04.40-06.16",
+    0.022
+   ],
+   [
+    "trn_2023_v0_065_main-agent__t000240__06.40-08.88",
+    "trn_2023_v0_065_main-agent__t001680__03.32-05.56",
+    0.021
+   ]
+  ],
+  "near_duplicate_count": 74,
+  "style_grid": [
+   [
+    2,
+    63,
+    8,
+    0
+   ],
+   [
+    11,
+    124,
+    6,
+    0
+   ],
+   [
+    14,
+    63,
+    0,
+    0
+   ],
+   [
+    19,
+    15,
+    0,
+    0
+   ]
+  ],
+  "style_grid_by_kind": {
+   "atom": [
+    [
+     2,
+     63,
+     8,
+     0
+    ],
+    [
+     11,
+     124,
+     6,
+     0
+    ],
+    [
+     14,
+     63,
+     0,
+     0
+    ],
+    [
+     19,
+     15,
+     0,
+     0
+    ]
+   ],
+   "variant": [
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "style_cells_covered": 10,
+  "style_cells_total": 16,
+  "energy_bins": [
+   0.0,
+   0.12,
+   0.25,
+   0.4,
+   10
+  ],
+  "tempo_bins": [
+   0.0,
+   1.0,
+   2.0,
+   3.5,
+   100
+  ],
+  "reachable_from_neutral_0p6s": 0.003,
+  "median_bridge_in_s": 1.488
+ },
+ "atoms_plus_AB_variants": {
+  "label_coverage": {
+   "emphasize": 35,
+   "enumerate": 42,
+   "contrast_compare": 22,
+   "refer_self": 11,
+   "refer_other": 1,
+   "refer_external": 19,
+   "depict_size_shape": 36,
+   "depict_direction_motion": 40,
+   "turn_open": 30,
+   "turn_yield": 33,
+   "greet_farewell": 0,
+   "thank": 6,
+   "affirm": 37,
+   "deny": 12,
+   "certainty": 27,
+   "uncertainty": 30,
+   "enthusiasm": 13
+  },
+  "labels_covered": 16,
+  "label_balance": 0.923,
+  "hand": {
+   "L": 85,
+   "R": 142,
+   "B": 299
+  },
+  "grades": {
+   "A": 412,
+   "B": 22,
+   "C": 10,
+   "D": 82
+  },
+  "flags": {
+   "far_entry": 210,
+   "semantic_mismatch": 207,
+   "exit_vel": 162,
+   "entry_vel": 119,
+   "jitter": 116,
+   "self_collision": 105,
+   "torque_near": 47,
+   "style_eroded": 24,
+   "jerk": 19,
+   "spike": 13,
+   "tracking": 10,
+   "unsmooth": 6,
+   "periodic": 4,
+   "too_short": 1
+  },
+  "duration_hist": [
+   3,
+   42,
+   221,
+   187,
+   69,
+   4
+  ],
+  "intra_label_diversity": {
+   "emphasize": 0.127,
+   "enumerate": 0.098,
+   "contrast_compare": 0.118,
+   "refer_self": 0.099,
+   "refer_other": null,
+   "refer_external": 0.17,
+   "depict_size_shape": 0.105,
+   "depict_direction_motion": 0.114,
+   "turn_open": 0.123,
+   "turn_yield": 0.137,
+   "greet_farewell": null,
+   "thank": 0.059,
+   "affirm": 0.101,
+   "deny": 0.071,
+   "certainty": 0.128,
+   "uncertainty": 0.094,
+   "enthusiasm": 0.199
+  },
+  "near_duplicates": [
+   [
+    "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+    "trn_2023_v0_032_main-agent__t005040__00.08-02.00",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.022
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.025
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    0.018
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    0.024
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.016
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "trn_2023_v0_048_main-agent__t005040__06.44-08.32",
+    0.023
+   ],
+   [
+    "trn_2023_v0_000_main-agent__t000720__06.04-08.80",
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000480__05.84-08.00",
+    "trn_2023_v0_161_main-agent__t003600__06.64-08.64",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000480__05.84-08.00",
+    "trn_2023_v0_226_main-agent__t000480__00.00-02.44",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.018
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_161_main-agent__t003600__06.64-08.64",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "trn_2023_v0_226_main-agent__t000480__00.00-02.44",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t000960__03.16-04.96",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002640__05.12-08.80",
+    "trn_2023_v0_032_main-agent__t006480__00.08-03.92",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.02
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    0.025
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t002880__08.12-10.04",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003120__04.00-05.52",
+    "trn_2023_v0_242_main-agent__t000240__01.80-03.84",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t003600__02.08-04.56",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t005280__04.60-08.24",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t006960__03.28-06.36",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.023
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    0.021
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t008880__06.20-08.72",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.022
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    0.019
+   ],
+   [
+    "trn_2023_v0_032_main-agent__t009120__01.44-03.80",
+    "trn_2023_v0_145_main-agent__t002160__00.20-01.84",
+    0.022
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t000960__01.28-03.60",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.024
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__04.44-06.88",
+    "trn_2023_v0_242_main-agent__t001440__07.28-09.32",
+    0.025
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    "trn_2023_v0_177_main-agent__t002640__01.64-04.76",
+    0.02
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t002160__06.88-08.80",
+    "trn_2023_v0_177_main-agent__t002880__00.00-02.00",
+    0.021
+   ],
+   [
+    "trn_2023_v0_048_main-agent__t004320__01.96-04.80",
+    "trn_2023_v0_097_main-agent__t000960__04.40-06.16",
+    0.022
+   ],
+   [
+    "trn_2023_v0_065_main-agent__t000240__06.40-08.88",
+    "trn_2023_v0_065_main-agent__t001680__03.32-05.56",
+    0.021
+   ]
+  ],
+  "near_duplicate_count": 74,
+  "style_grid": [
+   [
+    2,
+    70,
+    8,
+    0
+   ],
+   [
+    38,
+    185,
+    7,
+    0
+   ],
+   [
+    37,
+    110,
+    2,
+    0
+   ],
+   [
+    37,
+    30,
+    0,
+    0
+   ]
+  ],
+  "style_grid_by_kind": {
+   "atom": [
+    [
+     2,
+     63,
+     8,
+     0
+    ],
+    [
+     11,
+     124,
+     6,
+     0
+    ],
+    [
+     14,
+     63,
+     0,
+     0
+    ],
+    [
+     19,
+     15,
+     0,
+     0
+    ]
+   ],
+   "variant": [
+    [
+     0,
+     7,
+     0,
+     0
+    ],
+    [
+     27,
+     61,
+     1,
+     0
+    ],
+    [
+     23,
+     47,
+     2,
+     0
+    ],
+    [
+     18,
+     15,
+     0,
+     0
+    ]
+   ]
+  },
+  "style_cells_covered": 11,
+  "style_cells_total": 16,
+  "energy_bins": [
+   0.0,
+   0.12,
+   0.25,
+   0.4,
+   10
+  ],
+  "tempo_bins": [
+   0.0,
+   1.0,
+   2.0,
+   3.5,
+   100
+  ],
+  "reachable_from_neutral_0p6s": 0.025,
+  "median_bridge_in_s": 1.389
+ },
+ "counts": {
+  "atoms": 325,
+  "variants": 204,
+  "variants_AB": 201,
+  "variants_rejected": 0,
+  "bases": 36,
+  "recordings": 298,
+  "segments_rejected": 148,
+  "source_recordings": 24
+ },
+ "semantic_functions": [
+  "emphasize",
+  "enumerate",
+  "contrast_compare",
+  "refer_self",
+  "refer_other",
+  "refer_external",
+  "depict_size_shape",
+  "depict_direction_motion",
+  "turn_open",
+  "turn_yield",
+  "greet_farewell",
+  "thank",
+  "affirm",
+  "deny",
+  "certainty",
+  "uncertainty",
+  "enthusiasm"
+ ],
+ "semantic_check": {
+  "emphasize": {
+   "zh": "强调",
+   "spec": "主导手在胸口高度快速击打（≥0.6 m/s），随后 0.25 s 内急停",
+   "labelled": 23,
+   "labelled_pass": 23,
+   "verified_refs": 88,
+   "verified_refs_atoms": 37,
+   "best_refs": [
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~enthusiastic",
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16",
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~mirror",
+    "trn_2023_v0_113_main-agent__t000000__07.24-08.84~lively",
+    "trn_2023_v0_177_main-agent__t003840__05.20-08.80"
+   ]
+  },
+  "enumerate": {
+   "zh": "列举",
+   "spec": "主导手在身前做 ≥2 个节奏均匀的节拍",
+   "labelled": 24,
+   "labelled_pass": 24,
+   "verified_refs": 155,
+   "verified_refs_atoms": 71,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~mirror",
+    "trn_2023_v0_177_main-agent__t003840__05.20-08.80~calm",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~calm",
+    "trn_2023_v0_032_main-agent__t008400__03.28-06.56~reserved"
+   ]
+  },
+  "contrast_compare": {
+   "zh": "对比",
+   "spec": "先一侧手主导、再另一侧手主导，两手各在同侧展开",
+   "labelled": 11,
+   "labelled_pass": 11,
+   "verified_refs": 25,
+   "verified_refs_atoms": 12,
+   "best_refs": [
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92~reserved",
+    "trn_2023_v0_113_main-agent__t000960__04.84-08.24",
+    "trn_2023_v0_355_main-agent__t000480__03.52-06.04~calm",
+    "trn_2023_v0_032_main-agent__t008400__03.28-06.56",
+    "trn_2023_v0_032_main-agent__t008400__03.28-06.56~mirror"
+   ]
+  },
+  "refer_self": {
+   "zh": "指自己",
+   "spec": "手移向并停在自己胸口（<0.18 m）",
+   "labelled": 5,
+   "labelled_pass": 5,
+   "verified_refs": 5,
+   "verified_refs_atoms": 1,
+   "best_refs": [
+    "trn_2023_v0_323_main-agent__t001680__04.92-06.48",
+    "trn_2023_v0_323_main-agent__t001680__04.92-06.48~mirror",
+    "trn_2023_v0_323_main-agent__t001680__04.92-06.48~lively",
+    "trn_2023_v0_161_main-agent__t009600__00.28-02.48~lively",
+    "trn_2023_v0_323_main-agent__t001680__04.92-06.48~enthusiastic"
+   ]
+  },
+  "refer_other": {
+   "zh": "指对方",
+   "spec": "手臂伸直向正前方伸出 ≥0.30 m 并短暂停住",
+   "labelled": 1,
+   "labelled_pass": 1,
+   "verified_refs": 6,
+   "verified_refs_atoms": 0,
+   "best_refs": [
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~calm",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76~calm",
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92~formal",
+    "trn_2023_v0_161_main-agent__t012000__03.84-07.08~enthusiastic",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76~enthusiastic"
+   ]
+  },
+  "refer_external": {
+   "zh": "指外部",
+   "spec": "手臂伸直伸向外侧或前方 ≥0.25 m 并短暂停住",
+   "labelled": 3,
+   "labelled_pass": 3,
+   "verified_refs": 20,
+   "verified_refs_atoms": 3,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t000000__01.48-03.96~reserved",
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20~calm",
+    "trn_2023_v0_323_main-agent__t000000__00.88-02.96~reserved",
+    "trn_2023_v0_177_main-agent__t000000__01.48-03.96~formal",
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~calm"
+   ]
+  },
+  "depict_size_shape": {
+   "zh": "描绘大小形状",
+   "spec": "双手镜像对称运动，双手间距变化 ≥0.15 m",
+   "labelled": 21,
+   "labelled_pass": 21,
+   "verified_refs": 91,
+   "verified_refs_atoms": 39,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92",
+    "trn_2023_v0_177_main-agent__t000000__01.48-03.96~reserved",
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20~calm",
+    "trn_2023_v0_323_main-agent__t000000__00.88-02.96~reserved",
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92~calm"
+   ]
+  },
+  "depict_direction_motion": {
+   "zh": "描绘方向运动",
+   "spec": "主导手在 0.8 s 内沿较直路径单向扫过 ≥0.25 m",
+   "labelled": 24,
+   "labelled_pass": 24,
+   "verified_refs": 195,
+   "verified_refs_atoms": 92,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t003840__05.20-08.80~calm",
+    "trn_2023_v0_032_main-agent__t008400__03.28-06.56~reserved",
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92",
+    "trn_2023_v0_177_main-agent__t000000__01.48-03.96~reserved",
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~enthusiastic"
+   ]
+  },
+  "turn_open": {
+   "zh": "开启话轮",
+   "spec": "双手由内向外打开（间距 +0.15 m），停在身前",
+   "labelled": 19,
+   "labelled_pass": 19,
+   "verified_refs": 65,
+   "verified_refs_atoms": 28,
+   "best_refs": [
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20~calm",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76~reserved",
+    "trn_2023_v0_323_main-agent__t001680__00.36-02.84~calm",
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20",
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20~mirror"
+   ]
+  },
+  "turn_yield": {
+   "zh": "让出话轮",
+   "spec": "单手向前递出 ≥0.25 m，然后收回",
+   "labelled": 15,
+   "labelled_pass": 15,
+   "verified_refs": 56,
+   "verified_refs_atoms": 16,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~mirror",
+    "trn_2023_v0_177_main-agent__t003840__05.20-08.80~calm",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~calm",
+    "trn_2023_v0_339_main-agent__t001200__03.44-06.16~enthusiastic"
+   ]
+  },
+  "greet_farewell": {
+   "zh": "问候告别",
+   "spec": "同一举过肩区间内左右摆动 ≥2 次",
+   "labelled": 0,
+   "labelled_pass": 0,
+   "verified_refs": 1,
+   "verified_refs_atoms": 0,
+   "best_refs": [
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92~enthusiastic"
+   ]
+  },
+  "thank": {
+   "zh": "感谢",
+   "spec": "双手同时到胸前，身体前倾 ≥8°",
+   "labelled": 1,
+   "labelled_pass": 1,
+   "verified_refs": 5,
+   "verified_refs_atoms": 1,
+   "best_refs": [
+    "trn_2023_v0_355_main-agent__t000480__03.52-06.04",
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92~enthusiastic",
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92~lively",
+    "trn_2023_v0_355_main-agent__t000480__03.52-06.04~lively",
+    "trn_2023_v0_355_main-agent__t000480__03.52-06.04~enthusiastic"
+   ]
+  },
+  "affirm": {
+   "zh": "肯定",
+   "spec": "1–3 个向下小节拍，活动范围 <0.25 m",
+   "labelled": 25,
+   "labelled_pass": 25,
+   "verified_refs": 78,
+   "verified_refs_atoms": 46,
+   "best_refs": [
+    "trn_2023_v0_161_main-agent__t006240__05.36-08.04",
+    "trn_2023_v0_161_main-agent__t001680__00.32-02.92~lively",
+    "trn_2023_v0_161_main-agent__t006240__05.36-08.04~mirror",
+    "trn_2023_v0_161_main-agent__t011040__00.00-03.32",
+    "trn_2023_v0_177_main-agent__t005280__00.44-02.64"
+   ]
+  },
+  "deny": {
+   "zh": "否定",
+   "spec": "同一身前胸肩高度区间内左右摆动 ≥2 次，侧向路程占比 ≥50%",
+   "labelled": 2,
+   "labelled_pass": 2,
+   "verified_refs": 5,
+   "verified_refs_atoms": 2,
+   "best_refs": [
+    "trn_2023_v0_323_main-agent__t003840__05.68-07.88",
+    "trn_2023_v0_161_main-agent__t012000__03.84-07.08~enthusiastic",
+    "trn_2023_v0_065_main-agent__t003360__00.56-03.56",
+    "trn_2023_v0_161_main-agent__t012000__03.84-07.08~lively",
+    "trn_2023_v0_065_main-agent__t003360__00.56-03.56~lively"
+   ]
+  },
+  "certainty": {
+   "zh": "确定",
+   "spec": "有力向下切（≥0.5 m/s）后定住 ≥0.2 s",
+   "labelled": 10,
+   "labelled_pass": 10,
+   "verified_refs": 21,
+   "verified_refs_atoms": 11,
+   "best_refs": [
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~mirror",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~calm",
+    "trn_2023_v0_177_main-agent__t000000__01.48-03.96~reserved",
+    "trn_2023_v0_177_main-agent__t000720__05.92-09.24~formal"
+   ]
+  },
+  "uncertainty": {
+   "zh": "不确定",
+   "spec": "双手在身前摊开，动作缓慢",
+   "labelled": 19,
+   "labelled_pass": 19,
+   "verified_refs": 61,
+   "verified_refs_atoms": 30,
+   "best_refs": [
+    "trn_2023_v0_323_main-agent__t003840__01.48-04.20~calm",
+    "trn_2023_v0_323_main-agent__t000000__00.88-02.96~reserved",
+    "trn_2023_v0_177_main-agent__t003120__03.92-06.92~calm",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76~reserved",
+    "trn_2023_v0_065_main-agent__t003360__09.32-11.04~calm"
+   ]
+  },
+  "enthusiasm": {
+   "zh": "热情",
+   "spec": "手举过肩，幅度大（≥0.35 m）且速度快",
+   "labelled": 2,
+   "labelled_pass": 2,
+   "verified_refs": 10,
+   "verified_refs_atoms": 2,
+   "best_refs": [
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92~calm",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76",
+    "trn_2023_v0_355_main-agent__t000960__04.76-06.76~mirror",
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92",
+    "trn_2023_v0_355_main-agent__t000480__08.40-10.92~lively"
+   ]
+  }
+ }
+}

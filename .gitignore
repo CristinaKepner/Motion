@@ -15,3 +15,15 @@ _a3_fixed_base.xml
 node_modules/
 package*.json
 results/models/
+
+
+# Reproducible GENEA intermediates (source data stays under external/).
+results/genea/cache/
+results/genea/atom_quality.pkl
+results/genea/csv/
+results/genea/source_csv/
+results/genea/catalog_candidates/
+results/genea/viz/
+results/genea_initial_*/
+results/execution_20261027/baseline/catalog/
+**/silent.mp4

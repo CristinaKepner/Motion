@@ -1,0 +1,55 @@
+{
+  "text": "第一，展开讨论，一起看看这个方案。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "rate": "-5%",
+  "provider": "edge-tts",
+  "boundary_source": "TTS WordBoundary + recorded PCM silence insertions; raw boundaries in 100 ns units",
+  "duration": 4.032,
+  "wav_sha256": "f224475759a13d3a15f62f138649bc5fcd2a16068e5a6ca503c646924be99472",
+  "events": [],
+  "raw_boundaries": [
+    {
+      "type": "WordBoundary",
+      "offset": 1026250,
+      "duration": 4736660,
+      "text": "第一"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 8000000,
+      "duration": 3684160,
+      "text": "展开"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 11815830,
+      "duration": 5263330,
+      "text": "讨论"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 20368330,
+      "duration": 3421250,
+      "text": "一起"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 23921250,
+      "duration": 3421250,
+      "text": "看看"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 27605410,
+      "duration": 2105410,
+      "text": "这个"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 29842080,
+      "duration": 4210410,
+      "text": "方案"
+    }
+  ],
+  "pcm_silence_insertions": []
+}

@@ -1,6 +1,5 @@
 <title>A3 手势数据集与评测</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a dossier — dataset inventory table, then the benchmark protocol, then results laid side by side per source. */
 :root{--bg:#EEF0EE;--panel:#FFFFFF;--panel-2:#F5F6F4;--ink:#171B19;--ink-2:#4A524E;--ink-3:#6B746F;--line:#D5DAD6;--line-2:#E4E8E5;
@@ -29,6 +28,7 @@ td{padding:7px 10px;border-bottom:1px solid var(--line-2);vertical-align:top}tr:
 .note{font-size:12.5px;color:var(--ink-2);max-width:92ch}
 details summary{cursor:pointer;font-weight:600}
 </style>
+<nav aria-label="页面导航" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px;background:#173c34;color:white;font:14px system-ui"><a style="color:inherit" href="A3_genea_review.html">GENEA 评审</a><a style="color:inherit" href="A3_genea_atlas.html">动作全景</a><a style="color:inherit" href="A3_gesture_benchmark.html">评测与 SONIC 终检</a><a style="color:inherit" href="A3_speech_demo.html">语音演示视频</a><a style="color:inherit" href="A3_motion_review.html">旧库 352 片段</a></nav>
 <div class="wrap">
   <header><h1>A3 手势数据集与评测</h1><p class="lede" id="lede"></p></header>
 
@@ -38,7 +38,7 @@ details summary{cursor:pointer;font-weight:600}
     <p class="note" id="dsnote"></p>
   </section>
 
-  <section class="panel"><div class="head"><h2>评测结果</h2><p>所有来源都先转换到 A3 的 17 个手势关节（30 Hz），再用同一套指标。Bandai 子集是本环境唯一能拿到的真实动捕，用它检验“真人动作 → A3”的整条链路；合成数据只用于验证带音频的节奏指标能跑通。</p></div>
+  <section class="panel"><div class="head"><h2>评测结果</h2><p>所有来源都先转换到 A3 的 17 个手势关节（30 Hz），再用同一套指标。GENEA 分别报告原始重定向、修复入选窗口和切分后的新库；与 Bandai、旧 A3 库并列比较。语义通过表示符合运动学规则，仍需人工核对。</p></div>
     <div class="tbl"><table><thead><tr><th>指标</th><th id="rh"></th></tr></thead><tbody id="res"></tbody></table></div>
     <div class="grid" style="margin-top:14px">
       <div><h3>各来源：语义“已验证参考”数（通过该语义规格的片段）</h3><div class="bars" id="sem"></div><div class="legend" id="semlegend"></div></div>
@@ -47,6 +47,7 @@ details summary{cursor:pointer;font-weight:600}
     </div>
   </section>
 
+  <section class="panel" id="sonic-panel" hidden><div class="head"><h2>真实 SONIC 035 终检</h2><p>自由根全身仿真，保留真实跟踪与失稳结果；代理等级不等于运控准入。</p></div><p id="sonic-summary"></p><div class="tbl"><table><thead><tr><th>Atom</th><th>代理等级</th><th>全段关节 RMSE (rad)</th><th>动作段上身 RMSE (rad)</th><th>COM 位移 (m)</th><th>摔倒</th><th>稳定门槛</th></tr></thead><tbody id="sonic-rows"></tbody></table></div></section>
   <section class="panel"><div class="head"><h2>评测协议</h2></div><div class="md" id="proto"></div></section>
 </div>
 <script>
@@ -69,8 +70,9 @@ const g = r => { const G = r.executability.grades, n = Math.max(1, r.clips); ret
 const pct = x => x == null ? "—" : Math.round(x*100) + "%";
 const rows = [
   ["片段数 / 动作时长", r => `${r.clips} / ${r.seconds_of_motion} s`],
-  ["重定向保真（方向角误差）", r => r.adaptation?.retarget_fidelity ? `均值 ${r.adaptation.retarget_fidelity.mean_deg}° · P95 ${r.adaptation.retarget_fidelity.p95_deg}°` : `<span class="sub">已在 A3 关节空间</span>`],
+  ["重定向保真（方向角误差）", r => r.adaptation?.retarget_fidelity ? `均值 ${Number(r.adaptation.retarget_fidelity.mean_deg).toFixed(2)}°${r.adaptation.retarget_fidelity.p95_deg == null ? "" : ` · P95 ${r.adaptation.retarget_fidelity.p95_deg}°`}` : `<span class="sub">已在 A3 关节空间</span>`],
   ["可执行性等级", g],
+  ["A/B 比例", r => pct((r.executability.grades.A+r.executability.grades.B)/r.clips)],
   ["平均自动分", r => r.executability.mean_score],
   ["力矩超限 / 自碰撞", r => `${pct(r.executability.torque_over_limit_share)} / ${pct(r.executability.self_collision_share)}`],
   ["静止 / 抖动占比", r => `${pct(r.executability.static_share)} / ${pct(r.executability.jitter_share)}`],
@@ -80,17 +82,23 @@ const rows = [
   ["语义：至少满足一个规格", r => pct(r.semantics.any_function_rate)],
   ["关节覆盖（均值 / 最小）", r => `${pct(r.joint_coverage.mean_share)} / ${pct(r.joint_coverage.min_share)}`],
   ["风格空间格", r => `${r.style.cells_covered} / ${r.style.cells_total}`],
-  ["BC（随机基线）", r => r.rhythm.BC == null ? `<span class="sub">无音频</span>` : `${r.rhythm.BC}（${r.rhythm.BC_chance}）`],
-  ["BAS 二值 / 高斯（随机基线）", r => r.rhythm.BAS_binary == null ? `<span class="sub">无音频</span>` : `${r.rhythm.BAS_binary} / ${r.rhythm.BAS_gaussian}（${r.rhythm.BAS_binary_chance}）`],
+  ["BC（随机基线）", r => r.rhythm.BC == null ? `<span class="sub">本轮未评测</span>` : `${r.rhythm.BC}（${r.rhythm.BC_chance}）`],
+  ["BAS 二值 / 高斯（随机基线）", r => r.rhythm.BAS_binary == null ? `<span class="sub">本轮未评测</span>` : `${r.rhythm.BAS_binary} / ${r.rhythm.BAS_gaussian}（${r.rhythm.BAS_binary_chance}）`],
 ];
 $("#res").innerHTML = rows.map(([k,f]) => `<tr><td><b>${k}</b></td>${res.map(r => `<td class="mono">${f(r)}</td>`).join("")}</tr>`).join("") +
   (Object.keys(D.compare).length ? `<tr><td><b>FKD</b></td><td colspan="${res.length}" class="mono">${Object.entries(D.compare).map(([k,v]) => `${k} = ${v}`).join("；")}（同分布两半基线 ${D.self_checks.FKD_same_distribution_halves}）</td></tr>` : "");
 
 // semantic bars
-const cols = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)"];
+const cols = res.map((_,i) => `hsl(${(i*137.5)%360} 48% 43%)`);
 const fns = Object.keys(FN); const mx = Math.max(...res.flatMap(r => Object.values(r.semantics.verified_refs_per_function)), 1);
 $("#sem").innerHTML = fns.map(f => `<div class="br"><span>${FN[f]}</span><div style="display:flex;flex-direction:column;gap:1px">${res.map((r,i) => { const v = r.semantics.verified_refs_per_function[f]||0; return `<div class="t" style="height:5px"><span style="width:${v/mx*100}%;background:${cols[i]}"></span></div>`; }).join("")}</div><span class="mono sub">${res.map(r => r.semantics.verified_refs_per_function[f]||0).join(" / ")}</span></div>`).join("");
 $("#semlegend").innerHTML = res.map((r,i) => `<span><i style="background:${cols[i]}"></i>${esc(r.name)}</span>`).join("");
+
+if(D.sonic){
+  $("#sonic-panel").hidden=false;
+  $("#sonic-summary").textContent=Object.entries(D.sonic.groups).map(([g,v])=>`${g} 级：${v.n} 段，稳定 ${v.stable}，摔倒 ${v.falls}，平均上身 RMSE ${v.mean_gesture_rmse_rad.toFixed(3)} rad`).join("；");
+  $("#sonic-rows").innerHTML=D.sonic.rows.map(r=>`<tr><td class="mono">${esc(r.atom)}</td><td>${esc(r.proxy_grade)}</td><td>${r.joint_rmse_rad.toFixed(3)}</td><td>${r.active_gesture_rmse_rad?.toFixed(3)??"—"}</td><td>${r.com_xy_max_displacement_m.toFixed(3)}</td><td>${r.fall?"是":"否"}</td><td>${r.stability_pass?"通过":"未通过"}</td></tr>`).join("");
+}
 
 // checks
 const C = D.self_checks || {};

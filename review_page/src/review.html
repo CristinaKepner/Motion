@@ -1,7 +1,5 @@
 <title>A3 动作库评审台</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: instrument-panel workbench — header strip, tab row, then either overview panels,
    a provenance tree table, or a two-pane review station (queue | player + scoring). */
@@ -151,6 +149,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--panel-2);paddi
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
+<nav aria-label="页面导航" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px;background:#173c34;color:white;font:14px system-ui"><a style="color:inherit" href="A3_genea_review.html">GENEA 评审</a><a style="color:inherit" href="A3_genea_atlas.html">动作全景</a><a style="color:inherit" href="A3_gesture_benchmark.html">评测与 SONIC 终检</a><a style="color:inherit" href="A3_speech_demo.html">语音演示视频</a><a style="color:inherit" href="A3_motion_review.html">旧库 352 片段</a></nav>
 <div class="wrap">
   <header class="top">
     <h1>A3 动作库评审台</h1>
@@ -284,9 +283,9 @@ function renderOverview(){
   const atoms = CLIPS.filter(c => c.kind === "atom"), vars = CLIPS.filter(c => c.kind === "variant");
   const lowA = atoms.filter(c => "CD".includes(c.grade)).length;
   const goodV = vars.filter(c => "AB".includes(c.grade)).length;
-  $("#subline").textContent = `${C.recordings} 条 A3 录制 → ${C.atoms} 个原始 atom → ${C.variants} 个仿真风格变体 · 生成于 ${B.generated_at}`;
+  $("#subline").textContent = `${C.source_recordings||C.recordings} 条来源录制${C.source_recordings && C.source_recordings!==C.recordings ? ` → ${C.recordings} 个修复窗口` : ''} → ${C.atoms} 个原始 atom → ${C.variants} 个仿真风格变体 · 生成于 ${B.generated_at}`;
   const kp = [
-    ["原始 atom", C.atoms, `来自 ${C.recordings} 条录制，丢弃 ${C.segments_rejected} 段`],
+    ["原始 atom", C.atoms, `来自 ${C.source_recordings||C.recordings} 条来源录制；切分拒绝 ${C.segments_rejected} 段`],
     ["原始中低质（C/D）", pct(lowA/atoms.length), `${lowA} 个，主要是几乎不动和抖动`],
     ["仿真生成 可用（A/B）", `${goodV}/${vars.length}`, `基于 ${C.bases} 个干净 atom 生成`],
     ["语义覆盖", `${A.labels_covered}/17`, "风格化不会产生新语义"],
@@ -307,15 +306,16 @@ function renderOverview(){
   let broke = 0, fixed = 0;
   vars.forEach(c => { const p = BYID[c.parent]; if (!p || !p.spec) return; if (p.spec.passed && !c.spec.passed) broke++; if (!p.spec.passed && c.spec.passed) fixed++; });
   const noRef = R.semantic_functions.filter(f => !(R.semantic_check?.[f]?.verified_refs)).map(f => FN_ZH[f]);
+  const genea = atoms.some(c => c.source.startsWith("trn_2023_"));
   const F = [
-    `名对、动作不对：原始 atom 只有 ${own}/${atoms.length} 个通过自己标签的动作规格。标签来自文件名规则（如“行走 → 开启话轮”），动作本身并不是那个意思。生成变体通过 ${ownV}/${vars.length}；风格化让 ${fixed} 个原本不达标的片段达标，也把 ${broke} 个原本达标的片段改坏了。`,
+    genea ? `GENEA 标签来自逐片段规格反查；${atoms.length-own} 个没有通过任何规格的片段保留为 unverified。其余只是规则匹配，仍需人工语义审核。变体自身规格通过 ${ownV}/${vars.length}。` : `名对、动作不对：原始 atom 只有 ${own}/${atoms.length} 个通过自己标签的动作规格。标签来自文件名规则（如“行走 → 开启话轮”），动作本身并不是那个意思。生成变体通过 ${ownV}/${vars.length}；风格化让 ${fixed} 个原本不达标的片段达标，也把 ${broke} 个原本达标的片段改坏了。`,
     `按规格反查，库里没有任何已验证参考的语义：${noRef.join("、") || "无"}。这些语义不能靠风格化补，需要新的源动作，并且新动作也要先过规格。`,
-    `原始 atom 有 ${pct(lowA/atoms.length)} 是 C/D 级。最大的来源问题是“几乎不动”（${A.flags.static||0} 个）：这批录制是行走、下蹲等体能动作，手臂只是跟着摆，不是对话手势。`,
+    genea ? `原始 atom 有 ${pct(lowA/atoms.length)} 是 C/D 级；静止 ${A.flags.static||0} 个，自碰撞 ${A.flags.self_collision||0} 个，抖动 ${A.flags.jitter||0} 个。候选库保留质量缺陷供评审，实际执行另需 SONIC 终检。` : `原始 atom 有 ${pct(lowA/atoms.length)} 是 C/D 级。最大的来源问题是“几乎不动”（${A.flags.static||0} 个）：这批录制是行走、下蹲等体能动作，手臂只是跟着摆，不是对话手势。`,
     `最差的几条录制：${worstRec.map(r => `${r.name}（C/D ${pct(r.rollup.low_share)}）`).join("、")}。追溯树里可以从这些节点一路点到具体片段。`,
     `语义只覆盖 ${A.labels_covered}/17 类，缺 ${missing.join("、")}。风格化只改变“怎么做”，不改变“表达什么”，缺的语义需要新的源数据（BEAT2 重定向或文本条件生成）。`,
     `力矩反馈在起作用：热情 / 活泼两种风格 ${en} 个变体里有 ${er} 个因 A3 电机力矩超限被自动放慢（标记为“风格被安全修复削弱”）。A3 能表现的“热情”有物理上限。`,
     `生成变体 ${goodV}/${vars.length} 达到 A/B；风格空间从 ${A.style_cells_covered} 格扩到 ${AV.style_cells_covered} 格，左右手单侧片段从 ${A.hand.L + A.hand.R} 个增到 ${AV.hand.L + AV.hand.R} 个（镜像）。${coll ? `仍有 ${coll} 个变体自碰撞，需人工确认后丢弃。` : ""}`,
-    `衔接：中位接入时间 ${A.median_bridge_in_s}s，只有 ${pct(A.reachable_from_neutral_0p6s)} 的片段能在 0.6 s 内从中立姿态接入。录制里手臂多为伸直下垂，而中立姿态肘部弯曲约 46°，两者不匹配，会吃掉规划预算。`,
+    `衔接：中位接入时间 ${A.median_bridge_in_s}s，只有 ${pct(A.reachable_from_neutral_0p6s)} 的片段能在 0.6 s 内从中立姿态接入。入口姿态差异会占用规划预算，应把准备时间接到语音事件之前。`,
   ];
   $("#findings").innerHTML = F.map(f => `<li>${esc(f)}</li>`).join("");
 
@@ -393,7 +393,7 @@ function renderTree(){
     if (expanded.has(id)) nd.children.forEach(c => walk(c, depth+1));
   };
   walk(TREE.root, 0);
-  const KZ = {library:"动作库",dataset:"数据集",recording:"录制",atom:"atom",variant:"生成变体",rejected:"已丢弃"};
+  const KZ = {library:"动作库",dataset:"数据集",recording:"录制",window:"修复窗口",atom:"atom",variant:"生成变体",rejected:"已丢弃"};
   $("#treebody").innerHTML = rows.map(([nd, d]) => {
     const r = nd.rollup, leaf = nd.kind === "atom" || nd.kind === "variant";
     const kids = nd.children.length;

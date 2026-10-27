@@ -1,5 +1,5 @@
 {
- "note": "核对日期 2026-10-22。许可与规模以各数据页为准；标 ⚠ 的项目是论文/页面未明确、需要在下载时核对的。",
+ "note": "GENEA 可达性核对于 2026-10-27；其余条目保留 2026-10-22 的记录。",
  "datasets": [
   {"id": "beat", "name": "BEAT", "year": 2022, "venue": "ECCV 2022", "kind": "动捕 · 对话/演讲",
    "hours": "76 h", "speakers": "30 人 · 4 种语言 · 8 种情绪", "format": "BVH（120 Hz，含手指）+ ARKit 面部 + 音频 + 文本",
@@ -23,9 +23,9 @@
    "url": "https://github.com/facebookresearch/TalkingWithHands32M"},
   {"id": "genea2023", "name": "GENEA Challenge 2023", "year": 2023, "venue": "ICMI 2023", "kind": "动捕 · 双人对话（TWH 整理版）",
    "hours": "训练集 8.6 GB + 验证 331 MB + 测试 506 MB", "speakers": "TWH 参与者", "format": "BVH（30 fps）+ WAV + 词级 TSV 转写 + metadata.csv",
-   "annotations": "词级时间对齐转写；说话人 ID；是否含手指", "license": "CC BY-NC 4.0", "host": "Zenodo 8199133", "reach": "blocked",
+   "annotations": "词级时间对齐转写；说话人 ID；是否含手指", "license": "CC BY-NC 4.0", "host": "Zenodo 8199133", "reach": "ok",
    "profile": "twh", "fit": {"speech": 3, "semantic": 1, "fingers": 2, "quality": 3, "scale": 3},
-   "why": "直接可用的 BVH + 音频 + 转写三件套，节奏指标（BC/BAS）可以直接算。",
+   "why": "直接可用的 BVH + 音频 + 转写三件套，节奏指标（BC/BAS）可以直接算。 2026-10-27 已下载训练集 24 条 main-agent 的 BVH/WAV/TSV，逐成员 CRC 校验通过。",
    "url": "https://zenodo.org/records/8199133"},
   {"id": "zeggs", "name": "ZEGGS", "year": 2023, "venue": "CGF 2023 (Ubisoft)", "kind": "动捕 · 单人独白（风格化）",
    "hours": "134.65 min", "speakers": "1 位女演员 · 英语 · 19 种风格", "format": "BVH（60 fps，含手指）+ 音频",

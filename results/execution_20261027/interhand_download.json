@@ -1,0 +1,63 @@
+{
+  "source": "https://mks0601.github.io/InterHand2.6M/",
+  "license": "CC BY-NC 4.0",
+  "scope": "complete official v1.0 5fps annotation folder; RGB images not downloaded",
+  "files": [
+    {
+      "path": "skeleton.txt",
+      "bytes": 657
+    },
+    {
+      "path": "subject.txt",
+      "bytes": 798
+    },
+    {
+      "path": "test/InterHand2.6M_test_MANO_NeuralAnnot.json",
+      "bytes": 12303589
+    },
+    {
+      "path": "test/InterHand2.6M_test_camera.json",
+      "bytes": 269009
+    },
+    {
+      "path": "test/InterHand2.6M_test_data.json",
+      "bytes": 600284156
+    },
+    {
+      "path": "test/InterHand2.6M_test_joint_3d.json",
+      "bytes": 15940439
+    },
+    {
+      "path": "train/InterHand2.6M_train_MANO_NeuralAnnot.json",
+      "bytes": 32821856
+    },
+    {
+      "path": "train/InterHand2.6M_train_camera.json",
+      "bytes": 738213
+    },
+    {
+      "path": "train/InterHand2.6M_train_data.json",
+      "bytes": 947331290
+    },
+    {
+      "path": "train/InterHand2.6M_train_joint_3d.json",
+      "bytes": 43130602
+    },
+    {
+      "path": "val/InterHand2.6M_val_MANO_NeuralAnnot.json",
+      "bytes": 4918864
+    },
+    {
+      "path": "val/InterHand2.6M_val_camera.json",
+      "bytes": 52226
+    },
+    {
+      "path": "val/InterHand2.6M_val_data.json",
+      "bytes": 268027813
+    },
+    {
+      "path": "val/InterHand2.6M_val_joint_3d.json",
+      "bytes": 6482899
+    }
+  ]
+}

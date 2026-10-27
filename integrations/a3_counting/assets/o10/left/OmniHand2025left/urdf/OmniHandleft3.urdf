@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="OmniHandleft3">
+  <link
+    name="l_palm">
+    <inertial>
+      <origin
+        xyz="-0.0051218961473315 0.0008617036152978 0.0440464778037476"
+        rpy="0 0 0" />
+      <mass
+        value="0.2175" />
+      <inertia
+        ixx="0.000120085756108406"
+        ixy="-2.16949185821107E-07"
+        ixz="9.33580527499155E-06"
+        iyy="8.72078134906247E-05"
+        iyz="3.76476579921789E-06"
+        izz="4.99590798229703E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_palm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_palm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="l_thumb_roll_link">
+    <inertial>
+      <origin
+        xyz="0.00411241109675734 0.00715573154428713 -0.000938307598457949"
+        rpy="0 0 0" />
+      <mass
+        value="0.0179" />
+      <inertia
+        ixx="2.98864683235228E-06"
+        ixy="-1.88805608632774E-07"
+        ixz="-4.01276400303431E-08"
+        iyy="2.12532897785707E-06"
+        iyz="-1.09554759602598E-07"
+        izz="1.28240916998338E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_thumb_roll_joint"
+    type="revolute">
+    <origin
+      xyz="0.0122824449425584 -0.018521969911508 0.0468117154849971"
+      rpy="0 0 0" />
+    <parent
+      link="l_palm" />
+    <child
+      link="l_thumb_roll_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0.03490658"
+      upper="1.27409035"
+      effort="0.784"
+      velocity="8.729" />
+  </joint>
+  <link
+    name="l_thumb_abad_link">
+    <inertial>
+      <origin
+        xyz="-0.000231921120438936 -0.0118703953999884 -0.0052578131419974"
+        rpy="0 0 0" />
+      <mass
+        value="0.0061" />
+      <inertia
+        ixx="5.78788643210993E-07"
+        ixy="6.88951281227407E-10"
+        ixz="9.57517255381242E-09"
+        iyy="5.84900517613337E-07"
+        iyz="-4.44858637230382E-09"
+        izz="4.67141930127458E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_thumb_abad_joint"
+    type="revolute">
+    <origin
+      xyz="0.0089997 -0.0043278 0.00022366"
+      rpy="0 0 1.5708" />
+    <parent
+      link="l_thumb_roll_link" />
+    <child
+      link="l_thumb_abad_link" />
+    <axis
+      xyz="-0.087155 0 0.99619" />
+    <limit
+      lower="-1.6424"
+      upper="0.045379"
+      effort="0.588"
+      velocity="11.636" />
+  </joint>
+  <link
+    name="l_thumb_mcp_link">
+    <inertial>
+      <origin
+        xyz="-0.000655856803570727 -0.0107449837969041 0.00201524249610499"
+        rpy="0 0 0" />
+      <mass
+        value="0.045" />
+      <inertia
+        ixx="2.87003291193043E-06"
+        ixy="-3.05209756833553E-08"
+        ixz="-1.13777448035737E-08"
+        iyy="2.31656170984077E-06"
+        iyz="-1.83962231518642E-07"
+        izz="2.17648654051723E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_mcp_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_mcp_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_thumb_mcp_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0010379 -0.026455 -0.0057623"
+      rpy="0 -0.087265 0" />
+    <parent
+      link="l_thumb_abad_link" />
+    <child
+      link="l_thumb_mcp_link" />
+    <axis
+      xyz="-0.99832 0.057976 0" />
+    <limit
+      lower="0"
+      upper="0.8416"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="l_thumb_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00104849949368953 -0.0104092246169477 -0.00447831689041499"
+        rpy="0 0 0" />
+      <mass
+        value="0.0284" />
+      <inertia
+        ixx="7.86182879404037E-07"
+        ixy="6.43481606089538E-09"
+        ixz="7.62432632699542E-09"
+        iyy="5.52299394281655E-07"
+        iyz="-2.49088610368396E-08"
+        izz="8.09353321914086E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_thumb_pip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0020958 -0.036089 0.0035797"
+      rpy="0 0.087265 0" />
+    <parent
+      link="l_thumb_mcp_link" />
+    <child
+      link="l_thumb_pip_link" />
+    <axis
+      xyz="-0.99452 0.057976 -0.087008" />
+    <limit
+      lower="0"
+      upper="1.1345"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_thumb_mcp_joint"
+      multiplier="1.33"
+      offset="0" />
+  </joint>
+  <link
+    name="l_thumb_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000655779611557519 -0.00854256395319086 -0.00349234768079476"
+        rpy="0 0 0" />
+      <mass
+        value="0.011" />
+      <inertia
+        ixx="4.53053067956625E-07"
+        ixy="-5.31940425658453E-09"
+        ixz="-6.5770954501513E-09"
+        iyy="3.74747544122629E-07"
+        iyz="-8.87863246897703E-08"
+        izz="4.10582301005567E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_thumb_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_thumb_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00091275 -0.02648 -0.007211"
+      rpy="0 -0.087265 0" />
+    <parent
+      link="l_thumb_pip_link" />
+    <child
+      link="l_thumb_dip_link" />
+    <axis
+      xyz="-0.99832 0.057976 0" />
+    <limit
+      lower="0"
+      upper="1.1345"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_thumb_mcp_joint"
+      multiplier="1.3"
+      offset="0" />
+  </joint>
+  <link
+    name="l_index_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0114406580898339 -0.000667191803329276 0.00785430692862925"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.2362942502759E-07"
+        ixy="-5.45033555100357E-09"
+        ixz="4.50002639330104E-08"
+        iyy="8.07422857102175E-07"
+        iyz="1.81014667197698E-08"
+        izz="5.96690422321398E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_index_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0123475567463167 -0.026950572607452 0.0943088040960945"
+      rpy="0 0 0" />
+    <parent
+      link="l_palm" />
+    <child
+      link="l_index_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.08726646"
+      upper="0.104719755"
+      effort="1.863"
+      velocity="2.204" />
+  </joint>
+  <link
+    name="l_index_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00142696757850214 -2.0994577159171E-05 0.0174921849056843"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.88081738896399E-07"
+        ixy="2.97917928176011E-10"
+        ixz="3.58581335726974E-08"
+        iyy="9.32003939129745E-07"
+        iyz="5.71600566394294E-10"
+        izz="3.83042868072239E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_index_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0130280287143542 -0.00153176037318814 0.0175081011798322"
+      rpy="0.0872664625997397 0 0" />
+    <parent
+      link="l_index_abad_link" />
+    <child
+      link="l_index_pip_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5707963267949"
+      upper="0"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="l_index_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000686462124369947 -5.02587805435717E-06 0.0183667994859539"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="5.98416140347793E-07"
+        ixy="-7.10858944417562E-10"
+        ixz="-4.23983869422446E-08"
+        iyy="5.91688226533084E-07"
+        iyz="2.39941759651886E-09"
+        izz="1.81362612643917E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_index_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_index_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="l_index_pip_link" />
+    <child
+      link="l_index_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.79768912955416"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_index_pip_joint"
+      multiplier="-1.14444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="l_middle_abad_link">
+    <inertial>
+      <origin
+        xyz="0.011240640206776 1.9896312203717E-05 0.00788255072059582"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23631466191797E-07"
+        ixy="-1.50756041496265E-09"
+        ixz="4.53062018457858E-08"
+        iyy="8.08962303182455E-07"
+        iyz="-4.70300372979639E-10"
+        izz="5.9514265857073E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_middle_abad_jonit"
+    type="revolute">
+    <origin
+      xyz="-0.0149475567463167 -0.00795057260745184 0.0963088040960932"
+      rpy="0 0 0" />
+    <parent
+      link="l_palm" />
+    <child
+      link="l_middle_abad_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="l_middle_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00142687367936345 -2.08931930484017E-05 0.0174922971772364"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.88072729790501E-07"
+        ixy="3.00208552655477E-10"
+        ixz="3.58644610784043E-08"
+        iyy="9.31998618989946E-07"
+        iyz="5.78560706756825E-10"
+        izz="3.83040223830643E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_middle_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.012828 0 0.017575"
+      rpy="0 0 0" />
+    <parent
+      link="l_middle_abad_link" />
+    <child
+      link="l_middle_pip_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5707963267949"
+      upper="0"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="l_middle_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000686456341965591 -5.02963789482954E-06 0.0183667717007833"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="5.98414880843419E-07"
+        ixy="-7.11198370226173E-10"
+        ixz="-4.2398744740237E-08"
+        iyy="5.91687048808097E-07"
+        iyz="2.39999181413989E-09"
+        izz="1.8136222448203E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_middle_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_middle_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="l_middle_pip_link" />
+    <child
+      link="l_middle_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.79768912955416"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_middle_pip_joint"
+      multiplier="-1.14444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="l_ring_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0112406213015872 0.00070683354664447 0.00785084222939792"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23633336156748E-07"
+        ixy="2.44707181971944E-09"
+        ixz="4.5267537557692E-08"
+        iyy="8.07253026072668E-07"
+        iyz="-1.90281682988511E-08"
+        izz="5.96843274051877E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_ring_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0138475567463167 0.011049427392548 0.0943088040960918"
+      rpy="0 0 0" />
+    <parent
+      link="l_palm" />
+    <child
+      link="l_ring_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.1047197551"
+      upper="0.0698131"
+      effort="2.766"
+      velocity="1.484" />
+  </joint>
+  <link
+    name="l_ring_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00139850689574508 2.2947844725181E-06 0.0174610554958392"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.90560960639142E-07"
+        ixy="3.05204637275686E-10"
+        ixz="3.58624366436813E-08"
+        iyy="9.3190764029829E-07"
+        iyz="5.83515617670495E-10"
+        izz="3.85524402542458E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_ring_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0128280287142512 0.00153124973609916 0.0175081458547977"
+      rpy="-0.0872664625996923 0 0" />
+    <parent
+      link="l_ring_abad_link" />
+    <child
+      link="l_ring_pip_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5707963267949"
+      upper="0"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="l_ring_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000686420247009431 -5.13552905328021E-06 0.0183669218091498"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="5.98419246028128E-07"
+        ixy="-7.09040971441362E-10"
+        ixz="-4.24008412759362E-08"
+        iyy="5.91691793434876E-07"
+        iyz="2.40534788139606E-09"
+        izz="1.81365057892675E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_ring_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_ring_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="l_ring_pip_link" />
+    <child
+      link="l_ring_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.79768912955416"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_ring_pip_joint"
+      multiplier="-1.14444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="l_pinky_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0112405678254144 0.00138839741843765 0.00775933796953903"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23635282533274E-07"
+        ixy="6.38262563619334E-09"
+        ixz="4.48870194164191E-08"
+        iyy="8.02343618625902E-07"
+        iyz="-3.70087510057462E-08"
+        izz="6.01736748763311E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_pinky_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0123475567463167 0.0300494273925477 0.0893088040960905"
+      rpy="0 0 0" />
+    <parent
+      link="l_palm" />
+    <child
+      link="l_pinky_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.05235987"
+      upper="0.13962634"
+      effort="3.393"
+      velocity="1.21" />
+  </joint>
+  <link
+    name="l_pinky_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.0013984081365782 2.27731497091932E-06 0.0174610571021314"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.90560024960612E-07"
+        ixy="3.02069027287252E-10"
+        ixz="3.58617066656778E-08"
+        iyy="9.31903733420633E-07"
+        iyz="5.83269340918032E-10"
+        izz="3.85520805024397E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_pinky_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0128280287142702 0.00305135832468034 0.0173080648659441"
+      rpy="-0.17453292519941 0 0" />
+    <parent
+      link="l_pinky_abad_link" />
+    <child
+      link="l_pinky_pip_link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5707963267949"
+      upper="0"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="l_pinky_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000686432228711278 -5.13964587845611E-06 0.0183669392534036"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="5.98419768455248E-07"
+        ixy="-7.0922067858912E-10"
+        ixz="-4.24009059694348E-08"
+        iyy="5.91692138578983E-07"
+        iyz="2.40547819667666E-09"
+        izz="1.81366022514951E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandleft3/meshes/l_pinky_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_pinky_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="l_pinky_pip_link" />
+    <child
+      link="l_pinky_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.79768912955416"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="l_pinky_pip_joint"
+      multiplier="-1.14444444444444"
+      offset="0" />
+  </joint>
+</robot>

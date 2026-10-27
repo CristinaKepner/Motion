@@ -1,0 +1,12 @@
+{
+  "atom": "trn_2023_v0_129_main-agent__t002400__01.28-05.04~enthusiastic",
+  "proxy_grade": "stress_test",
+  "proxy_score": 91.4,
+  "active_gesture_rmse_rad": 0.12707139246299032,
+  "joint_rmse_rad": 0.07898660200292015,
+  "gesture_rmse_rad": 0.09897406501167472,
+  "com_xy_max_displacement_m": 0.03853344830722066,
+  "leg_max_excursion_deg": 14.439206231431031,
+  "fall": false,
+  "stability_pass": true
+}

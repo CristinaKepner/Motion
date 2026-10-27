@@ -1,0 +1,5 @@
+{
+  "urdf-visualizer.packages": {
+    "OmniHandright4": "${workspaceFolder}"
+  }
+}

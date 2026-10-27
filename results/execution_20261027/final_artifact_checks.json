@@ -1,0 +1,18 @@
+{
+  "new_atoms": 325,
+  "new_review_clips": 529,
+  "new_variants": 204,
+  "old_atoms_preserved": 133,
+  "demo_acceptance": {
+    "duration_20_to_30_s": true,
+    "distinct_body_semantics": 3,
+    "sonic_stable": true,
+    "fell": false,
+    "hand_targets_pass": true,
+    "late_body_events": 0
+  },
+  "video_decode_pass": true,
+  "video_sha256": "4a988879349da1627c74e6d006d15c3dbbd18608cfef9ad21f3ca28c8a975fbe",
+  "video_bytes": 7557376,
+  "source_archive_verified": true
+}

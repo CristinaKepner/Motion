@@ -230,7 +230,8 @@ def refine_boundaries(seg: tuple[int, int], C: np.ndarray, fps: float, p: Catalo
     s0 = max(0, s - w)
     s_new = s0 + int(np.argmin(C[s0:s + 1]))
     e1 = min(len(C), e + w + 1)
-    e_new = e + int(np.argmin(C[e:e1]))
+    # Hysteresis uses an exclusive end; activity may continue to the final frame.
+    e_new = len(C) if e >= len(C) else e + int(np.argmin(C[e:e1]))
     cs, ce = float(C[s_new]), float(C[min(e_new, len(C) - 1)])
     if cs > p.max_boundary_cost or ce > p.max_boundary_cost:
         return None
@@ -387,7 +388,7 @@ class AtomCatalog:
 
 
 def build_catalog(csv_paths: list[str | Path], p: CatalogParams | None = None,
-                  verbose: bool = True) -> AtomCatalog:
+                  verbose: bool = True, source_fps: float = 120.0) -> AtomCatalog:
     p = p or CatalogParams()
     ranges = JOINT_LIMITS_RAD[ARM_IDX, 1] - JOINT_LIMITS_RAD[ARM_IDX, 0]
     atoms: list[MotionAtom] = []
@@ -395,7 +396,7 @@ def build_catalog(csv_paths: list[str | Path], p: CatalogParams | None = None,
     recs: dict[str, dict] = {}
 
     for path in csv_paths:
-        src = load_a3_csv(path)
+        src = load_a3_csv(path, fps=source_fps)
         det = src.resample(p.detect_fps)
         exe = src.resample(p.exec_fps)
         E_raw = activity_energy(det.q[:, ARM_IDX], det.fps, ranges)

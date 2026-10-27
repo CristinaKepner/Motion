@@ -1,0 +1,118 @@
+{
+  "name": "GENEA 2023 原始重定向（24 条训练录制）",
+  "clips": 449,
+  "seconds_of_motion": 3508.0,
+  "executability": {
+    "grades": {
+      "A": 3,
+      "B": 8,
+      "C": 16,
+      "D": 422
+    },
+    "torque_over_limit_share": 0.405,
+    "self_collision_share": 0.878,
+    "static_share": 0.16,
+    "jitter_share": 0.748,
+    "mean_score": 44.3
+  },
+  "diversity_l1": 0.0699,
+  "semantics": {
+    "clips": 449,
+    "verified_refs_per_function": {
+      "emphasize": 167,
+      "enumerate": 98,
+      "contrast_compare": 54,
+      "refer_self": 19,
+      "refer_other": 5,
+      "refer_external": 13,
+      "depict_size_shape": 72,
+      "depict_direction_motion": 136,
+      "turn_open": 86,
+      "turn_yield": 76,
+      "greet_farewell": 1,
+      "thank": 11,
+      "affirm": 50,
+      "deny": 2,
+      "certainty": 19,
+      "uncertainty": 2,
+      "enthusiasm": 12
+    },
+    "functions_with_refs": 17,
+    "any_function_rate": 0.592,
+    "own_label_pass": [
+      0,
+      0
+    ]
+  },
+  "joint_coverage": {
+    "mean_share": 0.72,
+    "min_share": 0.175,
+    "per_joint": [
+      0.237,
+      0.867,
+      0.876,
+      0.644,
+      0.598,
+      0.994,
+      0.98,
+      0.175,
+      0.881,
+      0.99,
+      0.484,
+      0.723,
+      0.792,
+      0.983,
+      0.216,
+      0.878,
+      0.93
+    ]
+  },
+  "style": {
+    "cells_covered": 10,
+    "cells_total": 16,
+    "grid": [
+      [
+        4,
+        114,
+        4,
+        0
+      ],
+      [
+        59,
+        71,
+        2,
+        0
+      ],
+      [
+        54,
+        37,
+        0,
+        0
+      ],
+      [
+        66,
+        38,
+        0,
+        0
+      ]
+    ]
+  },
+  "rhythm": {
+    "clips_with_audio": 0,
+    "BC": null,
+    "BAS_binary": null,
+    "BAS_gaussian": null,
+    "BC_chance": null,
+    "BAS_binary_chance": null
+  },
+  "eval_seconds": 1.0,
+  "adaptation": {
+    "files": 24,
+    "retarget_fidelity": {
+      "mean_deg": 1.945442467074521
+    },
+    "seconds": 0,
+    "profile": "twh",
+    "sample_selection": "evenly spaced training files, no quality-based source selection"
+  }
+}

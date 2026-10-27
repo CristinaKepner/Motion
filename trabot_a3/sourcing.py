@@ -34,7 +34,8 @@ def _rollup(scores: list[float], grades: list[str], flags: list[list[str]], n_re
 
 
 def build_tree(recordings: dict[str, dict], rejected: list[dict], atoms: list[dict], variants: list[dict],
-               dataset_name: str = "sonic_for_a3 · selected20") -> dict:
+               dataset_name: str = "sonic_for_a3 · selected20",
+               dataset_note: str = "A3 动作 CSV，120 Hz；仓库公开的 20 条录制") -> dict:
     """atoms/variants: dicts with id, parent(source/atom), label, hand, duration, score, grade, flags, ops."""
     nodes: dict[str, dict] = {}
 
@@ -45,9 +46,14 @@ def build_tree(recordings: dict[str, dict], rejected: list[dict], atoms: list[di
 
     add("lib", None, "library", "A3 手势动作库")
     add("ds:real", "lib", "dataset", dataset_name,
-        note="A3 真机动捕重定向，120 Hz，38 列 CSV；本次只用了仓库公开的 20 条")
+        note=dataset_note)
     for rec, st in recordings.items():
-        add(f"rec:{rec}", "ds:real", "recording", rec, **st)
+        source=st.get('source_recording')
+        parent='ds:real'
+        if source:
+            parent=f'source:{source}'
+            if parent not in nodes:add(parent,'ds:real','recording',source)
+        add(f"rec:{rec}", parent, "window" if source else "recording", rec, **st)
     for i, r in enumerate(rejected):
         src = r["source"]
         span = r.get("span_s")

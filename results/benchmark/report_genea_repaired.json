@@ -1,0 +1,118 @@
+{
+  "name": "GENEA 2023 修复后通过门槛的窗口",
+  "clips": 298,
+  "seconds_of_motion": 2702.6,
+  "executability": {
+    "grades": {
+      "A": 90,
+      "B": 57,
+      "C": 41,
+      "D": 110
+    },
+    "torque_over_limit_share": 0.0,
+    "self_collision_share": 0.419,
+    "static_share": 0.0,
+    "jitter_share": 0.295,
+    "mean_score": 70.9
+  },
+  "diversity_l1": 0.0635,
+  "semantics": {
+    "clips": 298,
+    "verified_refs_per_function": {
+      "emphasize": 60,
+      "enumerate": 72,
+      "contrast_compare": 40,
+      "refer_self": 12,
+      "refer_other": 4,
+      "refer_external": 11,
+      "depict_size_shape": 56,
+      "depict_direction_motion": 101,
+      "turn_open": 41,
+      "turn_yield": 43,
+      "greet_farewell": 1,
+      "thank": 7,
+      "affirm": 40,
+      "deny": 1,
+      "certainty": 16,
+      "uncertainty": 22,
+      "enthusiasm": 3
+    },
+    "functions_with_refs": 17,
+    "any_function_rate": 0.644,
+    "own_label_pass": [
+      0,
+      0
+    ]
+  },
+  "joint_coverage": {
+    "mean_share": 0.644,
+    "min_share": 0.025,
+    "per_joint": [
+      0.222,
+      0.825,
+      0.832,
+      0.639,
+      0.496,
+      0.982,
+      0.961,
+      0.067,
+      0.676,
+      0.877,
+      0.46,
+      0.725,
+      0.783,
+      0.962,
+      0.025,
+      0.62,
+      0.798
+    ]
+  },
+  "style": {
+    "cells_covered": 8,
+    "cells_total": 16,
+    "grid": [
+      [
+        7,
+        44,
+        0,
+        0
+      ],
+      [
+        76,
+        47,
+        0,
+        0
+      ],
+      [
+        64,
+        12,
+        0,
+        0
+      ],
+      [
+        45,
+        3,
+        0,
+        0
+      ]
+    ]
+  },
+  "rhythm": {
+    "clips_with_audio": 0,
+    "BC": null,
+    "BAS_binary": null,
+    "BAS_gaussian": null,
+    "BC_chance": null,
+    "BAS_binary_chance": null
+  },
+  "eval_seconds": 0.7,
+  "adaptation": {
+    "files": 24,
+    "retarget_fidelity": {
+      "mean_deg": 3.0506589425184893
+    },
+    "seconds": 0,
+    "profile": "twh",
+    "sample_selection": "evenly spaced training files, no quality-based source selection"
+  }
+}

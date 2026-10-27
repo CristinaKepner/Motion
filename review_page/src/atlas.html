@@ -1,6 +1,5 @@
 <title>A3 动作库全景</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: an inventory sheet read top to bottom — provenance first (what data exists and what was used),
    then volume and funnel, then the recordings and every clip as real A3 renders, then pose coverage. */
@@ -106,6 +105,7 @@ select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 
+<nav aria-label="页面导航" style="display:flex;flex-wrap:wrap;gap:10px;padding:12px 20px;background:#173c34;color:white;font:14px system-ui"><a style="color:inherit" href="A3_genea_review.html">GENEA 评审</a><a style="color:inherit" href="A3_genea_atlas.html">动作全景</a><a style="color:inherit" href="A3_gesture_benchmark.html">评测与 SONIC 终检</a><a style="color:inherit" href="A3_speech_demo.html">语音演示视频</a><a style="color:inherit" href="A3_motion_review.html">旧库 352 片段</a></nav>
 <div class="wrap">
   <header>
     <h1>A3 动作库全景</h1>
@@ -113,11 +113,12 @@ select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);
   </header>
 
   <section class="panel">
-    <div class="head"><h2>数据来源清单</h2><p>哪些是智元的数据与模型、这次用了哪些、哪些拿不到。动作数据只有公开的 20 条，这是动作库规模偏小的根本原因。</p></div>
+    <div class="head"><h2>数据来源清单</h2><p>本次使用的动作来源、机器人模型和控制器；来源条数与切分窗口分开统计。</p></div>
     <div class="tbl"><table><thead><tr><th>资源</th><th>提供方</th><th>类型</th><th>规模</th><th>状态</th><th>说明</th></tr></thead><tbody id="inv"></tbody></table></div>
   </section>
 
   <div class="kpis" id="kpis"></div>
+  <section class="panel"><div class="head"><h2>语义 × 风格覆盖</h2><p>数字为满足该语义规则的片段数（包含所有质量等级）；不代表人工确认。空格表示没有匹配片段。</p></div><div class="tbl"><table><thead id="semantic-style-head"></thead><tbody id="semantic-style"></tbody></table></div></section>
 
   <div class="grid2">
     <section class="panel"><div class="head"><h2>从原始帧到可用片段</h2><p>每一级的数量；条宽按数量缩放（录制与片段用同一尺度不合适，故第一级单独标注）。</p></div><div class="funnel" id="funnel"></div></section>
@@ -136,7 +137,7 @@ select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);
   </div>
 
   <section class="panel">
-    <div class="head"><h2>关节姿态覆盖</h2><p>手势层控制的 17 个关节（腰 3 + 双臂 14）。灰轨是关节限位，浅蓝是 20 条原始录制用到的范围，深蓝是动作库片段（含变体）用到的范围，橙线是中立姿态。右侧是片段范围占限位的比例。</p></div>
+    <div class="head"><h2>关节姿态覆盖</h2><p>手势层控制的 17 个关节（腰 3 + 双臂 14）。灰轨是关节限位，浅蓝是来源录制的范围，深蓝是动作库片段（含变体）的范围，橙线是中立姿态。右侧是片段范围占限位的比例。</p></div>
     <div id="joints"></div>
   </section>
 
@@ -148,7 +149,7 @@ select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);
   </section>
 
   <section class="panel">
-    <div class="head"><h2>20 条原始录制</h2><p>官方 A3 MJCF 渲染，含录制里的根节点运动与腿部动作；每条均匀取 8 帧，下方是对应时间。</p></div>
+    <div class="head"><h2>来源录制</h2><p>官方 A3 MJCF 渲染输入 CSV，每条均匀取 8 帧。GENEA 版本展示重定向后的腰与手臂，根和腿为中立站姿；这些是运动学预览，真实全身控制见 SONIC 演示。</p></div>
     <div id="recs"></div>
   </section>
 
@@ -189,6 +190,9 @@ const num = n => Number(n).toLocaleString("zh-CN");
 const D = JSON.parse(document.getElementById("atlas-data").textContent);
 const C = D.clips, atoms = C.filter(c => c.kind === "atom"), vars = C.filter(c => c.kind === "variant");
 const BYID = Object.fromEntries(C.map(c => [c.id, c]));
+const matrixStyles=[...new Set(C.map(c=>c.style))];
+$("#semantic-style-head").innerHTML='<tr><th>语义</th>'+matrixStyles.map(s=>`<th>${esc(C.find(c=>c.style===s).style_zh)}</th>`).join('')+'</tr>';
+$("#semantic-style").innerHTML=D.semantic_functions.map(fn=>'<tr><td>'+esc(FN_ZH[fn])+'</td>'+matrixStyles.map(s=>{const n=C.filter(c=>c.style===s && c.spec_pass.includes(fn)).length;return `<td style="background:${n?'var(--ok-bg)':'var(--panel-2)'}">${n||'—'}</td>`}).join('')+'</tr>').join('');
 const tip = $("#tip");
 function showTip(e, html){ tip.innerHTML = html; tip.hidden = false; moveTip(e); }
 function moveTip(e){ const w = tip.offsetWidth, h = tip.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
@@ -198,10 +202,10 @@ function hoverable(el, html){ el.addEventListener("pointerenter", e => showTip(e
 
 // ---------- header, inventory, KPIs
 const V = D.volume;
-$("#lede").textContent = `${D.recordings.length} 条智元公开 A3 录制（${(V.recording_seconds/60).toFixed(1)} 分钟）切出 ${atoms.length} 个 Motion Atom，在 MuJoCo 中生成 ${vars.length} 个风格变体；所有图像由官方 A3 模型渲染。生成于 ${D.generated_at}。`;
+$("#lede").textContent = `${D.inventory[0].name}：${D.recordings.length} 条来源录制（${(V.recording_seconds/60).toFixed(1)} 分钟），筛出 ${atoms.length} 个 Motion Atom，生成 ${vars.length} 个风格变体；所有图像由官方 A3 模型渲染。生成于 ${D.generated_at}。`;
 $("#inv").innerHTML = D.inventory.map(r => `<tr><td><b>${esc(r.name)}</b></td><td>${esc(r.owner)}</td><td>${esc(r.kind)}</td><td class="mono">${esc(r.count)}</td><td><span class="chip st-${r.status}">${ST[r.status]}</span></td><td class="sub" style="max-width:46ch">${esc(r.note)}</td></tr>`).join("");
 const kp = [
-  ["原始录制", `${D.recordings.length} 条`, `${(V.recording_seconds/60).toFixed(1)} 分钟 · ${num(V.raw_frames_120hz)} 帧 @120 Hz`],
+  ["建库输入", `${D.recordings.length} 条`, `${(V.recording_seconds/60).toFixed(1)} 分钟 · ${num(V.raw_frames_120hz)} 帧 @${V.source_fps || 120} Hz`],
   ["Motion Atom", atoms.length, `${atoms.reduce((a,c)=>a+c.duration,0).toFixed(0)} s 动作`],
   ["仿真风格变体", vars.length, `${vars.reduce((a,c)=>a+c.duration,0).toFixed(0)} s 动作`],
   ["片段总时长", `${(V.clip_seconds/60).toFixed(1)} 分钟`, `${num(V.clip_frames_30hz)} 帧 @30 Hz`],
@@ -216,7 +220,7 @@ $("#funnel").innerHTML = F.map((f,i) => `<div class="fr"><div class="t">${esc(f.
   <div><div class="bar" style="width:${i===0 ? 12 : Math.max(6, f.n/fmax*100)}%;${i===0?"background:var(--panel-2);border:1px dashed var(--line)":""}">${num(f.n)}</div></div></div>`).join("");
 
 // ---------- volume
-const VR = [["原始录制帧（120 Hz）", V.raw_frames_120hz], ["片段帧（30 Hz，原始 + 变体）", V.clip_frames_30hz],
+const VR = [[`建库输入帧（${V.source_fps || 120} Hz）`, V.raw_frames_120hz], ["片段帧（30 Hz，原始 + 变体）", V.clip_frames_30hz],
   ["逆动力学求解（每帧一次，固定根）", V.inverse_dynamics_evals], ["力矩受限 PD 跟踪仿真步（1 kHz）", V.pd_sim_steps_1khz],
   ["自碰撞检测（隔帧）", V.self_collision_checks], ["语义规格检查（片段 × 17）", V.spec_checks], ["MuJoCo 渲染帧（本页）", V.mujoco_renders_this_page]];
 $("#volume").innerHTML = VR.map(([k,v]) => `<tr><td>${esc(k)}</td><td class="mono" style="text-align:right">${num(v)}</td></tr>`).join("");
@@ -231,7 +235,7 @@ twoBars($("#by-label"), D.semantic_functions.map(f => { const a = atoms.filter(c
   const sc = D.semantic_check[f] || {};
   return [`${esc(FN_ZH[f])}`, a, v, `<b>${esc(FN_ZH[f])}</b> <span class="mono">${f}</span><br>原始 ${a} · 变体 ${v}<br>通过自身规格的原始片段 ${sc.labelled_pass ?? 0}/${sc.labelled ?? 0}<br>已验证参考 ${sc.verified_refs ?? 0}`]; }));
 const recNames = D.recordings.map(r => r.name);
-twoBars($("#by-rec"), recNames.map(n => { const a = atoms.filter(c => c.source===n).length, v = vars.filter(c => c.source===n).length;
+twoBars($("#by-rec"), recNames.map(n => { const a = atoms.filter(c => (c.source_recording||c.source)===n).length, v = vars.filter(c => (c.source_recording||c.source)===n).length;
   return [esc(n.replace(/^\d+_/,"")), a, v, `<b>${esc(n)}</b><br>atom ${a} · 变体 ${v}`]; }));
 { // style × grade
   const styles = [...new Set(C.map(c => c.style_zh))]; const mx = Math.max(...styles.map(s => C.filter(c => c.style_zh===s).length));
@@ -300,7 +304,7 @@ drawScatter();
 // ---------- recordings
 $("#recs").innerHTML = D.recordings.map(r => `<div class="rec"><div><div class="nm">${esc(r.name)}</div><div class="meta">
   <span class="mono">${r.duration_s} s · ${num(r.frames_120hz)} 帧 · 根节点移动 ${r.root_travel_m} m</span>
-  <span>切出 ${r.atoms} 个 atom${r.rejected?`，丢弃 ${r.rejected} 段`:""} · 变体 ${vars.filter(c => c.source===r.name).length}</span>
+  <span>切出 ${r.atoms} 个 atom${r.rejected?`，丢弃 ${r.rejected} 段`:""} · 变体 ${vars.filter(c => (c.source_recording||c.source)===r.name).length}</span>
   <a href="#atlas" data-rec="${esc(r.name)}">查看这条录制的片段</a></div></div>
   <div class="strip"><img src="${r.img}" alt="${esc(r.name)} 的 8 个关键帧"><div class="ticks">${r.frame_t.map(t => `<span>${t}s</span>`).join("")}</div></div></div>`).join("");
 $("#recs").addEventListener("click", e => { const a = e.target.closest("[data-rec]"); if (!a) return; e.preventDefault(); resetFilters(); $("#f-rec").value = a.dataset.rec; renderCards(); $("#atlas").scrollIntoView({behavior:"smooth"}); });
@@ -313,7 +317,7 @@ let shown = 48, highlight = null;
 function filtered(){
   const k = $("#f-kind").value, l = $("#f-label").value, s = $("#f-style").value, g = $("#f-grade").value, sp = $("#f-spec").value, r = $("#f-rec").value, q = $("#f-q").value.trim().toLowerCase();
   return C.filter(c => (!k || c.kind===k) && (!l || c.label===l) && (!s || c.style_zh===s) && (!g || c.grade===g)
-    && (!sp || (sp==="pass") === c.own_spec) && (!r || c.source===r) && (!q || c.id.toLowerCase().includes(q)));
+    && (!sp || (sp==="pass") === c.own_spec) && (!r || (c.source_recording||c.source)===r) && (!q || c.id.toLowerCase().includes(q)));
 }
 function card(c){
   const span = c.kind === "atom" ? c.id.split("__").pop() : (c.parent||"").split("__").pop();

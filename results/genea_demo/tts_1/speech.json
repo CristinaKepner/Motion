@@ -1,0 +1,67 @@
+{
+  "text": "第二，分成步骤，一件一件把事情做好。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "rate": "-5%",
+  "provider": "edge-tts",
+  "boundary_source": "TTS WordBoundary + recorded PCM silence insertions; raw boundaries in 100 ns units",
+  "duration": 4.248,
+  "wav_sha256": "b4f5fdaeee07601235bfcd886c837c3702dacc5887e7067342a6a9354818f3a4",
+  "events": [],
+  "raw_boundaries": [
+    {
+      "type": "WordBoundary",
+      "offset": 1026250,
+      "duration": 3815830,
+      "text": "第二"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 7736660,
+      "duration": 3815830,
+      "text": "分成"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 11684160,
+      "duration": 4342080,
+      "text": "步骤"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 19052500,
+      "duration": 1710410,
+      "text": "一"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 20763330,
+      "duration": 2105410,
+      "text": "件"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 23000000,
+      "duration": 3026250,
+      "text": "一件"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 26289580,
+      "duration": 1184160,
+      "text": "把"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 27605410,
+      "duration": 3552500,
+      "text": "事情"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 31289580,
+      "duration": 5000000,
+      "text": "做好"
+    }
+  ],
+  "pcm_silence_insertions": []
+}

@@ -1,0 +1,8 @@
+{
+    "urdf-visualizer.packages": {
+        "OmniHandleft3": "${workspaceFolder}"
+    },
+    "urdf-visualizer.default.showVisual": true,
+    "urdf-visualizer.default.showCollision": false,
+    "urdf-visualizer.renderOnSave": true
+}

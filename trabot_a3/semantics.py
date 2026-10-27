@@ -105,9 +105,20 @@ class Feat:
                 break
         return n / self.fs
 
-    def osc(self, s: str, axis: int = 1, amp: float = 0.04) -> int:
+    def osc(self, s: str, axis: int = 1, amp: float = 0.04, mask=None) -> int:
         """number of direction reversals of hand position along axis with ≥ amp travel."""
+        if mask is not None:
+            # Count within contiguous pose-valid intervals, never across gaps.
+            edges = np.diff(np.r_[False, mask, False].astype(int))
+            runs = zip(np.flatnonzero(edges == 1), np.flatnonzero(edges == -1))
+            return max((self._reversals(self.H[s][a:b, axis], amp) for a, b in runs), default=0)
         x = self.H[s][:, axis]
+        return self._reversals(x, amp)
+
+    @staticmethod
+    def _reversals(x, amp):
+        if len(x) < 2:
+            return 0
         rev, ext, d = 0, x[0], 0
         for v in x[1:]:
             if d >= 0 and v > ext:
@@ -267,7 +278,7 @@ def spec_greet(f: Feat) -> list[Check]:
     s = "L" if _up(f, "L").max() > _up(f, "R").max() else "R"
     up = _up(f, s)
     high = up > 0.05
-    n = f.osc(s, 1, 0.04) if high.any() else 0
+    n = f.osc(s, 1, 0.04, mask=high)
     return [_c("手举过肩（肩上 ≥ 0.05 m）", "pose", high.any(), f"{up.max():+.2f} m", "≥ +0.05 m", f.win(high)),
             _c("举高后左右摆动 ≥ 2 次", "temporal", n >= 2, f"{n} 次", "≥ 2")]
 
@@ -290,10 +301,14 @@ def spec_affirm(f: Feat) -> list[Check]:
 
 def spec_deny(f: Feat) -> list[Check]:
     s = f.dom
-    front = _fwd(f, s) >= 0.08
-    n = f.osc(s, 1, 0.04)
-    return [_c("手在身前（肩前 ≥ 0.08 m）", "pose", front.any(), f"{_fwd(f, s).max():+.2f} m", "≥ 0.08 m", f.win(front)),
-            _c("左右摆手 ≥ 2 次", "temporal", n >= 2, f"{n} 次", "≥ 2")]
+    front = (_fwd(f, s) >= 0.08) & (_up(f, s) >= -0.35) & (_up(f, s) <= 0.05)
+    n = f.osc(s, 1, 0.04, mask=front)
+    travel = np.abs(f.V[s][front]).sum(axis=0)
+    lateral = float(travel[1] / max(float(travel.sum()), 1e-9))
+    return [_c("手在身前胸口至肩高度（排除举高手挥手）", "pose", front.any(),
+               f"有效 {front.sum()/f.fs:.2f} s", "肩前 ≥ 0.08 m，肩下 0.35 m 至肩上 0.05 m", f.win(front)),
+            _c("同一身前区间左右摆手 ≥ 2 次", "temporal", n >= 2, f"{n} 次", "≥ 2"),
+            _c("主要沿左右方向摆动", "temporal", lateral >= 0.5, f"侧向路程占比 {lateral:.2f}", "≥ 0.5")]
 
 
 def spec_certainty(f: Feat) -> list[Check]:
@@ -344,10 +359,10 @@ SPEC_TEXT = {
     "depict_direction_motion": "主导手在 0.8 s 内沿较直路径单向扫过 ≥0.25 m",
     "turn_open": "双手由内向外打开（间距 +0.15 m），停在身前",
     "turn_yield": "单手向前递出 ≥0.25 m，然后收回",
-    "greet_farewell": "手举过肩并左右摆动 ≥2 次",
+    "greet_farewell": "同一举过肩区间内左右摆动 ≥2 次",
     "thank": "双手同时到胸前，身体前倾 ≥8°",
     "affirm": "1–3 个向下小节拍，活动范围 <0.25 m",
-    "deny": "手在身前左右摆动 ≥2 次",
+    "deny": "同一身前胸肩高度区间内左右摆动 ≥2 次，侧向路程占比 ≥50%",
     "certainty": "有力向下切（≥0.5 m/s）后定住 ≥0.2 s",
     "uncertainty": "双手在身前摊开，动作缓慢",
     "enthusiasm": "手举过肩，幅度大（≥0.35 m）且速度快",

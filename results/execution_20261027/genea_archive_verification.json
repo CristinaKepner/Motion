@@ -1,0 +1,8 @@
+{
+  "file": "external/datasets/genea2023/genea2023_trn.zip",
+  "bytes": 8621407555,
+  "md5": "409a321605d0f5bbd042f943fed4bd3e",
+  "matches_official": true,
+  "zip_members": 2243,
+  "subset_crc_verified": true
+}

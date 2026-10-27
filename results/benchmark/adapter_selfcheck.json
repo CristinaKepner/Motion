@@ -23,7 +23,7 @@
   ],
   "raised_upper_arm_dir": [
    28.0,
-   0.0,
+   -0.0,
    0.0
   ],
   "fidelity": {
@@ -120,6 +120,6 @@
     "hand_deg": 0.01
    }
   ],
-  "seconds": 14.9
+  "seconds": 5.1
  }
 }

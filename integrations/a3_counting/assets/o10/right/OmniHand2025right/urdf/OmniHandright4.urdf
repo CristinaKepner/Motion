@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="OmniHandright4">
+  <link
+    name="R_palm">
+    <inertial>
+      <origin
+        xyz="-0.00686926900611545 -0.000702509772390791 0.041950848791226"
+        rpy="0 0 0" />
+      <mass
+        value="0.2175" />
+      <inertia
+        ixx="0.000201314168241905"
+        ixy="1.45951380529439E-07"
+        ixz="1.92360012705092E-05"
+        iyy="0.00014598584045248"
+        iyz="-2.4224548290204E-06"
+        izz="8.7832720342925E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_palm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_palm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="R_thumb_roll_link">
+    <inertial>
+      <origin
+        xyz="0.0338559024747013 -0.00636323635903252 -0.00321286948457444"
+        rpy="0 0 0" />
+      <mass
+        value="0.0179" />
+      <inertia
+        ixx="8.57468805486128E-07"
+        ixy="-1.76466634434383E-08"
+        ixz="-1.05229161717124E-08"
+        iyy="5.3556220350611E-07"
+        iyz="1.08440022846438E-07"
+        izz="3.40868740260342E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_roll_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_thumb_roll_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0118175567463393 0.018521969911508 0.0468117154849971"
+      rpy="0 0 0" />
+    <parent
+      link="R_palm" />
+    <child
+      link="R_thumb_roll_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.5235987"
+      upper="0.69813170"
+      effort="0.784"
+      velocity="8.729" />
+  </joint>
+  <link
+    name="R_thumb_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0123226241494463 0.00318062176044772 -0.00460432457079411"
+        rpy="0 0 0" />
+      <mass
+        value="0.0061" />
+      <inertia
+        ixx="6.36625292005389E-07"
+        ixy="-1.5890359697635E-09"
+        ixz="6.94224572242601E-09"
+        iyy="5.96777634679418E-07"
+        iyz="4.54975091219728E-08"
+        izz="5.20550092445873E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_thumb_abad_joint"
+    type="revolute">
+    <origin
+      xyz="0.03310000187541 0.00364597550394604 0.00234265623980155"
+      rpy="0 0 0" />
+    <parent
+      link="R_thumb_roll_link" />
+    <child
+      link="R_thumb_abad_link" />
+    <axis
+      xyz="0 0.418896236019724 -0.908034109187814" />
+    <limit
+      lower="-1.464235482612666"
+      upper="0.04537856055185257"
+      effort="0.588"
+      velocity="11.636" />
+  </joint>
+  <link
+    name="R_thumb_mcp_link">
+    <inertial>
+      <origin
+        xyz="0.0105178691201563 -0.000124534641575493 0.00224093808733998"
+        rpy="0 0 0" />
+      <mass
+        value="0.045" />
+      <inertia
+        ixx="2.15618810557653E-06"
+        ixy="-1.19086770468941E-07"
+        ixz="1.56784017567896E-07"
+        iyy="2.57723662652357E-06"
+        iyz="2.30196731820703E-07"
+        izz="2.22945164280436E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_mcp_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_mcp_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_thumb_mcp_joint"
+    type="revolute">
+    <origin
+      xyz="0.0269184235010649 0.00426977305144499 -0.00425247977696971"
+      rpy="0 0 0" />
+    <parent
+      link="R_thumb_abad_link" />
+    <child
+      link="R_thumb_mcp_link" />
+    <axis
+      xyz="0.0776263752620568 -0.905294134732838 -0.417632225147912" />
+    <limit
+      lower="0"
+      upper="0.8415977653116657"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="R_thumb_pip_link">
+    <inertial>
+      <origin
+        xyz="0.0107067448978676 0.00317728226406293 -0.00383998352098718"
+        rpy="0 0 0" />
+      <mass
+        value="0.0284" />
+      <inertia
+        ixx="5.36382126179303E-07"
+        ixy="-1.56250633608049E-08"
+        ixz="-3.30340922893559E-10"
+        iyy="7.22515941254468E-07"
+        iyz="-1.18674541173126E-08"
+        izz="7.2605694853832E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_thumb_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0360404049256575 0.00108090802345279 0.00435585712561204"
+      rpy="0 0 0" />
+    <parent
+      link="R_thumb_mcp_link" />
+    <child
+      link="R_thumb_pip_link" />
+    <axis
+      xyz="0.0776263752620366 -0.905294134732833 -0.417632225147928" />
+    <limit
+      lower="0"
+      upper="1.1344640137963142"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_thumb_mcp_joint"
+      multiplier="1.33"
+      offset="0" />
+  </joint>
+  <link
+    name="R_thumb_dip_link">
+    <inertial>
+      <origin
+        xyz="0.0101989202105233 0.00219752243354864 -0.00251652792209998"
+        rpy="0 0 0" />
+      <mass
+        value="0.011" />
+      <inertia
+        ixx="3.70102898238014E-07"
+        ixy="-3.93144768813434E-08"
+        ixz="7.24201663687241E-08"
+        iyy="4.19104068023068E-07"
+        iyz="1.99967845866872E-08"
+        izz="4.04524067923711E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_thumb_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_thumb_dip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0264166811628568 0.00488643336465735 -0.00568209059678272"
+      rpy="0 0 0" />
+    <parent
+      link="R_thumb_pip_link" />
+    <child
+      link="R_thumb_dip_link" />
+    <axis
+      xyz="0.0776263752620263 -0.905294134732838 -0.417632225147917" />
+    <limit
+      lower="0"
+      upper="1.1344640137963142"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_thumb_mcp_joint"
+      multiplier="1.3"
+      offset="0" />
+  </joint>
+  <link
+    name="R_index_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0112376402067584 1.98963122037127E-05 0.00788257143843039"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23631466191796E-07"
+        ixy="-1.50756041496245E-09"
+        ixz="4.53062018457859E-08"
+        iyy="8.08962303182454E-07"
+        iyz="-4.70300372979535E-10"
+        izz="5.95142658570728E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_index_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0123475567463167 0.026950572607452 0.0943088040960945"
+      rpy="0 0 0" />
+    <parent
+      link="R_palm" />
+    <child
+      link="R_index_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.22689280275926"
+      upper="0"
+      effort="1.863"
+      velocity="4.041" />
+  </joint>
+  <link
+    name="R_index_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00133025856867619 2.51447949046815E-05 0.0176105309272683"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.89062810687158E-07"
+        ixy="-3.33783543287495E-10"
+        ixz="2.96759444414229E-08"
+        iyy="9.31351213404E-07"
+        iyz="-6.86280541348412E-10"
+        izz="3.79094167548756E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_index_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0128250287143044 0 0.0175749999998846"
+      rpy="0 0 0" />
+    <parent
+      link="R_index_abad_link" />
+    <child
+      link="R_index_pip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267948966"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="R_index_dip_link">
+    <inertial>
+      <origin
+        xyz="-3.17062883405574E-05 -6.83559238644528E-05 0.0242175109707625"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="1.93977281750635E-07"
+        ixy="5.79484202430901E-10"
+        ixz="-1.83117875069414E-08"
+        iyy="1.92054981700512E-07"
+        iyz="1.6938499114683E-10"
+        izz="1.03712952970089E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_index_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_index_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00111456260537066 0 0.0360139938107218"
+      rpy="0 0 0" />
+    <parent
+      link="R_index_pip_link" />
+    <child
+      link="R_index_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.7976891295541595"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_index_pip_joint"
+      multiplier="1.1444444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="R_middle_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0113376402067624 1.98963122037177E-05 0.00788259215639073"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23631466191796E-07"
+        ixy="-1.50756041496244E-09"
+        ixz="4.53062018457858E-08"
+        iyy="8.08962303182454E-07"
+        iyz="-4.7030037297959E-10"
+        izz="5.95142658570728E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_middle_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0149475567463167 0.00795057260745184 0.0963088040960932"
+      rpy="0 0 0" />
+    <parent
+      link="R_palm" />
+    <child
+      link="R_middle_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="R_middle_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00151869846705773 2.51472599520914E-05 0.0175952835341384"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.88357943653063E-07"
+        ixy="-3.26315706668585E-10"
+        ixz="3.61983172513869E-08"
+        iyy="9.31351634170149E-07"
+        iyz="-6.89825026923401E-10"
+        izz="3.79799656728993E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_middle_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0129250287143084 0 0.0175750207178449"
+      rpy="0 0 0" />
+    <parent
+      link="R_middle_abad_link" />
+    <child
+      link="R_middle_pip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267948966"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="R_middle_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.00092337131046532 -6.8353430033637E-05 0.0241999855185562"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="1.95203193316443E-07"
+        ixy="5.7291691532218E-10"
+        ixz="-1.49406157266256E-08"
+        iyy="1.92055627643071E-07"
+        iyz="1.9049684376522E-10"
+        izz="1.02487943849824E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_middle_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_middle_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="R_middle_pip_link" />
+    <child
+      link="R_middle_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.7976891295541595"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_middle_pip_joint"
+      multiplier="1.1444444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="R_ring_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0112376402067614 1.98963122037127E-05 0.00788257143843207"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23631466191796E-07"
+        ixy="-1.50756041496241E-09"
+        ixz="4.53062018457859E-08"
+        iyy="8.08962303182454E-07"
+        iyz="-4.70300372979529E-10"
+        izz="5.95142658570728E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_ring_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0138475567463167 -0.011049427392548 0.0943088040960918"
+      rpy="0 0 0" />
+    <parent
+      link="R_palm" />
+    <child
+      link="R_ring_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.16929693744344995"
+      effort="2.766"
+      velocity="2.721" />
+  </joint>
+  <link
+    name="R_ring_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.0015186984706196 2.51472157924114E-05 0.017595284134458"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.88357961169471E-07"
+        ixy="-3.26317495677862E-10"
+        ixz="3.6198336586405E-08"
+        iyy="9.31351651555414E-07"
+        iyz="-6.89834542772482E-10"
+        izz="3.79799655780008E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_ring_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0128250287143074 0 0.0175749999998862"
+      rpy="0 0 0" />
+    <parent
+      link="R_ring_abad_link" />
+    <child
+      link="R_ring_pip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267948966"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="R_ring_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000923371072883973 -6.83536578367505E-05 0.0241999849012685"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="1.95203176797147E-07"
+        ixy="5.7291453531098E-10"
+        ixz="-1.49406228828229E-08"
+        iyy="1.92055611828475E-07"
+        iyz="1.90502466006788E-10"
+        izz="1.02487940190372E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_ring_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_ring_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="R_ring_pip_link" />
+    <child
+      link="R_ring_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.7976891295541595"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_ring_pip_joint"
+      multiplier="1.1444444444444444"
+      offset="0" />
+  </joint>
+  <link
+    name="R_pinky_abad_link">
+    <inertial>
+      <origin
+        xyz="0.0112376402067594 1.98963122037196E-05 0.0078825714384304"
+        rpy="0 0 0" />
+      <mass
+        value="0.0349" />
+      <inertia
+        ixx="5.23631466191795E-07"
+        ixy="-1.50756041496242E-09"
+        ixz="4.53062018457858E-08"
+        iyy="8.08962303182453E-07"
+        iyz="-4.70300372979552E-10"
+        izz="5.95142658570727E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_abad_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_abad_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_pinky_abad_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0123475567463167 -0.0300494273925477 0.0893088040960905"
+      rpy="0 0 0" />
+    <parent
+      link="R_palm" />
+    <child
+      link="R_pinky_abad_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0.1850049007113989"
+      effort="3.393"
+      velocity="2.218" />
+  </joint>
+  <link
+    name="R_pinky_pip_link">
+    <inertial>
+      <origin
+        xyz="-0.00151869848022374 2.51472284976753E-05 0.0175952839840136"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125" />
+      <inertia
+        ixx="9.88357955917713E-07"
+        ixy="-3.26317861667969E-10"
+        ixz="3.61983340853316E-08"
+        iyy="9.31351646361102E-07"
+        iyz="-6.89837457190143E-10"
+        izz="3.79799655254829E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_pip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_pip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_pinky_pip_joint"
+    type="revolute">
+    <origin
+      xyz="0.0128250287143054 0 0.0175749999998846"
+      rpy="0 0 0" />
+    <parent
+      link="R_pinky_abad_link" />
+    <child
+      link="R_pinky_pip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.5707963267948966"
+      effort="1.764"
+      velocity="3.879" />
+  </joint>
+  <link
+    name="R_pinky_dip_link">
+    <inertial>
+      <origin
+        xyz="-0.000923371049262665 -6.8354099532944E-05 0.0241999845556365"
+        rpy="0 0 0" />
+      <mass
+        value="0.0047" />
+      <inertia
+        ixx="1.95203177882859E-07"
+        ixy="5.72920876032263E-10"
+        ixz="-1.49406068089712E-08"
+        iyy="1.92055607189054E-07"
+        iyz="1.90507592594378E-10"
+        izz="1.02487942964419E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_dip_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://OmniHandright4/meshes/R_pinky_dip_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R_pinky_dip_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0015 0 0.036"
+      rpy="0 0 0" />
+    <parent
+      link="R_pinky_pip_link" />
+    <child
+      link="R_pinky_dip_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.7976891295541595"
+      effort="1.764"
+      velocity="3.879" />
+    <mimic
+      joint="R_pinky_pip_joint"
+      multiplier="1.1444444444444444"
+      offset="0" />
+  </joint>
+</robot>
