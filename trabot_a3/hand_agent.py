@@ -26,6 +26,7 @@ import numpy as np
 from .bridge import quintic_s, bridge_duration
 from .data import NEUTRAL_RAD
 from .hand import HandAtom, HandStyle, HAND_PRESETS, NEUTRAL_HAND, POSES, ZH_COUNT, make_atom, HandModel
+from .hand_timing import HandAgent  # timestamp targets for native O10 MuJoCo actuator tracking
 
 FPS = 30.0
 

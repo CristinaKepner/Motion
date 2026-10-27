@@ -1,0 +1,14 @@
+{
+ "compare": {
+  "FKD(variants → atoms)": 0.47
+ },
+ "self_checks": {
+  "BC_beats_on_motion": 1.0,
+  "BC_random_beats": 0.934,
+  "BAS_binary_on_apex": 1.0,
+  "BAS_binary_random": 0.53,
+  "FKD_same_distribution_halves": 1.184
+ }
+}
+A3 原始 atom（20 条智元录制） {'grades': {'A': 66, 'B': 4, 'C': 60, 'D': 3}, 'torque_over_limit_share': 0.03, 'self_collision_share': 0.023, 'static_share': 0.459, 'jitter_share': 0.338, 'mean_score': 79.5} div 0.0521 sem 13 /17
+A3 仿真风格变体 {'grades': {'A': 177, 'B': 1, 'C': 41, 'D': 0}, 'torque_over_limit_share': 0.023, 'self_collision_share': 0.005, 'static_share': 0.187, 'jitter_share': 0.151, 'mean_score': 89.7} div 0.0798 sem 13 /17

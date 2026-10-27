@@ -1,0 +1,109 @@
+{
+  "name": "GENEA 新 catalog（切分、修复、规格反查）",
+  "clips": 325,
+  "seconds_of_motion": 799.9,
+  "executability": {
+    "grades": {
+      "A": 215,
+      "B": 18,
+      "C": 10,
+      "D": 82
+    },
+    "torque_over_limit_share": 0.0,
+    "self_collision_share": 0.302,
+    "static_share": 0.0,
+    "jitter_share": 0.295,
+    "mean_score": 82.0
+  },
+  "diversity_l1": 0.0732,
+  "semantics": {
+    "clips": 325,
+    "verified_refs_per_function": {
+      "emphasize": 47,
+      "enumerate": 90,
+      "contrast_compare": 16,
+      "refer_self": 5,
+      "refer_other": 1,
+      "refer_external": 4,
+      "depict_size_shape": 54,
+      "depict_direction_motion": 120,
+      "turn_open": 32,
+      "turn_yield": 23,
+      "greet_farewell": 0,
+      "thank": 1,
+      "affirm": 57,
+      "deny": 2,
+      "certainty": 11,
+      "uncertainty": 31,
+      "enthusiasm": 2
+    },
+    "functions_with_refs": 16,
+    "any_function_rate": 0.631,
+    "own_label_pass": [
+      205,
+      205
+    ]
+  },
+  "joint_coverage": {
+    "mean_share": 0.588,
+    "min_share": 0.004,
+    "per_joint": [
+      0.212,
+      0.825,
+      0.561,
+      0.634,
+      0.493,
+      0.982,
+      0.939,
+      0.004,
+      0.66,
+      0.651,
+      0.454,
+      0.548,
+      0.774,
+      0.96,
+      0.024,
+      0.523,
+      0.752
+    ]
+  },
+  "style": {
+    "cells_covered": 10,
+    "cells_total": 16,
+    "grid": [
+      [
+        2,
+        63,
+        8,
+        0
+      ],
+      [
+        11,
+        124,
+        6,
+        0
+      ],
+      [
+        14,
+        63,
+        0,
+        0
+      ],
+      [
+        19,
+        15,
+        0,
+        0
+      ]
+    ]
+  },
+  "rhythm": {
+    "clips_with_audio": 0,
+    "BC": null,
+    "BAS_binary": null,
+    "BAS_gaussian": null,
+    "BC_chance": null,
+    "BAS_binary_chance": null
+  },
+  "eval_seconds": 0.6
+}

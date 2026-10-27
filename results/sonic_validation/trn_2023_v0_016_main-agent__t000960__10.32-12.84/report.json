@@ -1,0 +1,40 @@
+{
+  "hand_model": {
+    "id": "agibot_omnihand_o10_20260827_v1",
+    "name": "\u667a\u5143 OmniHand O10",
+    "active_dof_per_hand": 10,
+    "coupled_dof_per_hand": 6,
+    "source": "https://www.agibot.com/filepage/276.html",
+    "urdf_release": "2026-08-27",
+    "control": "MuJoCo position servos + URDF mimic constraints",
+    "hardware_connected": false,
+    "preparation_s": 0.9,
+    "settle_s": 0.12,
+    "mount_offset_m": [
+      0.048,
+      0,
+      0
+    ],
+    "mass_policy": "retain A3 wrist inertia; add official O10 link inertias"
+  },
+  "mode": "free_root_sonic_035",
+  "encoder": "a3_fast",
+  "reference_csv": "results/sonic_validation/trn_2023_v0_016_main-agent__t000960__10.32-12.84/reference_30hz.csv",
+  "duration": 11.98,
+  "expected_duration": 11.98,
+  "joint_rmse_rad": 0.07441384397095138,
+  "gesture_rmse_rad": 0.09167977909122907,
+  "com_xy_max_displacement_m": 0.04445843236662695,
+  "leg_max_excursion_deg": 13.91335481701859,
+  "min_root_height_m": 1.062994834251535,
+  "max_root_tilt_deg": 3.3227656925940385,
+  "max_root_drift_m": 0.034471564410169825,
+  "fall": false,
+  "stability_pass": true,
+  "stability_criteria": {
+    "root_height_min_m": 0.85,
+    "root_tilt_max_deg": 15,
+    "root_drift_max_m": 0.15
+  },
+  "audio_start": 0.0
+}

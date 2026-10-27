@@ -109,6 +109,7 @@ class RetargetResult:
     fps: float
     dir_err_deg: np.ndarray   # (T,2,3) per side: upper arm, forearm, hand
     landmarks: dict[str, str]
+    target_dirs: np.ndarray | None = None  # (T,2,3,3), chest-frame source directions
 
     @property
     def fidelity(self) -> dict:
@@ -134,6 +135,7 @@ def retarget_landmarks(P: dict[str, np.ndarray], fps: float, up_axis: np.ndarray
     F = chest_frames(P)                     # (T,3,3), rows = axes
     q = np.repeat(NEUTRAL_RAD[None], T, 0)
     errs = np.zeros((T, 2, 3))
+    targets = np.zeros((T, 2, 3, 3))
     fks = {"L": A3ArmFK("L"), "R": A3ArmFK("R")}
     for si, side in enumerate("LR"):
         s = side.lower()
@@ -146,6 +148,7 @@ def retarget_landmarks(P: dict[str, np.ndarray], fps: float, up_axis: np.ndarray
         qprev = fk.q_neutral.copy()
         for t in range(T):
             tgt = np.stack([F[t] @ d_u[t], F[t] @ d_f[t], F[t] @ d_h[t] if has_hand[t] else F[t] @ d_f[t]])
+            targets[t, si] = tgt
             sol, ang = fk.solve(tgt, qprev, hand=bool(has_hand[t]))
             if not has_hand[t]:
                 ang[2] = 0.0
@@ -169,7 +172,7 @@ def retarget_landmarks(P: dict[str, np.ndarray], fps: float, up_axis: np.ndarray
     for name, val in zip(WAIST, [yaw, roll, pitch]):
         i = ALL_JOINTS.index(name)
         q[:, i] = np.clip(val, JOINT_LIMITS_RAD[i, 0] + 0.02, JOINT_LIMITS_RAD[i, 1] - 0.02)
-    return RetargetResult(q, fps, errs, landmarks or {})
+    return RetargetResult(q, fps, errs, landmarks or {}, targets)
 
 
 def retarget_bvh(bvh: BVH, profile: str | dict | None = None, up_axis=np.array([0, 1.0, 0]),

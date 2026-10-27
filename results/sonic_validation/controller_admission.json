@@ -1,0 +1,795 @@
+[
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000000__04.00-07.28",
+    "score": 97.1,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 100.0,
+      "executability": 100.0,
+      "expressiveness": 85.4
+    },
+    "metrics": {
+      "duration": 3.267,
+      "sparc": -1.818,
+      "hf_rms": 0.0988,
+      "hf_ratio": 0.0839,
+      "jerk_ratio": 0.171,
+      "step_max": 0.0699,
+      "v_entry": 0.514,
+      "v_exit": 0.121,
+      "bridge_in_s": 1.467,
+      "bridge_out_s": 1.329,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.313,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0151,
+      "sat_frac": 0.0,
+      "extent": 0.173,
+      "peak_hand_speed": 0.612,
+      "periodicity": 0.238,
+      "sonic_gesture_rmse_rad": 0.09014462898121287,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000240__00.84-03.04",
+    "score": 97.4,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 98.8,
+      "executability": 100.0,
+      "expressiveness": 88.4
+    },
+    "metrics": {
+      "duration": 2.2,
+      "sparc": -1.717,
+      "hf_rms": 0.0908,
+      "hf_ratio": 0.0689,
+      "jerk_ratio": 0.181,
+      "step_max": 0.1011,
+      "v_entry": 0.172,
+      "v_exit": 0.647,
+      "bridge_in_s": 1.378,
+      "bridge_out_s": 0.957,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.311,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0091,
+      "sat_frac": 0.0,
+      "extent": 0.223,
+      "peak_hand_speed": 0.752,
+      "periodicity": 0.093,
+      "sonic_gesture_rmse_rad": 0.08332248934631091,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "exit_vel"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+    "score": 96.0,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 100.0,
+      "executability": 100.0,
+      "expressiveness": 79.9
+    },
+    "metrics": {
+      "duration": 2.2,
+      "sparc": -2.643,
+      "hf_rms": 0.101,
+      "hf_ratio": 0.1291,
+      "jerk_ratio": 0.225,
+      "step_max": 0.0636,
+      "v_entry": 0.503,
+      "v_exit": 0.234,
+      "bridge_in_s": 1.056,
+      "bridge_out_s": 1.163,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 1.44,
+      "torque_ratio": 0.236,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0097,
+      "sat_frac": 0.0,
+      "extent": 0.081,
+      "peak_hand_speed": 0.435,
+      "periodicity": 0.12,
+      "sonic_gesture_rmse_rad": 0.08262289810444662,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+    "score": 93.9,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 88.3,
+      "executability": 100.0,
+      "expressiveness": 83.9
+    },
+    "metrics": {
+      "duration": 2.067,
+      "sparc": -3.198,
+      "hf_rms": 0.1379,
+      "hf_ratio": 0.0511,
+      "jerk_ratio": 0.37,
+      "step_max": 0.0878,
+      "v_entry": 1.069,
+      "v_exit": 0.529,
+      "bridge_in_s": 1.085,
+      "bridge_out_s": 1.072,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.451,
+      "torque_joint": "left_wrist_pitch_joint",
+      "track_rmse": 0.0104,
+      "sat_frac": 0.0,
+      "extent": 0.148,
+      "peak_hand_speed": 0.576,
+      "periodicity": 0.152,
+      "sonic_gesture_rmse_rad": 0.0831024266438428,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "entry_vel",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+    "score": 96.1,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 100.0,
+      "executability": 100.0,
+      "expressiveness": 80.4
+    },
+    "metrics": {
+      "duration": 1.433,
+      "sparc": -2.542,
+      "hf_rms": 0.0756,
+      "hf_ratio": 0.0892,
+      "jerk_ratio": 0.071,
+      "step_max": 0.0461,
+      "v_entry": 0.513,
+      "v_exit": 0.178,
+      "bridge_in_s": 1.089,
+      "bridge_out_s": 1.594,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.261,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0053,
+      "sat_frac": 0.0,
+      "extent": 0.091,
+      "peak_hand_speed": 0.256,
+      "periodicity": 0.076,
+      "sonic_gesture_rmse_rad": 0.08277596311068189,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_000_main-agent__t000720__06.04-08.80",
+    "score": 96.2,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 100.0,
+      "executability": 100.0,
+      "expressiveness": 81.1
+    },
+    "metrics": {
+      "duration": 2.767,
+      "sparc": -2.837,
+      "hf_rms": 0.0633,
+      "hf_ratio": 0.085,
+      "jerk_ratio": 0.09,
+      "step_max": 0.0422,
+      "v_entry": 0.07,
+      "v_exit": 0.564,
+      "bridge_in_s": 1.229,
+      "bridge_out_s": 1.138,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.208,
+      "torque_joint": "waist_roll_joint",
+      "track_rmse": 0.0121,
+      "sat_frac": 0.0,
+      "extent": 0.102,
+      "peak_hand_speed": 0.316,
+      "periodicity": 0.394,
+      "sonic_gesture_rmse_rad": 0.08546242809389289,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_016_main-agent__t000960__01.00-03.52",
+    "score": 91.9,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 80.0,
+      "executability": 100.0,
+      "expressiveness": 84.6
+    },
+    "metrics": {
+      "duration": 2.533,
+      "sparc": -2.827,
+      "hf_rms": 0.1322,
+      "hf_ratio": 0.0235,
+      "jerk_ratio": 0.417,
+      "step_max": 0.1471,
+      "v_entry": 0.394,
+      "v_exit": 0.798,
+      "bridge_in_s": 2.773,
+      "bridge_out_s": 2.863,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.751,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0157,
+      "sat_frac": 0.0028,
+      "extent": 0.16,
+      "peak_hand_speed": 0.402,
+      "periodicity": 0.226,
+      "sonic_gesture_rmse_rad": 0.09878366816692742,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "exit_vel",
+      "far_entry"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_016_main-agent__t000960__03.52-05.56",
+    "score": 90.4,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 74.0,
+      "executability": 100.0,
+      "expressiveness": 84.6
+    },
+    "metrics": {
+      "duration": 2.033,
+      "sparc": -1.892,
+      "hf_rms": 0.2637,
+      "hf_ratio": 0.0732,
+      "jerk_ratio": 0.428,
+      "step_max": 0.0832,
+      "v_entry": 1.039,
+      "v_exit": 0.245,
+      "bridge_in_s": 2.882,
+      "bridge_out_s": 3.035,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.434,
+      "torque_joint": "right_wrist_yaw_joint",
+      "track_rmse": 0.0168,
+      "sat_frac": 0.0,
+      "extent": 0.16,
+      "peak_hand_speed": 0.642,
+      "periodicity": 0.346,
+      "sonic_gesture_rmse_rad": 0.09475938366093248,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "entry_vel",
+      "far_entry"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_016_main-agent__t000960__06.16-07.32",
+    "score": 93.3,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 83.8,
+      "executability": 100.0,
+      "expressiveness": 86.9
+    },
+    "metrics": {
+      "duration": 1.167,
+      "sparc": -1.676,
+      "hf_rms": 0.1353,
+      "hf_ratio": 0.0534,
+      "jerk_ratio": 0.17,
+      "step_max": 0.0773,
+      "v_entry": 0.612,
+      "v_exit": 0.636,
+      "bridge_in_s": 3.101,
+      "bridge_out_s": 2.799,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.348,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0069,
+      "sat_frac": 0.0,
+      "extent": 0.198,
+      "peak_hand_speed": 0.423,
+      "periodicity": 0.175,
+      "sonic_gesture_rmse_rad": 0.08653453492196223,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "entry_vel",
+      "exit_vel",
+      "far_entry"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_016_main-agent__t000960__10.32-12.84",
+    "score": 90.7,
+    "grade": "A",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 85.0,
+      "executability": 90.0,
+      "expressiveness": 84.5
+    },
+    "metrics": {
+      "duration": 2.5,
+      "sparc": -2.665,
+      "hf_rms": 0.2968,
+      "hf_ratio": 0.0419,
+      "jerk_ratio": 0.545,
+      "step_max": 0.2112,
+      "v_entry": 0.311,
+      "v_exit": 0.371,
+      "bridge_in_s": 2.774,
+      "bridge_out_s": 2.736,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.913,
+      "torque_joint": "right_wrist_pitch_joint",
+      "track_rmse": 0.0119,
+      "sat_frac": 0.0166,
+      "extent": 0.158,
+      "peak_hand_speed": 0.936,
+      "periodicity": 0.128,
+      "sonic_gesture_rmse_rad": 0.09167977909122907,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "far_entry",
+      "torque_near"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 35.0,
+      "executability": 51.9,
+      "expressiveness": 50.3
+    },
+    "metrics": {
+      "duration": 3.833,
+      "sparc": -1.977,
+      "hf_rms": 0.0576,
+      "hf_ratio": 0.0158,
+      "jerk_ratio": 0.368,
+      "step_max": 0.2328,
+      "v_entry": 0.219,
+      "v_exit": 0.412,
+      "bridge_in_s": 5.13,
+      "bridge_out_s": 1.675,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 7.69,
+      "torque_ratio": 0.303,
+      "torque_joint": "right_shoulder_yaw_joint",
+      "track_rmse": 0.016,
+      "sat_frac": 0.0,
+      "extent": 0.088,
+      "peak_hand_speed": 0.204,
+      "periodicity": 0.652,
+      "sonic_gesture_rmse_rad": 0.08707087490525452,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "self_collision",
+      "spike",
+      "far_entry",
+      "periodic",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_032_main-agent__t002880__04.88-08.12",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 35.0,
+      "executability": 100.0,
+      "expressiveness": 94.5
+    },
+    "metrics": {
+      "duration": 5.3,
+      "sparc": -2.486,
+      "hf_rms": 0.1336,
+      "hf_ratio": 0.0089,
+      "jerk_ratio": 0.637,
+      "step_max": 0.2808,
+      "v_entry": 0.222,
+      "v_exit": 0.281,
+      "bridge_in_s": 3.845,
+      "bridge_out_s": 5.13,
+      "limit_margin": 0.0514,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.512,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0081,
+      "sat_frac": 0.0,
+      "extent": 0.325,
+      "peak_hand_speed": 0.627,
+      "periodicity": 0.364,
+      "sonic_gesture_rmse_rad": 0.10136972690621804,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "far_entry"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_032_main-agent__t006960__03.28-06.36",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 35.0,
+      "executability": 100.0,
+      "expressiveness": 85.8
+    },
+    "metrics": {
+      "duration": 4.933,
+      "sparc": -2.109,
+      "hf_rms": 0.0764,
+      "hf_ratio": 0.0173,
+      "jerk_ratio": 0.406,
+      "step_max": 0.2293,
+      "v_entry": 0.238,
+      "v_exit": 0.15,
+      "bridge_in_s": 4.799,
+      "bridge_out_s": 4.585,
+      "limit_margin": 0.0518,
+      "collision_excess_mm": 0.52,
+      "torque_ratio": 0.562,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0103,
+      "sat_frac": 0.0002,
+      "extent": 0.181,
+      "peak_hand_speed": 0.377,
+      "periodicity": 0.308,
+      "sonic_gesture_rmse_rad": 0.12852822573289205,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "far_entry",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_145_main-agent__t000480__00.04-02.28",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 50.0,
+      "executability": 100.0,
+      "expressiveness": 81.5
+    },
+    "metrics": {
+      "duration": 3.733,
+      "sparc": -2.73,
+      "hf_rms": 0.1664,
+      "hf_ratio": 0.0221,
+      "jerk_ratio": 0.671,
+      "step_max": 0.292,
+      "v_entry": 0.312,
+      "v_exit": 0.154,
+      "bridge_in_s": 1.347,
+      "bridge_out_s": 2.778,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.332,
+      "torque_joint": "left_shoulder_yaw_joint",
+      "track_rmse": 0.0084,
+      "sat_frac": 0.0,
+      "extent": 0.109,
+      "peak_hand_speed": 0.166,
+      "periodicity": 0.511,
+      "sonic_gesture_rmse_rad": 0.0929917493470044,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_161_main-agent__t005280__04.04-06.72",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 45.8,
+      "coherence": 50.0,
+      "executability": 100.0,
+      "expressiveness": 80.1
+    },
+    "metrics": {
+      "duration": 2.7,
+      "sparc": -3.003,
+      "hf_rms": 0.4571,
+      "hf_ratio": 0.2192,
+      "jerk_ratio": 0.983,
+      "step_max": 0.1808,
+      "v_entry": 0.117,
+      "v_exit": 0.308,
+      "bridge_in_s": 1.155,
+      "bridge_out_s": 1.766,
+      "limit_margin": 0.0946,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.555,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.006,
+      "sat_frac": 0.0022,
+      "extent": 0.085,
+      "peak_hand_speed": 0.254,
+      "periodicity": 0.32,
+      "sonic_gesture_rmse_rad": 0.07521663174054757,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "jitter",
+      "jerk",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_161_main-agent__t005520__03.52-05.96",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 52.4,
+      "coherence": 50.0,
+      "executability": 100.0,
+      "expressiveness": 80.5
+    },
+    "metrics": {
+      "duration": 2.433,
+      "sparc": -3.546,
+      "hf_rms": 0.4377,
+      "hf_ratio": 0.2542,
+      "jerk_ratio": 0.852,
+      "step_max": 0.164,
+      "v_entry": 0.151,
+      "v_exit": 0.291,
+      "bridge_in_s": 1.386,
+      "bridge_out_s": 1.337,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 1.67,
+      "torque_ratio": 0.533,
+      "torque_joint": "left_wrist_yaw_joint",
+      "track_rmse": 0.0045,
+      "sat_frac": 0.0017,
+      "extent": 0.091,
+      "peak_hand_speed": 0.153,
+      "periodicity": 0.068,
+      "sonic_gesture_rmse_rad": 0.07763487616311726,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "jitter",
+      "jerk",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_161_main-agent__t010560__03.84-06.40",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 62.9,
+      "coherence": 38.6,
+      "executability": 63.8,
+      "expressiveness": 100.0
+    },
+    "metrics": {
+      "duration": 2.8,
+      "sparc": -2.414,
+      "hf_rms": 0.301,
+      "hf_ratio": 0.1629,
+      "jerk_ratio": 0.67,
+      "step_max": 0.2831,
+      "v_entry": 0.231,
+      "v_exit": 0.892,
+      "bridge_in_s": 1.874,
+      "bridge_out_s": 0.849,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 3.75,
+      "torque_ratio": 0.578,
+      "torque_joint": "right_wrist_yaw_joint",
+      "track_rmse": 0.0116,
+      "sat_frac": 0.0014,
+      "extent": 0.535,
+      "peak_hand_speed": 1.554,
+      "periodicity": -0.024,
+      "sonic_gesture_rmse_rad": 0.10098293584137469,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "self_collision",
+      "spike",
+      "jitter",
+      "exit_vel",
+      "far_entry"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_290_main-agent__t001920__00.00-00.48",
+    "score": 69.9,
+    "grade": "C",
+    "sub": {
+      "naturalness": 62.6,
+      "coherence": 50.4,
+      "executability": 100.0,
+      "expressiveness": 67.4
+    },
+    "metrics": {
+      "duration": 0.467,
+      "sparc": -1.913,
+      "hf_rms": 0.303,
+      "hf_ratio": 0.1536,
+      "jerk_ratio": 0.191,
+      "step_max": 0.0748,
+      "v_entry": 2.244,
+      "v_exit": 0.893,
+      "bridge_in_s": 2.421,
+      "bridge_out_s": 2.488,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.206,
+      "torque_joint": "waist_pitch_joint",
+      "track_rmse": 0.0074,
+      "sat_frac": 0.0,
+      "extent": 0.123,
+      "peak_hand_speed": 0.582,
+      "periodicity": 0.0,
+      "sonic_gesture_rmse_rad": 0.09051838109568384,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "entry_vel",
+      "jitter",
+      "exit_vel",
+      "too_short",
+      "far_entry",
+      "semantic_mismatch"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_371_main-agent__t001200__03.00-06.20",
+    "score": 60.0,
+    "grade": "C",
+    "sub": {
+      "naturalness": 100.0,
+      "coherence": 46.7,
+      "executability": 100.0,
+      "expressiveness": 64.9
+    },
+    "metrics": {
+      "duration": 8.367,
+      "sparc": -2.367,
+      "hf_rms": 0.1104,
+      "hf_ratio": 0.0098,
+      "jerk_ratio": 0.705,
+      "step_max": 0.2862,
+      "v_entry": 0.077,
+      "v_exit": 0.222,
+      "bridge_in_s": 1.818,
+      "bridge_out_s": 4.505,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 0.0,
+      "torque_ratio": 0.366,
+      "torque_joint": "left_shoulder_yaw_joint",
+      "track_rmse": 0.0671,
+      "sat_frac": 0.0,
+      "extent": 0.332,
+      "peak_hand_speed": 0.366,
+      "periodicity": 0.613,
+      "sonic_gesture_rmse_rad": 0.11567250218193875,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "spike",
+      "far_entry",
+      "periodic"
+    ]
+  },
+  {
+    "clip_id": "trn_2023_v0_371_main-agent__t001440__03.96-05.80",
+    "score": 69.2,
+    "grade": "C",
+    "sub": {
+      "naturalness": 55.0,
+      "coherence": 85.0,
+      "executability": 59.2,
+      "expressiveness": 83.2
+    },
+    "metrics": {
+      "duration": 1.833,
+      "sparc": -2.178,
+      "hf_rms": 0.3628,
+      "hf_ratio": 0.1683,
+      "jerk_ratio": 0.534,
+      "step_max": 0.1082,
+      "v_entry": 0.304,
+      "v_exit": 0.38,
+      "bridge_in_s": 5.13,
+      "bridge_out_s": 5.13,
+      "limit_margin": 0.051,
+      "collision_excess_mm": 5.27,
+      "torque_ratio": 0.378,
+      "torque_joint": "left_wrist_pitch_joint",
+      "track_rmse": 0.0138,
+      "sat_frac": 0.0006,
+      "extent": 0.137,
+      "peak_hand_speed": 0.819,
+      "periodicity": 0.114,
+      "sonic_gesture_rmse_rad": 0.10752017462792429,
+      "sonic_stability_pass": true,
+      "sonic_fall": false
+    },
+    "flags": [
+      "self_collision",
+      "jitter",
+      "far_entry"
+    ]
+  }
+]

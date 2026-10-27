@@ -1,0 +1,351 @@
+{
+  "styles": [
+    "original",
+    "enthusiastic",
+    "calm",
+    "formal",
+    "lively",
+    "reserved",
+    "mirror"
+  ],
+  "functions": [
+    "emphasize",
+    "enumerate",
+    "contrast_compare",
+    "refer_self",
+    "refer_other",
+    "refer_external",
+    "depict_size_shape",
+    "depict_direction_motion",
+    "turn_open",
+    "turn_yield",
+    "greet_farewell",
+    "thank",
+    "affirm",
+    "deny",
+    "certainty",
+    "uncertainty",
+    "enthusiasm"
+  ],
+  "scope": "all grades, same current rules, seven common styles; not human labels",
+  "old": {
+    "cells": {
+      "emphasize": {
+        "original": 6,
+        "enthusiastic": 3,
+        "calm": 1,
+        "formal": 2,
+        "lively": 2,
+        "reserved": 2,
+        "mirror": 1
+      },
+      "enumerate": {
+        "original": 10,
+        "enthusiastic": 10,
+        "calm": 5,
+        "formal": 5,
+        "lively": 6,
+        "reserved": 4,
+        "mirror": 2
+      },
+      "contrast_compare": {
+        "original": 7,
+        "enthusiastic": 6,
+        "calm": 2,
+        "formal": 1,
+        "lively": 4,
+        "reserved": 2,
+        "mirror": 1
+      },
+      "refer_self": {
+        "original": 0,
+        "enthusiastic": 0,
+        "calm": 0,
+        "formal": 0,
+        "lively": 0,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "refer_other": {
+        "original": 5,
+        "enthusiastic": 5,
+        "calm": 6,
+        "formal": 3,
+        "lively": 4,
+        "reserved": 3,
+        "mirror": 0
+      },
+      "refer_external": {
+        "original": 18,
+        "enthusiastic": 18,
+        "calm": 10,
+        "formal": 7,
+        "lively": 15,
+        "reserved": 7,
+        "mirror": 1
+      },
+      "depict_size_shape": {
+        "original": 11,
+        "enthusiastic": 8,
+        "calm": 8,
+        "formal": 8,
+        "lively": 8,
+        "reserved": 8,
+        "mirror": 0
+      },
+      "depict_direction_motion": {
+        "original": 20,
+        "enthusiastic": 16,
+        "calm": 7,
+        "formal": 7,
+        "lively": 14,
+        "reserved": 7,
+        "mirror": 3
+      },
+      "turn_open": {
+        "original": 7,
+        "enthusiastic": 8,
+        "calm": 4,
+        "formal": 5,
+        "lively": 3,
+        "reserved": 2,
+        "mirror": 0
+      },
+      "turn_yield": {
+        "original": 11,
+        "enthusiastic": 8,
+        "calm": 5,
+        "formal": 5,
+        "lively": 7,
+        "reserved": 5,
+        "mirror": 2
+      },
+      "greet_farewell": {
+        "original": 0,
+        "enthusiastic": 0,
+        "calm": 0,
+        "formal": 0,
+        "lively": 0,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "thank": {
+        "original": 0,
+        "enthusiastic": 0,
+        "calm": 0,
+        "formal": 0,
+        "lively": 0,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "affirm": {
+        "original": 10,
+        "enthusiastic": 6,
+        "calm": 0,
+        "formal": 0,
+        "lively": 7,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "deny": {
+        "original": 0,
+        "enthusiastic": 0,
+        "calm": 0,
+        "formal": 0,
+        "lively": 0,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "certainty": {
+        "original": 5,
+        "enthusiastic": 4,
+        "calm": 2,
+        "formal": 2,
+        "lively": 5,
+        "reserved": 1,
+        "mirror": 0
+      },
+      "uncertainty": {
+        "original": 23,
+        "enthusiastic": 23,
+        "calm": 8,
+        "formal": 11,
+        "lively": 7,
+        "reserved": 5,
+        "mirror": 1
+      },
+      "enthusiasm": {
+        "original": 5,
+        "enthusiastic": 5,
+        "calm": 3,
+        "formal": 2,
+        "lively": 5,
+        "reserved": 0,
+        "mirror": 2
+      }
+    },
+    "occupied": 82,
+    "empty": 37,
+    "total": 119
+  },
+  "genea": {
+    "cells": {
+      "emphasize": {
+        "original": 47,
+        "enthusiastic": 20,
+        "calm": 2,
+        "formal": 2,
+        "lively": 21,
+        "reserved": 0,
+        "mirror": 7
+      },
+      "enumerate": {
+        "original": 90,
+        "enthusiastic": 28,
+        "calm": 8,
+        "formal": 10,
+        "lively": 19,
+        "reserved": 5,
+        "mirror": 15
+      },
+      "contrast_compare": {
+        "original": 16,
+        "enthusiastic": 5,
+        "calm": 2,
+        "formal": 1,
+        "lively": 3,
+        "reserved": 1,
+        "mirror": 1
+      },
+      "refer_self": {
+        "original": 5,
+        "enthusiastic": 1,
+        "calm": 0,
+        "formal": 0,
+        "lively": 2,
+        "reserved": 0,
+        "mirror": 1
+      },
+      "refer_other": {
+        "original": 1,
+        "enthusiastic": 2,
+        "calm": 2,
+        "formal": 1,
+        "lively": 1,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "refer_external": {
+        "original": 4,
+        "enthusiastic": 3,
+        "calm": 5,
+        "formal": 4,
+        "lively": 2,
+        "reserved": 2,
+        "mirror": 1
+      },
+      "depict_size_shape": {
+        "original": 54,
+        "enthusiastic": 12,
+        "calm": 9,
+        "formal": 9,
+        "lively": 12,
+        "reserved": 9,
+        "mirror": 1
+      },
+      "depict_direction_motion": {
+        "original": 120,
+        "enthusiastic": 27,
+        "calm": 16,
+        "formal": 14,
+        "lively": 25,
+        "reserved": 8,
+        "mirror": 15
+      },
+      "turn_open": {
+        "original": 32,
+        "enthusiastic": 13,
+        "calm": 5,
+        "formal": 7,
+        "lively": 5,
+        "reserved": 5,
+        "mirror": 3
+      },
+      "turn_yield": {
+        "original": 23,
+        "enthusiastic": 14,
+        "calm": 5,
+        "formal": 5,
+        "lively": 8,
+        "reserved": 4,
+        "mirror": 5
+      },
+      "greet_farewell": {
+        "original": 0,
+        "enthusiastic": 1,
+        "calm": 0,
+        "formal": 0,
+        "lively": 0,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "thank": {
+        "original": 1,
+        "enthusiastic": 2,
+        "calm": 0,
+        "formal": 0,
+        "lively": 2,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "affirm": {
+        "original": 57,
+        "enthusiastic": 7,
+        "calm": 4,
+        "formal": 6,
+        "lively": 7,
+        "reserved": 4,
+        "mirror": 6
+      },
+      "deny": {
+        "original": 2,
+        "enthusiastic": 1,
+        "calm": 0,
+        "formal": 0,
+        "lively": 2,
+        "reserved": 0,
+        "mirror": 0
+      },
+      "certainty": {
+        "original": 11,
+        "enthusiastic": 3,
+        "calm": 1,
+        "formal": 1,
+        "lively": 1,
+        "reserved": 1,
+        "mirror": 3
+      },
+      "uncertainty": {
+        "original": 31,
+        "enthusiastic": 5,
+        "calm": 9,
+        "formal": 10,
+        "lively": 2,
+        "reserved": 4,
+        "mirror": 1
+      },
+      "enthusiasm": {
+        "original": 2,
+        "enthusiastic": 3,
+        "calm": 1,
+        "formal": 0,
+        "lively": 3,
+        "reserved": 0,
+        "mirror": 1
+      }
+    },
+    "occupied": 97,
+    "empty": 22,
+    "total": 119
+  }
+}

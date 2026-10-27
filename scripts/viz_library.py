@@ -15,6 +15,7 @@ usage: python scripts/viz_library.py   → results/viz/viz_data.json (then revie
 from __future__ import annotations
 
 import base64
+import argparse
 import io
 import json
 import os
@@ -99,6 +100,10 @@ def executed(q: np.ndarray) -> np.ndarray:
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--source-fps", type=float, default=120.)
+    ap.add_argument("--dataset-name", default="sonic_for_a3 · selected20")
+    args = ap.parse_args()
     t0 = time.time()
     lib = OUT / "library"
     bundle = json.loads((lib / "review_bundle.json").read_text())
@@ -112,11 +117,17 @@ def main():
     raw_frames = 0
     csvs = sorted(Path(DATA).glob("*.csv"))
     for p in csvs:
-        mo = load_a3_csv(p)
+        mo = load_a3_csv(p, fps=args.source_fps)
         raw_frames += mo.T
         idx = np.linspace(0, mo.T - 1, 8).astype(int)
         img = strip([R.frame(mo.q[i], mo.root[i]) for i in idx])
         rm = meta["recordings"].get(mo.name, {})
+        if not rm:
+            windows = [r for r in meta["recordings"].values() if r.get("source_recording") == mo.name]
+            if windows:
+                rm = {"atoms": sum(r.get("atoms", 0) for r in windows),
+                      "rejected": sum(r.get("rejected", 0) for r in windows),
+                      "accepted": any(r.get("accepted", False) for r in windows)}
         recs.append({"name": mo.name, "frames_120hz": mo.T, "duration_s": round(mo.duration, 2),
                      "root_travel_m": round(float(np.linalg.norm(np.diff(mo.root[:, :2], axis=0), axis=1).sum()), 2),
                      "atoms": rm.get("atoms", 0), "rejected": rm.get("rejected", 0), "accepted": rm.get("accepted", True),
@@ -135,6 +146,7 @@ def main():
         k = apex(qe)
         img = strip([R.frame(qe[0]), R.frame(qe[k]), R.frame(qe[-1])])
         clips.append({"id": c["id"], "kind": c["kind"], "parent": c["parent"], "source": c["source"], "label": c["label"],
+                      "source_recording": meta['recordings'].get(c['source'],{}).get('source_recording',c['source']),
                       "hand": c["hand"], "style": c["style"], "style_zh": c["style_zh"], "duration": c["duration"],
                       "frames_30hz": int(q.shape[0]), "grade": c["grade"], "score": c["score"], "flags": c["flags"],
                       "spec_pass": c.get("spec_pass", []), "own_spec": bool(c.get("spec", {}).get("passed")),
@@ -181,11 +193,11 @@ def main():
     total_dur = sum(r["duration_s"] for r in recs)
     clip_dur = sum(c["duration"] for c in clips)
     inventory = [
-        {"name": "sonic_for_a3 · selected20", "owner": "智元 AgibotTech", "kind": "A3 动作数据（120 Hz，38 列）",
+        {"name": args.dataset_name, "owner": "原始来源见追溯记录", "kind": f"A3 关节 CSV（{args.source_fps:g} Hz，38 列）",
          "count": f"{len(recs)} 条 · {total_dur/60:.1f} 分钟 · {raw_frames:,} 帧", "status": "used",
-         "note": "仓库公开的全部 A3 动作 CSV；官方说明它们不属于 035 的训练集，只用于跑通流程"},
+         "note": "原始录制重定向到 A3 的 30 Hz 导出；窗口修复、切分与过滤见 admission.json / atom_admission.json"},
         {"name": "sonic_for_a3 · remote_motions", "owner": "智元 AgibotTech", "kind": "A3 行走遥控动作",
-         "count": "4 条", "status": "blocked", "note": "Git LFS 存储，本环境无法下载；均为前进 / 后退 / 转向，不含手势"},
+         "count": "4 条", "status": "not_used", "note": "Git LFS 已拉取；均为前进 / 后退 / 转向，本次手势建库未使用"},
         {"name": "035 训练动作库", "owner": "智元内部", "kind": "SONIC 035 训练语料", "count": "未公开",
          "status": "missing", "note": "训练合同文档写明源快照与派生 motion-lib 不随仓库发布"},
         {"name": "A3-A3U-robot-model · a3_t2d5", "owner": "智元 AgibotTech", "kind": "官方 MJCF + 网格",
@@ -193,24 +205,26 @@ def main():
         {"name": "SONIC 伺服增益 / 电机惯量", "owner": "智元 sonic_for_a3", "kind": "sim2sim 控制参数",
          "count": "31 关节", "status": "used", "note": "用于 PD 跟踪代理；力矩上限取自 MJCF actuatorfrcrange"},
         {"name": "SONIC 035 策略权重", "owner": "智元（Hugging Face）", "kind": "全身控制策略",
-         "count": "PT / ONNX / RKNN", "status": "blocked", "note": "Hugging Face 在本环境不可达；本地下载后可直接接 sim2sim"},
+         "count": "035 step 200000 PT", "status": "used" if Path("external/sonic_for_a3/checkpoints/035_step200000/model_step_200000.pt").exists() else "blocked",
+         "note": "可用性按本地权重文件检查；真实控制器终检见 SONIC 验证报告"},
         {"name": "agibot_x2_urdf · X2-EDU", "owner": "智元 AgibotTech", "kind": "X2 URDF / MJCF",
          "count": "v1.4.0", "status": "not_used", "note": "已下载，本次只做 A3，未用"},
         {"name": "X2 aimdk 仿真套件", "owner": "智元", "kind": "SDK + mc + sim_mujoco", "count": "下载包",
          "status": "not_used", "note": "面向 X2，需 ROS2 Humble；本次未接入"},
     ]
     funnel = [
-        {"stage": "原始录制", "n": len(recs), "unit": "条", "detail": f"{total_dur:.0f} s · {raw_frames:,} 帧 @120 Hz"},
+        {"stage": "建库输入", "n": len(recs), "unit": "条", "detail": f"{total_dur:.0f} s · {raw_frames:,} 帧 @{args.source_fps:g} Hz"},
         {"stage": "检测出的动作段", "n": len(atoms) + len(meta["rejected"]), "unit": "段", "detail": "式 (4)–(9) 自动切分"},
         {"stage": "Motion Atom", "n": len(atoms), "unit": "个", "detail": f"丢弃 {len(meta['rejected'])} 段；{sum(c['duration'] for c in atoms):.0f} s"},
-        {"stage": "干净 atom（A/B，非静止、无碰撞）", "n": rep["counts"]["bases"], "unit": "个",
-         "detail": "其中 36 个作为风格化基底"},
+        {"stage": "选中的风格化基底", "n": rep["counts"]["bases"], "unit": "个",
+         "detail": f"其中 {rep['counts']['bases']} 个作为风格化基底"},
         {"stage": "仿真风格变体", "n": len(vars_), "unit": "个", "detail": f"{sum(c['duration'] for c in vars_):.0f} s"},
         {"stage": "变体 A/B", "n": sum(1 for c in vars_ if c["grade"] in "AB"), "unit": "个", "detail": "过运动学、力矩、质量评测"},
         {"stage": "通过自身语义规格", "n": sum(1 for c in clips if c["own_spec"]), "unit": "个",
          "detail": f"原始 {sum(1 for c in atoms if c['own_spec'])} + 变体 {sum(1 for c in vars_ if c['own_spec'])}"},
     ]
     volume = {
+        "source_fps": args.source_fps,
         "raw_frames_120hz": raw_frames, "recording_seconds": round(total_dur, 1),
         "clip_frames_30hz": sum(c["frames_30hz"] for c in clips), "clip_seconds": round(clip_dur, 1),
         "inverse_dynamics_evals": sum(c["frames_30hz"] for c in clips),

@@ -1,0 +1,58 @@
+{
+  "/": {
+    "status": 200,
+    "title": "A3 动作库评审台",
+    "h1": "A3 动作库评审台"
+  },
+  "A3_genea_atlas.html": {
+    "status": 200,
+    "title": "A3 动作库全景",
+    "h1": "A3 动作库全景",
+    "mobile": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  "A3_gesture_benchmark.html": {
+    "status": 200,
+    "title": "A3 手势数据集与评测",
+    "h1": "A3 手势数据集与评测"
+  },
+  "A3_speech_demo.html": {
+    "status": 200,
+    "title": "GENEA 语音与手势演示",
+    "h1": "语音驱动的身体与手部演示",
+    "mobile": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  "review": {
+    "count": 529,
+    "A_atoms": 215,
+    "animation_advances": true,
+    "export": "reviews.json"
+  },
+  "atlas": {
+    "source_filter_cards": 6,
+    "matrix_rows": 17
+  },
+  "benchmark": {
+    "sonic_rows": 20
+  },
+  "demo": {
+    "duration": 21,
+    "playback": {
+      "t": 6.341942,
+      "paused": false,
+      "error": null
+    }
+  },
+  "A3_genea_review.html": {
+    "mobile": {
+      "w": 390,
+      "scroll": 390
+    }
+  },
+  "page_errors": []
+}

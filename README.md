@@ -19,7 +19,7 @@
 ```bash
 pip install -r requirements.txt
 # 外部资源（官方 A3 模型 + 20 条 A3 动作 CSV），见 external/README.md
-cd external && git clone https://github.com/AgibotTech/A3-A3U-robot-model && GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/AgibotTech/sonic_for_a3 && git clone https://github.com/AgibotTech/agibot_x2_urdf && cd ..
+cd external && git clone https://github.com/AgibotTech/A3-A3U-robot-model && git clone https://github.com/AgibotTech/sonic_for_a3 && git clone https://github.com/AgibotTech/agibot_x2_urdf && cd ..
 # Linux 离屏渲染：apt-get install libosmesa6（默认 MUJOCO_GL=osmesa；有 GPU 用 egl）
 
 python scripts/demo.py --rebuild --no-video        # 建库 + 编排演示（约 5 s）
@@ -44,7 +44,19 @@ docs/           HANDOVER.md（交接）、PROTOCOL.md（评测协议）、FORMUL
 external/       外部资源（gitignore，README 说明获取方式）
 ```
 
-## 现状一览（20 条智元公开录制）
+## 2026-10-27：GENEA 与真实 SONIC
+
+新增 GENEA 2023 的 24 条训练录制、修复与切分后的独立 catalog、真实 SONIC 035 的 A/C 对照终检，以及词级 TTS 驱动的身体 + O10 手部演示。旧的 133 个 atom 保留在 `results/catalog/`。
+
+- 执行结果、实际达标情况及局限：[`docs/EXECUTION_20261027.md`](docs/EXECUTION_20261027.md)。
+- 本机页面服务：`pip install -r requirements-web.txt && python scripts/serve_frontend.py --port 8840`，支持 MP4 Range 与逐词跳转。
+- 新评审页：[`A3_genea_review.html`](review_page/dist/A3_genea_review.html)；全景：[`A3_genea_atlas.html`](review_page/dist/A3_genea_atlas.html)。
+- 对照表：`results/sonic_validation/comparison.csv`；演示：`results/genea_demo/demo.mp4` 与 `trace.json`。
+- 重建入口：`bash scripts/reproduce_genea.sh`。先按 `external/README.md` 准备模型、LFS 文件和 035 权重，安装 `requirements-sonic.txt`。
+
+GENEA 派生动作采用原数据的 CC BY-NC 4.0 条款，来源与许可证见 `results/genea/ATTRIBUTION.md`。规则匹配不是人工语义真值，A/B 代理等级也不是 SONIC 稳定性保证。
+
+## 历史结果（2026-10-23，20 条智元公开录制）
 
 - 133 个原始 atom，其中只有 17 个通过自身语义标签的规格（标签来自文件名，动作本身是步态/体能动作）；51% 为 C/D 级。
 - 219 个仿真风格变体，178 个达到 A/B；风格空间 11 → 12 / 16 格；语义覆盖仍是 8 / 17。

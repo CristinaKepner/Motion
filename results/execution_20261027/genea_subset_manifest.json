@@ -1,0 +1,376 @@
+{
+  "source": "https://zenodo.org/records/8199133/files/genea2023_trn.zip?download=1",
+  "record": "https://zenodo.org/records/8199133",
+  "license": "CC BY-NC 4.0",
+  "selection": "24 evenly spaced main-agent training files, before evaluation",
+  "archive_md5": "409a321605d0f5bbd042f943fed4bd3e",
+  "archive_md5_verified": true,
+  "member_crc_verified": true,
+  "members": [
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_000_main-agent.bvh",
+      "crc32": "fbdcdd59",
+      "bytes": 8841104
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_016_main-agent.bvh",
+      "crc32": "506012c7",
+      "bytes": 16364862
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_032_main-agent.bvh",
+      "crc32": "4943a5b1",
+      "bytes": 43034597
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_048_main-agent.bvh",
+      "crc32": "7cfccd7a",
+      "bytes": 26376597
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_065_main-agent.bvh",
+      "crc32": "eea8f70d",
+      "bytes": 16460487
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_081_main-agent.bvh",
+      "crc32": "49242c90",
+      "bytes": 16713558
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_097_main-agent.bvh",
+      "crc32": "e38eb4d8",
+      "bytes": 8574559
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_113_main-agent.bvh",
+      "crc32": "608243e8",
+      "bytes": 8323337
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_129_main-agent.bvh",
+      "crc32": "c0ea313e",
+      "bytes": 17679589
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_145_main-agent.bvh",
+      "crc32": "cff95770",
+      "bytes": 17723656
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_161_main-agent.bvh",
+      "crc32": "34546908",
+      "bytes": 57508307
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_177_main-agent.bvh",
+      "crc32": "f610a3fc",
+      "bytes": 24618200
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_194_main-agent.bvh",
+      "crc32": "b4c16393",
+      "bytes": 25679147
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_210_main-agent.bvh",
+      "crc32": "be01e201",
+      "bytes": 8565710
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_226_main-agent.bvh",
+      "crc32": "c67c8e8d",
+      "bytes": 40443632
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_242_main-agent.bvh",
+      "crc32": "0f345844",
+      "bytes": 8196409
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_258_main-agent.bvh",
+      "crc32": "7351145b",
+      "bytes": 16152829
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_274_main-agent.bvh",
+      "crc32": "fe034408",
+      "bytes": 11238123
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_290_main-agent.bvh",
+      "crc32": "f2fc2d3b",
+      "bytes": 9148631
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_306_main-agent.bvh",
+      "crc32": "b02c0281",
+      "bytes": 8088948
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_323_main-agent.bvh",
+      "crc32": "ba860964",
+      "bytes": 40984165
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_339_main-agent.bvh",
+      "crc32": "120fc36b",
+      "bytes": 8098533
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_355_main-agent.bvh",
+      "crc32": "a927ae6f",
+      "bytes": 16686177
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/bvh/trn_2023_v0_371_main-agent.bvh",
+      "crc32": "37838e62",
+      "bytes": 16439279
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_000_main-agent.tsv",
+      "crc32": "a7a2e460",
+      "bytes": 2780
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_016_main-agent.tsv",
+      "crc32": "85805cd4",
+      "bytes": 6595
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_032_main-agent.tsv",
+      "crc32": "b4a55066",
+      "bytes": 6030
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_048_main-agent.tsv",
+      "crc32": "a558da18",
+      "bytes": 6704
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_065_main-agent.tsv",
+      "crc32": "cf3ebe0f",
+      "bytes": 3923
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_081_main-agent.tsv",
+      "crc32": "e8d7d63e",
+      "bytes": 2399
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_097_main-agent.tsv",
+      "crc32": "f667f2c9",
+      "bytes": 1245
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_113_main-agent.tsv",
+      "crc32": "bb677ffa",
+      "bytes": 1915
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_129_main-agent.tsv",
+      "crc32": "00aadc50",
+      "bytes": 1669
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_145_main-agent.tsv",
+      "crc32": "86522c42",
+      "bytes": 640
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_161_main-agent.tsv",
+      "crc32": "e0cbcfa5",
+      "bytes": 10042
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_177_main-agent.tsv",
+      "crc32": "4d4f9e0e",
+      "bytes": 3556
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_194_main-agent.tsv",
+      "crc32": "ea3e0799",
+      "bytes": 2029
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_210_main-agent.tsv",
+      "crc32": "0e7c373c",
+      "bytes": 120
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_226_main-agent.tsv",
+      "crc32": "e9b95237",
+      "bytes": 9951
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_242_main-agent.tsv",
+      "crc32": "a3d330bc",
+      "bytes": 860
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_258_main-agent.tsv",
+      "crc32": "10aab9cf",
+      "bytes": 6266
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_274_main-agent.tsv",
+      "crc32": "61089b16",
+      "bytes": 449
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_290_main-agent.tsv",
+      "crc32": "40afeaf8",
+      "bytes": 532
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_306_main-agent.tsv",
+      "crc32": "8c3d2560",
+      "bytes": 862
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_323_main-agent.tsv",
+      "crc32": "55fe8923",
+      "bytes": 8443
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_339_main-agent.tsv",
+      "crc32": "b4f50b76",
+      "bytes": 662
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_355_main-agent.tsv",
+      "crc32": "aa40b070",
+      "bytes": 5892
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/tsv/trn_2023_v0_371_main-agent.tsv",
+      "crc32": "84969501",
+      "bytes": 5455
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_000_main-agent.wav",
+      "crc32": "f8ce0d9a",
+      "bytes": 5733044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_016_main-agent.wav",
+      "crc32": "d42916a9",
+      "bytes": 10760444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_032_main-agent.wav",
+      "crc32": "7a6ee516",
+      "bytes": 28224044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_048_main-agent.wav",
+      "crc32": "66d1e71a",
+      "bytes": 17199044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_065_main-agent.wav",
+      "crc32": "e596c6b6",
+      "bytes": 10760444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_081_main-agent.wav",
+      "crc32": "a63f08fd",
+      "bytes": 10936844
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_097_main-agent.wav",
+      "crc32": "e8868940",
+      "bytes": 5644844
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_113_main-agent.wav",
+      "crc32": "f128cac0",
+      "bytes": 5468444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_129_main-agent.wav",
+      "crc32": "7b9158cf",
+      "bytes": 11642444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_145_main-agent.wav",
+      "crc32": "eb953da3",
+      "bytes": 11642444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_161_main-agent.wav",
+      "crc32": "56018054",
+      "bytes": 37661444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_177_main-agent.wav",
+      "crc32": "cdb17a92",
+      "bytes": 16140644
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_194_main-agent.wav",
+      "crc32": "d5fd29d7",
+      "bytes": 16934444
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_210_main-agent.wav",
+      "crc32": "06119307",
+      "bytes": 5644844
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_226_main-agent.wav",
+      "crc32": "1ce57f94",
+      "bytes": 26460044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_242_main-agent.wav",
+      "crc32": "3d8db588",
+      "bytes": 5380244
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_258_main-agent.wav",
+      "crc32": "af2b3f49",
+      "bytes": 10584044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_274_main-agent.wav",
+      "crc32": "3cf99b06",
+      "bytes": 7408844
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_290_main-agent.wav",
+      "crc32": "d8d6ffa3",
+      "bytes": 5997644
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_306_main-agent.wav",
+      "crc32": "7a24d2f6",
+      "bytes": 5292044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_323_main-agent.wav",
+      "crc32": "27e041f2",
+      "bytes": 26901044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_339_main-agent.wav",
+      "crc32": "4494e48b",
+      "bytes": 5292044
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_355_main-agent.wav",
+      "crc32": "4127d675",
+      "bytes": 10936844
+    },
+    {
+      "file": "genea2023_dataset/trn/main-agent/wav/trn_2023_v0_371_main-agent.wav",
+      "crc32": "ec188a6b",
+      "bytes": 10760444
+    },
+    {
+      "file": "genea2023_dataset/trn/metadata.csv",
+      "crc32": "c5825bf2",
+      "bytes": 17566
+    }
+  ]
+}

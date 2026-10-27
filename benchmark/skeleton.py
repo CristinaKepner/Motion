@@ -24,7 +24,7 @@ PROFILES: dict[str, dict] = {
                 "l_wrist": "LeftHand", "l_hand_end": "LeftHand_End", "r_shoulder": "RightArm", "r_elbow": "RightForeArm",
                 "r_wrist": "RightHand", "r_hand_end": "RightHand_End", "unit_scale": 0.01, "fps": 60},
     # Talking With Hands 16.2M / GENEA 2022-2023 ("b_" prefix)
-    "twh": {"hips": "body_world", "chest": "b_spine3", "neck": "b_neck0", "l_shoulder": "b_l_arm", "l_elbow": "b_l_forearm",
+    "twh": {"hips": "b_root", "chest": "b_spine3", "neck": "b_neck0", "l_shoulder": "b_l_arm", "l_elbow": "b_l_forearm",
             "l_wrist": "b_l_wrist", "l_hand_end": "b_l_middle1", "r_shoulder": "b_r_arm", "r_elbow": "b_r_forearm",
             "r_wrist": "b_r_wrist", "r_hand_end": "b_r_middle1", "unit_scale": 0.01, "fps": 30},
     # Bandai Namco Research Motiondataset 1/2 (Y-up, cm, 30 Hz; no fingers → hand End Site)

@@ -16,6 +16,8 @@ import argparse
 import json
 import sys
 import time
+import hashlib
+import pickle
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # repo root
@@ -27,7 +29,7 @@ from trabot_a3.paths import MJCF, DATA, OUT as OUT_ROOT  # noqa: E402
 from trabot_a3.quality import PhysicsProbe, evaluate_clip, library_report, embed, FLAG_TEXT, style_descriptor  # noqa: E402
 from trabot_a3.sourcing import build_tree  # noqa: E402
 from trabot_a3.stylize import PRESETS, MIRROR, generate_variant, style_from_reference  # noqa: E402
-from trabot_a3.semantics import check_all, SPEC_TEXT, FN_ZH  # noqa: E402
+from trabot_a3.semantics import check_all, SPEC_TEXT, FN_ZH, SpecResult  # noqa: E402
 
 OUT = OUT_ROOT / "library"
 KEEP_METRICS = ["duration", "sparc", "hf_rms", "hf_ratio", "jerk_ratio", "step_max", "v_entry", "v_exit",
@@ -44,17 +46,32 @@ def kp_payload(kp: np.ndarray, stride: int = 2) -> list[int]:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-bases", type=int, default=36)
+    ap.add_argument("--dataset-name", default="sonic_for_a3 · selected20")
+    ap.add_argument("--dataset-note", default="A3 动作 CSV，120 Hz；仓库公开的 20 条录制")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     cat = load_catalog(OUT_ROOT / "catalog")
     meta = json.loads((OUT_ROOT / "catalog" / "catalog.json").read_text())
     probe = PhysicsProbe(MJCF)
+    cached = {}
+    cache_path = OUT_ROOT / "atom_quality.pkl"
+    if cache_path.exists():
+        with cache_path.open("rb") as f:
+            saved = pickle.load(f)  # trusted local evaluation output only
+        quality_path = Path(__file__).resolve().parents[1] / "trabot_a3/quality.py"
+        if (saved.get("quality_sha256") == hashlib.sha256(quality_path.read_bytes()).hexdigest()
+                and saved.get("mjcf_sha256") == hashlib.sha256(Path(MJCF).read_bytes()).hexdigest()):
+            cached = {c.id: c for c in saved["clips"]}
 
     # ---------------------------------------------------------------- 1. evaluate recorded atoms
     clips: list[dict] = []
     for a in cat.atoms:
-        q, kp = evaluate_clip(a.atom_id, a.q, a.fps, probe)
+        previous = cached.get(a.atom_id)
+        if previous is not None and a.fps == 30 and np.array_equal(previous.q, a.q):
+            q, kp = previous.meta["quality"], previous.kp
+        else:
+            q, kp = evaluate_clip(a.atom_id, a.q, a.fps, probe)
         repairs = [n for n in a.notes if not n.startswith("label proposal")]
         clips.append(dict(id=a.atom_id, kind="atom", parent=None, source=a.source, label=a.label, hand=a.hand,
                           style="original", style_zh="原始", duration=round(a.duration, 3), fs=a.fps,
@@ -134,7 +151,7 @@ def main():
     # and record which specs it actually satisfies (retrieval of verified references).
     for c in clips + variants:
         R = check_all(c["kp"], c["q"], c["fs"])
-        own = R[c["label"]]
+        own = R.get(c["label"], SpecResult(c["label"], False, 0.0))
         c["spec"] = own.as_dict()
         c["spec_pass_fns"] = [fn for fn, r in R.items() if r.passed]
         c["spec_near_fns"] = sorted([(fn, r.score) for fn, r in R.items() if not r.passed and r.score >= 0.5],
@@ -163,6 +180,7 @@ def main():
                          "variants_rejected": len(rejected_variants), "bases": len(bases),
                          "recordings": len(meta["recordings"]), "segments_rejected": len(meta["rejected"])},
               "semantic_functions": SEMANTIC_FUNCTIONS, "semantic_check": sem}
+    report['counts']['source_recordings']=len({r.get('source_recording',name) for name,r in meta['recordings'].items()})
     (OUT / "report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False))
 
     # ---------------------------------------------------------------- 5. sourcing tree
@@ -175,7 +193,8 @@ def main():
                       [flat(v) for v in variants] +
                       [dict(id=r["id"], parent=r["parent"], label="", hand="", duration=0, score=0, grade="D",
                             flags=[], style=r["style"], style_zh=r["style_zh"], accepted=False,
-                            repairs=[r["reason"]]) for r in rejected_variants])
+                            repairs=[r["reason"]]) for r in rejected_variants],
+                      dataset_name=args.dataset_name, dataset_note=args.dataset_note)
     (OUT / "tree.json").write_text(json.dumps(tree, ensure_ascii=False))
 
     # ---------------------------------------------------------------- 6. review payload

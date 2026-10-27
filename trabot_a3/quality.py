@@ -84,6 +84,7 @@ FLAG_TEXT = {
     "too_short": "时长过短",
     "style_eroded": "风格被安全修复削弱（放慢/缩幅）",
     "semantic_mismatch": "动作没有通过所贴语义标签的规格（名对、动作不对）",
+    "controller_unstable": "真实自由根控制器未通过稳定门槛",
 }
 SEVERITY = {"spike": 3, "torque": 3, "self_collision": 3, "limit_margin": 2, "jitter": 2, "entry_vel": 2,
             "exit_vel": 2, "tracking": 2, "unsmooth": 1, "jerk": 1, "far_entry": 1, "torque_near": 1,
@@ -178,10 +179,12 @@ class PhysicsProbe:
                           f'<body name="pelvis_link" pos="{NEUTRAL_ROOT[0]} {NEUTRAL_ROOT[1]} {NEUTRAL_ROOT[2]}">')
         import re
         xml = re.sub(r"<keyframe>.*?</keyframe>", "", xml, flags=re.S)
-        tmp = os.path.join(os.path.dirname(mjcf_path), "_a3_fixed_base.xml")
-        with open(tmp, "w") as f:
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".xml", prefix="_a3_fixed_base_",
+                                         dir=os.path.dirname(mjcf_path)) as f:
             f.write(xml)
-        self.mf = mujoco.MjModel.from_xml_path(tmp)
+            f.flush()
+            self.mf = mujoco.MjModel.from_xml_path(f.name)
         self.df = mujoco.MjData(self.mf)
         self.f_qadr = np.array([self.mf.jnt_qposadr[mujoco.mj_name2id(self.mf, mujoco.mjtObj.mjOBJ_JOINT, j)]
                                 for j in ALL_JOINTS])
@@ -396,6 +399,27 @@ def evaluate_clip(clip_id: str, q: np.ndarray, fs: float, probe: PhysicsProbe,
 
 
 # ------------------------------------------------------------------ library-level richness
+def merge_controller_metrics(quality: ClipQuality, controller: dict) -> ClipQuality:
+    """Actual whole-body instability overrides the proxy, never the reverse.
+
+    Stable tracking does not promote a C/D motion: naturalness/coherence defects
+    remain. A twenty-clip pilot is insufficient to fit new generic score weights.
+    Missing controller evidence is an error rather than an implicit pass.
+    """
+    stable = bool(controller['stability_pass']) and not bool(controller['fall'])
+    rmse = float(controller['gesture_rmse_rad'])
+    stable = stable and bool(np.isfinite(rmse))
+    metrics = dict(quality.metrics, sonic_gesture_rmse_rad=rmse,
+                   sonic_stability_pass=stable, sonic_fall=bool(controller['fall']))
+    sub = quality.sub.copy(); flags = quality.flags.copy()
+    score, grade = quality.score, quality.grade
+    if not stable:
+        sub['executability'] = 0.0
+        score, grade = min(score, 54.0), 'D'
+        flags = list(dict.fromkeys(flags + ['controller_unstable']))
+    return ClipQuality(quality.clip_id, score, grade, sub, metrics, flags)
+
+
 def embed(kp: np.ndarray, n: int = 24) -> np.ndarray:
     """Time-normalised hand trajectories relative to shoulders → fixed-length vector."""
     rel = np.concatenate([kp[:, HAND_L] - kp[:, SHOULDER_L], kp[:, HAND_R] - kp[:, SHOULDER_R]], 1)  # (T,6)

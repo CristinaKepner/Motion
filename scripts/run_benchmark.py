@@ -48,7 +48,7 @@ def main():
     ap.add_argument("paths", nargs="*")
     ap.add_argument("--profile", default="beat")
     ap.add_argument("--clip-seconds", type=float, default=8.0)
-    ap.add_argument("--max-files", type=int, default=None)
+    ap.add_argument("--max-files", "--limit", type=int, default=None)
     ap.add_argument("--no-physics", action="store_true")
     args = ap.parse_args()
     BOUT.mkdir(parents=True, exist_ok=True)

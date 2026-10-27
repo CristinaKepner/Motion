@@ -53,9 +53,13 @@ def clips_from_bvh_dir(folder: str, profile: str, clip_s: float = 8.0, max_files
         b = load_bvh(str(f))
         res = retarget_bvh(b, profile, up_axis=up_axis)
         fid.append(res.fidelity)
-        q = _resample30(res.q, b.fps)
+        q = _resample30(res.q, res.fps)
         beats = stress = None
         wav, tsv = f.with_suffix(".wav"), f.with_suffix(".tsv")
+        if not wav.exists():
+            wav = f.parent.parent / "wav" / f.with_suffix(".wav").name
+        if not tsv.exists():
+            tsv = f.parent.parent / "tsv" / f.with_suffix(".tsv").name
         if wav.exists():
             on, st = M.audio_onsets(str(wav)); beats, stress = on, st
         elif tsv.exists():
@@ -91,11 +95,16 @@ def clips_from_library(kind: str = "atom") -> list[Clip]:
     return out
 
 
-def evaluate(clips: list[Clip], probe: PhysicsProbe, physics: bool = True, name: str = "") -> dict:
+def evaluate(clips: list[Clip], probe: PhysicsProbe, physics: bool = True, name: str = "", precomputed: bool = False) -> dict:
     t0 = time.time()
     grades, flags = {"A": 0, "B": 0, "C": 0, "D": 0}, {}
     for c in clips:
-        qual, kp = evaluate_clip(c.id, c.q, 30.0, probe, physics=physics)
+        if precomputed:
+            qual, kp = c.meta["quality"], c.kp
+            if kp is None:
+                raise ValueError("precomputed evaluation requires keypoints")
+        else:
+            qual, kp = evaluate_clip(c.id, c.q, 30.0, probe, physics=physics)
         c.kp = kp
         c.meta["quality"] = qual
         grades[qual.grade] += 1

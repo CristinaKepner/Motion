@@ -1,0 +1,267 @@
+{
+  "availability": {
+    "A": 215,
+    "C": 10
+  },
+  "required_per_grade": 10,
+  "rows": [
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000000__04.00-07.28",
+      "proxy_grade": "A",
+      "proxy_score": 97.1,
+      "active_gesture_rmse_rad": 0.10684763111839767,
+      "joint_rmse_rad": 0.0732730428687299,
+      "gesture_rmse_rad": 0.09014462898121287,
+      "com_xy_max_displacement_m": 0.03543919727520562,
+      "leg_max_excursion_deg": 13.252741303239159,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000240__00.84-03.04",
+      "proxy_grade": "A",
+      "proxy_score": 97.4,
+      "active_gesture_rmse_rad": 0.10588119641837139,
+      "joint_rmse_rad": 0.06712483355689036,
+      "gesture_rmse_rad": 0.08332248934631091,
+      "com_xy_max_displacement_m": 0.03137767453329669,
+      "leg_max_excursion_deg": 11.997179320688183,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000240__05.88-08.08",
+      "proxy_grade": "A",
+      "proxy_score": 96.0,
+      "active_gesture_rmse_rad": 0.10063565925566852,
+      "joint_rmse_rad": 0.06685297012724675,
+      "gesture_rmse_rad": 0.08262289810444662,
+      "com_xy_max_displacement_m": 0.028861819018403845,
+      "leg_max_excursion_deg": 12.645007466569256,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000480__00.00-02.08",
+      "proxy_grade": "A",
+      "proxy_score": 93.9,
+      "active_gesture_rmse_rad": 0.10637614649017317,
+      "joint_rmse_rad": 0.06742804114696097,
+      "gesture_rmse_rad": 0.0831024266438428,
+      "com_xy_max_displacement_m": 0.027898350265380994,
+      "leg_max_excursion_deg": 13.076046643350981,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000720__00.00-01.44",
+      "proxy_grade": "A",
+      "proxy_score": 96.1,
+      "active_gesture_rmse_rad": 0.11281152122782757,
+      "joint_rmse_rad": 0.06711478548752536,
+      "gesture_rmse_rad": 0.08277596311068189,
+      "com_xy_max_displacement_m": 0.034580787648601896,
+      "leg_max_excursion_deg": 12.546307486114095,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_000_main-agent__t000720__06.04-08.80",
+      "proxy_grade": "A",
+      "proxy_score": 96.2,
+      "active_gesture_rmse_rad": 0.10227661286068254,
+      "joint_rmse_rad": 0.06884086903250548,
+      "gesture_rmse_rad": 0.08546242809389289,
+      "com_xy_max_displacement_m": 0.030373409656838806,
+      "leg_max_excursion_deg": 12.948612380835721,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_016_main-agent__t000960__01.00-03.52",
+      "proxy_grade": "A",
+      "proxy_score": 91.9,
+      "active_gesture_rmse_rad": 0.13513492993536144,
+      "joint_rmse_rad": 0.07975172440732169,
+      "gesture_rmse_rad": 0.09878366816692742,
+      "com_xy_max_displacement_m": 0.04615450971457893,
+      "leg_max_excursion_deg": 11.901869876764758,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_016_main-agent__t000960__03.52-05.56",
+      "proxy_grade": "A",
+      "proxy_score": 90.4,
+      "active_gesture_rmse_rad": 0.11261358667575695,
+      "joint_rmse_rad": 0.07688593640843534,
+      "gesture_rmse_rad": 0.09475938366093248,
+      "com_xy_max_displacement_m": 0.043540107546506605,
+      "leg_max_excursion_deg": 13.256277649216285,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_016_main-agent__t000960__06.16-07.32",
+      "proxy_grade": "A",
+      "proxy_score": 93.3,
+      "active_gesture_rmse_rad": 0.107180014865514,
+      "joint_rmse_rad": 0.07163727705040047,
+      "gesture_rmse_rad": 0.08653453492196223,
+      "com_xy_max_displacement_m": 0.047433923767148715,
+      "leg_max_excursion_deg": 14.94616737641862,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_016_main-agent__t000960__10.32-12.84",
+      "proxy_grade": "A",
+      "proxy_score": 90.7,
+      "active_gesture_rmse_rad": 0.12479301906073939,
+      "joint_rmse_rad": 0.07441384397095138,
+      "gesture_rmse_rad": 0.09167977909122907,
+      "com_xy_max_displacement_m": 0.04445843236662695,
+      "leg_max_excursion_deg": 13.91335481701859,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_032_main-agent__t000960__00.00-02.08",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.09960264003082825,
+      "joint_rmse_rad": 0.07808526127000842,
+      "gesture_rmse_rad": 0.08707087490525452,
+      "com_xy_max_displacement_m": 0.04379369427948553,
+      "leg_max_excursion_deg": 22.349225939778467,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_032_main-agent__t002880__04.88-08.12",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.1282961551831744,
+      "joint_rmse_rad": 0.08976894010636875,
+      "gesture_rmse_rad": 0.10136972690621804,
+      "com_xy_max_displacement_m": 0.03189619773797302,
+      "leg_max_excursion_deg": 21.75977761164011,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_032_main-agent__t006960__03.28-06.36",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.19119811745064771,
+      "joint_rmse_rad": 0.11005000993472228,
+      "gesture_rmse_rad": 0.12852822573289205,
+      "com_xy_max_displacement_m": 0.044427364697116944,
+      "leg_max_excursion_deg": 20.82906637144268,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_145_main-agent__t000480__00.04-02.28",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.1194229961018073,
+      "joint_rmse_rad": 0.07662448748476194,
+      "gesture_rmse_rad": 0.0929917493470044,
+      "com_xy_max_displacement_m": 0.030255562809248744,
+      "leg_max_excursion_deg": 16.983624016218354,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_161_main-agent__t005280__04.04-06.72",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.08768985814970656,
+      "joint_rmse_rad": 0.06161958784374824,
+      "gesture_rmse_rad": 0.07521663174054757,
+      "com_xy_max_displacement_m": 0.026906392605836722,
+      "leg_max_excursion_deg": 11.275142600640905,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_161_main-agent__t005520__03.52-05.96",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.08995951167672572,
+      "joint_rmse_rad": 0.06360600538924358,
+      "gesture_rmse_rad": 0.07763487616311726,
+      "com_xy_max_displacement_m": 0.027788485402526097,
+      "leg_max_excursion_deg": 11.415975657798084,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_161_main-agent__t010560__03.84-06.40",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.13323512621050015,
+      "joint_rmse_rad": 0.08006616760434054,
+      "gesture_rmse_rad": 0.10098293584137469,
+      "com_xy_max_displacement_m": 0.0344005603065517,
+      "leg_max_excursion_deg": 13.007238972015617,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_290_main-agent__t001920__00.00-00.48",
+      "proxy_grade": "C",
+      "proxy_score": 69.9,
+      "active_gesture_rmse_rad": 0.13872286466940448,
+      "joint_rmse_rad": 0.07551386181457179,
+      "gesture_rmse_rad": 0.09051838109568384,
+      "com_xy_max_displacement_m": 0.04461718850472125,
+      "leg_max_excursion_deg": 17.380448530126564,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_371_main-agent__t001200__03.00-06.20",
+      "proxy_grade": "C",
+      "proxy_score": 60.0,
+      "active_gesture_rmse_rad": 0.1399880022445624,
+      "joint_rmse_rad": 0.09750214045352666,
+      "gesture_rmse_rad": 0.11567250218193875,
+      "com_xy_max_displacement_m": 0.04575195934209466,
+      "leg_max_excursion_deg": 19.68057834558826,
+      "fall": false,
+      "stability_pass": true
+    },
+    {
+      "atom": "trn_2023_v0_371_main-agent__t001440__03.96-05.80",
+      "proxy_grade": "C",
+      "proxy_score": 69.2,
+      "active_gesture_rmse_rad": 0.15729404410801895,
+      "joint_rmse_rad": 0.09811883387323547,
+      "gesture_rmse_rad": 0.10752017462792429,
+      "com_xy_max_displacement_m": 0.03967258904614088,
+      "leg_max_excursion_deg": 25.560726066583225,
+      "fall": false,
+      "stability_pass": true
+    }
+  ],
+  "selection": "first ten IDs per grade, lexicographic; not an independent random cohort",
+  "sample_requirement_met": true,
+  "groups": {
+    "A": {
+      "n": 10,
+      "stable": 10,
+      "falls": 0,
+      "mean_active_gesture_rmse_rad": 0.11145503179084926,
+      "mean_gesture_rmse_rad": 0.08791882001214392
+    },
+    "C": {
+      "n": 10,
+      "stable": 10,
+      "falls": 0,
+      "mean_active_gesture_rmse_rad": 0.12854093158253757,
+      "mean_gesture_rmse_rad": 0.09775060785419555
+    }
+  }
+}

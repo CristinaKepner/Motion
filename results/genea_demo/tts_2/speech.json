@@ -1,0 +1,67 @@
+{
+  "text": "第三，这很重要，我们要认真检查结果。",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "rate": "-5%",
+  "provider": "edge-tts",
+  "boundary_source": "TTS WordBoundary + recorded PCM silence insertions; raw boundaries in 100 ns units",
+  "duration": 4.464,
+  "wav_sha256": "6d29f6b5599a4cfc1c6272b728dd321090feefabe13dc5047245a6acada9bfd6",
+  "events": [],
+  "raw_boundaries": [
+    {
+      "type": "WordBoundary",
+      "offset": 1026250,
+      "duration": 5131660,
+      "text": "第三"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 8789580,
+      "duration": 1710410,
+      "text": "这"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 10500000,
+      "duration": 2105410,
+      "text": "很"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 12736660,
+      "duration": 4868330,
+      "text": "重要"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 20894580,
+      "duration": 2105410,
+      "text": "我们"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 23131660,
+      "duration": 1710410,
+      "text": "要"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 25105410,
+      "duration": 3684160,
+      "text": "认真"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 28921250,
+      "duration": 3947500,
+      "text": "检查"
+    },
+    {
+      "type": "WordBoundary",
+      "offset": 33000000,
+      "duration": 5394580,
+      "text": "结果"
+    }
+  ],
+  "pcm_silence_insertions": []
+}

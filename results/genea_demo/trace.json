@@ -1,0 +1,119 @@
+{
+  "mode": "offline TTS word boundaries, rule events, planner, free-root SONIC 035",
+  "text": "第一，展开讨论，一起看看这个方案。第二，分成步骤，一件一件把事情做好。第三，这很重要，我们要认真检查结果。",
+  "duration": 21.033333333333335,
+  "body_events": [
+    {
+      "function": "turn_open",
+      "keyword": "展开",
+      "atom": "trn_2023_v0_323_main-agent__t003840__05.68-07.88",
+      "source": "trn_2023_v0_323_main-agent__t003840",
+      "rule_spec_passed": true,
+      "human_semantic_reviewed": false,
+      "event_arrival_s": 1.9999999999999998,
+      "word_target_s": 4.266666666666667,
+      "planned_apex_s": 4.266666666666667,
+      "atom_start_s": 3.533333333333333,
+      "atom_end_s": 5.733333333333333,
+      "planner": {
+        "budget": 6.0,
+        "cost": 5.699774964380991,
+        "L_star": 1
+      },
+      "tts_word_boundary_source": "results/genea_demo/tts_0/speech.json",
+      "actual_speed_peak_s": 4.299999999999771,
+      "peak_timing_error_s": 0.033333333333104065,
+      "late": false
+    },
+    {
+      "function": "enumerate",
+      "keyword": "步骤",
+      "atom": "trn_2023_v0_177_main-agent__t004080__00.00-01.92",
+      "source": "trn_2023_v0_177_main-agent__t004080",
+      "rule_spec_passed": true,
+      "human_semantic_reviewed": false,
+      "event_arrival_s": 6.267082666666667,
+      "word_target_s": 9.767082666666667,
+      "planned_apex_s": 9.766666666666667,
+      "atom_start_s": 8.366666666666667,
+      "atom_end_s": 10.3,
+      "planner": {
+        "budget": 6.0,
+        "cost": 5.621528098731868,
+        "L_star": 1
+      },
+      "tts_word_boundary_source": "results/genea_demo/tts_1/speech.json",
+      "actual_speed_peak_s": 9.76000000000003,
+      "peak_timing_error_s": -0.007082666666637039,
+      "late": false
+    },
+    {
+      "function": "emphasize",
+      "keyword": "重要",
+      "atom": "trn_2023_v0_177_main-agent__t004080__00.00-01.92",
+      "source": "trn_2023_v0_177_main-agent__t004080",
+      "rule_spec_passed": true,
+      "human_semantic_reviewed": false,
+      "event_arrival_s": 13.020332666666665,
+      "word_target_s": 15.220332666666666,
+      "planned_apex_s": 15.233333333333334,
+      "atom_start_s": 13.833333333333334,
+      "atom_end_s": 15.766666666666667,
+      "planner": {
+        "budget": 6.0,
+        "cost": 4.318268264245274,
+        "L_star": 1
+      },
+      "tts_word_boundary_source": "results/genea_demo/tts_2/speech.json",
+      "actual_speed_peak_s": 15.219999999997004,
+      "peak_timing_error_s": -0.0003326666696619185,
+      "late": false
+    }
+  ],
+  "hand_events": [
+    {
+      "count": 1,
+      "t_target": 3.569291666666667,
+      "word": "第一",
+      "actual_sample_s": 3.559999999999719,
+      "error_rad": 0.0024970422840039364
+    },
+    {
+      "count": 2,
+      "t_target": 8.701291666666666,
+      "word": "第二",
+      "actual_sample_s": 8.700000000000617,
+      "error_rad": 0.0018441201132589624
+    },
+    {
+      "count": 3,
+      "t_target": 14.049291666666665,
+      "word": "第三",
+      "actual_sample_s": 14.039999999997658,
+      "error_rad": 0.001979927833391182
+    }
+  ],
+  "hand_release_s": 18.810666666666666,
+  "audio_sha256": "edf171ce45de600846c17d67790a35df95805427329b69dc7813aed43ff28095",
+  "acceptance": {
+    "duration_20_to_30_s": true,
+    "distinct_body_semantics": 3,
+    "sonic_stable": true,
+    "fell": false,
+    "hand_targets_pass": true,
+    "late_body_events": 0
+  },
+  "actual_duration_s": 21.0,
+  "hand_transition_continuity": [
+    {
+      "from": 1,
+      "to": 2,
+      "held_extended_joint_max_error_rad": 0.00024212758000744308
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "held_extended_joint_max_error_rad": 0.0002450024655000077
+    }
+  ]
+}

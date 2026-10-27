@@ -26,12 +26,17 @@ def main():
     if lib:
         for s in lib["sources"]:
             results.append(s)
-    for name, key in (("Bandai Namco 手势子集（真实动捕，97 段）", "report_bandai.json"), ("合成演讲数据（流程验证，含音频）", "report_beat.json")):
+    for name, key in (("Bandai Namco（97 段，10-23 历史规则）", "report_bandai.json"), ("合成演讲数据（10-23 历史规则）", "report_beat.json")):
         r = load(B / key)
         if r:
             r["name"] = name
             results.append(r)
+    for key in ("report_genea_raw.json", "report_genea_repaired.json", "report_genea_atoms.json"):
+        r = load(B / key)
+        if r:
+            results.append(r)
     data = {"datasets": ds, "results": results, "compare": lib["compare"] if lib else {}, "self_checks": lib["self_checks"] if lib else {},
+            "sonic": load(OUT / "sonic_validation" / "summary.json"),
             "adapter": load(B / "adapter_selfcheck.json"), "protocol": (HERE.parent / "docs" / "PROTOCOL.md").read_text()}
     page = (HERE / "src" / "benchmark.html").read_text()
     blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
